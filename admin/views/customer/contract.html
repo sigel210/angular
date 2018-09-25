@@ -1,0 +1,590 @@
+<div class="c-detail-ctn extends-box has-footer">
+    <div class="c-detail-ctn-top" style="height:201px;">
+        <div class="table-area right-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="16">序</th>
+                        <th width="80">类型</th>
+                        <th>产品</th>
+                        <th width="120">签约日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="!https.contractlist" ng-class="{'no-pointer':contractModel.list.length == 1,'current':item.agreement_id == contractModel.chooseItem.agreement_id}"
+                        ng-repeat="item in contractModel.list" ng-click="contractModel.choose(item)">
+                        <td ng-bind="$index + 1"></td>
+                        <td ng-bind="item.agreement_type_name"></td>
+                        <td ng-bind="item.product_name"></td>
+                        <td ng-bind="item.create_time"></td>
+                    </tr>
+                    <tr class="no-pointer" ng-if="!https.contractlist && contractModel.list.length == 0">
+                        <td colspan="4">
+                            <div class="no-content">
+                                <img src="images/kong.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="no-pointer" ng-show="https.contractlist">
+                        <td colspan="4">
+                            <div class="no-content">
+                                <div class="ball-grid-pulse">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slide-footer normal-footer">
+            <button ng-if="authPermission.addEndAgt" class="btn btn-blue" ng-class="{'btn-disabled':mainFlag || !contractModel.button.addEndAgt }" ng-click="contractModel.addEnd.show()">新建解除协议</button>
+        </div>
+    </div>
+    <!-- 订单合同 -->
+    <div class="c-detail-ctn-bottom content" ng-if="contractModel.chooseItem.agreement_type == 1">
+        <!-- 合同详情 -->
+        <p class="menu-title">合同详情</p>
+        <div class="outer-ctn" style="background:#fff;">
+            <p class="edit-title">签约信息</p>
+            <div class="list-group right-detail">
+                <div class="list-item">
+                    <p class="title">签约类型</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_type | signTypeFilter"></p>
+                </div>
+                <!-- 个人签约 -->
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 1">
+                    <p class="title">签约人</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_name"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 1">
+                    <p class="title">身份证号</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_card_id"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 1">
+                    <p class="title">联系方式</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_phone"></p>
+                </div>
+                <!-- 公司签约 -->
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">授权签约人</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_authorize"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">公司名字</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_company"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">办公地址</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_address"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">联系方式</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_phone"></p>
+                </div>
+            </div>
+            <p class="edit-title">合同信息</p>
+            <div class="list-group right-detail">
+                <div class="list-item">
+                    <p class="title">合同编号</p>
+                    <p class="info" ng-bind="contractModel.detail.agreement_no || '-'"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">合同审批</p>
+                    <p class="info" ng-bind="contractModel.detail.contract_status_name "></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">电子合同</p>
+                    <p class="info">
+                        <a ng-if="contractModel.detail.is_show_elec_contract" href="javascript:void(0)" ng-click="orderModel.methods.contract()">查看</a>
+                    </p>
+                </div>
+                <div class="list-item">
+                    <p class="title">纸质编号</p>
+                    <p class="info" ng-bind="contractModel.detail.contract_no"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">合同类型</p>
+                    <p class="info" ng-bind="contractModel.detail.contract_type_name"></p>
+                </div>
+                <div class="list-item" style="min-height:90px;" ng-if="contractModel.detail.contract_type == 2">
+                    <p class="title">非标备注</p>
+                    <p class="info" ng-bind="contractModel.detail.nonstandard_remarks" style="word-break:break-all;white-space: pre-wrap;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 补充协议 -->
+    <div class="c-detail-ctn-bottom content" ng-if="contractModel.chooseItem.agreement_type == 2">
+        <p class="edie-title">补充协议详情</p>
+        <div class="outer-ctn" style="border-bottom:0;">
+            <p class="edit-title">签约信息</p>
+            <div class="list-group right-detail">
+                <div class="list-item">
+                    <p class="title">签约类型</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_type | signTypeFilter"></p>
+                </div>
+                <!-- 个人签约 -->
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 1">
+                    <p class="title">签约人</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_name"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 1">
+                    <p class="title">身份证号</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_card_id"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 1">
+                    <p class="title">联系方式</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_phone"></p>
+                </div>
+                <!-- 公司签约 -->
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">授权签约人</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_authorize"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">公司名字</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_company"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">办公地址</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_address"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">联系方式</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_phone"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">签约日期</p>
+                    <p class="info" ng-bind="contractModel.detail.create_time"></p>
+                </div>
+            </div>
+            <p class="edit-title">协议信息</p>
+            <div class="list-group right-detail">
+                <div class="list-item">
+                    <p class="title">协议审批</p>
+                    <p class="info" ng-bind="contractModel.detail.agreement_status"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">纸质编号</p>
+                    <p class="info" ng-bind="contractModel.detail.contract_no"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">协议附件</p>
+                    <p class="info">
+                        <a ng-if="contractModel.detail.is_show_elec_contract" href="javascript:void(0)" ng-click="contractModel.goResource()">查看</a>
+                    </p>
+                </div>
+                <div class="list-item">
+                    <p class="title">协议编号</p>
+                    <p class="info" ng-bind="contractModel.detail.agreement_no"></p>
+                </div>
+            </div>
+            <p class="edit-title">变更内容</p>
+            <div class="list-group right-detail">
+                <div class="list-item">
+                    <p class="title">变更编号</p>
+                    <p class="info">
+                        <a href="JavaScript:void(0)" ng-bind="contractModel.detail.change_no" ng-click="contractModel.gotoChangePresent(contractModel.detail.change_no)"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 解除协议 -->
+    <div class="c-detail-ctn-bottom content" ng-if="contractModel.chooseItem.agreement_type == 3">
+        <p class="edie-title">解除协议</p>
+        <div class="outer-ctn" style="border-bottom:0;">
+            <p class="edit-title">签约信息</p>
+            <div class="list-group right-detail">
+                <div class="list-item">
+                    <p class="title">签约类型</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_type | signTypeFilter"></p>
+                </div>
+                <!-- 个人签约 -->
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 1">
+                    <p class="title">签约人</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_name"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 1">
+                    <p class="title">身份证号</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_card_id"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 1">
+                    <p class="title">联系方式</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_phone"></p>
+                </div>
+                <!-- 公司签约 -->
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">授权签约人</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_authorize"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">公司名字</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_company"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">办公地址</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_address"></p>
+                </div>
+                <div class="list-item" ng-if="contractModel.detail.sign_type == 2">
+                    <p class="title">联系方式</p>
+                    <p class="info" ng-bind="contractModel.detail.sign_phone"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">签约日期</p>
+                    <p class="info" ng-bind="contractModel.detail.create_time"></p>
+                </div>
+            </div>
+            <p class="edit-title">协议信息</p>
+            <div class="list-group right-detail">
+                <div class="list-item">
+                    <p class="title">协议编号</p>
+                    <p class="info" ng-bind="contractModel.detail.agreement_no || '-'"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">协议审批</p>
+                    <p class="info" ng-bind="contractModel.detail.status"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">协议附件</p>
+                    <p class="info">
+                        <a ng-if="contractModel.detail.is_show_elec_contract" href="javascript:void(0)" ng-click="contractModel.goResource()">查看</a>
+                    </p>
+                </div>
+                <div class="list-item">
+                    <p class="title">纸质编号</p>
+                    <p class="info" ng-bind="contractModel.detail.contract_no || '-'"></p>
+                </div>
+            </div>
+        </div>
+        <div class="no-item" ng-if="contractModel.list.length == 0">
+            <img src="images/kong.png">
+        </div>
+        <div class="no-item" ng-if="https.contractdetail">
+            <div class="no-content">
+                <div class="ball-grid-pulse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 合同详情操作按钮 -->
+    <div class="slide-footer normal-footer" ng-if="contractModel.chooseItem.agreement_type == 1">
+        <div ng-mouseleave="contractModel.showMore.flag = false" ng-if="contractModel.showMore.flag" class="btn-drop-ctn r-16">
+            <button class="btn btn-blue" ng-if="authPermission.createApprovalWithPaper" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.applyPaperContract }" ng-click="contractModel.applyPaperContract()">申请纸质合同</button>
+            <button class="btn btn-blue" ng-if="authPermission.downPaperContract" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.downPaperContract }" ng-click="contractModel.downPaperContract()">下载纸质合同</button>
+            <button class="btn btn-blue" ng-if="authPermission.updateContract" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.updateContract }" ng-click="contractModel.signEdit.show()">编辑签约信息</button>
+        </div>
+        <button class="btn btn-blue btn-more" ng-if="isOrigin && !rFlag" ng-class="{'btn-disabled':mainFlag || !orderModel.order_id}"
+            ng-click="contractModel.showMore.toggleMore($event)">更多</button>
+        <button class="btn btn-blue" ng-if="authPermission.applyAgreement" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.applyContract }" ng-click="contractModel.applyContractCheck()">申请合同审核</button>
+        <button class="btn btn-blue" ng-if="authPermission.uploadContractPicture" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.uploadContractPicture }"
+            ng-click="contractModel.upload.show()">上传合同照片</button>
+        <button class="btn btn-blue" ng-if="authPermission.downStandardContractConfirm" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.downStandardContract }" ng-click="contractModel.standardContract.show()">下载标准合同</button>
+
+    </div>
+    <!-- 补充协议按钮 -->
+    <div class="slide-footer normal-footer" ng-if="contractModel.chooseItem.agreement_type == 2">
+        <button class="btn btn-blue" ng-if="authPermission.applyAgreement" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.applyAddnAgreement }" ng-click="contractModel.applyContractCheck1()">申请协议审批</button>
+        <button class="btn btn-blue" ng-if="authPermission.saveAgtAttachs" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.uploadAddnAgreementAttachment }"
+            ng-click="contractModel.upload1.show()">上传协议附件</button>
+        <button class="btn btn-blue" ng-if="authPermission.downAdditionalAgreement" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.downAddnAgreement }" ng-click="contractModel.downAdditionalAgreement()">下载补充协议</button>
+    </div>
+    <!-- 解除协议按钮 -->
+    <div class="slide-footer normal-footer" ng-if="contractModel.chooseItem.agreement_type == 3">
+        <div ng-mouseleave="contractModel.showMore.flag = false" ng-if="contractModel.showMore.flag" class="btn-drop-ctn r-16">
+            <button class="btn btn-blue" ng-if="authPermission.downPaperContract" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.deleteEndAgt }" ng-click="contractModel.deleteContract2()">删除解除协议</button>
+            <button class="btn btn-blue" ng-if="authPermission.createApprovalWithPaper" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.applyEndPaperContract }"
+                ng-click="contractModel.applyPaperContract2()">申请纸质协议</button>
+        </div>
+        <button class="btn btn-blue btn-more" ng-if="isOrigin && !rFlag" ng-class="{'btn-disabled':mainFlag || !orderModel.order_id}"
+            ng-click="contractModel.showMore.toggleMore($event)">更多</button>
+
+        <button class="btn btn-blue" ng-if="authPermission.applyAgreement" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.applyEndAgt }" ng-click="contractModel.applyContractCheck2()">申请协议审批</button>
+        <button class="btn btn-blue" ng-if="authPermission.saveAgtAttachs" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.uploadEndAgtAtta }" ng-click="contractModel.upload2.show()">上传协议附件</button>
+        <button class="btn btn-blue" ng-if="authPermission.downAdditionalAgreement" ng-class="{'btn-disabled':mainFlag || !contractModel.detail.button.downEndAgt }" ng-click="contractModel.downEndAgreement()">下载纸质协议</button>
+
+    </div>
+
+    <!-- 新建解除协议 -->
+    <div style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+        ng-if="contractModel.addEnd.flag">
+        <div class="modal-backdrop fade in"></div>
+        <div class="modal-dialog modal-sm responseHeight">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="btn-close" data-dismiss="modal">
+                        <i class="icon-close" ng-click="contractModel.addEnd.hide()"></i>
+                    </div>
+                    <h4 class="modal-title" ng-bind="contractModel.addEnd.title"></h4>
+                </div>
+                <div class="modal-body ">
+                    <div class="form-wrap add-edit-form form-wrap-w-sm">
+                        <p class="add-edit-title">
+                            <span class="icon-title"></span>签约信息</p>
+                        <div ng-if="contractModel.detail.sign_type == 1">
+                            <p class="title">
+                                <span class="table-name">签约人</span>
+                                <span class="table-text">
+                                    <span ng-bind="contractModel.detail.sign_name"></span>
+                                </span>
+                            </p>
+                            <p class="title">
+                                <span class="table-name">身份证</span>
+                                <span class="table-text">
+                                    <span ng-bind="contractModel.detail.sign_card_id"></span>
+                                </span>
+                            </p>
+                            <p class="title">
+                                <span class="table-name">联系方式</span>
+                                <span class="table-text">
+                                    <span ng-bind="contractModel.detail.sign_phone"></span>
+                                </span>
+                            </p>
+                        </div>
+                        <div ng-if="contractModel.detail.sign_type == 2">
+                            <p class="title">
+                                <span class="table-name">签约授权人</span>
+                                <span class="table-text">
+                                    <span ng-bind="contractModel.detail.sign_authorize"></span>
+                                </span>
+                            </p>
+                            <p class="title">
+                                <span class="table-name">公司名字</span>
+                                <span class="table-text">
+                                    <span ng-bind="contractModel.detail.sign_company"></span>
+                                </span>
+                            </p>
+                            <p class="title">
+                                <span class="table-name">办公地址</span>
+                                <span class="table-text">
+                                    <span ng-bind="contractModel.detail.sign_address"></span>
+                                </span>
+                            </p>
+                            <p class="title">
+                                <span class="table-name">联系方式</span>
+                                <span class="table-text">
+                                    <span ng-bind="contractModel.detail.sign_phone"></span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer full-btn-box">
+                    <button type="button" class="btn btn-blue" style="width:100%" ng-click="contractModel.addEnd.confirm()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 上传合同照片 -->
+    <div style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+        ng-if="contractModel.upload.flag">
+        <div class="modal-backdrop fade in"></div>
+        <div class="modal-dialog modal-sm responseHeight">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="btn-close" data-dismiss="modal">
+                        <i class="icon-close" ng-click="contractModel.upload.hide()"></i>
+                    </div>
+                    <h4 class="modal-title" ng-bind="contractModel.upload.title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-wrap add-edit-form .form-wrap-w-sm">
+                        <p class="add-edit-title" style="margin-top:8px">
+                            <span class="icon-title"></span>附件</p>
+                        <p class="info" ng-repeat="item in contractModel.upload.fileNames track by $index">
+                            <span class="table-text" ng-bind="item" style="display:inline-block; width:612px;"></span>
+                            <i class="table-clear" ng-click="contractModel.upload.deleteImg($index)"></i>
+                        </p>
+                        <p class="info" ng-show="contractModel.upload.fileNames.length < 5" style="cursor:pointer" ng-click="contractModel.upload.uploadClick()">
+                            <span class="table-text" style="display:inline-block; width:612px;color:#ccc;">
+                                点击上传
+                            </span>
+                        </p>
+                        <input type="file" accept="image/jpg,image/png,image/jpeg" style="display: none" id="contract-img" onchange="angular.element(this).scope().contractModel.upload.uploadImg()"
+                            multiple/>
+                    </div>
+                </div>
+                <div class="modal-footer full-btn-box">
+                    <button type="button" class="btn btn-blue full-btn" ng-click="contractModel.upload.confirm()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 上传协议附件 -->
+    <div style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+        ng-if="contractModel.upload1.flag">
+        <div class="modal-backdrop fade in"></div>
+        <div class="modal-dialog modal-sm responseHeight">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="btn-close" data-dismiss="modal">
+                        <i class="icon-close" ng-click="contractModel.upload1.hide()"></i>
+                    </div>
+                    <h4 class="modal-title" ng-bind="contractModel.upload1.title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-wrap add-edit-form .form-wrap-w-sm">
+                        <p class="add-edit-title" style="margin-top:8px">
+                            <span class="icon-title"></span>附件</p>
+                        <p class="info" ng-repeat="item in contractModel.upload1.fileNames track by $index">
+                            <span class="table-text" ng-bind="item" style="display:inline-block; width:612px;"></span>
+                            <i class="table-clear" ng-click="contractModel.upload1.deleteImg($index)"></i>
+                        </p>
+                        <p class="info" ng-show="contractModel.upload1.fileNames.length < 5" style="cursor:pointer" ng-click="contractModel.upload1.uploadClick()">
+                            <span class="table-text" style="display:inline-block; width:612px;color:#ccc;">
+                                点击上传
+                            </span>
+                        </p>
+                        <input type="file" accept="image/jpg,image/png,image/jpeg" style="display: none" id="contract-img1" onchange="angular.element(this).scope().contractModel.upload1.uploadImg()"
+                            multiple/>
+                    </div>
+                </div>
+                <div class="modal-footer full-btn-box">
+                    <button type="button" class="btn btn-blue full-btn" ng-click="contractModel.upload1.confirm()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 上传解除协议 -->
+    <div edit-modal config="contractModel.upload2" confirm="contractModel.upload2.confirm()">
+        <div class="form-wrap add-edit-form .form-wrap-w-sm">
+            <p class="add-edit-title" style="margin-top:8px">
+                <span class="icon-title"></span>附件</p>
+            <p class="info" ng-repeat="item in contractModel.upload2.fileNames track by $index">
+                <span class="table-text" ng-bind="item" style="display:inline-block; width:612px;"></span>
+                <i class="table-clear" ng-click="contractModel.upload2.deleteImg($index)"></i>
+            </p>
+            <p class="info" ng-show="contractModel.upload2.fileNames.length < 5" style="cursor:pointer" ng-click="contractModel.upload2.uploadClick()">
+                <span class="table-text" style="display:inline-block; width:612px;color:#ccc;">
+                    点击上传
+                </span>
+            </p>
+            <input type="file" accept="image/jpg,image/png,image/jpeg" style="display: none" id="contract-img2" onchange="angular.element(this).scope().contractModel.upload2.uploadImg()"
+                multiple/>
+        </div>
+    </div>
+    <!-- 编辑签约信息 -->
+    <div style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+        ng-if="contractModel.signEdit.flag">
+        <div class="modal-backdrop fade in"></div>
+        <div class="modal-dialog modal-sm responseHeight">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="btn-close" data-dismiss="modal">
+                        <i class="icon-close" ng-click="contractModel.signEdit.hide()"></i>
+                    </div>
+                    <h4 class="modal-title" ng-bind="contractModel.signEdit.title"></h4>
+                </div>
+                <div class="modal-body ">
+                    <div class="form-wrap add-edit-form .form-wrap-w-sm">
+                        <p class="add-edit-title">
+                            <span class="icon-title"></span>签约信息</p>
+                        <div ng-if="contractModel.signEdit.data.sign_type == 1">
+                            <p class="title">
+                                <span class="table-name">签约人</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="contractModel.signEdit.data.sign_name" placeholder="点击输入" maxlength="15">
+                                </span>
+                                <i class="table-clear" ng-click="contractModel.signEdit.data.sign_name = ''"></i>
+                            </p>
+                            <p class="title">
+                                <span class="table-name">身份证</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="contractModel.signEdit.data.sign_card_id" placeholder="点击输入" maxlength="18">
+                                </span>
+                                <i class="table-clear" ng-click="contractModel.signEdit.data.sign_card_id = ''"></i>
+                            </p>
+                            <p class="title">
+                                <span class="table-name">联系方式</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="contractModel.signEdit.data.sign_phone" placeholder="点击输入" maxlength="15">
+                                </span>
+                                <i class="table-clear" ng-click="contractModel.signEdit.data.sign_phone = ''"></i>
+                            </p>
+                        </div>
+                        <div ng-if="contractModel.signEdit.data.sign_type == 2">
+                            <p class="title">
+                                <span class="table-name">签约授权人</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="contractModel.signEdit.data.sign_authorize" placeholder="点击输入" maxlength="15">
+                                </span>
+                                <i class="table-clear" ng-click="contractModel.signEdit.data.sign_authorize = ''"></i>
+                            </p>
+                            <p class="title">
+                                <span class="table-name">公司名字</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="contractModel.signEdit.data.sign_company" placeholder="点击输入">
+                                </span>
+                                <i class="table-clear" ng-click="contractModel.signEdit.data.sign_company = ''"></i>
+                            </p>
+                            <p class="title">
+                                <span class="table-name">办公地址</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="contractModel.signEdit.data.sign_address" placeholder="点击输入">
+                                </span>
+                                <i class="table-clear" ng-click="contractModel.signEdit.data.sign_address = ''"></i>
+                            </p>
+                            <p class="title">
+                                <span class="table-name">联系方式</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="contractModel.signEdit.data.sign_phone" placeholder="点击输入" maxlength="15">
+                                </span>
+                                <i class="table-clear" ng-click="contractModel.signEdit.data.sign_phone = ''"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer full-btn-box">
+                    <button type="button" class="btn btn-blue" style="width:100%" ng-click="contractModel.signEdit.confirm()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 下载标准合同 -->
+    <div style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+        ng-if="contractModel.standardContract.flag">
+        <div class="modal-backdrop fade in"></div>
+        <div class="modal-dialog modal-sm responseHeight">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="btn-close" data-dismiss="modal">
+                        <i class="icon-close" ng-click="contractModel.standardContract.hide()"></i>
+                    </div>
+                    <h4 class="modal-title" ng-bind="contractModel.standardContract.title"></h4>
+                </div>
+                <div class="modal-body">
+                    <table class="c-table white-bg">
+                        <thead>
+                            <tr>
+                                <th width="16px"></th>
+                                <th width="16px">序</th>
+                                <th>合同名称</th>
+                                <th width="120px">最近上传时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in contractModel.standardContract.data">
+                                <td>
+                                    <input type="radio" ng-checked="item.path == contractModel.standardContract.path" ng-click="contractModel.standardContract.path = item.path">
+                                </td>
+                                <td ng-bind="$index + 1"></td>
+                                <td ng-bind="item.contract_name"></td>
+                                <td ng-bind="item.update_time"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer full-btn-box">
+                    <button type="button" class="btn btn-blue" style="width:100%" ng-click="contractModel.standardContract.confirm()">下载</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="download" ng-href="{{contractModel.path}}" download style="display:none"></a>

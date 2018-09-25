@@ -1,0 +1,367 @@
+<header>
+    <div class="tab-bar">
+        <button class="menu-btn-back" onclick='window.history.back()'>
+            <i class="icon-back"></i>
+        </button>
+        <span class='menu-tit'>交易流水对账管理</span>
+        <div class="menu-ul">
+            <ul class="tab-wrap ">
+                <li ng-repeat='tab in tabList' ng-class="{'current': tabIndex == tab.value }" ng-click="changeTab(tab.value)">
+                    <a href="javascript:void(0)" ng-bind="tab.title"></a>
+                </li>
+            </ul>
+        </div>
+        <a href="javascript:void(0);" ng-if="authPermission.download" class="btn_upload" ng-click="saveReport()">下载报表</a>
+    </div>
+    <div class="cont-page js-page"></div>
+</header>
+<div class="cont-page-w" ng-init="setRootScope();">
+    <!-- 搜索模块 -->
+    <div class="search-wraps search-wrap-new">
+        <div class="search-max-w">
+            <div class="form-group">
+                <label>支付对账：</label>
+                <div class="search-box" style="position: relative;">
+                    <select id="status" name="name" class="select-name-w search-keyup-enter" ng-model="uiModel.filters.received_status"
+                        ng-change="blur('#status')">
+                        <option value=""></option>
+                        <option value="1">未对账</option>
+                        <option value="2">对账成功</option>
+                        <option value="3">对账失败</option>
+                    </select>
+                    <label ng-show="!uiModel.filters.received_status&&uiModel.filters.received_status!='0'">点击选择</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>支付时间：</label>
+                <div class="search-box">
+                    <input class="pointer" readonly="true" id="1" type="text" format="yyyy-MM-dd HH:mm" time-value="uiModel.filters.received_income_start"
+                        ng-model="uiModel.filters.received_income_start" max-date="#F{$dp.$D(\'2\')}" time-module
+                        placeholder="点击选择">
+                    <span class="time-division">至</span>
+                    <input class="pointer" readonly="true" id="2" type="text" format="yyyy-MM-dd HH:mm" time-value="uiModel.filters.received_income_end"
+                        ng-model="uiModel.filters.received_income_end" min-date="#F{$dp.$D(\'1\')}" time-module
+                        placeholder="点击选择" style="text-indent: 16px;">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>对账时间：</label>
+                <div class="search-box">
+                    <input class="pointer" readonly="true" id="3" type="text" format="yyyy-MM-dd HH:mm" time-value="uiModel.filters.received_verify_start"
+                        ng-model="uiModel.filters.received_verify_start" max-date="#F{$dp.$D(\'4\')}" time-module
+                        placeholder="点击选择">
+                    <span class="time-division">至</span>
+                    <input class="pointer" readonly="true" id="4" type="text" format="yyyy-MM-dd HH:mm" time-value="uiModel.filters.received_verify_end"
+                        ng-model="uiModel.filters.received_verify_end" min-date="#F{$dp.$D(\'3\')}" time-module
+                        placeholder="点击选择" style="text-indent: 16px;">
+                </div>
+            </div>
+            <div class="form-group" ng-show="tabIndex!=3">
+                <label>付款人：</label>
+                <div class="search-box">
+                    <input type="text" name="name-tit" ng-model="uiModel.filters.pay_name" class="search-keyup-enter input-name-w"
+                        placeholder="点击输入">
+                </div>
+            </div>
+            <div class="form-group" ng-show="tabIndex==3">
+                <label>交易号：</label>
+                <div class="search-box">
+                    <input type="text" name="" ng-model="uiModel.filters.trade_no" class="search-keyup-enter input-name-w"
+                        placeholder="点击输入">
+                </div>
+            </div>
+            <!-- <div class="form-group" ng-show="tabIndex!=1&&tabIndex!=2&&tabIndex!=4">
+                <label>订单号：</label>
+                <div class="search-box">
+                    <input type="text" name="" ng-model="uiModel.filters.trade_no" class="search-keyup-enter input-name-w" placeholder="点击输入">
+                </div>
+            </div> -->
+        </div>
+        <div class="search-btn-wrap">
+            <button class="btn-search" ng-click="search()">搜索</button>
+            <!-- <button class="btn-reset" ng-click="reset()">清空</button> -->
+        </div>
+    </div>
+    <!-- 列表模块 -->
+    <div class="table-ptop-w2 table-ptop-w2-new" style="padding-bottom: 20px">
+        <div class="table-foot">
+            <div pages2 class="page-right" page-index="uiModel.page.page_no" page-size="uiModel.page.page_size" total="uiModel.page.total"
+                page-count="uiModel.page.page_count" page-change="getList(pageIndex)"></div>
+        </div>
+        <table class="table-list table-fixed js-table" width="100%">
+            <thead>
+                <tr ng-if="tabIndex==3">
+                    <th width="16">序</th>
+                    <th width="48">支付对账</th>
+                    <!-- <th style="min-width:96px;">付款人</th> -->
+                    <th width="80">支付金额（¥）</th>
+                    <th>交易号</th>
+                    <th width="124">对账时间</th>
+                    <th width="124">支付时间</th>
+                </tr>
+                <tr ng-if="tabIndex==4">
+                    <th width="16">序</th>
+                    <th width="48">支付对账</th>
+                    <th style="min-width:96px;">付款人</th>
+                    <!-- <th>交易号</th> -->
+                    <th width="80">支付金额（¥）</th>
+                    <th width="124">对账时间</th>
+                    <th width="124">支付时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="load-tips">
+                    <td ng-if="!list || list.length === 0" colspan="6">
+                        <div class="loading-cont" style="display:none"></div>
+                        <div ng-show="!isAjaxError && !pageListLoading" class="load-tips-cont">没有你想要的数据</div>
+                        <div ng-show="isAjaxError && !pageListLoading" class="load-tips-cont">加载超时，点击
+                            <a ng-click="search()">重新加载</a>
+                        </div>
+                    </td>
+                </tr>
+                <!-- <tr class="load-tips" ng-if="tabIndex!=3">
+                    <td ng-if=" !list || list.length === 0" colspan="7">
+                        <div class="loading-cont" style="display:none;"></div>
+                        <div ng-show="!isAjaxError && !pageListLoading" class="load-tips-cont">没有你想要的数据</div>
+                        <div ng-show="isAjaxError && !pageListLoading" class="load-tips-cont">加载超时，点击
+                            <a ng-click="search()">重新加载</a>
+                        </div>
+                    </td>
+                </tr> -->
+                <tr ng-if="tabIndex!=3" ng-repeat='item in list' ng-click='detailModalConfig.show(item)' ng-class="{active: temp == $index}">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.pay_received_status"></td>
+                    <td ng-bind="item.pay_name" title="{{item.pay_name}}"></td>
+                    <td ng-bind="item.pay_amount | number:2"></td>
+                    <td ng-bind="item.received_check_time"></td>
+                    <td ng-bind="item.income_time"></td>
+                </tr>
+                <tr ng-if="tabIndex ==3" ng-repeat='item in list' ng-click='detailModalConfig.show(item)' ng-class="{active: temp == $index}">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.pay_received_status"></td>
+                    <td ng-bind="item.pay_amount | number:2"></td>
+                    <td ng-bind="item.trade_no" title="{{item.trade_no}}"></td>
+                    <td ng-bind="item.received_check_time"></td>
+                    <td ng-bind="item.income_time"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div detail-modal show="detailModalConfig.flag" buttons="detailModalConfig.buttons" detail-title="detailModalConfig.title">
+        <div>
+            <!--未对账状态-->
+            <div class="slide-cont" ng-show="detailModalConfig.data.received_status_id !=2">
+                <div class="form-wrap table-detail">
+                    <div class="detail-customer">
+                        <div class="detail-box">
+                            <div class="list-group right-detail" style="margin-bottom: 11px;">
+                                <div class="label-title">
+                                    <div>
+                                        <span class="icon-title"></span>基本信息</div>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">支付对账</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.pay_received_status"></p>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">支付方式</p>
+                                    <p ng-bind="detailModalConfig.data.pay_way"></p>
+                                </div>
+                                <!-- <div class="list-item" ng-if="detailModalConfig.data.pay_way_id==1 || detailModalConfig.data.pay_way_id==3">
+                                    <p class="title">客户支付宝</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.customer_account"></p>
+                                </div>
+                                <div class="list-item" ng-if="detailModalConfig.data.pay_way_id==2 || detailModalConfig.data.pay_way_id==4">
+                                    <p class="title">客户银行卡</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.customer_account"></p>
+                                </div> -->
+                                <div class="list-item" ng-if="detailModalConfig.data.pay_way_id==1 || detailModalConfig.data.pay_way_id==3">
+                                    <p class="title">交易号</p>
+                                    <p class="info" title="{{detailModalConfig.data.trade_no}}" ng-bind="detailModalConfig.data.trade_no"></p>
+                                </div>
+                                <div class="list-item" ng-if="detailModalConfig.data.pay_way_id==2 || detailModalConfig.data.pay_way_id==4">
+                                    <p class="title">付款人</p>
+                                    <p class="info" title="{{detailModalConfig.data.pay_name}}"  ng-bind="detailModalConfig.data.pay_name"></p>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">支付金额</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.pay_amount | number:2"></p>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">支付时间</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.income_time"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--已对账状态-->
+            <div class="slide-cont" ng-show="detailModalConfig.data.received_status_id==2">
+                <div class="form-wrap table-detail">
+                    <div class="detail-customer">
+                        <!-- 天下网商支付宝 -->
+                        <div class="detail-box" style="padding-bottom:55px">
+                            <div class="list-group right-detail" style="margin-bottom: 11px;">
+                                <div class="label-title">
+                                    <div>
+                                        <span class="icon-title"></span>支付信息</div>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">支付编号</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.order_received_no"></p>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">支付方式</p>
+                                    <p ng-bind="detailModalConfig.data.pay_way"></p>
+                                </div>
+                                <!-- <div class="list-item" ng-if="detailModalConfig.data.pay_way_id==1 || detailModalConfig.data.pay_way_id==3">
+                                    <p class="title">客户支付宝</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.customer_account"></p>
+                                </div>
+                                <div class="list-item" ng-if="detailModalConfig.data.pay_way_id==2 || detailModalConfig.data.pay_way_id==4">
+                                    <p class="title">客户银行卡</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.pay_account"></p>
+                                </div> -->
+                                <div class="list-item">
+                                    <p class="title">支付金额</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.pay_amount | number:2"></p>
+                                </div>
+                                <div class="list-item" ng-if="detailModalConfig.data.pay_way_id==2 || detailModalConfig.data.pay_way_id==4">
+                                    <p class="title">付款人</p>
+                                    <p class="info" title="{{detailModalConfig.data.pay_name}}" ng-bind="detailModalConfig.data.pay_name"></p>
+                                </div>
+                                <div class="list-item" ng-if="detailModalConfig.data.pay_way_id==1 || detailModalConfig.data.pay_way_id==3">
+                                    <p class="title">交易号</p>
+                                    <p class="info" title="{{detailModalConfig.data.trade_no}}" ng-bind="detailModalConfig.data.trade_no"></p>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">支付时间</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.income_time"></p>
+                                </div>
+                            </div>
+                            <div class="list-group right-detail">
+                                <div class="label-title">
+                                    <div>
+                                        <span class="icon-title"></span>支付信息备注</div>
+                                </div>
+                                <div class="txt-textarea">
+                                    <span style="padding: 10px 10px;background:#fff;" ng-bind="detailModalConfig.data.received_remark ? detailModalConfig.data.received_remark : '-'"></span>
+                                </div>
+                            </div>
+                            <div class="list-group right-detail" ng-if="detailModalConfig.data.pay_way_id==1 || detailModalConfig.data.pay_way_id==3">
+                                <div class="label-title">
+                                    <div>
+                                        <span class="icon-title"></span>其他信息</div>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">客户支付宝</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.customer_account"></p>
+                                </div>
+                            </div>
+                            <div class="list-group right-detail">
+                                <div class="label-title">
+                                    <div>
+                                        <span class="icon-title"></span>订单信息</div>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">订单编号</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.order_no"></p>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">订单对账</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.order_received_status"></p>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">订单状态</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.order_status"></p>
+                                </div>
+
+                                <div class="list-item">
+                                    <p class="title">到单日期</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.order_received_date"></p>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">签约类型</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.is_new"></p>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">订单金额</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.order_price | number:2"></p>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">支付金额</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.total_received | number:2"></p>
+                                </div>
+
+                                <div class="list-item">
+                                    <p class="title">订单创建</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.sign_user"></p>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">订单归属</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.belong_user"></p>
+                                </div>
+                            </div>
+                            <div class="list-group right-detail">
+                                <div class="label-title">
+                                    <div>
+                                        <span class="icon-title"></span>订单备注</div>
+                                </div>
+                                <div class="txt-textarea">
+                                    <div style="padding: 10px 10px;background:#fff;word-break: break-all;" ng-bind="detailModalConfig.data.order_remarks ? detailModalConfig.data.order_remarks : '-'"></div>
+                                </div>
+                            </div>
+                            <div class="list-group right-detail">
+                                <div class="label-title">
+                                    <div>
+                                        <span class="icon-title"></span>客户信息</div>
+                                </div>
+                                <div class="list-item">
+                                    <p class="title">客户名称</p>
+                                    <p class="info" ng-bind="detailModalConfig.data.customer"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div edit-modal config="editModal" confirm="editModal.confirm(data)">
+        <form class="m-form-wrap add-edit-form" name="_form" novalidate style="padding-top:0;">
+            <p class="m-form-row" ng-show="tabIndex==1||tabIndex==3">
+                <span class="table-name">交易号</span>
+                <span class="table-text">
+                    <input class="outline-no" type="text" ng-model="editModal.data.trade_no" name="trade_no"
+                        placeholder="点击输入" maxlength="50">
+                </span>
+                <i class="table-clear" ng-click="editModal.data.trade_no=''"></i>
+            </p>
+            <p class="m-form-row" ng-show="tabIndex==1||tabIndex==2||tabIndex==4">
+                <span class="table-name">付款人</span>
+                <span class="table-text">
+                    <input class="outline-no" type="text" ng-model="editModal.data.pay_name" name="pay_name"
+                        placeholder="点击输入" maxlength="35">
+                </span>
+                <i class="table-clear" ng-click="editModal.data.pay_name=''"></i>
+            </p>
+            <p class="m-form-row">
+                <span class="table-name">支付金额</span>
+                <span class="table-text">
+                    <input class="outline-no" type="text" ng-model="editModal.data.pay_amount" ng-keyup="replaceNum2(editModal.data,'pay_amount')" name="pay_amount"
+                        placeholder="点击输入" required>
+                </span>
+                <i class="table-clear" ng-click="editModal.data.pay_amount=''"></i>
+            </p>
+            <p class="m-form-row">
+                <span class="table-name">支付时间</span>
+                <span class="table-text">
+                    <input class="outline-no" type="text" id="5" class="carrytime" name="income_time" time-value="editModal.data.income_time"
+                        ng-model="editModal.data.income_time" time-module readonly placeholder="点击选择" style="width: 260px;"
+                        required>
+                </span>
+            </p>
+        </form>
+    </div>
+</div>

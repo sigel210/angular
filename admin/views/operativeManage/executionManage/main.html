@@ -1,0 +1,94 @@
+<header>
+    <div class="tab-bar">
+        <button class="menu-btn-back" onclick='window.history.back()'>
+            <i class="icon-back"></i>
+        </button>
+        <span class="menu-tit">执行管理</span>
+    </div>
+</header>
+<div class="cont-page-w">
+    <div class="search-wraps">
+        <div class="search-max-w">
+            <div class="form-group">
+                <label>执行内容名称：</label>
+                <div class="search-box">
+                    <input type="text" id="content_name" name="name-tit" ng-model="uiModel.filters.content_name" class="search-keyup-enter input-name-w pl-100"
+                        placeholder="点击输入" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>一级内容类型：</label>
+                <div class="search-box">
+                    <select ng-model="firstContent" ng-options="firstContent as firstContent.content_category_name for firstContent in typeList"
+                        ng-change="firstSelect(firstContent)" class='pl-100'>
+                        <option></option>
+                    </select>
+                    <label class="select-tip pl-100" ng-show="!firstContent">点击选择</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>二级内容类型：</label>
+                <div class="search-box">
+                    <select ng-model="secondContent" ng-options="secondContent as secondContent.content_category_name for secondContent in secondContentList" class='pl-100'
+                        ng-change="secondSelect(secondContent)">
+                        <option></option>
+                    </select>
+                    <label class="select-tip pl-100" ng-show="!secondContent">点击选择</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>三级内容类型：</label>
+                <div class="search-box">
+                    <select ng-model="thirdContent" ng-options="thirdContent as thirdContent.content_category_name for thirdContent in thirdContentList" class='pl-100'>
+                        <option></option>
+                    </select>
+                    <label class="select-tip pl-100" ng-show="!thirdContent">点击选择</label>
+                </div>
+            </div>
+            <div class=" search-btn-wrap">
+                <button class="btn-search" ng-click="search()">搜索</button>
+                <!-- <button class="btn-reset" ng-click="reset()">清空</button> -->
+            </div>
+        </div>
+    </div>
+    <div class="table-ptop-w2">
+        <div class="table-foot">
+            <div pages2 class="page-right" page-index="page.page_no" page-size="page.pageSize" total="page.total" page-count="page.pageCount"
+                page-change="getList(pageIndex)"></div>
+        </div>
+        <table class="table-list table-fixed js-table" width="100%">
+            <thead>
+                <tr>
+                    <th width="16">序</th>
+                    <th>执行任务编号</th>
+                    <th width='420'>执行内容名称</th>
+                    <th>一级内容类型</th>
+                    <th>二级内容类型</th>
+                    <th>三级内容类型</th>
+                    <th>内容单价</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="load-tips">
+                    <td ng-show="!list || list.length === 0" colspan="7">
+                        <div class="loading-cont">
+                        </div>
+                        <div ng-show="!isAjaxError && !pageListLoading" class="load-tips-cont">没有你想要的数据</div>
+                        <div ng-show="isAjaxError && !pageListLoading" class="load-tips-cont">加载超时，点击
+                            <a ng-click="search()">重新加载</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-repeat='item in list' ng-class="{active: temp == $index}">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.order_content_no || '-'"></td>
+                    <td ng-bind="item.content_name || '-'"></td>
+                    <td ng-bind="item.first_content_name || '-'"></td>
+                    <td ng-bind="item.second_content_name || '-'"></td>
+                    <td ng-bind="item.third_content_name || '-'"></td>
+                    <td ng-bind="item.content_price || '-'"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

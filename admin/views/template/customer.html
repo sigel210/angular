@@ -1,0 +1,68 @@
+<!-- 客户信息 -->
+<!-- <table>
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>客户信息</th>
+        </tr>
+        <tr>
+            <td>客户ID</td>
+            <td ng-bind="detailsWrap.data.customer"></td>
+        </tr>
+        <tr>
+            <td>主营类目</td>
+            <td ng-bind="detailsWrap.data.category_name"></td>
+        </tr>
+        <tr>
+            <td>客户类型</td>
+            <td ng-bind="detailsWrap.data.typeid | customerTypeFilter"></td>
+        </tr>
+        <tr>
+            <td>新老客户</td>
+            <td ng-bind="detailsWrap.data.is_old | isOld"></td>
+        </tr>
+        <tr>
+            <td>店铺地址</td>
+            <td ng-if="detailsWrap.data.shop_url">
+                <a ng-href="{{detailsWrap.data.shop_url}}" target="_blank" style="margin-left: 0px;">查看</a>
+            </td>
+            <td ng-if="!detailsWrap.data.shop_url">-</td>
+        </tr>
+    </tbody>
+</table> -->
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>客户信息
+        </span>
+    </p>
+    <div class="list-item">
+        <span class="title">客户ID</span>
+        <span class="info" ng-bind="detailsWrap.data.customer">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">主营类目</span>
+        <span class="info" ng-bind="detailsWrap.data.category_name">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">客户类型</span>
+        <span class="info" ng-bind="detailsWrap.data.typeid | customerTypeFilter">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">新老客户</span>
+        <span class="info" ng-bind="detailsWrap.data.is_old | isOld">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">店铺地址</span>
+        <span class="info" ng-if="detailsWrap.data.shop_url">
+            <a ng-href="{{detailsWrap.data.shop_url}}" target="_blank" style="margin-left: 0px;">查看</a>
+        </span>
+        <span class="info" ng-if="!detailsWrap.data.shop_url">
+            -
+        </span>
+    </div>
+</div>

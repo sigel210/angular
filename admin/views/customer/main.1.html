@@ -1,0 +1,209 @@
+<div name="customer" class="m-container">
+    <header class="m-header">
+        <div class="customer-name" title="{{customer|| '店铺主旺旺'}}">{{customer|| '店铺主旺旺'}}</div>
+        <div class="child-nav-bar">
+            <ul>
+                <li class="child-nav-item" ng-class="{active:item.pool_id == uiModel.choosen.tabIndex}" ng-click="changeTab(item.pool_id)"
+                    ng-repeat="item in uiModel.business">
+                    <p class="mar3">{{item.pool_name}}</p>
+                    <p class="small">{{item.level_id| levelFilter}}</p>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="main-box">
+        <div class="sider-bar-group2">
+            <ul class="sider-bar-2">
+                <li ng-class="{active:$index == uiModel.choosen.menuIndex}" ng-repeat="item in uiModel.menus" ng-click="changeMenu($index)">{{item}}</li>
+            </ul>
+        </div>
+        <div class="c-content">
+            <!--基本信息-->
+            <div class="rest-box f-position-r" ng-if="uiModel.choosen.menuIndex == 0" ng-include="'./views/customer/base.html'">
+            </div>
+            <!--联系信息-->
+            <div class="rest-box f-position-r" ng-if="uiModel.choosen.menuIndex == 1" ng-include="'./views/customer/contact.html'">
+            </div>
+            <!--开票信息-->
+            <!-- <div class="c-container left-fixed" ng-if="uiModel.choosen.menuIndex == 2" ng-include="'./views/customer/tax.html'">
+        </div> -->
+            <!-- 新开票信息 -->
+            <div class="extends-box f-position-r" ng-if="uiModel.choosen.menuIndex == 2" ng-include="'./views/customer/tax.html'"></div>
+            <!--跟进区块-->
+            <div class="c-container right-fixed" ng-if="(uiModel.choosen.menuIndex == 0 || uiModel.choosen.menuIndex == 1)" ng-include="'./views/customer/follow.html'">
+            </div>
+            <div class="c-container f-position-r" ng-if="uiModel.choosen.menuIndex == 3" ng-include="'./views/customer/order/main.html'">
+            </div>
+            <div class="c-container" style="background:#f2f2f2" ng-if="uiModel.choosen.menuIndex == 3">
+                <div class="extends-box flex-column" style="padding:19px 14px 0 14px;">
+                    <div class="u-tabs" ng-if="orderModel.third_product_id != 10101 && orderModel.third_product_id != 10005 && orderModel.third_product_id != 10110 && orderModel.second_product_id != 10217 && orderModel.first_product_id != 4">
+                        <ul>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 0}" ng-click="changeChildTab(0)">支付信息</li>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 1}" ng-click="changeChildTab(1)">学员信息</li>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 2}" ng-click="changeChildTab(2)">营收/退款</li>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 3}" ng-click="changeChildTab(3)">调研信息</li>
+                        </ul>
+                    </div>
+                    <div class="u-tabs" ng-if="orderModel.third_product_id == 10101 || orderModel.third_product_id == 10005">
+                        <ul>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 0}" ng-click="changeChildTab(0)">支付信息</li>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 2}" ng-click="changeChildTab(2)">营收/退款</li>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 3}" ng-click="changeChildTab(3)">调研信息</li>
+                        </ul>
+                    </div>
+                    <div class="u-tabs" ng-if="orderModel.third_product_id == 10110 ">
+                        <ul>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 0}" ng-click="changeChildTab(0)">支付信息</li>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 2}" ng-click="changeChildTab(2)">营收/退款</li>
+                        </ul>
+                    </div>
+                    <div class="u-tabs" ng-if="orderModel.first_product_id == 4"><!--orderModel.first-product_id == 4-->
+                        <ul>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 4}" ng-click="changeChildTab(4)">产品信息</li>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 6}" ng-click="changeChildTab(6)">合同协议</li>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 0}" ng-click="changeChildTab(0)">支付信息</li>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 5}" ng-click="changeChildTab(5)">变更与赠送</li>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 7}" ng-click="changeChildTab(7)">开票</li>
+                            <li ng-class="{current:uiModel.choosen.childTabIndex == 2}" ng-click="changeChildTab(2)">营收/退款</li>
+                        </ul>
+                    </div>
+                    <div class="extends-box f-position-r rest-box flex-column f-position-r" ng-if="uiModel.choosen.childTabIndex == 0" ng-include="'./views/customer/pay.html'">
+                    </div>
+                    <div class="extends-box f-position-r" ng-if="uiModel.choosen.childTabIndex == 1" ng-include="'./views/customer/student.html'">
+                    </div>
+                    <div class="extends-box c-detail-ctn f-position-r" ng-if="uiModel.choosen.childTabIndex == 2" ng-include="'./views/customer/income.html'">
+                    </div>
+                    <div class="extends-box f-position-r" ng-if="uiModel.choosen.childTabIndex == 3" ng-include="'./views/customer/survey/main.html'">
+                    </div>
+                    <!-- 产品信息 -->
+                    <div class="extends-box f-position-r" ng-include="'./views/customer/product.html'" ng-if="uiModel.choosen.childTabIndex == 4">
+                    </div>
+                    <!-- 变更与赠送 -->
+                    <div class="extends-box f-position-r" ng-include="'./views/customer/change&present.html'" ng-if="uiModel.choosen.childTabIndex == 5">
+                    </div>
+                    <!-- 合同协议 -->
+                    <div class="extends-box f-position-r" ng-include="'./views/customer/contract.html'" ng-if="uiModel.choosen.childTabIndex == 6">
+                    </div>
+                    <!-- 开票 -->
+                    <div class="extends-box f-position-r" ng-include="'./views/customer/tax_r.html'" ng-if="uiModel.choosen.childTabIndex == 7">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 分配，转移等 -->
+<div allot show="mTransferModal.isShow" multipie-allot="{{comeType != 1 ? '' : true}}" callback="mTransferModal.confirm(obj)"
+     model="mTransferModal.data" title="{{mTransferModal.title}}"></div>
+<!-- 上传图片弹窗 -->
+<div ng-if="fileUp_M.isShow" ng-include="'./views/customer/modal/upload.html'">
+</div>
+<!-- 申请开票 -->
+<div ng-if="taxInfoModel.applyTax.flag" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-lg responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="taxInfoModel.applyTax.hide()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="taxInfoModel.applyTax.title"></h4>
+            </div>
+            <div class="modal-body modal-flex" style="padding:0;border:0;">
+                <div class="form-wrap-left">
+                    <ul style="background-color:#fff;">
+                        <li ng-repeat='item in taxInfoModel.applyTax.tabs' class="form-wrap-left-li" ng-class="{'current': taxInfoModel.applyTax.tab == $index}"
+                            ng-click="taxInfoModel.applyTax.tab = $index" ng-bind="item">
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-wrap-right">
+                    <div>
+                        <div class="form-wrap" ng-if="taxInfoModel.applyTax.tab == 0">
+                            <p class="locked">
+                                <span class="table-name">已开金额</span>
+                                <span class="table-text">
+                                    <span ng-bind="taxInfoModel.applyTax.data.total.tax_price + '/' + taxInfoModel.applyTax.data.total.total_price"></span>
+                                </span>
+                            </p>
+                            <p>
+                                <span class="table-name">开票类型</span>
+                                <span class="table-text">
+                                    <select class="select-w120" ng-model="taxInfoModel.applyTax.req.type" ng-options="option.id as option.name for option in taxInfoModel.applyTax.selectList.invoiceType">
+                                        <option></option>
+                                    </select>
+                                    <label ng-show="!taxInfoModel.applyTax.req.type" class="select-tip">点击选择</label>
+                                    <i class="table-clear" ng-click="taxInfoModel.applyTax.req.type = ''"></i>
+                                </span>
+                            </p>
+                            <p>
+                                <span class="table-name">开票金额</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="taxInfoModel.applyTax.req.price" placeholder="点击输入" maxlength="18" style="width: calc(100% - 30px);">
+                                    <i class="table-clear" ng-click="taxInfoModel.applyTax.req.price = ''"></i>
+                                </span>
+
+                            </p>
+                        </div>
+                        <div class="form-wrap" ng-if="taxInfoModel.applyTax.tab == 1">
+                            <div class="bg-white" ng-repeat="item in taxInfoModel.applyTax.data.payment" ng-click="taxInfoModel.applyTax.req.tax_id = item.tax_id;taxInfoModel.applyTax.req.tax_title = item.tax_title">
+                                    <p class="pointer" ng-class="{'current': taxInfoModel.applyTax.req.tax_id == item.tax_id}">
+                                        <span class="table-name">付款信息{{$index + 1}}
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span class="table-name">企业名称</span>
+                                        <span class="table-text" ng-bind="item.tax_title"></span>
+                                    </p>
+                                    <p>
+                                        <span class="table-name">企业税号</span>
+                                        <span class="table-text" ng-bind="item.tax_no"></span>
+                                    </p>
+                                    <p>
+                                        <span class="table-name">公司地址</span>
+                                        <span class="table-text" ng-bind="item.tax_address"></span>
+                                    </p>
+                                    <p>
+                                        <span class="table-name">公司电话</span>
+                                        <span class="table-text" ng-bind="item.tax_phone"></span>
+                                    </p>
+                                    <p>
+                                        <span class="table-name" title="公司银行账号">银行账号</span>
+                                        <span class="table-text" ng-bind="item.tax_account"></span>
+                                    </p>
+                                    <p>
+                                        <span class="table-name">公司开户行</span>
+                                        <span class="table-text" ng-bind="item.tax_bank"></span>
+                                    </p>
+                            </div>
+                        </div>
+                        <div class="form-wrap" ng-if="taxInfoModel.applyTax.tab == 2">
+                            <div class="c-table-d white-bg edit-table c-wd" ng-repeat="item in taxInfoModel.applyTax.data.mailing" ng-click="taxInfoModel.applyTax.req.address_id = item.address_id">
+                                <p class="pointer" ng-class="{'current': taxInfoModel.applyTax.req.address_id == item.address_id}">
+                                    <span class="table-name">邮寄信息{{$index + 1}}
+                                    </span>
+                                </p>
+                                <p>
+                                    <span class="table-name">邮寄地址</span>
+                                    <span class="table-text" ng-bind="item.mail_address"></span>
+                                </p>
+                                <p>
+                                    <span class="table-name">收件人</span>
+                                    <span class="table-text" ng-bind="item.receiver"></span>
+                                </p>
+                                <p>
+                                    <span class="table-name">联系电话</span>
+                                    <span class="table-text" ng-bind="item.receiver_phone"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button class="btn btn-blue full-btn" ng-click="taxInfoModel.applyTax.confirm()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,394 @@
+<header>
+    <div class="tab-bar">
+        <button class="menu-btn-back" ng-click='cancel()'>
+            <i class="icon-back"></i>
+        </button>
+        <span class="menu-tit">新建支付</span>
+        <div class="menu-ul">
+            <ul class="tab-wrap ">
+                <li ng-repeat='tab in tabList' ng-class="{'current': tabIndex == tab.id }" ng-click="changeTab(tab.id)">
+                    <a href="javascript:void(0)" ng-bind="tab.name"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="cont-page js-page"></div>
+</header>
+<!--菁英汇、特训营-->
+<div class="cont-page-w" ng-if="templateIndex === 1">
+    <div class="m-form-wrap add-edit-form form-wrap-w-sm">
+        <div class="m-table-form">
+            <p class="locked m-form-row">
+                <span class="table-name">产品线</span>
+                <span class="table-text">
+                    <input disabled type="text" ng-model="orderInfo.second_name">
+                </span>
+            </p>
+            <p class="locked m-form-row">
+                <span class="table-name">产品</span>
+                <span class="table-text">
+                    <input disabled type="text" ng-model="orderInfo.third_name">
+                </span>
+            </p>
+            <p class="locked m-form-row">
+                <span class="table-name">订单金额</span>
+                <span class="table-text">
+                    <input disabled type="text" ng-model="orderInfo.total_price">
+                </span>
+            </p>
+            <!-- 孵化班+研修班没有班次信息2.2.5 -->
+            <p class="locked m-form-row" ng-show="product_id != 10110 && product_id != 10005">
+                <span class="table-name">合同班次</span>
+                <span class="table-text">
+                    <input disabled type="text" ng-model="orderInfo.class_name">
+                </span>
+            </p>
+        </div>
+        <p class="add-edit-title">
+            <span class="icon-title"></span>支付信息
+            <span class="red-title">（必填）</span>
+        </p>
+        <div class="m-table-form">
+            <p class=" m-form-row">
+                <span class="table-name">支付金额</span>
+                <span class="table-text">
+                    <input type="text" ng-model="formitem.price" ng-keyup="replaceNum2(formitem, 'price')" placeholder="点击输入" ng-keyup="replaceNum2(formitem, 'price')"
+                        placeholder="点击输入">
+                </span>
+                <i class="table-clear" ng-click="formitem.price = ''"></i>
+            </p>
+            <p class=" m-form-row" ng-show="tabIndex != 3">
+                <span class="table-name">付款人</span>
+                <span class="table-text">
+                    <input type="text" ng-model="formitem.pay_name" placeholder="点击输入">
+                </span>
+                <i class="table-clear" ng-click="formitem.pay_name = ''"></i>
+            </p>
+            <p class=" m-form-row" ng-show="tabIndex == 1">
+                <span class="table-name">交易号</span>
+                <span class="table-text">
+                    <input type="text" name="trade_no" ng-model="formitem.trade_no" placeholder="点击输入" maxlength="50" ng-keyup="replaceNum(formitem, 'trade_no')">
+                </span>
+                <i class="table-clear" ng-click="formitem.trade_no = ''"></i>
+            </p>
+            <p class=" m-form-row" ng-show="tabIndex == 3">
+                <span class="table-name">订单号</span>
+                <span class="table-text">
+                    <input type="text" name="trade_no" ng-model="formitem.trade_no" placeholder="点击输入" maxlength="50" ng-keyup="replaceNum3(formitem, 'trade_no')">
+                </span>
+                <i class="table-clear" ng-click="formitem.trade_no = ''"></i>
+            </p>
+            <!-- <p>
+        <span class="table-name">支付类型</span>
+        <span class="table-text">
+          <select ng-model="formitem.pay_type" ng-options="option.id as option.name for option in uiModel.selectList.payType">
+            <option></option>
+          </select>
+          <label ng-show="formitem.pay_type =='' || formitem.pay_type === undefined" class="select-tip">点击选择</label>
+        </span>
+        <i class="table-clear" ng-click="formitem.pay_type = ''"></i>
+      </p> -->
+            <p class=" m-form-row">
+                <span class="table-name">到账日期</span>
+                <span class="table-text">
+                    <input id="1" type="text" class="pointer" time-value="formitem.pay_date" ng-model="formitem.pay_date" time-module readonly
+                        placeholder="点击选择" style="width: 539px;" format="yyyy-MM-dd">
+                </span>
+                <i class="table-clear" ng-click="formitem.pay_date = ''"></i>
+            </p>
+            <p class=" m-form-row">
+                <span class="table-name">备注</span>
+                <span class="table-text  m-textarea-box">
+                    <textarea class="u-table-textarea" ng-model="formitem.remark" style="height:150px;width: 514px;border: 1px solid #f2f2f2;resize:none;border-top:0;"
+                        maxlength="200">
+          </textarea>
+                    <span class="u-textarea-num" style="right: 45px">
+                        <span>{{formitem.remark.length ? formitem.remark.length:0}}</span>/200</span>
+                    <!-- <input type="text" name="" ng-model="formitem.remark" placeholder="" style="height:150px;width: 539px;" maxlength="200"> -->
+                </span>
+                <i class="table-clear" ng-click="formitem.remark = ''"></i>
+            </p>
+        </div>
+    </div>
+</div>
+<!--淘大-->
+<div class="cont-page-w" ng-if="templateIndex === 2">
+    <div class="m-form-wrap add-edit-form form-wrap-w-sm">
+        <div class="m-table-form">
+            <p class="locked m-form-row">
+                <span class="table-name">产品线</span>
+                <span class="table-text">
+                    <span ng-bind="orderInfo.second_name"></span>
+                </span>
+            </p>
+            <p class="locked m-form-row">
+                <span class="table-name">产品</span>
+                <span class="table-text">
+                    <input disabled type="text" ng-model="orderInfo.third_name">
+                </span>
+            </p>
+            <p class="locked m-form-row">
+                <span class="table-name">订单金额</span>
+                <span class="table-text">
+                    <input disabled type="text" ng-model="orderInfo.total_price">
+                </span>
+            </p>
+            <p class="locked  m-form-row" ng-if="product_id != 10101">
+                <span class="table-name">合同班次</span>
+                <span class="table-text">
+                    <input disabled type="text" ng-model="orderInfo.class_name">
+                </span>
+            </p>
+        </div>
+        <p class="add-edit-title">
+            <span class="icon-title"></span>支付信息
+            <span class="red-title">（必填）</span>
+        </p>
+        <div class="m-table-form">
+            <p class="m-form-row">
+                <span class="table-name">支付金额</span>
+                <span class="table-text">
+                    <input type="text" ng-model="formitem.price" ng-keyup="replaceNum2(formitem, 'price')" placeholder="点击输入" placeholder="点击输入">
+                </span>
+                <i class="table-clear" ng-click="formitem.price = ''"></i>
+            </p>
+            <p class="m-form-row" ng-show="tabIndex == 4">
+                <span class="table-name">付款人</span>
+                <span class="table-text">
+                    <input type="text" ng-model="formitem.pay_name" placeholder="点击输入">
+                </span>
+                <i class="table-clear" ng-click="formitem.pay_name = ''"></i>
+            </p>
+            <p class="m-form-row" ng-show="tabIndex == 3">
+                <span class="table-name">订单号</span>
+                <span class="table-text">
+                    <input type="text" name="formitem.trade_no" ng-model="formitem.trade_no" placeholder="点击输入" maxlength="50" ng-keyup="replaceNum3(formitem, 'trade_no')">
+                </span>
+                <i class="table-clear" ng-click="formitem.trade_no = ''"></i>
+            </p>
+            <!-- <p>
+        <span class="table-name">支付类型</span>
+        <span class="table-text">
+          <select ng-model="formitem.pay_type" ng-options="option.id as option.name for option in uiModel.selectList.payType">
+            <option></option>
+          </select>
+          <label ng-show="formitem.pay_type =='' || formitem.pay_type === undefined" class="select-tip">点击选择</label>
+        </span>
+      </p> -->
+            <p class="m-form-row">
+                <span class="table-name">到账日期</span>
+                <span class="table-text">
+                    <input id="1" type="text" class="pointer" time-value="formitem.pay_date" ng-model="formitem.pay_date" time-module readonly
+                        placeholder="点击选择" max-date="%y-%M-%d" style="width: 539px;" format="yyyy-MM-dd">
+                </span>
+                <i class="table-clear" ng-click="formitem.pay_date = ''"></i>
+            </p>
+            <p class="m-form-row m-textarea-box">
+                <span class="table-name">备注</span>
+                <textarea class="u-table-textarea" ng-model="formitem.remark" maxlength="200">
+          </textarea>
+                <span class="u-textarea-num" style="right: 45px">
+                    <span>{{formitem.remark.length ? formitem.remark.length:0}}</span>/200</span>
+                <!-- <input type="text" name="" ng-model="formitem.remark" placeholder="点击输入" style="height:150px;width: 539px;" maxlength="200"> -->
+                <i class="table-clear" ng-click="formitem.remark = ''"></i>
+            </p>
+        </div>
+
+    </div>
+</div>
+<!--爱柚...-->
+<div class="cont-page-w" ng-if="templateIndex === 3">
+    <!-- 支付宝 -->
+    <div class="m-form-wrap add-edit-form">
+        <div class="m-table-form">
+            <p class="locked m-form-row">
+                <span class="table-name">产品线</span>
+                <span class="table-text">
+                    <span ng-bind="orderInfo.second_name"></span>
+                </span>
+            </p>
+            <p class="locked m-form-row">
+                <span class="table-name">产品</span>
+                <span class="table-text">
+                    <span ng-bind="orderInfo.third_name"></span>
+                </span>
+            </p>
+            <p class="locked m-form-row">
+                <span class="table-name">订单类型</span>
+                <span class="table-text">
+                    <span ng-bind="orderInfo.sale_type_name"></span>
+                </span>
+            </p>
+        </div>
+        <div class="m-table-form" ng-show="uiModel.step == 1">
+            <p class="add-edit-title" style="margin-top:10px;">
+                <span class="icon-title"></span>支付信息
+                <span class="red-title">（必填）</span>
+            </p>
+            <p class="m-form-row" ng-if="orderInfo.sale_type == 2">
+                <span class="table-name">支付类型</span>
+                <span class="table-text">
+                    <select ng-model="formitem.pay_type" ng-options="option.id as option.name for option in uiModel.selectList.payType">
+                        <option></option>
+                    </select>
+                    <label ng-show="formitem.pay_type =='' || formitem.pay_type === undefined" class="select-tip">点击选择</label>
+                </span>
+            </p>
+            <p class="m-form-row" ng-if="orderInfo.sale_type == 1">
+                <span class="table-name">支付金额</span>
+                <span class="table-text">
+                    <input type="text" ng-model="formitem.price" placeholder="点击输入">
+                </span>
+                <i class="table-clear" ng-click="formitem.price = ''"></i>
+            </p>
+            <p class="m-form-row">
+                <span class="table-name">付款人</span>
+                <span class="table-text">
+                    <input type="text" ng-model="formitem.pay_name" placeholder="点击输入">
+                </span>
+                <i class="table-clear" ng-click="formitem.pay_name = ''"></i>
+            </p>
+            <p class="m-form-row" ng-show="tabIndex == 1">
+                <span class="table-name">交易号</span>
+                <span class="table-text">
+                    <input type="text" name="trade_no" ng-model="formitem.trade_no" placeholder="点击输入" maxlength="35" ng-keyup="replaceNum(formitem, 'trade_no')">
+                </span>
+                <i class="table-clear" ng-click="formitem.trade_no = ''"></i>
+            </p>
+            <p class="m-form-row">
+                <span class="table-name">到账日期</span>
+                <span class="table-text">
+                    <input id="1" type="text" class="pointer" time-value="formitem.pay_date" ng-model="formitem.pay_date" time-module readonly
+                        placeholder="点击选择" max-date="%y-%M-%d" style="width: 539px;" format="yyyy-MM-dd">
+                </span>
+                <i class="table-clear" ng-click="formitem.pay_date = ''"></i>
+            </p>
+            <div class="m-textarea-box" ng-if="orderInfo.sale_type == 1">
+                <p class="add-edit-title " style="margin-top:10px;">
+                    <span class="icon-title"></span>支付备注
+                </p>
+                <textarea class="u-table-textarea" ng-model="formitem.remark" maxlength="200">
+                </textarea>
+                <span class="u-textarea-num" style="right: 45px">
+                    <span>{{formitem.remark.length ? formitem.remark.length:0}}</span>/200</span>
+                <!-- <input type="text" name=""  placeholder="点击输入"> -->
+                </span>
+            </div>
+        </div>
+        <div class="m-table-form" ng-show="uiModel.step == 2 && orderInfo.sale_type ==2" style="margin-top:10px;">
+            <p class="add-edit-title" style="margin-top:10px;">
+                <span class="icon-title"></span>金额
+                <span class="red-title">（必填）</span>
+            </p>
+            <p class="m-form-row" ng-show="formitem.pay_type ==5 || formitem.pay_type == 6">
+                <span class="table-name">预付款</span>
+                <span class="table-text">
+                    <input type="text" ng-model="formitem.price" ng-keyup="replaceNum2(formitem, 'price')" placeholder="点击输入">
+                </span>
+                <i class="table-clear" ng-click="formitem.price = ''"></i>
+            </p>
+            <p class="m-form-row" ng-show="formitem.pay_type == 4 || formitem.pay_type == 6">
+                <span class="table-name">押金</span>
+                <span class="table-text">
+                    <input type="text" ng-model="formitem.deposit_price
+          " ng-keyup="replaceNum2(formitem, 'deposit_price
+          ')" placeholder="点击输入">
+                </span>
+                <i class="table-clear" ng-click="formitem.deposit_price
+        = ''"></i>
+            </p>
+            <p class="m-form-row" ng-show="formitem.pay_type == 3">
+                <span class="table-name">尾款</span>
+                <span class="table-text">
+                    <input type="text" ng-model="formitem.price" ng-keyup="replaceNum2(formitem, 'price')" placeholder="点击输入">
+                </span>
+                <i class="table-clear" ng-click="formitem.price = ''"></i>
+            </p>
+            <div class="m-textarea-box">
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>支付备注
+                </p>
+                <textarea class="u-table-textarea" ng-model="formitem.remark" maxlength="200">
+              </textarea>
+                <span class="u-textarea-num" style="right: 45px">
+                    <span>{{formitem.remark.length ? formitem.remark.length:0}}</span>/200</span>
+                <!-- <input type="text" name=""  placeholder="点击输入"> -->
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 淘大 -->
+<div class="cont-page-w" ng-if="templateIndex === 4">
+    <div class="m-form-wrap add-edit-form form-wrap-w-sm">
+        <div class="m-table-form">
+            <p class="locked m-form-row">
+                <span class="table-name">订单金额</span>
+                <span class="table-text">
+                    <input disabled type="text" ng-model="orderInfo.total_price">
+                </span>
+            </p>
+            <p class="locked m-form-row" ng-repeat="item in orderInfo.product_name">
+                <span class="table-name">产品【{{$index + 1}}】</span>
+                <span class="table-text" ng-bind="item">
+                </span>
+            </p>
+        </div>
+        <p class="add-edit-title">
+            <span class="icon-title"></span>支付信息
+            <span class="red-title">（必填）</span>
+        </p>
+        <div class="m-table-form">
+            <p class=" m-form-row">
+                <span class="table-name">支付金额</span>
+                <span class="table-text">
+                    <input type="text" ng-model="formitem.order_received_price" ng-keyup="replaceNum2(formitem, 'order_received_price')" placeholder="点击输入"
+                        ng-keyup="replaceNum2(formitem, 'order_received_price')" maxlength="9" placeholder="点击输入">
+                </span>
+                <i class="table-clear" ng-click="formitem.order_received_price = ''"></i>
+            </p>
+            <p class=" m-form-row" ng-show="tabIndex != 3">
+                <span class="table-name">付款人</span>
+                <span class="table-text">
+                    <input type="text" ng-model="formitem.received_pay_name" placeholder="点击输入" maxlength="100">
+                </span>
+                <i class="table-clear" ng-click="formitem.received_pay_name = ''"></i>
+            </p>
+            <p class=" m-form-row" ng-show="tabIndex == 3">
+                <span class="table-name">交易号</span>
+                <span class="table-text">
+                    <input type="text" name="received_trade_no" ng-model="formitem.received_trade_no" placeholder="点击输入" maxlength="50" ng-keyup="replaceNum3(formitem, 'received_trade_no')">
+                </span>
+                <i class="table-clear" ng-click="formitem.received_trade_no = ''"></i>
+            </p>
+            <p class=" m-form-row">
+                <span class="table-name">到账日期</span>
+                <span class="table-text">
+                    <input id="1" type="text" class="pointer" time-value="formitem.received_pay_date" ng-model="formitem.received_pay_date" time-module
+                        readonly placeholder="点击选择" style="width: 539px;" format="yyyy-MM-dd">
+                </span>
+                <i class="table-clear" ng-click="formitem.received_pay_date = ''"></i>
+            </p>
+            <p class=" m-form-row">
+                <span class="table-name">备注</span>
+                <span class="table-text  m-textarea-box">
+                    <textarea class="u-table-textarea" ng-model="formitem.received_remark" style="height:150px;width: 514px;border: 1px solid #f2f2f2;resize:none;border-top:0;"
+                        maxlength="200">
+            </textarea>
+                    <span class="u-textarea-num" style="right: 45px">
+                        <span>{{formitem.received_remark.length ? formitem.received_remark.length:0}}</span>/200</span>
+                    <!-- <input type="text" name="" ng-model="formitem.remark" placeholder="" style="height:150px;width: 539px;" maxlength="200"> -->
+                </span>
+                <i class="table-clear" ng-click="formitem.received_remark = ''"></i>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="slide-footer">
+    <button class="btn btn-cancel" ng-click="cancel()">取消</button>
+    <button class="btn btn-new-blue" ng-if="templateIndex === 3 && orderInfo.sale_type ==2 && uiModel.step == 2" ng-click="confirm()">确定</button>
+    <button class="btn btn-new-blue" ng-if="templateIndex === 1 || templateIndex === 2 || (templateIndex === 3 && orderInfo.sale_type ==1) || templateIndex == 4"
+        ng-click="confirm()">确定</button>
+    <button class="btn btn-new-blue" ng-if="orderInfo.sale_type ==2 && uiModel.step == 1" ng-click="uiModel.step = 2">下一步</button>
+    <button class="btn btn-new-blue" ng-if="orderInfo.sale_type ==2 && uiModel.step == 2" ng-click="uiModel.step = 1">上一步</button>
+</div>

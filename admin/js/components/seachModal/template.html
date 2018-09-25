@@ -1,0 +1,9 @@
+ <div class="search-wraps search-wrap-new">
+    <div class="search-max-w">
+        <div ng-transclude></div>
+    </div>
+    <div class="search-btn-wrap">
+        <button ng-repeat="item in buttons" ng-if="!item.hide" ng-class="item.class"
+         ng-bind="item.text" ng-click="item.func()"></button>
+    </div>
+</div>

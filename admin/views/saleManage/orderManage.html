@@ -1,0 +1,18 @@
+<header>
+    <div class="tab-bar">
+        <button class="menu-btn-back" ng-click="returnback()">
+            <i class="icon-back"></i>
+        </button>
+        <span class="menu-tit">新建订单</span>
+        <div class="menu-ul">
+            <ul class="tab-wrap">
+                <li ng-repeat='tab in tabList' ng-class="{'current':tabIndex == tab.tab_id,'forbin_click':tab.tab_id!=controlArr[$index] }" ng-model="type" ng-click="(tab.tab_id==controlArr[$index])&&changeTab(tab.tab_id,tab.status)">
+                    <a href="javascript:void(0)" ng-bind="tab.tab_name"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div ui-view class="m-container">
+
+</div>

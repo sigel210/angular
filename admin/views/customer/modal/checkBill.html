@@ -1,0 +1,42 @@
+<!-- 对账失败弹窗 -->
+<div style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="hideModal('checkBill')"></i>
+                </div>
+                <h4 class="modal-title">对账失败</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p>
+                        <span class="table-name" ng-if="billModel.checkBillRes.pay_way.value == 1 || billModel.checkBillRes.pay_way.value == 3" ng-bind="billModel.special.tradeName"></span>
+                        <span class="table-text" ng-if="billModel.checkBillRes.pay_way.value == 1 || billModel.checkBillRes.pay_way.value == 3" ng-bind="billModel.checkBillRes.trade_no.value"
+                            ng-class="{red: billModel.checkBillRes.trade_no.result == false}">
+                        </span>
+                    </p>
+                    <p ng-if="!billModel.special.isTD || billModel.edit.pay_way == 4">
+                        <span class="table-name">付款人</span>
+                        <span class="table-text" ng-hide="billModel.edit.pay_way == 3" ng-bind="billModel.checkBillRes.pay_name.value" ng-class="{red: billModel.checkBillRes.pay_name.result == false}">
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">支付金额</span>
+                        <span class="table-text" ng-class="{red: billModel.checkBillRes.price.result == false}" ng-bind="billModel.checkBillRes.price.value | number:2">
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">支付日期</span>
+                        <span class="table-text" ng-class="{red: billModel.checkBillRes.pay_date.result == false}" ng-bind="billModel.checkBillRes.pay_date.value">
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="hideModal('checkBill')">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

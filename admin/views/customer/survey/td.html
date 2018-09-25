@@ -1,0 +1,533 @@
+<!-- 淘大线下调研表（内容引爆，管理掘金） -->
+<div class="outer-ctn" ng-if="surveyModel.detail.third_product_id != 10101 && surveyModel.detail.third_product_id != 10151">
+    <p class="edit-title">
+        调研信息
+    </p>
+    <div class="list-group right-detail">
+        <div class="list-item">
+            <p class="title">填表时间</p>
+            <p class="info" ng-bind="surveyModel.detail.create_time"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">产品</p>
+            <p class="info" ng-bind="surveyModel.detail.product_name"></p>
+        </div>
+    </div>
+    <p class="edit-title">
+        店铺基本信息
+    </p>
+    <div class="list-group right-detail">
+
+        <div class="list-item">
+            <p class="title" style="width:110px">主营店铺ID</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.customer"></p>
+        </div>
+        <div class="list-item">
+            <p class="title" style="width:110px">主营店铺所属类目</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.category_name"></p>
+        </div>
+        <div class="list-item">
+            <p class="title" style="width:110px">主营店铺链接</p>
+            <p class="info">
+                <a ng-href="{{surveyModel.detail.survey_result.shop_url}}" target="_blank">查看</a>
+            </p>
+        </div>
+        <div class="list-item">
+            <p class="title" style="width:110px">主营店铺所在省市</p>
+            <p class="info" ng-bind="'中国'+'/'+surveyModel.detail.survey_result.province_name+'/'+surveyModel.detail.survey_result.city_name"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">主营店铺开店时长</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.operating_life"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">主营店铺类型</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.shop_type"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">各平台其他店铺</p>
+            <p>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="1" ng-checked="checkedTest(surveyModel.detail.survey_result.other_shop,1)" />
+                    <span>天猫店 &nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_shop,1)}}</span>
+                </div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="2" ng-checked="checkedTest(surveyModel.detail.survey_result.other_shop,2)" />淘宝店&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_shop,2)}}</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="3" ng-checked="checkedTest(surveyModel.detail.survey_result.other_shop,3)" />独立商城&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_shop,3)}}</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="4" ng-checked="checkedTest(surveyModel.detail.survey_result.other_shop,4)" />其他，如京东、一号店&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_shop,4)}}</div>
+            </p>
+        </div>
+        <div class="list-item">
+            <p class="title">供货渠道及产品是否多样化</p>
+            <p>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="1" ng-checked="checkedTest(surveyModel.detail.survey_result.is_diversify,1,1)">有强大的渠道商，产品多样化</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="2" ng-checked="checkedTest(surveyModel.detail.survey_result.is_diversify,2,1)">自己有工厂、合作商，有能力更换类目</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="3" ng-checked="checkedTest(surveyModel.detail.survey_result.is_diversify,3,1)">固定渠道无法更换类目产品</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="4" ng-checked="checkedTest(surveyModel.detail.survey_result.is_diversify,4,1)">其他{{surveyModel.detail.survey_result.is_diversify.name}}</div>
+            </p>
+        </div>
+        <div class="list-item">
+            <p class="title">店铺层级</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.store_level"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">店铺整体转化率</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.shop_rate+'%'"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">电商团队的人数</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.team_num"></p>
+        </div>
+        <div>
+                <div class="list-item">
+                    <p class="title">店铺外包</p>
+                    <p>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.shop_out.indexOf('1') != -1">运营外包</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.shop_out.indexOf('2') != -1">推广外包</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.shop_out.indexOf('3') != -1">美工外包</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.shop_out.indexOf('4') != -1">客服外包</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.shop_out.indexOf('5') != -1">无任何外包</div>
+                    </p>
+                </div>
+                <div class="list-item">
+                    <p class="title">店铺每月投入的营销费用</p>
+                    <p class="info" ng-bind="surveyModel.detail.survey_result.shop_cost"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">过去12个月的店铺交易额</p>
+                    <p class="info" ng-bind="surveyModel.detail.survey_result.shop_trading_volume"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">是否参加过其他的管理培训课程</p>
+                    <p class="info" ng-bind="surveyModel.detail.survey_result.is_join_other"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">您是否准备为店铺团队成长进行相应培训</p>
+                    <p class="info" ng-bind="surveyModel.detail.survey_result.team_to_train"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">您的团队需要哪些方面的知识学习： </p>
+                    <p class="info" ng-bind="surveyModel.detail.survey_result.team_to_learn"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">请您结合团队管理情况说说管理中的困惑？ </p>
+                    <p class="info" ng-bind="surveyModel.detail.survey_result.confusion_in_manage"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">您期望从本次课程中学到哪些东西？</p>
+                    <p class="info" ng-bind="surveyModel.detail.survey_result.need_to_learn"></p>
+                </div>
+        </div>
+    </div>
+</div>
+<!-- 淘大线上调研表 玩爆运营 -->
+<div class="outer-ctn" ng-if="surveyModel.detail.third_product_id == 10101">
+    <p class="edit-title">
+        调研信息
+    </p>
+    <div class="list-group right-detail">
+
+        <div class="list-item">
+            <p class="title">填表时间</p>
+            <p class="info" ng-bind="surveyModel.detail.create_time"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">产品</p>
+            <p class="info" ng-bind="surveyModel.detail.product_name"></p>
+        </div>
+
+    </div>
+    <p class="edit-title">
+        店铺基本信息
+    </p>
+    <div class="list-group right-detail">
+
+        <div class="list-item">
+            <p class="title" style="width:110px">拍下订单时间</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.purchase_time"></p>
+        </div>
+        <div class="list-item">
+            <p class="title" style="width:110px">拍课id（用哪个旺旺购买的）</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.purchase_customer_ww"></p>
+        </div>
+        <div class="list-item">
+            <p class="title" style="width:110px">拍课订单编号</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.purchase_customer_order_no"></p>
+        </div>
+        <div class="list-item">
+            <p class="title" style="width:110px">拍单预留手机号</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.purchase_order_pre_phone"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">客户名字</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.name"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">客户电话</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.phone"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">【重要】开通店铺主旺旺</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.customer"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">【重要】开通店铺公司（与开通店铺一一对应)</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.store_master_company"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">开通所在店铺预留联系人名字（淘宝或天猫）</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.store_pre_name"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">开通所在店铺预留的联系人电话</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.store_pre_phone"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">开通所在店铺预留邮箱</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.store_pre_email"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">【重要】店铺对接人旺旺（开通服务之后有专人联系此号）</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.store_contact_ww"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">您所在的城市是</p>
+            <p class="info" ng-bind="'中国'+'/'+surveyModel.detail.survey_result.province_name+'/'+surveyModel.detail.survey_result.city_name"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">开通店铺所属类目</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.category_name"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">您的电商团队人数</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.team_num"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">您的店铺人员架构组成</p>
+            <div class="info">
+                <p class="td-item-25">
+                    <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.shop_architecture.indexOf('1') != -1">运营</p>
+                <p class="td-item-25">
+                    <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.shop_architecture.indexOf('2') != -1">推广</p>
+                <p class="td-item-25">
+                    <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.shop_architecture.indexOf('3') != -1">视觉</p>
+                <p class="td-item-25">
+                    <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.shop_architecture.indexOf('4') != -1">内容编辑</p>
+                <p class="td-item-25">
+                    <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.shop_architecture.indexOf('5') != -1">客服</p>
+                <p class="td-item-25">
+                    <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.shop_architecture.indexOf('6') != -1">仓储</p>
+                </div>
+        </div>
+        <div class="list-item">
+            <p class="title">您的店铺层级</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.shop_level"></p>
+        </div>
+        <div class="list-item">
+            <p class="title">您目前最感兴趣的话题是</p>
+            <div class="info">
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.interested_topic.indexOf('1') != -1">搜索</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.interested_topic.indexOf('2') != -1">内容营销</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.interested_topic.indexOf('3') != -1">直通车</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.interested_topic.indexOf('4') != -1">钻展</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.interested_topic.indexOf('5') != -1">活动</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.interested_topic.indexOf('6') != -1">视觉</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <p class="title">请您描述一下店铺的现状与需求</p>
+            <p class="info" ng-bind="surveyModel.detail.survey_result.shop_status_requirement"></p>
+        </div>
+
+    </div>
+</div>
+<!--营销制胜-->
+<div class="outer-ctn" ng-if="surveyModel.detail.third_product_id == 10151">
+    <p class="c-title">
+        调研信息
+    </p>
+    <table class="c-table-d">
+        <tbody>
+        <tr>
+            <td>填表时间</td>
+            <td ng-bind="surveyModel.detail.create_time"></td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="c-title">
+        参训人信息
+    </p>
+    <table class="c-table-d">
+        <tbody>
+        <tr>
+            <td>参训人姓名</td>
+            <td ng-bind="surveyModel.detail.survey_result.join_name"></td>
+        </tr>
+        <tr>
+            <td>参训人手机号</td>
+            <td ng-bind="surveyModel.detail.survey_result.join_phone"></td>
+        </tr>
+        <tr>
+            <td>参训人年龄段</td>
+            <td ng-bind="surveyModel.detail.survey_result.join_birth"></td>
+        </tr>
+        <tr>
+            <td>参训人职务</td>
+            <td ng-bind="surveyModel.detail.survey_result.join_job"></td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="c-title">
+        店铺基本信息
+    </p>
+    <table class="c-table-d">
+        <tbody>
+        <tr>
+            <td>所在省市</td>
+            <td ng-bind="'中国'+'/'+surveyModel.detail.survey_result.province_name +'/'+surveyModel.detail.survey_result.city_name"></td>
+        </tr>
+        <tr>
+            <td>店铺ID</td>
+            <td ng-bind="surveyModel.detail.survey_result.customer"></td>
+        </tr>
+        <tr>
+            <td>店铺网址</td>
+            <td>
+                <a ng-href="{{surveyModel.detail.survey_result.shop_url}}" target="_blank">查看</a>
+            </td>
+        </tr>
+        <tr>
+            <td>店铺层级</td>
+            <td ng-bind="surveyModel.detail.survey_result.shop_level"></td>
+        </tr>
+        <tr>
+            <td>店铺一级类目</td>
+            <td ng-bind="surveyModel.detail.survey_result.category_name"></td>
+        </tr>
+        <tr>
+            <td>店铺二级类目</td>
+            <td ng-bind="surveyModel.detail.survey_result.category_names"></td>
+        </tr>
+        <tr>
+            <td>开店时长</td>
+            <td ng-bind="surveyModel.detail.survey_result.operating_life_start"></td>
+        </tr>
+        <tr>
+            <td>您的电商团队人数</td>
+            <td ng-bind="surveyModel.detail.survey_result.team_num"></td>
+        </tr>
+        <tr>
+            <td>您的店铺人员架构组成</td>
+            <td>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.team_member.indexOf('1')!=-1">客服</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.team_member.indexOf('2')!=-1">运营</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.team_member.indexOf('3')!=-1">推广</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.team_member.indexOf('4')!=-1">仓储</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.team_member.indexOf('5')!=-1">美工</div>
+                <div class="td-item-25">
+                    <input type="checkbox" disabled value="6" ng-checked="surveyModel.detail.survey_result.team_member.indexOf('6')!=-1">内容</div>
+            </td>
+        </tr>
+        <tr>
+            <td>店铺年销售额为</td>
+            <td ng-bind="surveyModel.detail.survey_result.sales_amount_365"></td>
+        </tr>
+        <tr>
+            <td>微淘等级</td>
+            <td ng-bind="surveyModel.detail.survey_result.wt_level"></td>
+        </tr>
+        <tr>
+            <td>微淘粉丝数</td>
+            <td ng-bind="surveyModel.detail.survey_result.weitao_fans_num"></td>
+        </tr>
+        <tr>
+            <td>淘外各营销账号总粉丝数</td>
+            <td>
+                <div>微信：{{surveyModel.detail.survey_result.taobao_outer_fans_num.wx}}</div>
+                <div>微博：{{surveyModel.detail.survey_result.taobao_outer_fans_num.wb}}</div>
+                <!--  <div>淘外直播平台：{{surveyModel.detail.survey_result.taobao_outer_fans_num.twzbpt}}</div>
+                 <div>其他：{{surveyModel.detail.survey_result.taobao_outer_fans_num.other}}</div> -->
+            </td>
+        </tr>
+        <tr>
+            <td>是否有和淘宝达人合作过</td>
+            <td ng-bind="surveyModel.detail.survey_result.has_doyen_cooperation"></td>
+        </tr>
+        <tr>
+            <td>是否拥有自己的达人账号</td>
+            <td ng-bind="surveyModel.detail.survey_result.is_doyen"></td>
+        </tr>
+        <tr>
+            <td>是您跟达人合作过什么渠道</td>
+            <td ng-bind="surveyModel.detail.survey_result.doyen_names"></td>
+        </tr>
+        <tr>
+            <td>您对内容营销最大的困惑是什么</td>
+            <td ng-bind="surveyModel.detail.survey_result.content_marketing_max_issue"></td>
+        </tr>
+        <tr>
+            <td>您的店铺运营中目前遇到最大的3个问题是什么</td>
+            <td>
+                <div>问题一{{surveyModel.detail.survey_result.now_issue_3.one}}</div>
+                <div>问题二{{surveyModel.detail.survey_result.now_issue_3.two}}</div>
+                <div>问题三{{surveyModel.detail.survey_result.now_issue_3.three}}</div>
+            </td>
+        </tr>
+
+
+
+
+
+
+        <!--  <tr>
+             <td>店铺类型</td>
+             <td ng-bind="surveyModel.detail.survey_result.shop_type"></td>
+         </tr>
+         <tr>
+             <td>供货渠道</td>
+             <td>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.supply_chain_withoem.indexOf('1')!=-1">自有工厂</div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.supply_chain_withoem.indexOf('2')!=-1">自有工厂+OEM（代加工）</div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.supply_chain_withoem.indexOf('3')!=-1">OEM（代加工）</div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.supply_chain_withoem.indexOf('4')!=-1">市场拿货</div>
+             </td>
+         </tr>
+         <tr>
+             <td width="110">其他店铺</td>
+             <td>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="1" ng-checked="checkedTest(surveyModel.detail.survey_result.other_channel_multiple,1)"
+                     />
+                     <span>天猫店 &nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_channel_multiple,1)}}</span>
+                 </div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="2" ng-checked="checkedTest(surveyModel.detail.survey_result.other_channel_multiple,2)"
+                     />淘宝店&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_channel_multiple,2)}}
+                 </div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="3" ng-checked="checkedTest(surveyModel.detail.survey_result.other_channel_multiple,3)"
+                     />京东店&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_channel_multiple,3)}}
+                 </div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="4" ng-checked="checkedTest(surveyModel.detail.survey_result.other_channel_multiple,4)"
+                     />微商渠道&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_channel_multiple,4)}}
+                 </div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="4" ng-checked="checkedTest(surveyModel.detail.survey_result.other_channel_multiple,5)"
+                     />其他销货渠道&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_channel_multiple,5)}}
+                 </div>
+             </td>
+         </tr>
+         </tr>
+         <tr>
+             <td width="110">参加过哪些机构的培训产品</td>
+             <td>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="1" ng-checked="checkedTest(surveyModel.detail.survey_result.other_train,1)" />
+                     <span>淘宝大学 &nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_train,1)}}</span>
+                 </div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="2" ng-checked="checkedTest(surveyModel.detail.survey_result.other_train,2)" />淘宝天下&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_train,2)}}
+                 </div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="3" ng-checked="checkedTest(surveyModel.detail.survey_result.other_train,3)" />网川&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_train,3)}}
+                 </div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="4" ng-checked="checkedTest(surveyModel.detail.survey_result.other_train,4)" />炬鼎力&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_train,4)}}
+                 </div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="4" ng-checked="checkedTest(surveyModel.detail.survey_result.other_train,5)" />玺承&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_train,5)}}
+                 </div>
+                 <div class="td-item-25">
+                     <input type="checkbox" disabled value="4" ng-checked="checkedTest(surveyModel.detail.survey_result.other_train,6)" />其他&nbsp;&nbsp;&nbsp;{{checkedText(surveyModel.detail.survey_result.other_train,6)}}
+                 </div>
+             </td>
+         </tr>
+         <tr>
+             <td>2016年您所有电商平台总年销售额</td>
+             <td ng-bind="surveyModel.detail.survey_result.sales_amount_365"></td>
+         </tr>
+
+         <tr>
+             <td>近30天店铺基础概况</td>
+             <td>
+                 <div>浏览量:{{surveyModel.detail.survey_result.shop_30_base.lll}}</div>
+                 <div>访客数:{{surveyModel.detail.survey_result.shop_30_base.fks}}</div>
+                 <div>老访客数:{{surveyModel.detail.survey_result.shop_30_base.lfks}}</div>
+                 <div>人均浏览量:{{surveyModel.detail.survey_result.shop_30_base.lll}}</div>
+                 <div>平均停留时长:{{surveyModel.detail.survey_result.shop_30_base.pjtlsj}}</div>
+             </td>
+         </tr>
+         <tr>
+             <td>近30天店铺交易概况</td>
+             <td>
+                 <div>支付金额:{{surveyModel.detail.survey_result.shop_30_deal.zfje}}</div>
+                 <div>支付转化率:{{surveyModel.detail.survey_result.shop_30_deal.zfzhl}}</div>
+                 <div>客单价:{{surveyModel.detail.survey_result.shop_30_deal.kdj}}</div>
+             </td>
+         </tr>
+         <tr>
+             <td>近30天店铺流量来源情况</td>
+             <td>
+                 <div>手淘搜索:{{surveyModel.detail.survey_result.shop_30_traffic_sources.stss}}</div>
+                 <div>手淘首页:{{surveyModel.detail.survey_result.shop_30_traffic_sources.stsy}}</div>
+                 <div>直通车:{{surveyModel.detail.survey_result.shop_30_traffic_sources.ztc}}</div>
+                 <div>智钻:{{surveyModel.detail.survey_result.shop_30_traffic_sources.zz}}</div>
+                 <div>手淘问大家:{{surveyModel.detail.survey_result.shop_30_traffic_sources.stwdj}}</div>
+                 <div>生活研究所:{{surveyModel.detail.survey_result.shop_30_traffic_sources.shyjs}}</div>
+                 <div>手淘每日好店:{{surveyModel.detail.survey_result.shop_30_traffic_sources.stmrhd}}</div>
+                 <div>手淘有好货:{{surveyModel.detail.survey_result.shop_30_traffic_sources.styhh}}</div>
+                 <div>微淘:{{surveyModel.detail.survey_result.shop_30_traffic_sources.wt}}</div>
+                 <div>淘宝直播:{{surveyModel.detail.survey_result.shop_30_traffic_sources.tbzb}}</div>
+             </td>
+         </tr>
+         <tr>
+             <td>近30天店铺交易概况</td>
+             <td>
+                 <div>直通车花费:{{surveyModel.detail.survey_result.shop_30_paid_promote.ztchf}}</div>
+                 <div>直通车ROI:{{surveyModel.detail.survey_result.shop_30_paid_promote.ztcroi}}</div>
+                 <div>钻展花费:{{surveyModel.detail.survey_result.shop_30_paid_promote.zzhf}}</div>
+                 <div>钻展ROI:{{surveyModel.detail.survey_result.shop_30_paid_promote.zzroi}}</div>
+             </td>
+         </tr>
+         <tr>
+             <td>当前您是否有针对自己团队成员的内部培训？</td>
+             <td ng-bind="surveyModel.detail.survey_result.is_team_train"></td>
+         </tr>
+         <tr>
+             <td>您是否专备为团队成长进行相应的培训</td>
+             <td ng-bind="surveyModel.detail.survey_result.is_raining_longtime"></td>
+         </tr>
+         <tr>
+             <td>请您描述一下店铺的现状与需求</td>
+             <td ng-bind="surveyModel.detail.survey_result.shop_detail"></td>
+         </tr> -->
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,238 @@
+<!-- 非爱柚开票信息 -->
+<!-- <div class="list-group right-detail"  ng-if="detailsWrap.data.second_product_id !=10217 && detailsWrap.data.second_product_id !=10013">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>开票信息
+        </span>
+    </p>
+    <div class="list-item">
+            <span class="title">开票名称</span>
+            <span class="info" ng-bind="detailsWrap.data.tax_title"></span>
+        </div>
+    <div class="list-item">
+            <span class="title">发票类型</span>
+            <span class="info" ng-bind="detailsWrap.data.tax_type | taxType"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">发票号码</span>
+            <span class="info" ng-bind="detailsWrap.data.order_tax_no"></span>
+        </div>
+    <div class="list-item">
+            <span class="title">开票类型</span>
+            <span class="info" ng-bind="detailsWrap.data.type | taxTypeFilter"></span>
+        </div>
+    <div class="list-item">
+            <span class="title">开票用途</span>
+            <span class="info" ng-bind="detailsWrap.data.purpose | purposeFilter"></span>
+        </div>
+    <div class="list-item">
+            <span class="title">开票金额</span>
+            <p class="info">{{detailsWrap.data.price | number:2}}
+                <span style=" float: right;margin-right: 12px;color: #999;">含税</span>
+            </p>
+
+        </div>
+    <div class="list-item">
+            <span class="title">开票金额</span>
+            <p class="info" ng-if="detailsWrap.data.tax_free_price != '0.00'">{{detailsWrap.data.tax_free_price | number:2}}
+                <span style=" float: right;margin-right: 12px;color: #999;">不含税</span>
+            </p>
+            <p class="info" ng-if="detailsWrap.data.tax_free_price == '0.00'">-
+                <span style=" float: right;margin-right: 12px;color: #999;">不含税</span>
+            </p>
+        </div>
+    <div class="list-item">
+            <span class="title">税额</span>
+            <span class="info" ng-if="detailsWrap.data.tax_free_price!='0.00'" ng-bind="detailsWrap.data.price-detailsWrap.data.tax_free_price|number:2"></span>
+            <span class="info" ng-if="detailsWrap.data.tax_free_price=='0.00'" ng-bind="'-'"></span>
+        </div>
+    <div class="list-item">
+            <span class="title">开票时间</span>
+            <span class="info" ng-bind="detailsWrap.data.tax_time"></span>
+        </div>
+    <div class="list-item">
+            <span class="title">代付证明</span>
+            <span class="info" ng-bind="detailsWrap.data.dfzm==0 ? '不需要':'需要'">不需要</span>
+        </div>
+</div> -->
+<!-- 爱柚开票信息 -->
+<!-- <div style="margin-bottom: 11px;" ng-if="detailsWrap.data.second_product_id ==10217 || detailsWrap.data.second_product_id ==10013">
+    <table>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>开票信息</th>
+        </tr>
+    </table>
+    <div class="detail_include" ng-repeat="item in detailsWrap.data.tax_list">
+        <div class="smallBox_detail">
+            <p style="background-color:#e4e4e4">
+                <span class="detail_pspan">编号</span>
+                <span ng-bind="item.approval_tax_no"></span>
+            </p>
+            <p>
+                <span class="detail_pspan">开票名称</span>
+                <span ng-bind="item.tax_title"></span>
+            </p>
+            <p>
+                <span class="detail_pspan">发票类型</span>
+                <span ng-bind="item.tax_type | taxType"></span>
+            </p>
+            <p>
+                <span class="detail_pspan">发票号码</span>
+                <span ng-bind="item.order_tax_no"></span>
+            </p>
+            <p>
+                <span class="detail_pspan">开票类型</span>
+                <span ng-bind="item.type | taxTypeFilter"></span>
+            </p>
+            <p>
+                <span class="detail_pspan">开票金额</span>
+                <span>{{item.price | number:2}}
+                    <span style=" float: right;margin-right: 12px;color: #999;">含税</span>
+                </span>
+            </p>
+            <p>
+                <span class="detail_pspan">开票金额</span>
+                <span ng-if="item.tax_free_price != '0.00'">{{item.tax_free_price | number:2}}
+                    <span style=" float: right;margin-right: 12px;color: #999;">不含税</span>
+                </span>
+                <span ng-if="item.tax_free_price == '0.00'">-
+                    <span style=" float: right;margin-right: 12px;color: #999;">不含税</span>
+                </span>
+            </p>
+            <p>
+                <span class="detail_pspan">税额</span>
+                <span ng-if="item.tax_free_price!='0.00'" ng-bind="item.price-item.tax_free_price|number:2"></span>
+                <span ng-if="item.tax_free_price=='0.00'" ng-bind="'-'"></span>
+            </p>
+            <p>
+                <span class="detail_pspan">开票时间</span>
+                <span ng-bind="item.tax_time"></span>
+            </p>
+            <p>
+                <span class="detail_pspan">代付证明</span>
+                <span ng-bind="item.dfzm==0 ? '不需要':'需要'">不需要</span>
+            </p>
+        </div>
+    </div>
+</div> -->
+
+<div class="list-group right-detail" ng-if="detailsWrap.data.second_product_id !=10217 && detailsWrap.data.second_product_id !=10013">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>开票信息
+        </span>
+    </p>
+    <div class="list-item">
+        <span class="title">开票名称</span>
+        <span class="info" ng-bind="detailsWrap.data.tax_title || '-'"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">发票类型</span>
+        <span class="info" ng-bind="(detailsWrap.data.tax_type | taxType) || '-'"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">发票号码</span>
+        <span class="info" ng-bind="detailsWrap.data.order_tax_no || '-'"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">开票类型</span>
+        <span class="info" ng-bind="(detailsWrap.data.type | taxTypeFilter) || '-'"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">开票用途</span>
+        <span class="info" ng-bind="(detailsWrap.data.purpose | purposeFilter) || '-'"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">开票金额</span>
+        <span class="info">
+            {{detailsWrap.data.price | number:2}}
+            <span style=" float: right;margin-right: 12px;color: #999;">含税</span>
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">开票金额</span>
+        <span class="info" ng-if="detailsWrap.data.tax_free_price != '0.00'">{{detailsWrap.data.tax_free_price | number:2}}
+            <span style=" float: right;margin-right: 12px;color: #999;">不含税</span>
+        </span>
+        <span class="info" ng-if="detailsWrap.data.tax_free_price == '0.00'">-
+            <span style=" float: right;margin-right: 12px;color: #999;">不含税</span>
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">税额</span>
+        <span class="info" ng-if="detailsWrap.data.tax_free_price!='0.00'" ng-bind="detailsWrap.data.price-detailsWrap.data.tax_free_price|number:2"></span>
+        <span class="info" ng-if="detailsWrap.data.tax_free_price=='0.00'">-</span>
+    </div>
+    <div class="list-item">
+        <span class="title">开票时间</span>
+        <span class="info" ng-bind="detailsWrap.data.tax_time || '-'"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">代付证明</span>
+        <span class="info" ng-bind="detailsWrap.data.dfzm==0 ? '不需要':'需要'"></span>
+    </div>
+</div>
+
+<div ng-if="detailsWrap.data.second_product_id ==10217 || detailsWrap.data.second_product_id ==10013">
+    <div class="list-group right-detail" ng-repeat="item in detailsWrap.data.tax_list">
+        <p class="label-title">
+            <span>
+                <span class="icon-title"></span>开票信息
+            </span>
+        </p>
+        <div class="list-item grey">
+            <span class="title">编号</span>
+            <span class="info" ng-bind="item.approval_tax_no || '-'"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">开票名称</span>
+            <span class="info" ng-bind="item.tax_title || '-'"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">发票类型</span>
+            <span class="info" ng-bind="(item.tax_type | taxType) || '-'"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">发票号码</span>
+            <span class="info" ng-bind="item.order_tax_no || '-'"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">开票类型</span>
+            <span class="info" ng-bind="(item.type | taxTypeFilter) || '-'"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">开票用途</span>
+            <span class="info" ng-bind="(item.purpose | purposeFilter) || '-'"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">开票金额</span>
+            <div class="info">
+                {{item.price | number:2}}
+                <span style=" float: right;margin-right: 12px;color: #999;">含税</span>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="title">开票金额</span>
+            <div class="info" ng-if="item.tax_free_price != '0.00'">{{item.tax_free_price | number:2}}
+                <span style=" float: right;margin-right: 12px;color: #999;">不含税</span>
+            </div>
+            <div class="info" ng-if="item.tax_free_price == '0.00'">-
+                <span style=" float: right;margin-right: 12px;color: #999;">不含税</span>
+            </div>
+        </div>
+        <div class="list-item">
+            <span class="title">税额</span>
+            <span class="info" ng-if="item.tax_free_price!='0.00'" ng-bind="item.price-item.tax_free_price|number:2"></span>
+            <span class="info" ng-if="item.tax_free_price=='0.00'">-</span>
+        </div>
+        <div class="list-item">
+            <span class="title">开票时间</span>
+            <span class="info" ng-bind="item.tax_time || '-'"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">代付证明</span>
+            <span class="info" ng-bind="item.dfzm==0 ? '不需要':'需要'"></span>
+        </div>
+    </div>
+</div>

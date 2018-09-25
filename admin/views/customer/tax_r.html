@@ -1,0 +1,183 @@
+<!-- 右边区块开票信息 -->
+<div class="c-detail-ctn extends-box has-footer">
+    <div class="c-detail-ctn-top" style="height:201px;">
+        <div class="table-area right-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="16">序</th>
+                        <th>审批编号</th>
+                        <th width="48">开票状态</th>
+                        <th width="120">申请日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="!https.taxlist" ng-class="{'no-pointer':taxInfoModel.list.length == 1,'current':item.approval_tax_id == taxInfoModel.chooseItem.approval_tax_id}"
+                        ng-repeat="item in taxInfoModel.list" ng-click="taxInfoModel.choose(item)">
+                        <td ng-bind="$index + 1"></td>
+                        <td ng-bind="item.approval_tax_no"></td>
+                        <td ng-bind="item.status"></td>
+                        <td ng-bind="item.create_time"></td>
+                    </tr>
+                    <tr class="no-pointer" ng-if="!https.taxlist && taxInfoModel.list.length == 0">
+                        <td colspan="4">
+                            <div class="no-content">
+                                <img src="images/kong.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="no-pointer" ng-show="https.taxlist">
+                        <td colspan="4">
+                            <div class="no-content">
+                                <div class="ball-grid-pulse">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slide-footer normal-footer">
+            <button ng-if="authPermission.applyTax" class="btn btn-blue" ng-class="{'btn-disabled': !taxInfoModel.button.aiyo_apply_tax}" ng-click="taxInfoModel.applyTax.show()">申请开票</button>
+        </div>
+    </div>
+    <!-- 票据信息 -->
+    <div class="c-detail-ctn-bottom mt-18 white-bg" ng-if="taxInfoModel.list.length != 0">
+        <!-- 票据信息 -->
+        <div ng-repeat="item in taxInfoModel.detail">
+            <p class="box-title">票据信息</p>
+            <div ng-if="!https.taxdetail && item.approval_no" class="detail-ctn" style="border-bottom:0;">
+                <p class="c-title">开票信息</p>
+                <table class="c-table-d">
+                    <tbody>
+                        <tr>
+                            <td>审批编号</td>
+                            <td ng-bind="item.approval_no"></td>
+                        </tr>
+                        <tr>
+                            <td>开票状态</td>
+                            <td ng-bind="item.status"></td>
+                        </tr>
+                        <tr>
+                            <td>开票名称</td>
+                            <td ng-bind="item.tax_title"></td>
+                        </tr>
+                        <tr>
+                            <td>发票类型</td>
+                            <td ng-bind="item.tax_type | taxType"></td>
+                        </tr>
+                        <tr>
+                            <td>发票号码</td>
+                            <td ng-bind="item.order_tax_no"></td>
+                        </tr>
+                        <tr>
+                            <td>开票类型</td>
+                            <td ng-bind="item.type | taxTypeFilter"></td>
+                        </tr>
+                        <tr>
+                            <td>开票金额</td>
+                            <td>{{item.price| number:2}}
+                                <span style=" float: right;margin-right: 12px;color: #999;">含税</span>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>开票金额</td>
+                            <td ng-if="item.tax_free_price != '0.00'">{{item.tax_free_price| number:2}}
+                                <span style=" float: right;margin-right: 12px;color: #999;">不含税</span>
+                            </td>
+                            <td ng-if="item.tax_free_price == '0.00'">-
+                                <span style=" float: right;margin-right: 12px;color: #999;">不含税</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>税额</td>
+                            <td ng-if="item.tax_free_price != '0.00'" ng-bind="item.price-item.tax_free_price|number:2"></td>
+                            <td ng-if="item.tax_free_price == '0.00'" ng-bind="'-'"></td>
+                        </tr>
+                        <tr>
+                            <td>开票时间</td>
+                            <td ng-bind="item.tax_time"></td>
+                        </tr>
+                        <tr>
+                            <td>代付证明</td>
+                            <td ng-bind="item.dfzm==0 ? '不需要':'需要'">不需要</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="c-title">付款信息</p>
+                <table class="c-table-d">
+                    <tbody>
+
+                        <tr>
+                            <td>付款人</td>
+                            <td ng-bind="item.pay_name || '-'"></td>
+                        </tr>
+                        <tr>
+                            <td>企业名称</td>
+                            <td ng-bind="item.tax_title || '-'"></td>
+                        </tr>
+                        <!--普票没有企业税号一直到开户银行-->
+                        <tr>
+                            <td>企业税号</td>
+                            <td ng-bind="item.tax_no || '-'"></td>
+                        </tr>
+                        <tr>
+                            <td>公司地址</td>
+                            <td ng-bind="item.tax_address || '-'"></td>
+                        </tr>
+                        <tr>
+                            <td>公司电话</td>
+                            <td ng-bind="item.tax_phone || '-'"></td>
+                        </tr>
+                        <tr>
+                            <td style="white-space: nowrap">公司银行账户</td>
+                            <td ng-bind="item.tax_account || '-'"></td>
+                        </tr>
+                        <tr>
+                            <td>开户行</td>
+                            <td ng-bind="item.tax_bank || '-'"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="c-title">邮寄信息</p>
+                <table class="c-table-d">
+                    <tbody>
+                        <tr>
+                            <td>收件人</td>
+                            <td ng-bind="item.receiver || '-'"></td>
+                        </tr>
+                        <tr>
+                            <td>联系电话</td>
+                            <td ng-bind="item.receiver_phone || '-'"></td>
+                        </tr>
+                        <tr>
+                            <td>邮寄地址</td>
+                            <td ng-bind="item.mail_address || '-'"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="no-item" ng-if="https.taxdetail">
+                <div class="no-content">
+                    <div class="ball-grid-pulse">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="no-item bg-gray" ng-if="taxInfoModel.list.length == 0">
+        <img src="images/kong.png">
+    </div>
+
+</div>
+<!-- 开票 -->
+<div class="slide-footer normal-footer">
+</div>

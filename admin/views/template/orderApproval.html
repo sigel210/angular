@@ -1,0 +1,383 @@
+<!--订单基本信息（只能用于销售）-->
+<!-- <table ng-if="detailsWrap.data.second_product_id != 10217">
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>订单信息</th>
+        </tr>
+        <tr>
+            <td>订单编号</td>
+            <td>
+                <a href="javascript:void(0)" ng-click="showCustomer()" ng-bind="detailsWrap.data.order_no" style="margin-left:0px"></a>
+            </td>
+        </tr>
+        <tr>
+            <td>订单对账</td>
+            <td ng-bind="detailsWrap.data.received_status | receivedStatus"></td>
+        </tr>
+        <tr>
+            <td>订单状态</td>
+            <td ng-bind="detailsWrap.data.order_status | orderStatus"></td>
+        </tr>
+        <tr>
+            <td>服务起止</td>
+            <td>
+                {{detailsWrap.data.service_start_time | limitTo : 10}} &nbsp;&nbsp;至&nbsp;&nbsp; {{detailsWrap.data.service_end_time | limitTo:
+                10}}
+            </td>
+        </tr>
+        <tr>
+            <td>到单日期</td>
+            <td ng-bind="detailsWrap.data.received_date"></td>
+        </tr>
+        <tr>
+            <td>签约类型</td>
+            <td ng-bind="detailsWrap.data.is_new == '0'? '新签':'续签'"></td>
+        </tr>
+        <tr>
+            <td>订单金额</td>
+            <td ng-bind="detailsWrap.data.total_price | number:2"></td>
+        </tr>
+        <tr>
+            <td>支付金额</td>
+            <td ng-bind="detailsWrap.data.total_received | number:2"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.confirm_price">
+            <td>营收总额</td>
+            <td ng-bind="detailsWrap.data.confirm_price | number:2"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.unconfirm_price">
+            <td>待营收</td>
+            <td ng-bind="detailsWrap.data.unconfirm_price | number:2"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.temp_deposit_price">
+            <td>暂存款</td>
+            <td ng-bind="detailsWrap.data.temp_deposit_price | number:2"></td>
+        </tr>
+        <tr>
+            <td>订单创建</td>
+            <td ng-bind="detailsWrap.data.sign_user+'/'+detailsWrap.data.sign_dept"></td>
+        </tr>
+        <tr>
+            <td>订单归属</td>
+            <td ng-bind="detailsWrap.data.belong_user +'/'+ detailsWrap.data.belong_dept"></td>
+        </tr>
+    </tbody>
+</table> -->
+<!-- 爱柚订单信息 -->
+<!-- <table ng-if="detailsWrap.data.second_product_id == 10217">
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>订单信息</th>
+        </tr>
+        <tr>
+            <td>订单编号</td>
+            <td>
+                <a href="javascript:void(0)" ng-click="showCustomer()" ng-bind="detailsWrap.data.order_no" style="margin-left:0px"></a>
+            </td>
+        </tr>
+        <tr>
+            <td ng-bind="detailsWrap.data.sale_type == '2' ? '预付对账': '合同对账'"></td>
+            <td ng-if="detailsWrap.data.sale_type != '2'" ng-bind="detailsWrap.data.received_status | receivedStatus"></td>
+            <td ng-if="detailsWrap.data.sale_type == '2'" ng-bind="detailsWrap.data.down_payment_status | deposit_price_status"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.sale_type == '2'">
+            <td>押金对账</td>
+            <td ng-bind="detailsWrap.data.deposit_price_status | deposit_price_status"></td>
+        </tr>
+        <tr>
+            <td>订单状态</td>
+            <td ng-bind="detailsWrap.data.order_status | orderStatus3"></td>
+        </tr>
+        <tr>
+            <td>签约类型</td>
+            <td ng-bind="detailsWrap.data.is_new == '0'? '新签':'续签'"></td>
+        </tr>
+        <tr>
+            <td>营收类型</td>
+            <td ng-bind="detailsWrap.data.income_type | incomeType">服务类</td>
+        </tr>
+        <tr>
+            <td>订单金额</td>
+            <td ng-bind="detailsWrap.data.total_price | number:2"></td>
+        </tr>
+        <tr>
+            <td>合同金额</td>
+            <td ng-bind="detailsWrap.data.order_price | number:2"></td>
+        </tr>
+        <tr>
+            <td>订单类型</td>
+            <td ng-bind="detailsWrap.data.sale_type == '2'? '赊销':'现销'"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.sale_type == '2'">
+            <td>预付金额</td>
+            <td ng-bind="detailsWrap.data.down_payment"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.sale_type == '2'">
+            <td>押金金额</td>
+            <td ng-bind="detailsWrap.data.deposit_price"></td>
+        </tr>
+        <tr>
+            <td>支付总额</td>
+            <td ng-bind="detailsWrap.data.total_received | number:2"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.order_status != 0 && detailsWrap.data.order_status != 50">
+            <td>营收总额</td>
+            <td ng-bind="detailsWrap.data.confirm_price ? (detailsWrap.data.confirm_price | number:2) : '0.00'"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.order_status != 0 && detailsWrap.data.order_status != 50">
+            <td>待营收</td>
+            <td ng-bind="detailsWrap.data.unconfirm_price ? (detailsWrap.data.unconfirm_price | number:2) : '0.00'"></td>
+        </tr>
+        <tr>
+            <td>暂存款</td>
+            <td ng-bind="(detailsWrap.data.temp_deposit_price | number:2) || '-'"></td>
+        </tr>
+        <tr>
+            <td>开票次数</td>
+            <td ng-bind="detailsWrap.data.tax_num"></td>
+        </tr>
+        <tr>
+            <td>开票金额</td>
+            <td ng-bind="(detailsWrap.data.tax_amount | number:2) || '-'"></td>
+        </tr>
+        <tr>
+            <td>服务起止</td>
+            <td ng-bind="detailsWrap.data.service_start_time ? (detailsWrap.data.service_start_time +' 至 '+ detailsWrap.data.service_end_time) : '- '">
+            </td>
+        </tr>
+        <tr>
+            <td>到单日期</td>
+            <td ng-bind="detailsWrap.data.received_date"></td>
+        </tr>
+        <tr>
+            <td>订单创建</td>
+            <td ng-bind="detailsWrap.data.sign_user + '/' + detailsWrap.data.sign_dept"></td>
+        </tr>
+        <tr>
+            <td>订单归属</td>
+            <td ng-bind="detailsWrap.data.belong_user + '/' + detailsWrap.data.belong_dept"></td>
+        </tr>
+    </tbody>
+</table>
+<table>
+    <tbody>
+        <tr class="title">
+            <th>
+                <span class="icon-title"></span>订单备注</th>
+        </tr>
+    </tbody>
+</table>
+<table class="table-detail-list">
+    <tbody>
+        <tr>
+            <th style="color:#333;padding:10px;word-break:break-all;white-space:pre-wrap;text-align:left" ng-bind="detailsWrap.data.remarks ? detailsWrap.data.remarks :'-'"></th>
+        </tr>
+    </tbody>
+</table> -->
+<div class="list-group right-detail" ng-if="detailsWrap.data.second_product_id != 10217 && detailsWrap.data.second_product_id != 10013">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>订单信息
+        </span>
+    </p>
+    <div class="list-item">
+        <span class="title">订单编号</span>
+        <span class="info">
+            <a href="javascript:void(0)" ng-click="showCustomer()" ng-bind="detailsWrap.data.order_no" style="margin-left:0px"></a>
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">订单对账</span>
+        <span class="info" ng-bind="detailsWrap.data.received_status | receivedStatus">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">订单状态</span>
+        <span class="info" ng-bind="detailsWrap.data.order_status | orderStatus">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">服务起止</span>
+        <span class="info" ng-bind="detailsWrap.data.service_start_time ? (detailsWrap.data.service_start_time +' 至 '+ detailsWrap.data.service_end_time) : '- '">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">到单日期</span>
+        <span class="info" ng-bind="detailsWrap.data.received_date">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">签约类型</span>
+        <span class="info" ng-bind="detailsWrap.data.is_new == '0'? '新签':'续签'">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">订单金额</span>
+        <span class="info" ng-bind="detailsWrap.data.total_price | number:2">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">支付金额</span>
+        <span class="info" ng-bind="detailsWrap.data.total_received | number:2">
+        </span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.confirm_price">
+        <span class="title">营收总额</span>
+        <span class="info" ng-bind="detailsWrap.data.confirm_price ? (detailsWrap.data.confirm_price | number:2) : '0.00'">
+        </span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.unconfirm_price">
+        <span class="title">待营收</span>
+        <span class="info" ng-bind="detailsWrap.data.unconfirm_price ? (detailsWrap.data.unconfirm_price | number:2) : '0.00'">
+        </span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.temp_deposit_price">
+        <span class="title">暂存款</span>
+        <span class="info" ng-bind="detailsWrap.data.temp_deposit_price | number:2">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">订单创建</span>
+        <span class="info" ng-bind="detailsWrap.data.sign_user + '/' + detailsWrap.data.sign_dept">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">订单归属</span>
+        <span class="info" ng-bind="detailsWrap.data.belong_user + '/' + detailsWrap.data.belong_dept">
+        </span>
+    </div>
+</div>
+<div class="list-group right-detail" ng-if="detailsWrap.data.second_product_id == 10217 || detailsWrap.data.second_product_id == 10013">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>订单信息
+        </span>
+    </p>
+    <div class="list-item">
+        <span class="title">订单编号</span>
+        <span class="info">
+            <a href="javascript:void(0)" ng-click="showCustomer()" ng-bind="detailsWrap.data.order_no" style="margin-left:0px"></a>
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title" ng-bind="detailsWrap.data.sale_type == '2' ? '预付对账': '合同对账'"></span>
+        <span class="info" ng-if="detailsWrap.data.sale_type != '2'" ng-bind="detailsWrap.data.received_status | receivedStatus">
+        </span>
+        <span class="info" ng-if="detailsWrap.data.sale_type == '2'" ng-bind="detailsWrap.data.down_payment_status | deposit_price_status">
+        </span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.sale_type == '2'">
+        <span class="title">押金对账</span>
+        <span class="info" ng-bind="detailsWrap.data.deposit_price_status | deposit_price_status">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">订单状态</span>
+        <span class="info" ng-bind="detailsWrap.data.order_status | orderStatus3">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">签约类型</span>
+        <span class="info" ng-bind="detailsWrap.data.is_new == '0'? '新签':'续签'">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">营收类型</span>
+        <span class="info" ng-bind="detailsWrap.data.income_type | incomeType">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">订单金额</span>
+        <span class="info" ng-bind="detailsWrap.data.total_price | number:2">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">合同金额</span>
+        <span class="info" ng-bind="detailsWrap.data.order_price | number:2">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">订单类型</span>
+        <span class="info" ng-bind="detailsWrap.data.sale_type == '2'? '赊销':'现销'">
+        </span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.sale_type == '2'">
+        <span class="title">预付金额</span>
+        <span class="info" ng-bind="detailsWrap.data.down_payment | number:2">
+        </span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.sale_type == '2'">
+        <span class="title">押金金额</span>
+        <span class="info" ng-bind="detailsWrap.data.deposit_price | number:2">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">支付总额</span>
+        <span class="info" ng-bind="detailsWrap.data.total_received | number:2">
+        </span>
+    </div>
+
+    <div class="list-item">
+        <span class="title">支付金额</span>
+        <span class="info" ng-bind="detailsWrap.data.total_received | number:2">
+        </span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.confirm_price">
+        <span class="title">营收总额</span>
+        <span class="info" ng-bind="detailsWrap.data.confirm_price ? (detailsWrap.data.confirm_price | number:2) : '0.00'">
+        </span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.unconfirm_price">
+        <span class="title">待营收</span>
+        <span class="info" ng-bind="detailsWrap.data.unconfirm_price ? (detailsWrap.data.unconfirm_price | number:2) : '0.00'">
+        </span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.temp_deposit_price">
+        <span class="title">暂存款</span>
+        <span class="info" ng-bind="detailsWrap.data.temp_deposit_price | number:2">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">开票次数</span>
+        <span class="info" ng-bind="detailsWrap.data.tax_num">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">开票金额</span>
+        <span class="info" ng-bind="(detailsWrap.data.tax_amount | number:2) || '-'">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">服务起止</span>
+        <span class="info" ng-bind="detailsWrap.data.service_start_time ? (detailsWrap.data.service_start_time +' 至 '+ detailsWrap.data.service_end_time) : '- '">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">到单日期</span>
+        <span class="info" ng-bind="detailsWrap.data.received_date">
+        </span>
+    </div>
+
+    <div class="list-item">
+        <span class="title">订单创建</span>
+        <span class="info" ng-bind="detailsWrap.data.sign_user + '/' + detailsWrap.data.sign_dept">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">订单归属</span>
+        <span class="info" ng-bind="detailsWrap.data.belong_user + '/' + detailsWrap.data.belong_dept">
+        </span>
+    </div>
+</div>
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>订单备注
+        </span>
+    </p>
+    <div class="txt-textarea">
+        <span ng-bind="detailsWrap.data.remarks ? detailsWrap.data.remarks :'- '"></span>
+    </div>
+</div>

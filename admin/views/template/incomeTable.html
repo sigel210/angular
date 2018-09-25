@@ -1,0 +1,65 @@
+<!-- 执行营收信息 -->
+<div class="list-group right-detail">
+        <div class="label-title">
+            <div>
+                <span class="icon-title"></span>执行营收</div>
+        </div>
+</div>
+<table ng-if="detailsWrap.data.second_product_id != 10013&&detailsWrap.data.second_product_id != 10217" class="table-detail-list table-fixed">
+    <thead>
+        <tr>
+            <th width="16">序</th>
+            <th>概要</th>
+            <th width="80">执行金额</th>
+            <th width="120">执行日期</th>
+            <th width="50">状态</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="incomeList in detailsWrap.data.income_list">
+            <td>{{$index+1}}</td>
+            <!-- 玩爆运营 -->
+            <td ng-if="detailsWrap.data.second_product_id==10008&&detailsWrap.data.third_product_id == 10101" ng-bind=" '周期' +incomeList.installment"></td>
+            <!-- 内容引爆/管理掘金 -->
+            <td ng-if="detailsWrap.data.second_product_id==10008&&detailsWrap.data.third_product_id != 10101" ng-bind="incomeList.installment"></td>
+            <!-- jyh -->
+            <td ng-if="detailsWrap.data.second_product_id==10000&&detailsWrap.data.third_product_id != 10005" ng-bind="'第'+ incomeList.installment+ '期'"></td>
+            <!-- 研修班 -->
+            <td ng-if="detailsWrap.data.second_product_id==10000&&detailsWrap.data.third_product_id == 10005" ng-bind="'执行金额'+ incomeList.installment"></td>
+            <!-- txy -->
+            <td ng-if="detailsWrap.data.second_product_id==10007" ng-bind="incomeList.installment"></td>
+            <!-- 新孵化班 -->
+            <td ng-if="detailsWrap.data.second_product_id==10006&&detailsWrap.data.third_product_id == 10110" ng-bind="'周期'+incomeList.cycle_num+'执行金额'+incomeList.installment"></td>
+            <td ng-bind="incomeList.execute_price | number:2" style="color: #333"></td>
+            <td ng-bind="incomeList.settlement_time | limitTo:10" style="color: #333"></td>
+            <td ng-bind="incomeList.step_status | step_status"></td>
+        </tr>
+        <tr ng-if="!detailsWrap.data.income_list || detailsWrap.data.income_list.length == 0">
+            <td colspan="5" style="text-align:center;">暂无</td>
+        </tr>
+    </tbody>
+</table>
+<!-- 爱柚 -->
+<table ng-if="detailsWrap.data.second_product_id == 10013||detailsWrap.data.second_product_id == 10217"  class="table-detail-list table-fixed">
+    <thead>
+        <tr>
+            <th width="16">序</th>
+            <th width="50">内容形态</th>
+            <th width="120">渠道</th>
+            <th width="80">状态</th>
+            <th style="min-width:100px">确认营收</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="incomeList in detailsWrap.data.income_list">
+            <td>{{$index+1}}</td>
+            <td ng-bind="incomeList.content_type | categoryAy"></td>
+            <td ng-bind="incomeList.channel_id_name"></td>
+            <td ng-bind="incomeList.status | taskStatus"></td>
+            <td ng-bind="incomeList.execute_amount | number:2"></td>     
+        </tr>
+        <tr ng-if="!detailsWrap.data.income_list || detailsWrap.data.income_list.length == 0">
+            <td colspan="5" style="text-align:center;">暂无</td>
+        </tr>
+    </tbody>  
+</table>

@@ -1,0 +1,20 @@
+<!-- 解除协议 -->
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>解除协议
+        </span>
+    </p>
+    <div class="list-item">
+        <span class="title">协议状态</span>
+        <span class="info" ng-bind="detailsWrap.data"></span>   <!-- 字段需更改 -->
+    </div>
+    <div class="list-item">
+        <span class="title">解除协议</span>
+        <span class="info" ng-if="detailsWrap.data">
+                <a ng-href="{{detailsWrap.data}}" target="_blank" style="margin-left: 0px;">查看</a>
+                <!-- 字段需更改 -->
+        </span>
+        <span class="info" ng-if="!detailsWrap.data">-</span>
+        </div>
+</div>

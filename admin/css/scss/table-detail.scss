@@ -1,0 +1,135 @@
+@charset "UTF-8";
+//全局样式模块，统一引用此base;
+//样式调用
+@import "css3","skin","setting","mixin";
+//table-detail
+.form-wrap {
+	.detail-box {
+		table + table {
+			border-left: 1px solid #ccc; //相邻的table增加左侧边框
+		}
+	}
+	cite {
+		padding-left: 5px;
+	//	line-height: 28px;
+		color: #ff0505;
+	}
+
+	input {
+		&.input-width {
+			margin-right: 20px;
+			width: 340px;
+		}	
+	}
+	
+	&.table-detail {
+		text-align: left;
+		table {
+			padding: 0 30px;
+			vertical-align: top;
+		}
+		tbody {
+		//	@extend %inline-block;
+			
+			width: 50%;
+		}
+		tbody th {
+			padding: 10px 0;
+		}
+		tbody td {
+			font-size: 12px;
+			color: #878787;
+			&:nth-child(odd) {
+				padding-right: 20px;
+				text-align: right;
+			}
+			.tip-btn {
+				padding-right: 20px;
+			}
+			&.td-input {
+				padding-right: 0;
+			}
+		}
+		a {
+			margin-left: 20px;
+			text-decoration: underline;
+		}
+		.radio-box {
+			width: 240px;
+			font-size: 0;
+		}
+		label {
+			width: 50%;
+			@extend %inline-block;
+			@extend %box-sizing-border;
+			font-size: 12px;
+		}
+		.table-text {
+			padding-left: 0;
+		}
+	}
+}
+//detail-customer
+.detail-customer {
+	@extend %clearfix;
+	.customer-side {
+		@extend %float;
+		border-right: 1px solid #ccc;
+		
+		.side-box {
+			padding: 10px 0;
+			border-top: 1px solid #d5d5d5;
+			background-color: #f2f2f2;
+		}
+	}
+	.customer-wrap {
+		@extend %float;
+		.customer-cont {
+			padding: 0 30px;
+			font-size: 12px;
+			color: #878787;
+			.cont-rows {
+				padding: 10px 0;
+				font-size: 14px;
+				color: #000;
+				font-weight: bold;
+			}
+			.cont-list {
+				margin-top: -10px;
+				li > ul {
+					padding: 0 14px;
+					width: 360px;
+					@extend %box-sizing-border;
+				}
+				li >ul >li {
+					padding: 6px 0;
+					line-height: 1.2;
+				//	border-bottom: 1px solid #ccc;
+				}
+				& > li {
+					padding: 10px 0;
+					border-bottom: 1px solid #ccc;
+				}
+				.content {
+					color: #c0c0c0;
+				}
+				
+			}
+		}
+	}
+	.cont-cols {
+		@extend %clearfix;
+		.state {
+			@extend %float;
+		}
+		.name {
+			@include float(right);
+			padding-right: 40px;
+		}
+		.time {
+			@include float(right);
+		}
+	}
+}
+
+

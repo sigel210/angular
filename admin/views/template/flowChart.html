@@ -1,0 +1,42 @@
+<!-- 审批流程 -->
+<!-- <table style="border: none">
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>审批流程</th>
+        </tr>
+    </tbody>
+</table> -->
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>审批流程
+        </span>
+    </p>
+</div>
+<div class="history-box">
+    <div class="history-itemBox  clearfix">
+        <div class="history-content history-line" ng-class="{'history-line-noborder':detailsWrap.data.approval_log.length==1}">
+            <span class="judge-img secusess-img"></span>
+            <span class="history-realContent">
+                <span class="title">
+                    <span ng-bind="detailsWrap.data.approval_log[0].account"></span>
+                    <span>|</span>
+                    <span ng-bind="detailsWrap.data.approval_log[0].department_name"></span>
+                </span>
+                <span class="text">发起审批</span>
+                <span class="time" ng-bind="detailsWrap.data.approval_log[0].create_time"></span>
+            </span>
+        </div>
+    </div>
+    <div class="history-itemBox clearfix" ng-repeat="item in detailsWrap.data.approval_log" ng-if="$index>0">
+        <div class="history-content history-line" ng-class="{'history-line-noborder':$index==detailsWrap.data.approval_log.length-1}">
+            <span class="judge-img" ng-class="judge_img[item.status]"></span>
+            <span class="history-realContent">
+                <span class="title" ng-bind="item.account"></span>
+                <span class="text" style="word-break:break-all;white-space:pre-wrap;" ng-bind="item.comment"></span>
+                <span class="time" ng-bind="item.create_time"></span>
+            </span>
+        </div>
+    </div>
+</div>

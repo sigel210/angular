@@ -1,0 +1,461 @@
+<!-- 新增宝贝 -->
+<div ng-if="modalList.newBaby" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="hideModal('newBaby')"></i>
+                </div>
+                <h4 ng-if="!showEdit" class="modal-title">新增宝贝</h4>
+                <h4 ng-if="showEdit" class="modal-title">编辑宝贝</h4>
+            </div>
+            <div class="modal-body modal-body-error">
+                <div class="full-content form-wrap add-edit-form form-wrap-w-sm">
+                    <p style="padding-top:8px;" class="add-edit-title"><span class="icon-title"></span>基本信息</p>
+                    <p class="add-error">
+                        <span class="table-name">宝贝名称</span>
+                        <span class="table-text">
+                                    <input placeholder="点击输入" type="text" ng-model="allPopModel.addBoby.name" maxlength="30"/>
+                                </span>
+                        <i class="table-clear" ng-click="allPopModel.addBoby.name=''"></i>
+                        <i class="table-red-error"></i>
+                    </p>
+                    <p class="add-error">
+                        <span class="table-name">宝贝链接</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="allPopModel.addBoby.url" placeholder="点击输入(多个链接用半角逗号隔开)"  required>
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addBoby.url = ''"></i>
+                        <i class="table-red-error"></i>
+                    </p>
+                    <p class="add-error longUI_select">
+                        <span class="table-name">宝贝类目</span>
+                        <span class="table-text">
+                    <!--             <select  class="select-w120" ng-model="allPopModel.addBoby.category_id"  ng-options="item.category_id as item.category_name group by item.parent_category for item  in categoryWithTitle">
+                                      <option value=""></option>
+                                 </select>-->
+                              <ui-select ng-model="categoryWithTitle.selected" theme="select2"  style="min-width: 539px;" on-select="allPopModel.selectFun2($item)">
+                              <ui-select-match placeholder="点击选择">{{$select.selected.category_name}}</ui-select-match>
+                              <ui-select-choices group-by="'parent_category'" repeat="item in categoryWithTitle | filter: $select.search">
+                                      <!--<span ng-bind-html="item.parent_category | highlight: $select.search"></span>-->
+                                      <small ng-bind-html="item.category_name | highlight: $select.search"></small>
+                               </ui-select-choices>
+                                </ui-select>
+                            </span>
+                        <i class="table-clear" ng-click="allPopModel.addBoby.category_id = '';categoryWithTitle.selected=''"></i>
+                        <!--<i class="table-red-error"></i>-->
+                    </p>
+                    <p>
+                        <span class="table-name">宝贝价格</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="allPopModel.addBoby.price" placeholder="点击输入"  maxlength="50" required ng-keyup="replaceNum2(allPopModel.addBoby, 'price',7)">
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addBoby.price = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">LOGO图</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="allPopModel.addBoby.logo_img_url" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addBoby.logo_img_url = ''"></i>
+                    </p>
+                    <!--<p>-->
+                        <!--<span class="table-name">图片链接</span>-->
+                        <!--<span class="table-text">-->
+                            <!--<input type="text" ng-model="allPopModel.addBoby.img_url" placeholder="点击输入(多个链接用半角逗号隔开)">-->
+                        <!--</span>-->
+                        <!--<i class="table-clear" ng-click="allPopModel.addBoby.img_url = ''"></i>-->
+                    <!--</p>-->
+                    <p style="padding-top:8px;" class="add-edit-title"><span class="icon-title"></span>图片链接</p>
+                    <p>
+                        <span class="table-name">白底图</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="allPopModel.addBoby.black_img" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addBoby.black_img = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">场景图1</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="allPopModel.addBoby.img_1" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addBoby.img_1 = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">场景图2</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="allPopModel.addBoby.img_2" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addBoby.img_2 = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">场景图3</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="allPopModel.addBoby.img_3" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addBoby.img_3 = ''"></i>
+                    </p>
+                    <!--<p ng-repeat="item in allPopModel.addBoby.img_url track by $index">-->
+                        <!--<span class="table-name" ng-bind="$index==0?'白底图':'场景图'+($index+1)"></span>-->
+                        <!--<span class="table-text">-->
+                            <!--<input type="text" ng-model="item" placeholder="点击输入">-->
+                        <!--</span>-->
+                        <!--<i class="table-clear" ng-click="allPopModel.addBoby.img_url[$index] = ''"></i>-->
+                    <!--</p>-->
+                    <p style="padding-top:8px;" class="add-edit-title"><span class="icon-title"></span>宝贝介绍</p>
+                    <p class="top-border  textarea-box textarea-p">
+                        <span class="full-text" style="min-height:100px;">
+                            <textarea class="table-textarea textarea-content" ng-model="allPopModel.addBoby.descr" maxlength="1000"></textarea>
+                        </span>
+                        <span class="textarea-num" style="right: 17px">
+                            <span>{{allPopModel.addBoby.descr.length ? allPopModel.addBoby.descr.length:0}}</span>/1000</span>
+                        <i style="position: absolute;right: 10px;top: 10px;" class="table-clear" ng-click="allPopModel.addBoby.descr = ''"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button ng-if="!showEdit" type="button" class="btn btn-blue full-btn" ng-click="allPopModel.methods.addBoby()">确定</button>
+                <button ng-if="showEdit" type="button" class="btn btn-blue full-btn" ng-click="allPopModel.methods.editBoby()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 新建图文、短视频、直播任务任务 -->
+<div ng-if="modalList.newaddTask" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="hideModal('newaddTask')"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="allPopModel.title"></h4>
+            </div>
+            <div class="modal-body modal-body-error">
+                <div class="full-content form-wrap add-edit-form form-wrap-w-sm">
+                    <p class="add-edit-title"><span class="icon-title"></span>基本情况</p>
+                    <p class="add-error">
+                        <span class="table-name">投放渠道</span>
+                        <span class="table-text">
+                            <ui-select style="width:539px;" ng-model="allPopModel.addTask.channel_id" theme="select2" class="form-control" title="点击选择" on-select="selectFun($item, 'add')">
+                                <ui-select-match placeholder="点击选择">{{channel_name}}</ui-select-match>
+                                <ui-select-choices repeat="channelList in allPopModel.selectList.channelList | propsFilter: {channel_name: $select.search}">
+                                    <span ng-bind-html="channelList.channel_name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addTask.channel_id = ''"></i>
+                        <i class="table-red-error"></i>
+                    </p>
+                    <p ng-if="allPopModel.addTask.content_type==1" class="add-error">
+                        <span class="table-name">需要看稿</span>
+                        <span class="table-text">
+                            <select ng-model="allPopModel.addTask.is_look" ng-options=" option.id as option.name for option in allPopModel.selectList.is_look">
+                                <option value=""></option>
+                            </select>
+                            <label ng-show="!allPopModel.addTask.is_look&&allPopModel.addTask.is_look!==0" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addTask.is_look = ''"></i>
+                        <i class="table-red-error"></i>
+                    </p>
+                    <p ng-if="allPopModel.addTask.content_type==2" class="add-error">
+                        <span class="table-name">直播类型</span>
+                        <span class="table-text">
+                            <select ng-model="allPopModel.addTask.live_type" ng-options=" option.id as option.name for option in allPopModel.selectList.liveTypeList"></select>
+                            <label ng-show="!allPopModel.addTask.live_type" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addTask.live_type = ''"></i>
+                        <i class="table-red-error"></i>
+                    </p>
+                    <p ng-if="allPopModel.addTask.content_type==3" class="add-error">
+                        <span class="table-name">视频类型</span>
+                        <span class="table-text">
+                            <select ng-model="allPopModel.addTask.video_type" ng-options="option.id as option.name for option in allPopModel.selectList.videoTypeList"></select>
+                            <label ng-show="!allPopModel.addTask.video_type" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addTask.video_type = ''"></i>
+                        <i class="table-red-error"></i>
+                    </p>
+                    <p class="add-error">
+                        <span class="table-name">截止日期</span>
+                        <span class="table-text">
+                                <input id="table-data" type="text" class="pointer"  time-value="allPopModel.addTask.end_time" format="yyyy-MM-dd" ng-model="allPopModel.addTask.end_time" time-module readonly placeholder="点击选择">
+                            </span>
+                        <i class="table-clear" ng-click="allPopModel.addTask.end_time = ''"></i>
+                        <i class="table-red-error"></i>
+                    </p>
+                    <p class="add-error">
+                        <span class="table-name">爱柚执行</span>
+                        <span class="table-text">
+                            <ui-select style="width:539px;" ng-model="allPopModel.addTask.execute_user_id" theme="select2" class="form-control" title="点击选择" on-select="selectFun1($item, 'add')">
+                                <ui-select-match placeholder="点击选择">{{execute_user_name}}</ui-select-match>
+                                <ui-select-choices repeat="executeuserList in allPopModel.selectList.executeuserList | propsFilter: {account: $select.search}">
+                                    <span ng-bind-html="executeuserList.account | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addTask.execute_user_id = ''"></i>
+                        <i class="table-red-error"></i>
+                    </p>
+                    <p style="padding-top:8px;" class="add-edit-title"><span class="icon-title"></span>执行营收</p>
+                    <p style="background-color: #f2f2f2;">
+                        <span class="table-name">营收类型</span>
+                        <span ng-bind="init.data.income_type | incomeType" style="font-weight: bold;color: #333;" class="table-text">
+                            啊啊啊
+                        </span>
+                    </p>
+                    <p class="add-error">
+                        <span class="table-name">执行金额</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="allPopModel.addTask.execute_amount" placeholder="点击输入" ng-keyup="replaceNum2(allPopModel.addTask, 'execute_amount',7)" maxlength="50">
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.addTask.execute_amount = ''"></i>
+                        <i class="table-red-error"></i>
+                    </p>
+                    <p style="padding-top:8px;" class="add-edit-title"><span class="icon-title"></span>备注</p>
+                    <p class="top-border  textarea-box textarea-p">
+                        <span class="full-text" style="min-height:100px;">
+                             <textarea  class="table-textarea textarea-content" ng-model="allPopModel.addTask.descr" maxlength="100"></textarea>
+                        <span class="textarea-num" style="right: 17px">
+                            <span>{{allPopModel.addTask.descr.length ? allPopModel.addTask.descr.length:0}}</span>/100</span>
+                        <i style="position: absolute;right: 10px;top: 10px;" class="table-clear" ng-click="allPopModel.addTask.descr = ''"></i>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button ng-if="!showEdit" type="button" class="btn btn-blue full-btn" ng-click="allPopModel.methods.aiyoAeTaskInsert()">确定</button>
+                <button ng-if="showEdit" type="button" class="btn btn-blue full-btn" ng-click="allPopModel.methods.editTask()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--派发-->
+<div ng-if="modalList.paifa" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="hideModal('paifa')"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="allPopModel.title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p>
+                        <span class="table-name">爱柚执行</span>
+                        <span class="table-text">
+                            <ui-select style="width:539px;" ng-model="allPopModel.allot._execute_user_id" theme="select2" class="form-control" title="点击选择" on-select="selectFun2($item, 'add')">
+                                <ui-select-match placeholder="点击选择">{{$select.selected.account}}</ui-select-match>
+                                <ui-select-choices repeat="executeuserList in allPopModel.selectList.executeuserList | propsFilter: {account: $select.search}">
+                                    <span ng-bind-html="executeuserList.account | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </span>
+                        <i class="table-clear" ng-click="allPopModel.allot._execute_user_id = ''"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue full-btn" ng-click="allPopModel.methods.aiyoAeTaskAllot()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新建批量图文、直播-->
+<div ng-if="modalList.newAllTuWen" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal"><i class="icon-close" ng-click="hideModal('newAllTuWen')"></i></div>
+                <h4 ng-if="uiModel.filters.content_type==1" class="modal-title">批量增加图文任务</h4>
+                <h4 ng-if="uiModel.filters.content_type==2" class="modal-title">批量增加直播任务</h4>
+                <h4 ng-if="uiModel.filters.content_type==3" class="modal-title">批量增加短视频任务</h4>
+            </div>
+            <!--<div class="modal-body">-->
+                <!--<div class="form-wrap add-edit-form .form-wrap-w-sm">-->
+                    <!--<p>-->
+                        <!--<span class="table-name">附件</span>-->
+                        <!--<span class="table-text">-->
+                            <!--<span class="upload-btn-box" style="width: 537px;">-->
+                              <!--<a class="upload-show" style="color:#ccc">点击选择</a>-->
+                              <!--<span id="filename1"></span>-->
+                              <!--<input class="upload-hide" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" type="file" onchange="angular.element(this).scope().change1(event)">-->
+                            <!--</span>-->
+                          <!--</span>-->
+                        <!--<i class="table-clear" ng-click="allPopModel.methods.uploadUnionPayDataDelect()"></i>-->
+                    <!--</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="modal-body editdetail edit">
+                <div class="m-form-wrap center-edit-form">
+                    <div class="m-table-from">
+                        <div class="m-upload-box" style="display: flex">
+                            <table class="u-upload-content" style="width: 642px">
+                                <tbody>
+                                <tr>
+                                    <td width="78">附件</td>
+                                    <td width="130">
+                                        <p ng-if="uiModel.filters.content_type==1">图文任务模版</p>
+                                        <p ng-if="uiModel.filters.content_type==2">直播任务模版</p>
+                                        <p ng-if="uiModel.filters.content_type==3">短视频任务模版</p>
+                                        <p class="download">
+                                            <a ng-click="allPopModel.methods.saveReportmoban()" href="javascript:void(0)">下载</a>
+                                        </p>
+                                    </td>
+                                    <td width="504">
+                                        <div class="upload-input">
+                                            <span href="javascript:void(0)" id="filename1" class="upload-name"></span>
+                                            <span class="upload-btn-box alipay-control">
+                                <span class="upload-show">点击上传excel表</span>
+                                <!--<input class="upload-hide" type="file" fileread="uploadAlipayData" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">-->
+                                                <input class="upload-hide" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" type="file" onchange="angular.element(this).scope().change1(event)">
+                            </span>
+                                            <span class="icon-close2" ng-click="allPopModel.methods.uploadUnionPayDataDelect()"></span>
+                                        </div>
+                                    </td>
+                                    <!--<td width="0" ng-class="{'pointer':searchCheckThirdMenu('308', '319')&&uploadAlipayData.name.length>0}" ng-click="uploadAlipayData.name&&uploadAlipayFile()"-->
+                                    <!--class="gray">校验-->
+                                    <!--</td>-->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue full-btn" ng-click="allPopModel.methods.uploadUnionPayData()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--到货日期-->
+<div ng-if="modalList.arrivalDate" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="hideModal('arrivalDate')"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="allPopModel.title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap .form-wrap-w-sm">
+                    <table class="table-to-list">
+                        <thead>
+                        <tr>
+                            <th width="16">序</th>
+                            <th width="300">物流编号</th>
+                            <th width="268">物流公司</th>
+                            <th width="70">到货日期</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-show="allPopModel.arrivalModel.length==0">
+                            <td colspan="4">
+                                <div class="no-item1" style="height: 200px;display: flex;justify-content: center;align-items: center;">
+                                    <img src="images/kong.png" style="width:60px;">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-show="allPopModel.arrivalModel.length!==0" ng-repeat="item in allPopModel.arrivalModel">
+                            <td ng-bind="$index+1"></td>
+                            <td ng-bind="item.logistics_no"></td>
+                            <td ng-bind="item.company"></td>
+                            <td ng-bind="item.logistics_date"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue full-btn" ng-click="hideModal('arrivalDate')">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--需求附件上传-->
+<div ng-if="modalList.updataFile" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal"><i class="icon-close" ng-click="hideModal('updataFile')"></i></div>
+                <h4 class="modal-title">需求附件</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form .form-wrap-w-sm">
+                    <p>
+                        <span class="table-name">附件</span>
+                        <span class="table-text">
+                            <span class="upload-btn-box">
+                              <a class="upload-show" ng-click="">点击选择</a>
+                              <span id="filename"></span>
+                              <input class="upload-hide" accept=".zip,.rar,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.ms-works" type="file" onchange="angular.element(this).scope().change(event)">
+                            </span>
+                          </span>
+                        <i class="table-clear" ng-click="allPopModel.methods.updateFileDelect()"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue full-btn" ng-click="allPopModel.methods.updateFile()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--校验中-->
+<div ng-show="loadingModal.isShow" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="loading-bg">
+        <div class="loading-title">校验中</div>
+        <div class="loading-cont" style="display:none;width: 54px;"></div>
+    </div>
+</div>
+<!--错误行数信息-->
+<div ng-if="modalList.uploadContentF" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="hideModal('uploadContentF')"></i>
+                </div>
+                <h4 class="modal-title">检验结果</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap .form-wrap-w-sm">
+                    <table class="table-to-list">
+                        <thead>
+                        <tr>
+                            <th width="80">行数</th>
+                            <th width="574">错误信息</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="errorLine in errorGroup">
+                                <td style="white-space: pre-wrap;word-wrap: break-word;" ng-bind="errorLine.line"></td>
+                                <td style="white-space: pre-wrap;word-wrap: break-word;" ng-bind="errorLine.error"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue full-btn" ng-click="hideModal('uploadContentF')">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

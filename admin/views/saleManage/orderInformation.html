@@ -1,0 +1,94 @@
+<header>
+    <div class="tab-bar">
+        <button class="menu-btn-back" onclick='window.history.back()'>
+            <i class="icon-back"></i>
+        </button>
+        <span class="menu-tit">订单管理</span>
+        <div class="menu-ul">
+        </div>
+    </div>
+</header>
+<div class="cont-page-w">
+    <!-- 搜索模块 -->
+    <div class="search-wraps search-wrap-new">
+        <div class="search-max-w">
+            <div class="form-group">
+                <label>客户名称：</label>
+                <div class="search-box">
+                    <input type="text" ng-model="uiModel.filters.customer" class="search-keyup-enter input-name-w" placeholder="点击输入" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>订单创建人：</label>
+                <div class="search-box">
+                    <input type="text" ng-model="uiModel.filters.order_creater" class="search-keyup-enter input-name-w" placeholder="点击输入" maxlength="10">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>订单编号：</label>
+                <div class="search-box">
+                    <input type="text" ng-model="uiModel.filters.order_no" class="search-keyup-enter input-name-w" placeholder="点击输入" maxlength="25">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>到单日期：</label>
+                <div class="search-box">
+                    <input id="1" type="text" class="pointer" time-value="uiModel.filters.received_date_start" ng-model="uiModel.filters.received_date_start"
+                        max-date="#F{$dp.$D(\'2\')}" time-module readonly placeholder="点击选择" format="yyyy-MM-dd">
+                    <span class="time-division">至</span>
+                    <input id="2" type="text" class="pointer" time-value="uiModel.filters.received_date_end" ng-model="uiModel.filters.received_date_end"
+                        min-date="#F{$dp.$D(\'1\')}" time-module readonly placeholder="点击选择" style="text-indent: 16px;" format="yyyy-MM-dd">
+                </div>
+            </div>
+            <div class="search-btn-wrap">
+                <button class="btn-search" ng-click="search()">搜索</button>
+                <!-- <button class="btn-reset" ng-click="reset()">清空</button> -->
+            </div>
+        </div>
+    </div>
+    <!-- 列表模块 -->
+    <div class="table-ptop-w2">
+        <div class="table-foot">
+            <div class="btn-left">
+                <button ng-if="permission.orderAdd" class="btn btn-new-blue" ng-click="orderAdd()">新建订单</button>
+            </div>
+            <div pages2 class="page-right" page-index="uiModel.page.page_no" page-size="uiModel.page.page_size" total="uiModel.page.total" page-count="uiModel.page.page_count"
+                page-change="getList(pageIndex)"></div>
+        </div>
+        <table class="table-list table-fixed js-table" width="100%">
+            <thead>
+                <tr>
+                    <th width="16">序</th>
+                    <th width="160">订单编号</th>
+                    <th width="160">订单金额</th>
+                    <th >客户名称</th>
+                    <th width="120">产品名称</th>
+                    <th width="96">到单日期</th>
+                    <th width="120">订单创建人</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="load-tips" ng-show="!list || list.length === 0">
+                    <td colspan="7">
+                        <div class="loading-cont">
+                        </div>
+                        <div ng-show="!isAjaxError && !pageListLoading" class="load-tips-cont">没有你想要的数据</div>
+                        <div ng-show="isAjaxError && !pageListLoading" class="load-tips-cont">加载超时，点击
+                            <a ng-click="search()">重新加载</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-repeat='item in list' ng-click='goDetail(item)'>
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.order_no"></td>
+                    <td ng-bind="item.order_price"></td>
+                    <td title="{{item.customer}}" ng-bind="item.customer"></td>
+                    <td title="{{item.product_name}}" ng-bind="item.product_name"></td>
+                    <td ng-bind="item.order_received_date"></td>
+                    <td ng-bind="item.order_creater"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>

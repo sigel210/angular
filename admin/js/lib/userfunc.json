@@ -1,0 +1,5456 @@
+[
+    {
+        "node_id": 1,
+        "level": 1,
+        "description": "销售中心",
+        "url": ""
+    },
+    {
+        "node_id": 136,
+        "level": 2,
+        "description": "销售中心_部门客户",
+        "url": ""
+    },
+    {
+        "node_id": 139,
+        "level": 3,
+        "description": "销售中心_部门客户_踢入公海",
+        "url": "Crm\/CustomerDept\/goPublic"
+    },
+    {
+        "node_id": 181,
+        "level": 2,
+        "description": "销售中心_我的客户",
+        "url": ""
+    },
+    {
+        "node_id": 183,
+        "level": 3,
+        "description": "销售中心_我的客户_新增",
+        "url": "Crm\/CustomerPrivate\/insert"
+    },
+    {
+        "node_id": 186,
+        "level": 3,
+        "description": "销售中心_我的客户_踢入公海",
+        "url": "Crm\/CustomerPrivate\/goPublic"
+    },
+    {
+        "node_id": 187,
+        "level": 3,
+        "description": "销售中心_我的客户_转移",
+        "url": "Crm\/CustomerPrivate\/transfer"
+    },
+    {
+        "node_id": 189,
+        "level": 2,
+        "description": "销售中心_公海客户",
+        "url": ""
+    },
+    {
+        "node_id": 192,
+        "level": 3,
+        "description": "销售中心_公海客户_挑入私海",
+        "url": "Crm\/CustomerPublic\/goPrivate"
+    },
+    {
+        "node_id": 194,
+        "level": 3,
+        "description": "销售中心_公海客户_分配",
+        "url": "Crm\/CustomerPublic\/allot"
+    },
+    {
+        "node_id": 294,
+        "level": 2,
+        "description": "业务管理-有效联系统计",
+        "url": ""
+    },
+    {
+        "node_id": 307,
+        "level": 1,
+        "description": "财务中心",
+        "url": ""
+    },
+    {
+        "node_id": 308,
+        "level": 2,
+        "description": "财务中心_对账上传",
+        "url": ""
+    },
+    {
+        "node_id": 309,
+        "level": 2,
+        "description": "财务中心_退款管理",
+        "url": ""
+    },
+    {
+        "node_id": 310,
+        "level": 1,
+        "description": "运营中心",
+        "url": ""
+    },
+    {
+        "node_id": 314,
+        "level": 2,
+        "description": "运营中心_资质审核",
+        "url": ""
+    },
+    {
+        "node_id": 318,
+        "level": 3,
+        "description": "财务中心-退款管理-列表",
+        "url": "Finance\/Refund\/index"
+    },
+    {
+        "node_id": 319,
+        "level": 3,
+        "description": "财务中心_对账上传_校验",
+        "url": "Finance\/PayLog\/import"
+    },
+    {
+        "node_id": 323,
+        "level": 3,
+        "description": "运营中心_资质审核_执行",
+        "url": "Operation\/OperateOrder\/exec"
+    },
+    {
+        "node_id": 324,
+        "level": 3,
+        "description": "运营中心_资质审核_通过",
+        "url": "Operation\/OperateOrder\/check"
+    },
+    {
+        "node_id": 325,
+        "level": 3,
+        "description": "运营中心_资质审核_未通过",
+        "url": "Operation\/OperateOrder\/check"
+    },
+    {
+        "node_id": 326,
+        "level": 2,
+        "description": "销售中心_订单管理",
+        "url": ""
+    },
+    {
+        "node_id": 335,
+        "level": 3,
+        "description": "运营中心_资质审核_下载名单",
+        "url": "Operation\/OperateOrder\/download"
+    },
+    {
+        "node_id": 336,
+        "level": 2,
+        "description": "销售中心_对账管理",
+        "url": ""
+    },
+    {
+        "node_id": 337,
+        "level": 3,
+        "description": "销售中心_到账信息管理_删除",
+        "url": "Crm\/OrderReceived\/delete"
+    },
+    {
+        "node_id": 338,
+        "level": 3,
+        "description": "销售中心_到账信息管理_编辑",
+        "url": "Crm\/OrderReceived\/update"
+    },
+    {
+        "node_id": 339,
+        "level": 3,
+        "description": "销售中心_到账信息管理_对账",
+        "url": "Crm\/OrderReceived\/verify"
+    },
+    {
+        "node_id": 341,
+        "level": 3,
+        "description": "销售中心_我的客户_编辑基本信息",
+        "url": "Crm\/CustomerPrivate\/updateBasicInfo"
+    },
+    {
+        "node_id": 343,
+        "level": 3,
+        "description": "销售中心_我的客户_编辑联系信息",
+        "url": "Crm\/CustomerPrivate\/updateContactInfo"
+    },
+    {
+        "node_id": 344,
+        "level": 3,
+        "description": "财务中心_对账上传-模版下载",
+        "url": "Finance\/PayLog\/Export"
+    },
+    {
+        "node_id": 346,
+        "level": 1,
+        "description": "沟通计划",
+        "url": ""
+    },
+    {
+        "node_id": 347,
+        "level": 2,
+        "description": "沟通计划_沟通计划",
+        "url": ""
+    },
+    {
+        "node_id": 348,
+        "level": 3,
+        "description": "沟通计划_沟通计划_列表",
+        "url": "Schedule\/Index\/index"
+    },
+    {
+        "node_id": 357,
+        "level": 1,
+        "description": "资源中心",
+        "url": ""
+    },
+    {
+        "node_id": 358,
+        "level": 2,
+        "description": "资源中心_资源中心资源管理部客户库",
+        "url": ""
+    },
+    {
+        "node_id": 359,
+        "level": 2,
+        "description": "资源中心_资源中心业务部门客户库",
+        "url": ""
+    },
+    {
+        "node_id": 360,
+        "level": 2,
+        "description": "资源中心_资源中心销售资源管理",
+        "url": ""
+    },
+    {
+        "node_id": 361,
+        "level": 2,
+        "description": "资源中心_资源中心新老客户管理",
+        "url": ""
+    },
+    {
+        "node_id": 362,
+        "level": 2,
+        "description": "资源中心_资源中心库容管理",
+        "url": ""
+    },
+    {
+        "node_id": 363,
+        "level": 2,
+        "description": "资源中心_资源中心订单管理",
+        "url": ""
+    },
+    {
+        "node_id": 366,
+        "level": 2,
+        "description": "运营中心_执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 370,
+        "level": 2,
+        "description": "运营中心_子产品管理",
+        "url": ""
+    },
+    {
+        "node_id": 371,
+        "level": 2,
+        "description": "运营中心_机构数据",
+        "url": ""
+    },
+    {
+        "node_id": 376,
+        "level": 3,
+        "description": "运营中心_执行管理_列表",
+        "url": "Operation\/AiyoExecute\/index"
+    },
+    {
+        "node_id": 377,
+        "level": 3,
+        "description": "运营中心_执行管理_详情",
+        "url": "Operation\/AiyoExecute\/detail"
+    },
+    {
+        "node_id": 378,
+        "level": 3,
+        "description": "运营中心_执行管理_执行",
+        "url": "Operation\/AiyoExecute\/execute"
+    },
+    {
+        "node_id": 379,
+        "level": 3,
+        "description": "运营中心_执行管理_获取订单中的产品",
+        "url": "Operation\/AiyoExecute\/getOrderProduct"
+    },
+    {
+        "node_id": 392,
+        "level": 3,
+        "description": "运营中心_子产品管理_列表",
+        "url": "Operation\/AiyoProduct\/index"
+    },
+    {
+        "node_id": 393,
+        "level": 3,
+        "description": "运营中心_子产品管理_详情",
+        "url": "Operation\/AiyoProduct\/detail"
+    },
+    {
+        "node_id": 394,
+        "level": 3,
+        "description": "运营中心_子产品管理_新增",
+        "url": "Operation\/AiyoProduct\/add"
+    },
+    {
+        "node_id": 395,
+        "level": 3,
+        "description": "运营中心_子产品管理_编辑",
+        "url": "Operation\/AiyoProduct\/edit"
+    },
+    {
+        "node_id": 396,
+        "level": 3,
+        "description": "运营中心_子产品管理_编辑概要",
+        "url": "Operation\/AiyoProduct\/editDescr"
+    },
+    {
+        "node_id": 397,
+        "level": 3,
+        "description": "运营中心_子产品管理_删除",
+        "url": "Operation\/AiyoProduct\/delete"
+    },
+    {
+        "node_id": 398,
+        "level": 3,
+        "description": "运营中心_子产品管理_停售",
+        "url": "Operation\/AiyoProduct\/stopSale"
+    },
+    {
+        "node_id": 399,
+        "level": 3,
+        "description": "运营中心_机构数据_列表",
+        "url": "Operation\/AiyoStatOrg\/index"
+    },
+    {
+        "node_id": 409,
+        "level": 2,
+        "description": "运营中心_孵化班班次管理",
+        "url": ""
+    },
+    {
+        "node_id": 410,
+        "level": 2,
+        "description": "运营中心_孵化班审批",
+        "url": ""
+    },
+    {
+        "node_id": 411,
+        "level": 2,
+        "description": "运营中心_孵化班执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 412,
+        "level": 3,
+        "description": "运营中心_孵化班班次管理_新增班次",
+        "url": "Operation\/JyhFhbClass\/insert"
+    },
+    {
+        "node_id": 413,
+        "level": 3,
+        "description": "运营中心_孵化班班次管理_列表",
+        "url": "Operation\/JyhFhbClass\/index"
+    },
+    {
+        "node_id": 414,
+        "level": 3,
+        "description": "运营中心_孵化班班次管理_详情",
+        "url": "Operation\/JyhFhbClass\/detail"
+    },
+    {
+        "node_id": 415,
+        "level": 3,
+        "description": "运营中心_孵化班班次管理_编辑",
+        "url": "Operation\/JyhFhbClass\/update"
+    },
+    {
+        "node_id": 416,
+        "level": 3,
+        "description": "运营中心_孵化班班次管理_打单开关",
+        "url": "Operation\/JyhFhbClass\/optStatus"
+    },
+    {
+        "node_id": 417,
+        "level": 3,
+        "description": "运营中心_孵化班班次管理_完结班次",
+        "url": "Operation\/JyhFhbClass\/finishStatus"
+    },
+    {
+        "node_id": 418,
+        "level": 3,
+        "description": "运营中心_孵化班班次管理_服务期设置",
+        "url": "Operation\/JyhFhbClass\/setClassServiceDate"
+    },
+    {
+        "node_id": 419,
+        "level": 3,
+        "description": "运营中心_孵化班班次管理_变更班主任",
+        "url": "Operation\/JyhFhbClass\/changeTeacher"
+    },
+    {
+        "node_id": 420,
+        "level": 3,
+        "description": "运营中心_孵化班审批_列表",
+        "url": "Operation\/JyhFhbCheck\/index"
+    },
+    {
+        "node_id": 421,
+        "level": 3,
+        "description": "运营中心_孵化班审批_详情",
+        "url": "Operation\/JyhFhbCheck\/detail"
+    },
+    {
+        "node_id": 422,
+        "level": 3,
+        "description": "运营中心_孵化班审批_评论",
+        "url": "Operation\/JyhFhbCheck\/approvalComment"
+    },
+    {
+        "node_id": 423,
+        "level": 3,
+        "description": "运营中心_孵化班审批_审批同意\/拒绝",
+        "url": "Operation\/JyhFhbCheck\/approvalStatus"
+    },
+    {
+        "node_id": 424,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_左侧班次列表",
+        "url": "Operation\/JyhFhbExecute\/classList"
+    },
+    {
+        "node_id": 425,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_执行班次详情",
+        "url": "Operation\/JyhFhbExecute\/classInfo"
+    },
+    {
+        "node_id": 426,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_执行列表",
+        "url": "Operation\/JyhFhbExecute\/index"
+    },
+    {
+        "node_id": 427,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_批量变更班次",
+        "url": "Operation\/JyhFhbExecute\/editBatchClass"
+    },
+    {
+        "node_id": 428,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_变更班次下拉列表",
+        "url": "Operation\/JyhFhbExecute\/changeClassList"
+    },
+    {
+        "node_id": 429,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_客户基本信息",
+        "url": "Operation\/JyhFhbExecute\/getCustomerInfo"
+    },
+    {
+        "node_id": 430,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_客户基本信息编辑",
+        "url": "Operation\/JyhFhbExecute\/editCustomerInfo"
+    },
+    {
+        "node_id": 431,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_客户联系信息",
+        "url": "Operation\/JyhFhbExecute\/getCustomerLinkInfo"
+    },
+    {
+        "node_id": 432,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_营收和退款",
+        "url": "Operation\/JyhFhbExecute\/incomeAndRefundList"
+    },
+    {
+        "node_id": 433,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_编辑学员信息",
+        "url": "Operation\/JyhFhbExecute\/editStudentInfo"
+    },
+    {
+        "node_id": 434,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_学员列表",
+        "url": "Operation\/JyhFhbExecute\/studentList"
+    },
+    {
+        "node_id": 435,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_学员详情",
+        "url": "Operation\/JyhFhbExecute\/studentInfo"
+    },
+    {
+        "node_id": 436,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_店铺调研列表",
+        "url": "Operation\/JyhFhbExecute\/orderSurveyList"
+    },
+    {
+        "node_id": 437,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_店铺调研信息",
+        "url": "Operation\/JyhFhbExecute\/orderSurveyInfo"
+    },
+    {
+        "node_id": 438,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_导出店铺调研表",
+        "url": "Operation\/JyhFhbExecute\/exportOrderSurvey"
+    },
+    {
+        "node_id": 439,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_冻结授权帐号",
+        "url": "Operation\/JyhFhbExecute\/freezeAuthorizeAccount"
+    },
+    {
+        "node_id": 440,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_恢复授权帐号",
+        "url": "Operation\/JyhFhbExecute\/recoverAuthorizeAccount"
+    },
+    {
+        "node_id": 441,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_获取服务期结束时间",
+        "url": "Operation\/JyhFhbExecute\/getServiceEndTime"
+    },
+    {
+        "node_id": 442,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_服务期设置",
+        "url": "Operation\/JyhFhbExecute\/setClassServiceDate"
+    },
+    {
+        "node_id": 443,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_获取调研地址",
+        "url": "Operation\/JyhFhbExecute\/getSurveyUrl"
+    },
+    {
+        "node_id": 444,
+        "level": 3,
+        "description": "运营中心_孵化班执行管理_变更授权帐号",
+        "url": "Operation\/JyhFhbExecute\/updateAuthorizeAccount"
+    },
+    {
+        "node_id": 445,
+        "level": 2,
+        "description": "运营中心_进阶班班次管理",
+        "url": ""
+    },
+    {
+        "node_id": 446,
+        "level": 2,
+        "description": "运营中心_进阶班审批",
+        "url": ""
+    },
+    {
+        "node_id": 447,
+        "level": 2,
+        "description": "运营中心_进阶班执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 448,
+        "level": 3,
+        "description": "运营中心_进阶班班次管理_新增班次",
+        "url": "Operation\/JyhJjbClass\/insert"
+    },
+    {
+        "node_id": 449,
+        "level": 3,
+        "description": "运营中心_进阶班班次管理_列表",
+        "url": "Operation\/JyhJjbClass\/index"
+    },
+    {
+        "node_id": 450,
+        "level": 3,
+        "description": "运营中心_进阶班班次管理_详情",
+        "url": "Operation\/JyhJjbClass\/detail"
+    },
+    {
+        "node_id": 451,
+        "level": 3,
+        "description": "运营中心_进阶班班次管理_编辑",
+        "url": "Operation\/JyhJjbClass\/update"
+    },
+    {
+        "node_id": 452,
+        "level": 3,
+        "description": "运营中心_进阶班班次管理_打单开关",
+        "url": "Operation\/JyhJjbClass\/optStatus"
+    },
+    {
+        "node_id": 453,
+        "level": 3,
+        "description": "运营中心_进阶班班次管理_完结班次",
+        "url": "Operation\/JyhJjbClass\/finishStatus"
+    },
+    {
+        "node_id": 454,
+        "level": 3,
+        "description": "运营中心_进阶班班次管理_服务期设置",
+        "url": "Operation\/JyhJjbClass\/setClassServiceDate"
+    },
+    {
+        "node_id": 455,
+        "level": 3,
+        "description": "运营中心_进阶班班次管理_手动执行一次",
+        "url": "Operation\/JyhJjbClass\/manualExecute"
+    },
+    {
+        "node_id": 456,
+        "level": 3,
+        "description": "运营中心_进阶班班次管理_变更班主任",
+        "url": "Operation\/JyhJjbClass\/changeTeacher"
+    },
+    {
+        "node_id": 457,
+        "level": 3,
+        "description": "运营中心_进阶班审批_列表",
+        "url": "Operation\/JyhJjbCheck\/index"
+    },
+    {
+        "node_id": 458,
+        "level": 3,
+        "description": "运营中心_进阶班审批_详情",
+        "url": "Operation\/JyhJjbCheck\/detail"
+    },
+    {
+        "node_id": 459,
+        "level": 3,
+        "description": "运营中心_进阶班审批_评论",
+        "url": "Operation\/JyhJjbCheck\/approvalComment"
+    },
+    {
+        "node_id": 460,
+        "level": 3,
+        "description": "运营中心_进阶班审批_审批同意\/拒绝",
+        "url": "Operation\/JyhJjbCheck\/approvalStatus"
+    },
+    {
+        "node_id": 461,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_左侧班次列表",
+        "url": "Operation\/JyhJjbExecute\/classList"
+    },
+    {
+        "node_id": 462,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_执行班次详情",
+        "url": "Operation\/JyhJjbExecute\/classInfo"
+    },
+    {
+        "node_id": 463,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_执行列表",
+        "url": "Operation\/JyhJjbExecute\/index"
+    },
+    {
+        "node_id": 464,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_批量变更班次",
+        "url": "Operation\/JyhJjbExecute\/editBatchClass"
+    },
+    {
+        "node_id": 465,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_变更班次下拉列表",
+        "url": "Operation\/JyhJjbExecute\/changeClassList"
+    },
+    {
+        "node_id": 466,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_客户基本信息",
+        "url": "Operation\/JyhJjbExecute\/getCustomerInfo"
+    },
+    {
+        "node_id": 467,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_客户基本信息编辑",
+        "url": "Operation\/JyhJjbExecute\/editCustomerInfo"
+    },
+    {
+        "node_id": 468,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_客户联系信息",
+        "url": "Operation\/JyhJjbExecute\/getCustomerLinkInfo"
+    },
+    {
+        "node_id": 469,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_营收和退款",
+        "url": "Operation\/JyhJjbExecute\/incomeAndRefundList"
+    },
+    {
+        "node_id": 470,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_编辑学员信息",
+        "url": "Operation\/JyhJjbExecute\/editStudentInfo"
+    },
+    {
+        "node_id": 471,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_学员列表",
+        "url": "Operation\/JyhJjbExecute\/studentList"
+    },
+    {
+        "node_id": 472,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_学员详情",
+        "url": "Operation\/JyhJjbExecute\/studentInfo"
+    },
+    {
+        "node_id": 473,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_店铺调研列表",
+        "url": "Operation\/JyhJjbExecute\/orderSurveyList"
+    },
+    {
+        "node_id": 474,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_店铺调研信息",
+        "url": "Operation\/JyhJjbExecute\/orderSurveyInfo"
+    },
+    {
+        "node_id": 475,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_导出店铺调研表",
+        "url": "Operation\/JyhJjbExecute\/exportOrderSurvey"
+    },
+    {
+        "node_id": 476,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_冻结授权帐号",
+        "url": "Operation\/JyhJjbExecute\/freezeAuthorizeAccount"
+    },
+    {
+        "node_id": 477,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_回复授权帐号",
+        "url": "Operation\/JyhJjbExecute\/recoverAuthorizeAccount"
+    },
+    {
+        "node_id": 478,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_获取服务期结束时间",
+        "url": "Operation\/JyhJjbExecute\/getServiceEndTime"
+    },
+    {
+        "node_id": 479,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_服务期设置",
+        "url": "Operation\/JyhJjbExecute\/setClassServiceDate"
+    },
+    {
+        "node_id": 480,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_获取调研地址",
+        "url": "Operation\/JyhJjbExecute\/getSurveyUrl"
+    },
+    {
+        "node_id": 481,
+        "level": 3,
+        "description": "运营中心_进阶班执行管理_变更授权帐号",
+        "url": "Operation\/JyhJjbExecute\/updateAuthorizeAccount"
+    },
+    {
+        "node_id": 482,
+        "level": 2,
+        "description": "运营中心_精英班班次管理",
+        "url": ""
+    },
+    {
+        "node_id": 483,
+        "level": 2,
+        "description": "运营中心_精英班审批",
+        "url": ""
+    },
+    {
+        "node_id": 484,
+        "level": 2,
+        "description": "运营中心_精英班执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 485,
+        "level": 3,
+        "description": "运营中心_精英班班次管理_新增班次",
+        "url": "Operation\/JyhJybClass\/insert"
+    },
+    {
+        "node_id": 486,
+        "level": 3,
+        "description": "运营中心_精英班班次管理_列表",
+        "url": "Operation\/JyhJybClass\/index"
+    },
+    {
+        "node_id": 487,
+        "level": 3,
+        "description": "运营中心_精英班班次管理_详情",
+        "url": "Operation\/JyhJybClass\/detail"
+    },
+    {
+        "node_id": 488,
+        "level": 3,
+        "description": "运营中心_精英班班次管理_编辑",
+        "url": "Operation\/JyhJybClass\/update"
+    },
+    {
+        "node_id": 489,
+        "level": 3,
+        "description": "运营中心_精英班班次管理_打单开关",
+        "url": "Operation\/JyhJybClass\/optStatus"
+    },
+    {
+        "node_id": 490,
+        "level": 3,
+        "description": "运营中心_精英班班次管理_完结班次",
+        "url": "Operation\/JyhJybClass\/finishStatus"
+    },
+    {
+        "node_id": 491,
+        "level": 3,
+        "description": "运营中心_精英班班次管理_服务期设置",
+        "url": "Operation\/JyhJybClass\/setClassServiceDate"
+    },
+    {
+        "node_id": 492,
+        "level": 3,
+        "description": "运营中心_精英班班次管理_手动执行一次",
+        "url": "Operation\/JyhJybClass\/manualExecute"
+    },
+    {
+        "node_id": 493,
+        "level": 3,
+        "description": "运营中心_精英班班次管理_变更班主任",
+        "url": "Operation\/JyhJybClass\/changeTeacher"
+    },
+    {
+        "node_id": 494,
+        "level": 3,
+        "description": "运营中心_精英班审批_列表",
+        "url": "Operation\/JyhJybCheck\/index"
+    },
+    {
+        "node_id": 495,
+        "level": 3,
+        "description": "运营中心_精英班审批_详情",
+        "url": "Operation\/JyhJybCheck\/detail"
+    },
+    {
+        "node_id": 496,
+        "level": 3,
+        "description": "运营中心_精英班审批_评论",
+        "url": "Operation\/JyhJybCheck\/approvalComment"
+    },
+    {
+        "node_id": 497,
+        "level": 3,
+        "description": "运营中心_精英班审批_审批同意\/拒绝",
+        "url": "Operation\/JyhJybCheck\/approvalStatus"
+    },
+    {
+        "node_id": 498,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_左侧班次列表",
+        "url": "Operation\/JyhJybExecute\/classList"
+    },
+    {
+        "node_id": 499,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_执行班次详情",
+        "url": "Operation\/JyhJybExecute\/classInfo"
+    },
+    {
+        "node_id": 500,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_执行列表",
+        "url": "Operation\/JyhJybExecute\/index"
+    },
+    {
+        "node_id": 501,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_批量变更班次",
+        "url": "Operation\/JyhJybExecute\/editBatchClass"
+    },
+    {
+        "node_id": 502,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_变更班次下拉列表",
+        "url": "Operation\/JyhJybExecute\/changeClassList"
+    },
+    {
+        "node_id": 503,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_客户基本信息",
+        "url": "Operation\/JyhJybExecute\/getCustomerInfo"
+    },
+    {
+        "node_id": 504,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_客户基本信息编辑",
+        "url": "Operation\/JyhJybExecute\/editCustomerInfo"
+    },
+    {
+        "node_id": 505,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_客户联系信息",
+        "url": "Operation\/JyhJybExecute\/getCustomerLinkInfo"
+    },
+    {
+        "node_id": 506,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_营收和退款",
+        "url": "Operation\/JyhJybExecute\/incomeAndRefundList"
+    },
+    {
+        "node_id": 507,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_编辑学员信息",
+        "url": "Operation\/JyhJybExecute\/editStudentInfo"
+    },
+    {
+        "node_id": 508,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_学员列表",
+        "url": "Operation\/JyhJybExecute\/studentList"
+    },
+    {
+        "node_id": 509,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_学员详情",
+        "url": "Operation\/JyhJybExecute\/studentInfo"
+    },
+    {
+        "node_id": 510,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_店铺调研列表",
+        "url": "Operation\/JyhJybExecute\/orderSurveyList"
+    },
+    {
+        "node_id": 511,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_店铺调研信息",
+        "url": "Operation\/JyhJybExecute\/orderSurveyInfo"
+    },
+    {
+        "node_id": 512,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_导出店铺调研表",
+        "url": "Operation\/JyhJybExecute\/exportOrderSurvey"
+    },
+    {
+        "node_id": 513,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_冻结授权帐号",
+        "url": "Operation\/JyhJybExecute\/freezeAuthorizeAccount"
+    },
+    {
+        "node_id": 514,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_回复授权帐号",
+        "url": "Operation\/JyhJybExecute\/recoverAuthorizeAccount"
+    },
+    {
+        "node_id": 515,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_获取服务期结束时间",
+        "url": "Operation\/JyhJybExecute\/getServiceEndTime"
+    },
+    {
+        "node_id": 516,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_服务期设置",
+        "url": "Operation\/JyhJybExecute\/setClassServiceDate"
+    },
+    {
+        "node_id": 517,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_获取调研地址",
+        "url": "Operation\/JyhJybExecute\/getSurveyUrl"
+    },
+    {
+        "node_id": 518,
+        "level": 3,
+        "description": "运营中心_精英班执行管理_变更授权帐号",
+        "url": "Operation\/JyhJybExecute\/updateAuthorizeAccount"
+    },
+    {
+        "node_id": 519,
+        "level": 3,
+        "description": "资源中心_资源中心资源管理部客户库_外宣页面列表",
+        "url": "Resource\/CustomerResource\/outList"
+    },
+    {
+        "node_id": 520,
+        "level": 3,
+        "description": "资源中心_资源中心资源管理部客户库_资源管理列表",
+        "url": "Resource\/CustomerResource\/index"
+    },
+    {
+        "node_id": 521,
+        "level": 3,
+        "description": "资源中心_资源中心资源管理部客户库_业务部门列表",
+        "url": "Resource\/CustomerResource\/firmList"
+    },
+    {
+        "node_id": 522,
+        "level": 3,
+        "description": "资源中心_资源中心资源管理部客户库_获取销售列表",
+        "url": "Resource\/CustomerResource\/getAdmUser"
+    },
+    {
+        "node_id": 523,
+        "level": 3,
+        "description": "资源中心_资源中心资源管理部客户库_销售分配",
+        "url": "Resource\/CustomerResource\/allot"
+    },
+    {
+        "node_id": 524,
+        "level": 3,
+        "description": "资源中心_资源中心资源管理部客户库_客户编辑信息",
+        "url": "Resource\/CustomerResource\/editData"
+    },
+    {
+        "node_id": 525,
+        "level": 3,
+        "description": "资源中心_资源中心资源管理部客户库_客户编辑操作",
+        "url": "Resource\/CustomerResource\/edit"
+    },
+    {
+        "node_id": 526,
+        "level": 3,
+        "description": "资源中心_资源中心资源管理部客户库_客户删除操作",
+        "url": "Resource\/CustomerResource\/delete"
+    },
+    {
+        "node_id": 527,
+        "level": 3,
+        "description": "资源中心_资源中心资源管理部客户库_导入",
+        "url": "Resource\/CustomerResource\/import"
+    },
+    {
+        "node_id": 528,
+        "level": 3,
+        "description": "资源中心_资源中心业务部门客户库_业务部门列表",
+        "url": "Resource\/CustomerFirm\/index"
+    },
+    {
+        "node_id": 529,
+        "level": 3,
+        "description": "资源中心_资源中心业务部门客户库_获取销售列表",
+        "url": "Resource\/CustomerFirm\/getAdmUser"
+    },
+    {
+        "node_id": 530,
+        "level": 3,
+        "description": "资源中心_资源中心业务部门客户库_销售分配",
+        "url": "Resource\/CustomerFirm\/allot"
+    },
+    {
+        "node_id": 531,
+        "level": 3,
+        "description": "资源中心_资源中心销售资源管理_销售列表",
+        "url": "Resource\/Seller\/index"
+    },
+    {
+        "node_id": 532,
+        "level": 3,
+        "description": "资源中心_资源中心销售资源管理_销售详情",
+        "url": "Resource\/Seller\/detail"
+    },
+    {
+        "node_id": 533,
+        "level": 3,
+        "description": "资源中心_资源中心销售资源管理_销售某产品线下的客户列表",
+        "url": "Resource\/Seller\/customerList"
+    },
+    {
+        "node_id": 534,
+        "level": 3,
+        "description": "资源中心_资源中心销售资源管理_获取销售列表",
+        "url": "Resource\/Seller\/getAdmUser"
+    },
+    {
+        "node_id": 535,
+        "level": 3,
+        "description": "资源中心_资源中心销售资源管理_销售分配",
+        "url": "Resource\/Seller\/allot"
+    },
+    {
+        "node_id": 536,
+        "level": 3,
+        "description": "资源中心_资源中心销售资源管理_客户编辑信息",
+        "url": "Resource\/Seller\/editData"
+    },
+    {
+        "node_id": 537,
+        "level": 3,
+        "description": "资源中心_资源中心销售资源管理_客户编辑操作",
+        "url": "Resource\/Seller\/edit"
+    },
+    {
+        "node_id": 538,
+        "level": 3,
+        "description": "资源中心_资源中心新老客户管理_新老客户列表",
+        "url": "Resource\/Customer\/index"
+    },
+    {
+        "node_id": 539,
+        "level": 3,
+        "description": "资源中心_资源中心新老客户管理_变更新老客户",
+        "url": "Resource\/Customer\/change"
+    },
+    {
+        "node_id": 540,
+        "level": 3,
+        "description": "资源中心_资源中心库容管理_库存列表",
+        "url": "Resource\/Volumn\/index"
+    },
+    {
+        "node_id": 541,
+        "level": 3,
+        "description": "资源中心_资源中心库容管理_编辑库容",
+        "url": "Resource\/Volumn\/update"
+    },
+    {
+        "node_id": 542,
+        "level": 3,
+        "description": "资源中心_资源中心订单管理_订单列表",
+        "url": "Resource\/Order\/index"
+    },
+    {
+        "node_id": 543,
+        "level": 3,
+        "description": "资源中心_资源中心订单管理_订单详情",
+        "url": "Resource\/Order\/detail"
+    },
+    {
+        "node_id": 544,
+        "level": 3,
+        "description": "资源中心_资源中心订单管理_获取同一客户类型下的客户",
+        "url": "Resource\/Order\/getCustomer"
+    },
+    {
+        "node_id": 545,
+        "level": 3,
+        "description": "资源中心_资源中心订单管理_变更订单客户",
+        "url": "Resource\/Order\/change"
+    },
+    {
+        "node_id": 549,
+        "level": 3,
+        "description": "运营中心_内容引爆班次管理_班次列表",
+        "url": "Operation\/NrClass\/index"
+    },
+    {
+        "node_id": 550,
+        "level": 3,
+        "description": "运营中心_内容引爆班次管理_班次详情",
+        "url": "Operation\/NrClass\/detail"
+    },
+    {
+        "node_id": 551,
+        "level": 3,
+        "description": "运营中心_内容引爆班次管理_获取本业务线产品下的班主任",
+        "url": "Operation\/NrClass\/teacherList"
+    },
+    {
+        "node_id": 552,
+        "level": 3,
+        "description": "运营中心_内容引爆班次管理_新增班次",
+        "url": "Operation\/NrClass\/insert"
+    },
+    {
+        "node_id": 553,
+        "level": 3,
+        "description": "运营中心_内容引爆班次管理_班次编辑",
+        "url": "Operation\/NrClass\/update"
+    },
+    {
+        "node_id": 554,
+        "level": 3,
+        "description": "运营中心_内容引爆班次管理_打单开关",
+        "url": "Operation\/NrClass\/optStatus"
+    },
+    {
+        "node_id": 555,
+        "level": 3,
+        "description": "运营中心_内容引爆班次管理_变更班主任",
+        "url": "Operation\/NrClass\/changeTeacher"
+    },
+    {
+        "node_id": 556,
+        "level": 3,
+        "description": "运营中心_内容引爆班次管理_班次服务设置",
+        "url": "Operation\/NrClass\/setClassServiceDate"
+    },
+    {
+        "node_id": 557,
+        "level": 3,
+        "description": "运营中心_内容引爆班次管理_完结班次",
+        "url": "Operation\/NrClass\/finishStatus"
+    },
+    {
+        "node_id": 558,
+        "level": 2,
+        "description": "运营中心_内容引爆班次管理",
+        "url": ""
+    },
+    {
+        "node_id": 559,
+        "level": 2,
+        "description": "运营中心_内容引爆执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 560,
+        "level": 2,
+        "description": "运营中心_内容引爆审批管理",
+        "url": ""
+    },
+    {
+        "node_id": 561,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_执行列表",
+        "url": "Operation\/NrExecute\/index"
+    },
+    {
+        "node_id": 562,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_左侧班次列表",
+        "url": "Operation\/NrExecute\/classList"
+    },
+    {
+        "node_id": 563,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_执行服务器设置",
+        "url": "Operation\/NrExecute\/setClassServiceDate"
+    },
+    {
+        "node_id": 564,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_变更班次下拉列表",
+        "url": "Operation\/NrExecute\/changeClassList"
+    },
+    {
+        "node_id": 565,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_批量变更班次",
+        "url": "Operation\/NrExecute\/editBatchClass"
+    },
+    {
+        "node_id": 566,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_确认执行",
+        "url": "Operation\/NrExecute\/finishExecute"
+    },
+    {
+        "node_id": 567,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_班次完结",
+        "url": "Operation\/NrExecute\/finishClass"
+    },
+    {
+        "node_id": 568,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_基本信息",
+        "url": "Operation\/NrExecute\/getCustomerInfo"
+    },
+    {
+        "node_id": 569,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_基本信息编辑",
+        "url": "Operation\/NrExecute\/updateCustomer"
+    },
+    {
+        "node_id": 570,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_联系信息",
+        "url": "Operation\/NrExecute\/getCustomerLinkInfo"
+    },
+    {
+        "node_id": 571,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_学员列表",
+        "url": "Operation\/NrExecute\/studentList"
+    },
+    {
+        "node_id": 572,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_学员信息",
+        "url": "Operation\/NrExecute\/studentInfo"
+    },
+    {
+        "node_id": 573,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_学员信息编辑",
+        "url": "Operation\/NrExecute\/updateStudent"
+    },
+    {
+        "node_id": 574,
+        "level": 3,
+        "description": "运营中心_内容引爆执行管理_执行营收和退款",
+        "url": "Operation\/NrExecute\/incomeAndRefundList"
+    },
+    {
+        "node_id": 575,
+        "level": 3,
+        "description": "运营中心_内容引爆审批管理_审批列表",
+        "url": "Operation\/NrCheck\/index"
+    },
+    {
+        "node_id": 576,
+        "level": 3,
+        "description": "运营中心_内容引爆审批管理_审批详情",
+        "url": "Operation\/NrCheck\/detail"
+    },
+    {
+        "node_id": 577,
+        "level": 3,
+        "description": "运营中心_内容引爆审批管理_审批评论",
+        "url": "Operation\/NrCheck\/comment"
+    },
+    {
+        "node_id": 578,
+        "level": 3,
+        "description": "运营中心_内容引爆审批管理_审批同意\/拒绝",
+        "url": "Operation\/NrCheck\/check"
+    },
+    {
+        "node_id": 579,
+        "level": 2,
+        "description": "运营中心_特训营班次管理",
+        "url": ""
+    },
+    {
+        "node_id": 580,
+        "level": 2,
+        "description": "运营中心_特训营执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 581,
+        "level": 2,
+        "description": "运营中心_特训营审批管理",
+        "url": ""
+    },
+    {
+        "node_id": 582,
+        "level": 3,
+        "description": "运营中心_特训营班次管理_班次列表",
+        "url": "Operation\/TxClass\/index"
+    },
+    {
+        "node_id": 583,
+        "level": 3,
+        "description": "运营中心_特训营班次管理_班次详情",
+        "url": "Operation\/TxClass\/detail"
+    },
+    {
+        "node_id": 584,
+        "level": 3,
+        "description": "运营中心_特训营班次管理_获取本业务线产品下的班主任",
+        "url": "Operation\/TxClass\/teacherList"
+    },
+    {
+        "node_id": 585,
+        "level": 3,
+        "description": "运营中心_特训营班次管理_新增班次",
+        "url": "Operation\/TxClass\/insert"
+    },
+    {
+        "node_id": 586,
+        "level": 3,
+        "description": "运营中心_特训营班次管理_班次编辑",
+        "url": "Operation\/TxClass\/update"
+    },
+    {
+        "node_id": 587,
+        "level": 3,
+        "description": "运营中心_特训营班次管理_打单开关",
+        "url": "Operation\/TxClass\/optStatus"
+    },
+    {
+        "node_id": 588,
+        "level": 3,
+        "description": "运营中心_特训营班次管理_变更班主任",
+        "url": "Operation\/TxClass\/changeTeacher"
+    },
+    {
+        "node_id": 589,
+        "level": 3,
+        "description": "运营中心_特训营班次管理_班次服务设置",
+        "url": "Operation\/TxClass\/setClassServiceDate"
+    },
+    {
+        "node_id": 590,
+        "level": 3,
+        "description": "运营中心_特训营班次管理_完结班次",
+        "url": "Operation\/TxClass\/finishStatus"
+    },
+    {
+        "node_id": 591,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_执行列表",
+        "url": "Operation\/TxExecute\/index"
+    },
+    {
+        "node_id": 592,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_左侧班次列表",
+        "url": "Operation\/TxExecute\/classList"
+    },
+    {
+        "node_id": 593,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_执行服务器设置",
+        "url": "Operation\/TxExecute\/setClassServiceDate"
+    },
+    {
+        "node_id": 594,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_变更班次下拉列表",
+        "url": "Operation\/TxExecute\/changeClassList"
+    },
+    {
+        "node_id": 595,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_批量变更班次",
+        "url": "Operation\/TxExecute\/editBatchClass"
+    },
+    {
+        "node_id": 596,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_确认执行",
+        "url": "Operation\/TxExecute\/finishExecute"
+    },
+    {
+        "node_id": 597,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_班次完结",
+        "url": "Operation\/TxExecute\/finishClass"
+    },
+    {
+        "node_id": 598,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_基本信息",
+        "url": "Operation\/TxExecute\/getCustomerInfo"
+    },
+    {
+        "node_id": 599,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_基本信息编辑",
+        "url": "Operation\/TxExecute\/updateCustomer"
+    },
+    {
+        "node_id": 600,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_联系信息",
+        "url": "Operation\/TxExecute\/getCustomerLinkInfo"
+    },
+    {
+        "node_id": 601,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_学员列表",
+        "url": "Operation\/TxExecute\/studentList"
+    },
+    {
+        "node_id": 602,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_学员信息",
+        "url": "Operation\/TxExecute\/studentInfo"
+    },
+    {
+        "node_id": 603,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_学员信息编辑",
+        "url": "Operation\/TxExecute\/updateStudent"
+    },
+    {
+        "node_id": 604,
+        "level": 3,
+        "description": "运营中心_特训营执行管理_执行营收和退款",
+        "url": "Operation\/TxExecute\/incomeAndRefundList"
+    },
+    {
+        "node_id": 605,
+        "level": 3,
+        "description": "运营中心_特训营审批管理_审批列表",
+        "url": "Operation\/TxCheck\/index"
+    },
+    {
+        "node_id": 606,
+        "level": 3,
+        "description": "运营中心_特训营审批管理_审批详情",
+        "url": "Operation\/TxCheck\/detail"
+    },
+    {
+        "node_id": 607,
+        "level": 3,
+        "description": "运营中心_特训营审批管理_审批评论",
+        "url": "Operation\/TxCheck\/comment"
+    },
+    {
+        "node_id": 608,
+        "level": 3,
+        "description": "运营中心_特训营审批管理_审批同意\/拒绝",
+        "url": "Operation\/TxCheck\/check"
+    },
+    {
+        "node_id": 609,
+        "level": 2,
+        "description": "销售中心_审批管理",
+        "url": ""
+    },
+    {
+        "node_id": 611,
+        "level": 3,
+        "description": "销售中心_我的客户_新增邮寄信息",
+        "url": "Crm\/CustomerAddress\/insert"
+    },
+    {
+        "node_id": 618,
+        "level": 3,
+        "description": "业务管理-有效联系统计-列表",
+        "url": "Statistic\/ContactCount\/index"
+    },
+    {
+        "node_id": 620,
+        "level": 3,
+        "description": "销售中心_到账信息管理_列表",
+        "url": "Crm\/OrderReceived\/index"
+    },
+    {
+        "node_id": 621,
+        "level": 3,
+        "description": "销售中心_到账信息管理_新增",
+        "url": "Crm\/OrderReceived\/insert"
+    },
+    {
+        "node_id": 623,
+        "level": 3,
+        "description": "销售中心_审批管理_评论",
+        "url": "Crm\/Approval\/comment"
+    },
+    {
+        "node_id": 626,
+        "level": 3,
+        "description": "销售中心_审批管理_详情",
+        "url": "Crm\/Approval\/detail"
+    },
+    {
+        "node_id": 627,
+        "level": 3,
+        "description": "销售中心_审批管理_列表",
+        "url": "Crm\/Approval\/index"
+    },
+    {
+        "node_id": 628,
+        "level": 3,
+        "description": "销售中心_我的客户_新建跟进",
+        "url": "Crm\/CustomerComment\/insert"
+    },
+    {
+        "node_id": 672,
+        "level": 3,
+        "description": "运营中心_执行管理_设置服务期",
+        "url": "Operation\/AiyoExecute\/setServiceDate"
+    },
+    {
+        "node_id": 673,
+        "level": 2,
+        "description": "财务中心_订单对账管理",
+        "url": ""
+    },
+    {
+        "node_id": 674,
+        "level": 2,
+        "description": "财务中心_交易流水对账管理",
+        "url": ""
+    },
+    {
+        "node_id": 675,
+        "level": 2,
+        "description": "财务中心-开票管理",
+        "url": ""
+    },
+    {
+        "node_id": 677,
+        "level": 2,
+        "description": "财务中心_绩效",
+        "url": ""
+    },
+    {
+        "node_id": 678,
+        "level": 2,
+        "description": "财务中心_确认收入统计",
+        "url": ""
+    },
+    {
+        "node_id": 679,
+        "level": 2,
+        "description": "财务中心-合同查询",
+        "url": ""
+    },
+    {
+        "node_id": 680,
+        "level": 3,
+        "description": "财务中心_对账上传_对账文件模板",
+        "url": "Finance\/PayLog\/getTemp"
+    },
+    {
+        "node_id": 681,
+        "level": 3,
+        "description": "财务中心_订单对账管理_列表",
+        "url": "Finance\/OrderReceived\/index"
+    },
+    {
+        "node_id": 682,
+        "level": 3,
+        "description": "财务中心_订单对账管理_详情",
+        "url": "Finance\/OrderReceived\/detail"
+    },
+    {
+        "node_id": 683,
+        "level": 3,
+        "description": "财务中心_订单对账管理_下载报表",
+        "url": "Finance\/OrderReceived\/download"
+    },
+    {
+        "node_id": 684,
+        "level": 3,
+        "description": "财务中心_交易流水对账管理_列表",
+        "url": "Finance\/TransactionLog\/index"
+    },
+    {
+        "node_id": 685,
+        "level": 3,
+        "description": "财务中心_交易流水对账管理_详情",
+        "url": "Finance\/TransactionLog\/detail"
+    },
+    {
+        "node_id": 686,
+        "level": 3,
+        "description": "财务中心_交易流水对账管理_下载报表",
+        "url": "Finance\/TransactionLog\/download"
+    },
+    {
+        "node_id": 687,
+        "level": 3,
+        "description": "财务中心_开票管理_列表",
+        "url": "Finance\/Invoice\/invoicedList"
+    },
+    {
+        "node_id": 688,
+        "level": 3,
+        "description": "财务中心_开票管理_详情",
+        "url": "Finance\/Invoice\/detail"
+    },
+    {
+        "node_id": 689,
+        "level": 3,
+        "description": "财务中心_开票管理_审批",
+        "url": "Finance\/Invoice\/updateStatus"
+    },
+    {
+        "node_id": 690,
+        "level": 3,
+        "description": "财务中心_开票管理_评论",
+        "url": "Finance\/Invoice\/comment"
+    },
+    {
+        "node_id": 691,
+        "level": 3,
+        "description": "财务中心_开票管理_确认开票",
+        "url": "Finance\/Invoice\/check"
+    },
+    {
+        "node_id": 693,
+        "level": 3,
+        "description": "财务中心_退款管理_详情",
+        "url": "Finance\/Refund\/detail"
+    },
+    {
+        "node_id": 694,
+        "level": 3,
+        "description": "财务中心_退款管理_评论",
+        "url": "Finance\/Refund\/comment"
+    },
+    {
+        "node_id": 695,
+        "level": 3,
+        "description": "财务中心_退款管理_确认退款",
+        "url": "Finance\/Refund\/check"
+    },
+    {
+        "node_id": 696,
+        "level": 3,
+        "description": "财务中心_绩效_列表",
+        "url": "Finance\/Performance\/index"
+    },
+    {
+        "node_id": 697,
+        "level": 3,
+        "description": "财务中心_绩效_下载excel表格",
+        "url": "Finance\/Performance\/download"
+    },
+    {
+        "node_id": 698,
+        "level": 3,
+        "description": "财务中心_确认收入统计_列表",
+        "url": "Finance\/Statistics\/index"
+    },
+    {
+        "node_id": 699,
+        "level": 3,
+        "description": "财务中心_确认收入统计_新增项目总额下载",
+        "url": "Finance\/Statistics\/Amountdownload"
+    },
+    {
+        "node_id": 700,
+        "level": 3,
+        "description": "财务中心_确认收入统计_新增已确认金额",
+        "url": "Finance\/Statistics\/Affirmdownload"
+    },
+    {
+        "node_id": 701,
+        "level": 3,
+        "description": "财务管理-合同查询-列表",
+        "url": "Finance\/Contract\/index"
+    },
+    {
+        "node_id": 703,
+        "level": 3,
+        "description": "财务中心_退款管理_退款途径",
+        "url": "Finance\/Refund\/pathwayList"
+    },
+    {
+        "node_id": 705,
+        "level": 2,
+        "description": "销售中心_部门销售",
+        "url": ""
+    },
+    {
+        "node_id": 706,
+        "level": 3,
+        "description": "销售中心_部门销售_列表",
+        "url": "Crm\/DeptSeller\/index"
+    },
+    {
+        "node_id": 707,
+        "level": 3,
+        "description": "销售中心_部门销售_导入",
+        "url": "Crm\/DeptSeller\/import"
+    },
+    {
+        "node_id": 710,
+        "level": 2,
+        "description": "销售中心_近期流出",
+        "url": ""
+    },
+    {
+        "node_id": 711,
+        "level": 3,
+        "description": "销售中心-近期流失_列表",
+        "url": "Crm\/CustomerOut\/index"
+    },
+    {
+        "node_id": 712,
+        "level": 1,
+        "description": "风控中心",
+        "url": ""
+    },
+    {
+        "node_id": 713,
+        "level": 2,
+        "description": "风控中心_退款审批",
+        "url": ""
+    },
+    {
+        "node_id": 714,
+        "level": 3,
+        "description": "风控中心_退款审批_列表",
+        "url": "Law\/Refund\/index"
+    },
+    {
+        "node_id": 715,
+        "level": 3,
+        "description": "风控中心_退款审批_评论",
+        "url": "Law\/Refund\/comment"
+    },
+    {
+        "node_id": 716,
+        "level": 3,
+        "description": "风控中心_退款审批_同意\/拒绝",
+        "url": "Law\/Refund\/check"
+    },
+    {
+        "node_id": 717,
+        "level": 1,
+        "description": "人力中心",
+        "url": ""
+    },
+    {
+        "node_id": 718,
+        "level": 2,
+        "description": "人力中心-个人业绩",
+        "url": ""
+    },
+    {
+        "node_id": 719,
+        "level": 3,
+        "description": "人力中心-个人业绩-列表",
+        "url": "HumanResource\/Achievement\/index"
+    },
+    {
+        "node_id": 721,
+        "level": 1,
+        "description": "业务管理",
+        "url": ""
+    },
+    {
+        "node_id": 722,
+        "level": 2,
+        "description": "业务管理-盘活量统计",
+        "url": ""
+    },
+    {
+        "node_id": 723,
+        "level": 3,
+        "description": "业务管理-盘活量统计-列表",
+        "url": "Statistic\/Active\/index"
+    },
+    {
+        "node_id": 724,
+        "level": 2,
+        "description": "业务管理-新增客户数",
+        "url": ""
+    },
+    {
+        "node_id": 725,
+        "level": 3,
+        "description": "业务管理-新增客户数-列表",
+        "url": "Statistic\/NewCustomer\/index"
+    },
+    {
+        "node_id": 726,
+        "level": 2,
+        "description": "业务管理-战报单数排名",
+        "url": ""
+    },
+    {
+        "node_id": 727,
+        "level": 3,
+        "description": "业务管理-战报单数排名-列表",
+        "url": "Statistic\/NewOrder\/index"
+    },
+    {
+        "node_id": 728,
+        "level": 2,
+        "description": "风控中心-跟进检视",
+        "url": ""
+    },
+    {
+        "node_id": 729,
+        "level": 3,
+        "description": "风控中心-跟进检视-列表",
+        "url": "Law\/FollowReview\/index"
+    },
+    {
+        "node_id": 730,
+        "level": 2,
+        "description": "业务管理-轨迹日志",
+        "url": ""
+    },
+    {
+        "node_id": 731,
+        "level": 3,
+        "description": "业务管理-轨迹日志-列表",
+        "url": "Statistic\/CustomerLog\/index"
+    },
+    {
+        "node_id": 732,
+        "level": 2,
+        "description": "业务管理-战报金额排名",
+        "url": ""
+    },
+    {
+        "node_id": 733,
+        "level": 3,
+        "description": "业务管理-战报金额排名-列表",
+        "url": "Statistic\/WarAmount\/index"
+    },
+    {
+        "node_id": 734,
+        "level": 2,
+        "description": "业务管理-战报明细",
+        "url": ""
+    },
+    {
+        "node_id": 735,
+        "level": 3,
+        "description": "业务管理-战报明细-列表",
+        "url": "Statistic\/WarDetail\/index"
+    },
+    {
+        "node_id": 736,
+        "level": 2,
+        "description": "业务管理-需对账订单统计",
+        "url": ""
+    },
+    {
+        "node_id": 737,
+        "level": 2,
+        "description": "业务管理-需资格审核订单统计",
+        "url": ""
+    },
+    {
+        "node_id": 740,
+        "level": 2,
+        "description": "业务管理-新入司库统计",
+        "url": ""
+    },
+    {
+        "node_id": 741,
+        "level": 2,
+        "description": "业务管理-客户分布情况",
+        "url": ""
+    },
+    {
+        "node_id": 742,
+        "level": 2,
+        "description": "业务管理-流失统计",
+        "url": ""
+    },
+    {
+        "node_id": 743,
+        "level": 2,
+        "description": "业务管理-联系有效排名",
+        "url": ""
+    },
+    {
+        "node_id": 744,
+        "level": 2,
+        "description": "业务管理-库容使用率排名",
+        "url": ""
+    },
+    {
+        "node_id": 745,
+        "level": 2,
+        "description": "业务管理-近期流出统计列表",
+        "url": ""
+    },
+    {
+        "node_id": 746,
+        "level": 3,
+        "description": "业务管理-联系有效排名-列表",
+        "url": "Statistic\/ContractStat\/index"
+    },
+    {
+        "node_id": 747,
+        "level": 3,
+        "description": "业务管理-客户分布情况-列表",
+        "url": "Statistic\/CustomerCount\/index"
+    },
+    {
+        "node_id": 748,
+        "level": 3,
+        "description": "业务管理-新入司库统计-列表",
+        "url": "Statistic\/BePutInStorage\/index"
+    },
+    {
+        "node_id": 750,
+        "level": 3,
+        "description": "业务管理-需对账订单统计-列表",
+        "url": "Statistic\/AccountChecking\/index"
+    },
+    {
+        "node_id": 751,
+        "level": 3,
+        "description": "业务管理-需资格审核订单统计-列表",
+        "url": "Statistic\/QualificationReview\/index"
+    },
+    {
+        "node_id": 752,
+        "level": 2,
+        "description": "销售中心_有效联系统计",
+        "url": ""
+    },
+    {
+        "node_id": 757,
+        "level": 2,
+        "description": "业务管理-团队审批",
+        "url": ""
+    },
+    {
+        "node_id": 758,
+        "level": 3,
+        "description": "业务管理-团队审批-列表",
+        "url": "Statistic\/ManagerCheck\/index"
+    },
+    {
+        "node_id": 759,
+        "level": 3,
+        "description": "业务管理-团队审批-详情",
+        "url": "Statistic\/ManagerCheck\/detail"
+    },
+    {
+        "node_id": 760,
+        "level": 3,
+        "description": "业务管理-团队审批-同意",
+        "url": "Statistic\/ManagerCheck\/yes"
+    },
+    {
+        "node_id": 761,
+        "level": 3,
+        "description": "业务管理-团队审批-拒绝",
+        "url": "Statistic\/ManagerCheck\/no"
+    },
+    {
+        "node_id": 762,
+        "level": 3,
+        "description": "业务管理-团队审批-评论",
+        "url": "Statistic\/ManagerCheck\/comment"
+    },
+    {
+        "node_id": 763,
+        "level": 1,
+        "description": "菁英汇管理",
+        "url": ""
+    },
+    {
+        "node_id": 764,
+        "level": 2,
+        "description": "菁英汇管理-解决方案统计",
+        "url": ""
+    },
+    {
+        "node_id": 765,
+        "level": 2,
+        "description": "菁英汇管理-平均诊断值统计",
+        "url": ""
+    },
+    {
+        "node_id": 766,
+        "level": 2,
+        "description": "菁英汇管理-班次诊断数据统计",
+        "url": ""
+    },
+    {
+        "node_id": 767,
+        "level": 2,
+        "description": "菁英汇管理-班次视频数据统计",
+        "url": ""
+    },
+    {
+        "node_id": 768,
+        "level": 3,
+        "description": "菁英汇管理-解决方案统计-列表",
+        "url": "JyhManage\/Solution\/index"
+    },
+    {
+        "node_id": 769,
+        "level": 3,
+        "description": "菁英汇管理-平均诊断值统计-列表",
+        "url": "JyhManage\/MeanDiag\/index"
+    },
+    {
+        "node_id": 770,
+        "level": 3,
+        "description": "菁英汇管理-班次诊断数据统计-列表",
+        "url": "JyhManage\/ClassDiag\/index"
+    },
+    {
+        "node_id": 771,
+        "level": 3,
+        "description": "菁英汇管理-班次视频数据统计-列表",
+        "url": "JyhManage\/ClassVideo\/index"
+    },
+    {
+        "node_id": 772,
+        "level": 2,
+        "description": "业务管理-新增成熟度统计",
+        "url": ""
+    },
+    {
+        "node_id": 773,
+        "level": 3,
+        "description": "业务管理-新增成熟度统计-列表",
+        "url": "Statistic\/NewMaturity\/index"
+    },
+    {
+        "node_id": 774,
+        "level": 2,
+        "description": "风控中心-通告管理",
+        "url": ""
+    },
+    {
+        "node_id": 775,
+        "level": 3,
+        "description": "风控中心-通告管理-列表",
+        "url": "Law\/Notice\/index"
+    },
+    {
+        "node_id": 776,
+        "level": 1,
+        "description": "财务管理",
+        "url": ""
+    },
+    {
+        "node_id": 777,
+        "level": 2,
+        "description": "财务管理-退款率",
+        "url": ""
+    },
+    {
+        "node_id": 778,
+        "level": 3,
+        "description": "财务管理-退款率-列表",
+        "url": "FinanceManage\/RefundRate\/index"
+    },
+    {
+        "node_id": 779,
+        "level": 2,
+        "description": "运营中心_淘大班次管理",
+        "url": ""
+    },
+    {
+        "node_id": 780,
+        "level": 2,
+        "description": "运营中心_淘大执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 781,
+        "level": 2,
+        "description": "运营中心_淘大审批管理",
+        "url": ""
+    },
+    {
+        "node_id": 782,
+        "level": 3,
+        "description": "运营中心_淘大班次管理_班次列表",
+        "url": "Operation\/TaodaClass\/index"
+    },
+    {
+        "node_id": 783,
+        "level": 3,
+        "description": "运营中心_淘大班次管理_班次详情",
+        "url": "Operation\/TaodaClass\/detail"
+    },
+    {
+        "node_id": 784,
+        "level": 3,
+        "description": "运营中心_淘大班次管理_新增班次",
+        "url": "Operation\/TaodaClass\/insert"
+    },
+    {
+        "node_id": 785,
+        "level": 3,
+        "description": "运营中心_淘大班次管理_班次编辑",
+        "url": "Operation\/TaodaClass\/update"
+    },
+    {
+        "node_id": 786,
+        "level": 3,
+        "description": "运营中心_淘大班次管理_打单开关",
+        "url": "Operation\/TaodaClass\/optStatus"
+    },
+    {
+        "node_id": 787,
+        "level": 3,
+        "description": "运营中心_淘大班次管理_班次服务设置",
+        "url": "Operation\/TaodaClass\/setClassServiceDate"
+    },
+    {
+        "node_id": 788,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_执行列表",
+        "url": "Operation\/TaodaExecute\/index"
+    },
+    {
+        "node_id": 789,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_左侧班次列表",
+        "url": "Operation\/TaodaExecute\/classList"
+    },
+    {
+        "node_id": 790,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_确认执行",
+        "url": "Operation\/TaodaExecute\/finishExecute"
+    },
+    {
+        "node_id": 791,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_班次完结",
+        "url": "Operation\/TaodaExecute\/finishClass"
+    },
+    {
+        "node_id": 792,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_基本信息",
+        "url": "Operation\/TaodaExecute\/getCustomerInfo"
+    },
+    {
+        "node_id": 793,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_基本信息编辑",
+        "url": "Operation\/TaodaExecute\/setCustomerInfo"
+    },
+    {
+        "node_id": 794,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_联系信息",
+        "url": "Operation\/TaodaExecute\/getCustomerLinkInfo"
+    },
+    {
+        "node_id": 795,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_店铺调研列表",
+        "url": "Operation\/TaodaExecute\/orderSurveyList"
+    },
+    {
+        "node_id": 796,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_店铺调研信息",
+        "url": "Operation\/TaodaExecute\/orderSurveyInfo"
+    },
+    {
+        "node_id": 797,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_学员列表",
+        "url": "Operation\/TaodaExecute\/studentList"
+    },
+    {
+        "node_id": 798,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_学员信息",
+        "url": "Operation\/TaodaExecute\/studentInfo"
+    },
+    {
+        "node_id": 799,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_学员信息编辑",
+        "url": "Operation\/TaodaExecute\/updateStudent"
+    },
+    {
+        "node_id": 800,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_执行营收和退款",
+        "url": "Operation\/TaodaExecute\/incomeAndRefundList"
+    },
+    {
+        "node_id": 801,
+        "level": 3,
+        "description": "运营中心_淘大审批管理_审批列表",
+        "url": "Operation\/TaodaCheck\/index"
+    },
+    {
+        "node_id": 802,
+        "level": 3,
+        "description": "运营中心_淘大审批管理_审批详情",
+        "url": "Operation\/TaodaCheck\/detail"
+    },
+    {
+        "node_id": 803,
+        "level": 3,
+        "description": "运营中心_淘大审批管理_审批评论",
+        "url": "Operation\/TaodaCheck\/comment"
+    },
+    {
+        "node_id": 804,
+        "level": 3,
+        "description": "运营中心_淘大审批管理_审批同意\/拒绝",
+        "url": "Operation\/TaodaCheck\/check"
+    },
+    {
+        "node_id": 805,
+        "level": 3,
+        "description": "资源中心_资源中心订单管理_订单删除",
+        "url": "Resource\/Order\/delete"
+    },
+    {
+        "node_id": 806,
+        "level": 2,
+        "description": "财务管理-人数查询",
+        "url": ""
+    },
+    {
+        "node_id": 807,
+        "level": 3,
+        "description": "风控中心-通告管理-发送",
+        "url": "Law\/Notice\/send"
+    },
+    {
+        "node_id": 808,
+        "level": 2,
+        "description": "风控中心_资格审批",
+        "url": ""
+    },
+    {
+        "node_id": 809,
+        "level": 3,
+        "description": "风控中心_资格审批_列表",
+        "url": "Law\/Execute\/index"
+    },
+    {
+        "node_id": 810,
+        "level": 3,
+        "description": "风控中心_资格审批_评论",
+        "url": "Law\/Execute\/comment"
+    },
+    {
+        "node_id": 811,
+        "level": 3,
+        "description": "风控中心_资格审批_同意\/拒绝",
+        "url": "Law\/Execute\/check"
+    },
+    {
+        "node_id": 812,
+        "level": 3,
+        "description": "财务中心_退款管理_打印用款申请",
+        "url": "Finance\/Refund\/refundedInfo"
+    },
+    {
+        "node_id": 813,
+        "level": 3,
+        "description": "销售中心_审批管理_打印退款申请单",
+        "url": "Crm\/Approval\/refundedInfo"
+    },
+    {
+        "node_id": 814,
+        "level": 2,
+        "description": "",
+        "url": ""
+    },
+    {
+        "node_id": 815,
+        "level": 3,
+        "description": "菁英汇管理-班次日均登陆次数-前10",
+        "url": "JyhManage\/StatLogin\/getClassDailyMeanTop"
+    },
+    {
+        "node_id": 816,
+        "level": 3,
+        "description": "菁英汇管理-班次日均登陆次数",
+        "url": "JyhManage\/StatLogin\/getClassDailyMean"
+    },
+    {
+        "node_id": 817,
+        "level": 3,
+        "description": "菁英汇管理-用户日均登陆次数-top10",
+        "url": "JyhManage\/StatLogin\/getUserDailyMeanTop"
+    },
+    {
+        "node_id": 818,
+        "level": 3,
+        "description": "菁英汇管理-用户日均登陆次数",
+        "url": "JyhManage\/StatLogin\/getUserDailyMean"
+    },
+    {
+        "node_id": 819,
+        "level": 2,
+        "description": "财务管理-发票管理",
+        "url": ""
+    },
+    {
+        "node_id": 820,
+        "level": 3,
+        "description": "财务管理-发票管理-列表",
+        "url": "FinanceManage\/Invoice\/index"
+    },
+    {
+        "node_id": 821,
+        "level": 2,
+        "description": "财务管理-退款查询",
+        "url": ""
+    },
+    {
+        "node_id": 822,
+        "level": 3,
+        "description": "财务管理-退款查询-列表",
+        "url": "FinanceManage\/RefundSearch\/index"
+    },
+    {
+        "node_id": 823,
+        "level": 2,
+        "description": "业务管理-经理审批",
+        "url": ""
+    },
+    {
+        "node_id": 824,
+        "level": 2,
+        "description": "业务管理-总监审批",
+        "url": ""
+    },
+    {
+        "node_id": 825,
+        "level": 3,
+        "description": "业务管理-经理审批-列表",
+        "url": "Statistic\/JlManagerCheck\/index"
+    },
+    {
+        "node_id": 826,
+        "level": 3,
+        "description": "业务管理-经理审批-详情",
+        "url": "Statistic\/JlManagerCheck\/detail"
+    },
+    {
+        "node_id": 827,
+        "level": 3,
+        "description": "业务管理-经理审批-同意",
+        "url": "Statistic\/JlManagerCheck\/yes"
+    },
+    {
+        "node_id": 828,
+        "level": 3,
+        "description": "业务管理-经理审批-拒绝",
+        "url": "Statistic\/JlManagerCheck\/no"
+    },
+    {
+        "node_id": 829,
+        "level": 3,
+        "description": "业务管理-经理审批-评论",
+        "url": "Statistic\/JlManagerCheck\/comment"
+    },
+    {
+        "node_id": 830,
+        "level": 3,
+        "description": "业务管理-总监审批-列表",
+        "url": "Statistic\/ZjManagerCheck\/index"
+    },
+    {
+        "node_id": 831,
+        "level": 3,
+        "description": "业务管理-总监审批-详情",
+        "url": "Statistic\/ZjManagerCheck\/detail"
+    },
+    {
+        "node_id": 832,
+        "level": 3,
+        "description": "业务管理-总监审批-同意",
+        "url": "Statistic\/ZjManagerCheck\/yes"
+    },
+    {
+        "node_id": 833,
+        "level": 3,
+        "description": "业务管理-总监审批-拒绝",
+        "url": "Statistic\/ZjManagerCheck\/no"
+    },
+    {
+        "node_id": 834,
+        "level": 3,
+        "description": "业务管理-总监审批-评论",
+        "url": "Statistic\/ZjManagerCheck\/comment"
+    },
+    {
+        "node_id": 835,
+        "level": 2,
+        "description": "财务管理_确认营收查询",
+        "url": ""
+    },
+    {
+        "node_id": 836,
+        "level": 2,
+        "description": "财务管理_未确认营收查询",
+        "url": ""
+    },
+    {
+        "node_id": 837,
+        "level": 3,
+        "description": "财务管理_确认营收查询_列表",
+        "url": "FinanceManage\/ConfirmExec\/index"
+    },
+    {
+        "node_id": 838,
+        "level": 3,
+        "description": "财务管理_确认营收查询_详情",
+        "url": "FinanceManage\/ConfirmExec\/detail"
+    },
+    {
+        "node_id": 839,
+        "level": 3,
+        "description": "财务管理_未确认营收查询_列表",
+        "url": "FinanceManage\/UnconfirmExec\/index"
+    },
+    {
+        "node_id": 840,
+        "level": 3,
+        "description": "财务管理_未确认营收查询_详情",
+        "url": "FinanceManage\/UnconfirmExec\/detail"
+    },
+    {
+        "node_id": 841,
+        "level": 2,
+        "description": "财务管理_产品分布",
+        "url": ""
+    },
+    {
+        "node_id": 842,
+        "level": 2,
+        "description": "财务管理_客户分布",
+        "url": ""
+    },
+    {
+        "node_id": 843,
+        "level": 3,
+        "description": "财务管理_产品分布_列表",
+        "url": "FinanceManage\/ProductRate\/index"
+    },
+    {
+        "node_id": 844,
+        "level": 3,
+        "description": "财务管理_客户分布_列表",
+        "url": "FinanceManage\/CustomerRate\/index"
+    },
+    {
+        "node_id": 845,
+        "level": 1,
+        "description": "系统中心",
+        "url": ""
+    },
+    {
+        "node_id": 846,
+        "level": 2,
+        "description": "",
+        "url": ""
+    },
+    {
+        "node_id": 847,
+        "level": 2,
+        "description": "运营中心-淘大-玩爆运营-审批管理",
+        "url": ""
+    },
+    {
+        "node_id": 848,
+        "level": 2,
+        "description": "运营中心-淘大-玩爆运营-执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 849,
+        "level": 2,
+        "description": "运营中心-淘大-玩爆运营-产品管理",
+        "url": ""
+    },
+    {
+        "node_id": 850,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-审批管理",
+        "url": "Operation\/TaodaWbyyCheck\/index"
+    },
+    {
+        "node_id": 851,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-审批管理",
+        "url": "Operation\/TaodaWbyyCheck\/detail"
+    },
+    {
+        "node_id": 852,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-审批管理",
+        "url": "Operation\/TaodaWbyyCheck\/check"
+    },
+    {
+        "node_id": 853,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-审批管理",
+        "url": "Operation\/TaodaWbyyCheck\/comment"
+    },
+    {
+        "node_id": 854,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-审批管理",
+        "url": "Operation\/TaodaWbyyCheck\/approvalDownList"
+    },
+    {
+        "node_id": 855,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-执行管理列表",
+        "url": "Operation\/TaodaWbyyExecute\/index"
+    },
+    {
+        "node_id": 856,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-执行管理详情",
+        "url": "Operation\/TaodaWbyyExecute\/detail"
+    },
+    {
+        "node_id": 857,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-执行管理-订单产品周期列表",
+        "url": "Operation\/TaodaWbyyExecute\/cycleList"
+    },
+    {
+        "node_id": 858,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-执行管理-编辑产品周期",
+        "url": "Operation\/TaodaWbyyExecute\/editCycle"
+    },
+    {
+        "node_id": 859,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-执行管理-下载订单",
+        "url": "Operation\/TaodaWbyyExecute\/downOrderList"
+    },
+    {
+        "node_id": 860,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-执行管理-获取计算周期时间列表",
+        "url": "Operation\/TaodaWbyyExecute\/getSystemCycleList"
+    },
+    {
+        "node_id": 861,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-产品管理",
+        "url": "Operation\/TaodaWbyyProduct\/index"
+    },
+    {
+        "node_id": 862,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-产品管理",
+        "url": "Operation\/TaodaWbyyProduct\/detail"
+    },
+    {
+        "node_id": 863,
+        "level": 3,
+        "description": "运营中心-淘大-玩爆运营-产品管理",
+        "url": "Operation\/TaodaWbyyProduct\/edit"
+    },
+    {
+        "node_id": 874,
+        "level": 2,
+        "description": "财务管理_销售额完成率\r\n",
+        "url": ""
+    },
+    {
+        "node_id": 875,
+        "level": 2,
+        "description": "财务管理_销售额目标管理",
+        "url": ""
+    },
+    {
+        "node_id": 876,
+        "level": 2,
+        "description": "运营中心-在线营销-孵化班-审批管理",
+        "url": ""
+    },
+    {
+        "node_id": 877,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班",
+        "url": "Operation\/ZxyxFhbCheck\/index"
+    },
+    {
+        "node_id": 878,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班",
+        "url": "Operation\/ZxyxFhbCheck\/detail"
+    },
+    {
+        "node_id": 879,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班",
+        "url": "Operation\/ZxyxFhbCheck\/check"
+    },
+    {
+        "node_id": 880,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班",
+        "url": "Operation\/ZxyxFhbCheck\/comment"
+    },
+    {
+        "node_id": 881,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班",
+        "url": "Operation\/ZxyxFhbCheck\/approvalDownList"
+    },
+    {
+        "node_id": 882,
+        "level": 2,
+        "description": "运营中心-菁英汇-研修班-审批管理",
+        "url": ""
+    },
+    {
+        "node_id": 883,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-审批管理",
+        "url": "Operation\/JyhYxbCheck\/index"
+    },
+    {
+        "node_id": 884,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-审批管理",
+        "url": "Operation\/JyhYxbCheck\/detail"
+    },
+    {
+        "node_id": 885,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-审批管理",
+        "url": "Operation\/JyhYxbCheck\/check"
+    },
+    {
+        "node_id": 886,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-审批管理",
+        "url": "Operation\/JyhYxbCheck\/comment"
+    },
+    {
+        "node_id": 887,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-审批管理",
+        "url": "Operation\/JyhYxbCheck\/approvalDownList"
+    },
+    {
+        "node_id": 888,
+        "level": 2,
+        "description": "运营中心-在线营销-孵化班-执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 889,
+        "level": 2,
+        "description": "运营中心-在线营销-孵化班-产品管理",
+        "url": ""
+    },
+    {
+        "node_id": 890,
+        "level": 2,
+        "description": "运营中心-菁英汇-研修班-执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 891,
+        "level": 2,
+        "description": "运营中心-菁英汇-研修班-助教管理",
+        "url": ""
+    },
+    {
+        "node_id": 892,
+        "level": 2,
+        "description": "运营中心-菁英汇-研修班-产品配置",
+        "url": ""
+    },
+    {
+        "node_id": 893,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班-执行管理",
+        "url": "Operation\/ZxyxFhbExecute\/index"
+    },
+    {
+        "node_id": 894,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班-执行管理",
+        "url": "Operation\/ZxyxFhbExecute\/detail"
+    },
+    {
+        "node_id": 895,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班-执行管理",
+        "url": "Operation\/ZxyxFhbExecute\/getSystemCycleList"
+    },
+    {
+        "node_id": 896,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班-执行管理",
+        "url": "Operation\/ZxyxFhbExecute\/cycleList"
+    },
+    {
+        "node_id": 897,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班-执行管理",
+        "url": "Operation\/ZxyxFhbExecute\/editCycle"
+    },
+    {
+        "node_id": 898,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班-产品管理",
+        "url": "Operation\/ZxyxFhbProduct\/index"
+    },
+    {
+        "node_id": 899,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班-产品管理",
+        "url": "Operation\/ZxyxFhbProduct\/detail"
+    },
+    {
+        "node_id": 900,
+        "level": 3,
+        "description": "运营中心-在线营销-孵化班-产品管理",
+        "url": "Operation\/ZxyxFhbProduct\/edit"
+    },
+    {
+        "node_id": 901,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-执行管理",
+        "url": "Operation\/JyhYxbExecute\/index"
+    },
+    {
+        "node_id": 902,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-执行管理",
+        "url": "Operation\/JyhYxbExecute\/detail"
+    },
+    {
+        "node_id": 903,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-执行管理",
+        "url": "Operation\/JyhYxbExecute\/editCycle"
+    },
+    {
+        "node_id": 904,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-执行管理",
+        "url": "Operation\/JyhYxbExecute\/getSystemCycleList"
+    },
+    {
+        "node_id": 905,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-助教管理",
+        "url": "Operation\/TeachingAssistant\/index"
+    },
+    {
+        "node_id": 906,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-助教管理",
+        "url": "Operation\/TeachingAssistant\/changeStatus"
+    },
+    {
+        "node_id": 907,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-产品管理",
+        "url": "Operation\/JyhYxbProduct\/detail"
+    },
+    {
+        "node_id": 908,
+        "level": 3,
+        "description": "运营中心-菁英汇-研修班-产品管理",
+        "url": "Operation\/JyhYxbProduct\/edit"
+    },
+    {
+        "node_id": 909,
+        "level": 2,
+        "description": "风控中心-退款风险查询",
+        "url": ""
+    },
+    {
+        "node_id": 910,
+        "level": 3,
+        "description": "风控中心_退款风险查询_列表",
+        "url": "Law\/LawReview\/index"
+    },
+    {
+        "node_id": 911,
+        "level": 3,
+        "description": "风控中心_退款风险查询_详情",
+        "url": "Law\/LawReview\/detail"
+    },
+    {
+        "node_id": 912,
+        "level": 2,
+        "description": "行政中心-话机管理",
+        "url": ""
+    },
+    {
+        "node_id": 913,
+        "level": 3,
+        "description": "行政中心-话机管理-列表",
+        "url": "OfficeCenter\/SellerPhone\/index"
+    },
+    {
+        "node_id": 914,
+        "level": 3,
+        "description": "行政中心-话机管理-编辑",
+        "url": "OfficeCenter\/SellerPhone\/set"
+    },
+    {
+        "node_id": 915,
+        "level": 1,
+        "description": "行政中心",
+        "url": ""
+    },
+    {
+        "node_id": 916,
+        "level": 2,
+        "description": "风控中心-合同审批",
+        "url": ""
+    },
+    {
+        "node_id": 917,
+        "level": 2,
+        "description": "风控中心-合同协议制作管理",
+        "url": ""
+    },
+    {
+        "node_id": 919,
+        "level": 2,
+        "description": "财务中心-赠送服务审批",
+        "url": ""
+    },
+    {
+        "node_id": 920,
+        "level": 2,
+        "description": "财务中心-机构成本结算",
+        "url": ""
+    },
+    {
+        "node_id": 921,
+        "level": 2,
+        "description": "财务中心-有墨写手结算",
+        "url": ""
+    },
+    {
+        "node_id": 922,
+        "level": 1,
+        "description": "渠道运营",
+        "url": ""
+    },
+    {
+        "node_id": 923,
+        "level": 1,
+        "description": "有墨营销",
+        "url": ""
+    },
+    {
+        "node_id": 926,
+        "level": 2,
+        "description": "渠道运营-机构管理",
+        "url": ""
+    },
+    {
+        "node_id": 927,
+        "level": 2,
+        "description": "渠道运营-机构成本结算",
+        "url": ""
+    },
+    {
+        "node_id": 928,
+        "level": 2,
+        "description": "渠道运营-机构数据上传",
+        "url": ""
+    },
+    {
+        "node_id": 929,
+        "level": 2,
+        "description": "有墨营销-账号管理",
+        "url": ""
+    },
+    {
+        "node_id": 930,
+        "level": 2,
+        "description": "有墨营销-分配管理",
+        "url": ""
+    },
+    {
+        "node_id": 931,
+        "level": 2,
+        "description": "有墨营销-有墨营销角标统计",
+        "url": ""
+    },
+    {
+        "node_id": 932,
+        "level": 2,
+        "description": "有墨营销-内容运营",
+        "url": ""
+    },
+    {
+        "node_id": 933,
+        "level": 2,
+        "description": "有墨营销-写手管理",
+        "url": ""
+    },
+    {
+        "node_id": 934,
+        "level": 2,
+        "description": "有墨营销-写手结算管理",
+        "url": ""
+    },
+    {
+        "node_id": 935,
+        "level": 2,
+        "description": "风控中心-标准合同模版管理",
+        "url": ""
+    },
+    {
+        "node_id": 936,
+        "level": 2,
+        "description": "运营中心-爱柚-AE团队审批管理",
+        "url": ""
+    },
+    {
+        "node_id": 937,
+        "level": 2,
+        "description": "运营中心-爱柚-执行主管审批管理",
+        "url": ""
+    },
+    {
+        "node_id": 938,
+        "level": 2,
+        "description": "运营中心-爱柚-执行主管渠道管理",
+        "url": ""
+    },
+    {
+        "node_id": 939,
+        "level": 2,
+        "description": "运营中心-爱柚-执行主管产品管理",
+        "url": ""
+    },
+    {
+        "node_id": 940,
+        "level": 2,
+        "description": "运营中心-爱柚执行主管",
+        "url": ""
+    },
+    {
+        "node_id": 941,
+        "level": 2,
+        "description": "运营中心-爱柚AE",
+        "url": ""
+    },
+    {
+        "node_id": 944,
+        "level": 2,
+        "description": "运营中心-主播管理",
+        "url": ""
+    },
+    {
+        "node_id": 945,
+        "level": 2,
+        "description": "运营中心-爱柚执行视频",
+        "url": ""
+    },
+    {
+        "node_id": 946,
+        "level": 2,
+        "description": "运营中心-爱柚执行图文",
+        "url": ""
+    },
+    {
+        "node_id": 947,
+        "level": 2,
+        "description": "运营中心-爱柚执行直播",
+        "url": ""
+    },
+    {
+        "node_id": 948,
+        "level": 3,
+        "description": "运营中心-爱柚-AE编辑服务起止",
+        "url": "Operation\/AiyoAeOrder\/updateServiceTime"
+    },
+    {
+        "node_id": 949,
+        "level": 3,
+        "description": "运营中心-爱柚-AE恢复订单",
+        "url": "Operation\/AiyoAeOrder\/renew"
+    },
+    {
+        "node_id": 950,
+        "level": 3,
+        "description": "运营中心-爱柚-AE结案报告上传",
+        "url": "Operation\/AiyoAeOrder\/updateReport"
+    },
+    {
+        "node_id": 951,
+        "level": 3,
+        "description": "运营中心-爱柚-AE确认订单完结",
+        "url": "Operation\/AiyoAeOrder\/updateOrderOver"
+    },
+    {
+        "node_id": 952,
+        "level": 3,
+        "description": "运营中心-爱柚-执行主管-变更AE",
+        "url": "Operation\/AiyoAeOrderManager\/updateAeUser"
+    },
+    {
+        "node_id": 953,
+        "level": 2,
+        "description": "运营中心-爱柚反馈管理",
+        "url": ""
+    },
+    {
+        "node_id": 954,
+        "level": 2,
+        "description": "运营中心-爱柚-AE物流管理",
+        "url": ""
+    },
+    {
+        "node_id": 955,
+        "level": 2,
+        "description": "运营中心-爱柚-执行团队物流管理",
+        "url": ""
+    },
+    {
+        "node_id": 956,
+        "level": 2,
+        "description": "运营中心-爱柚-执行主管物流管理",
+        "url": ""
+    },
+    {
+        "node_id": 957,
+        "level": 2,
+        "description": "运营中心-爱柚-执行团队视频寄件管理",
+        "url": ""
+    },
+    {
+        "node_id": 958,
+        "level": 2,
+        "description": "运营中心-爱柚-执行团队直播寄件管理",
+        "url": ""
+    },
+    {
+        "node_id": 959,
+        "level": 2,
+        "description": "行政中心-物流列表",
+        "url": ""
+    },
+    {
+        "node_id": 960,
+        "level": 2,
+        "description": "行政中心-物流信息上传",
+        "url": ""
+    },
+    {
+        "node_id": 961,
+        "level": 3,
+        "description": "运营中心_主播管理_列表",
+        "url": "Operation\/AiyoHotman\/index"
+    },
+    {
+        "node_id": 962,
+        "level": 3,
+        "description": "运营中心_主播管理_新增",
+        "url": "Operation\/AiyoHotman\/insert"
+    },
+    {
+        "node_id": 963,
+        "level": 3,
+        "description": "运营中心_主播管理_编辑",
+        "url": "Operation\/AiyoHotman\/update"
+    },
+    {
+        "node_id": 964,
+        "level": 3,
+        "description": "运营中心_主播管理_详情",
+        "url": "Operation\/AiyoHotman\/detail"
+    },
+    {
+        "node_id": 965,
+        "level": 3,
+        "description": "运营中心_主播管理_删除",
+        "url": "Operation\/AiyoHotman\/delete"
+    },
+    {
+        "node_id": 966,
+        "level": 2,
+        "description": "运营中心_执行经理审批管理",
+        "url": ""
+    },
+    {
+        "node_id": 967,
+        "level": 2,
+        "description": "运营中心_总助审批管理",
+        "url": ""
+    },
+    {
+        "node_id": 968,
+        "level": 2,
+        "description": "运营中心-执行主管-视频派发",
+        "url": ""
+    },
+    {
+        "node_id": 969,
+        "level": 2,
+        "description": "运营中心-执行主管-图文派发",
+        "url": ""
+    },
+    {
+        "node_id": 970,
+        "level": 2,
+        "description": "运营中心-执行主管-直播派发",
+        "url": ""
+    },
+    {
+        "node_id": 971,
+        "level": 2,
+        "description": "运营中心-执行团队-视频派发",
+        "url": ""
+    },
+    {
+        "node_id": 972,
+        "level": 2,
+        "description": "运营中心-执行团队-图文派发",
+        "url": ""
+    },
+    {
+        "node_id": 973,
+        "level": 2,
+        "description": "运营中心-执行团队-直播派发",
+        "url": ""
+    },
+    {
+        "node_id": 974,
+        "level": 2,
+        "description": "运营中心-执行主管直播执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 975,
+        "level": 2,
+        "description": "运营中心-执行主管图文执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 976,
+        "level": 2,
+        "description": "运营中心-执行主管视频执行管理",
+        "url": ""
+    },
+    {
+        "node_id": 978,
+        "level": 2,
+        "description": "财务管理_新确认营收查询",
+        "url": ""
+    },
+    {
+        "node_id": 979,
+        "level": 1,
+        "description": "数字化营销",
+        "url": ""
+    },
+    {
+        "node_id": 980,
+        "level": 2,
+        "description": "数字化营销-达人管理",
+        "url": ""
+    },
+    {
+        "node_id": 981,
+        "level": 3,
+        "description": "数字化营销-列表",
+        "url": "\/\/"
+    },
+    {
+        "node_id": 982,
+        "level": 3,
+        "description": "数字化营销-详情",
+        "url": "\/\/"
+    },
+    {
+        "node_id": 983,
+        "level": 3,
+        "description": "渠道运营-机构管理-列表",
+        "url": "Bd\/Institution\/index"
+    },
+    {
+        "node_id": 984,
+        "level": 3,
+        "description": "渠道运营-机构管理-新增",
+        "url": "Bd\/Institution\/insert"
+    },
+    {
+        "node_id": 985,
+        "level": 3,
+        "description": "渠道运营-机构管理-编辑",
+        "url": "Bd\/Institution\/update"
+    },
+    {
+        "node_id": 987,
+        "level": 3,
+        "description": "渠道运营-机构成本结算-列表",
+        "url": "Bd\/InstitutionCost\/index"
+    },
+    {
+        "node_id": 988,
+        "level": 3,
+        "description": "渠道运营-机构成本结算-详情",
+        "url": "Bd\/InstitutionCost\/detail"
+    },
+    {
+        "node_id": 989,
+        "level": 3,
+        "description": "渠道运营-机构成本结算-编辑",
+        "url": "Bd\/InstitutionCost\/update"
+    },
+    {
+        "node_id": 990,
+        "level": 3,
+        "description": "渠道运营-机构成本结算-比对核实",
+        "url": "Bd\/InstitutionCost\/than_verify"
+    },
+    {
+        "node_id": 991,
+        "level": 3,
+        "description": "渠道运营-机构成本结算-核实并索要发票",
+        "url": "Bd\/InstitutionCost\/than_verify_invoice"
+    },
+    {
+        "node_id": 992,
+        "level": 3,
+        "description": "渠道运营-机构成本结算-编辑发票",
+        "url": "Bd\/InstitutionCost\/update_invoice"
+    },
+    {
+        "node_id": 993,
+        "level": 3,
+        "description": "渠道运营-机构成本结算-删除未核实数据",
+        "url": "Bd\/InstitutionCost\/delete"
+    },
+    {
+        "node_id": 994,
+        "level": 3,
+        "description": "渠道运营-机构成本结算-核实并索要发票列表",
+        "url": "Bd\/InstitutionCost\/than_verify_invoice_list"
+    },
+    {
+        "node_id": 995,
+        "level": 3,
+        "description": "渠道运营-机构数据上传-校验",
+        "url": "Bd\/InstitutionLog\/import"
+    },
+    {
+        "node_id": 996,
+        "level": 3,
+        "description": "有墨营销-账号管理-列表",
+        "url": "YouMo\/Account\/index"
+    },
+    {
+        "node_id": 997,
+        "level": 3,
+        "description": "有墨营销-账号管理-新增",
+        "url": "YouMo\/Account\/insert"
+    },
+    {
+        "node_id": 998,
+        "level": 3,
+        "description": "有墨营销-账号管理-编辑",
+        "url": "YouMo\/Account\/update"
+    },
+    {
+        "node_id": 999,
+        "level": 3,
+        "description": "有墨营销-账号管理-删除",
+        "url": "YouMo\/Account\/delete"
+    },
+    {
+        "node_id": 1000,
+        "level": 3,
+        "description": "有墨营销-分配管理-列表",
+        "url": "YouMo\/Allot\/index"
+    },
+    {
+        "node_id": 1001,
+        "level": 3,
+        "description": "资源中心-订单管理_订单是否在审批流程中",
+        "url": "Resource\/Order\/hasApproval"
+    },
+    {
+        "node_id": 1002,
+        "level": 3,
+        "description": "有墨营销-分配管理-基本信息",
+        "url": "YouMo\/Allot\/basic_information"
+    },
+    {
+        "node_id": 1003,
+        "level": 3,
+        "description": "有墨营销-分配管理-宝贝信息",
+        "url": "YouMo\/Allot\/get_product"
+    },
+    {
+        "node_id": 1004,
+        "level": 3,
+        "description": "有墨营销-分配管理-宝贝信息-详情",
+        "url": "YouMo\/Allot\/product_detail"
+    },
+    {
+        "node_id": 1005,
+        "level": 3,
+        "description": "有墨营销-分配管理-执行内容",
+        "url": "YouMo\/Allot\/perform_content"
+    },
+    {
+        "node_id": 1006,
+        "level": 3,
+        "description": "有墨营销-分配管理-执行内容-编辑",
+        "url": "YouMo\/Allot\/perform_update"
+    },
+    {
+        "node_id": 1007,
+        "level": 3,
+        "description": "有墨营销-分配管理-基本信息-内容运营",
+        "url": "YouMo\/Allot\/get_content_operation"
+    },
+    {
+        "node_id": 1008,
+        "level": 3,
+        "description": "有墨营销-分配管理-基本信息-派发任务",
+        "url": "YouMo\/Allot\/distribute"
+    },
+    {
+        "node_id": 1009,
+        "level": 3,
+        "description": "有墨营销-内容运营-列表",
+        "url": "YouMo\/Content\/index"
+    },
+    {
+        "node_id": 1010,
+        "level": 3,
+        "description": "有墨营销-内容运营-基本信息",
+        "url": "YouMo\/Content\/basic_information"
+    },
+    {
+        "node_id": 1011,
+        "level": 3,
+        "description": "有墨营销-内容运营-宝贝信息",
+        "url": "YouMo\/Content\/get_product"
+    },
+    {
+        "node_id": 1012,
+        "level": 3,
+        "description": "有墨营销-内容运营-宝贝信息-详情",
+        "url": "YouMo\/Content\/product_detail"
+    },
+    {
+        "node_id": 1013,
+        "level": 3,
+        "description": "有墨营销-内容运营-执行内容",
+        "url": "YouMo\/Content\/perform_content"
+    },
+    {
+        "node_id": 1014,
+        "level": 3,
+        "description": "有墨营销-内容运营-执行内容-编辑",
+        "url": "YouMo\/Content\/draft_update"
+    },
+    {
+        "node_id": 1015,
+        "level": 3,
+        "description": "销售中心-客户详情_新建订单",
+        "url": "Crm\/Order\/insert"
+    },
+    {
+        "node_id": 1016,
+        "level": 3,
+        "description": "有墨营销-内容运营-执行内容-出稿日期",
+        "url": "YouMo\/Content\/draft_time"
+    },
+    {
+        "node_id": 1017,
+        "level": 3,
+        "description": "有墨营销-内容运营-执行内容-投稿日期",
+        "url": "YouMo\/Content\/put_time"
+    },
+    {
+        "node_id": 1018,
+        "level": 3,
+        "description": "有墨营销-内容运营-执行内容-上线日期",
+        "url": "YouMo\/Content\/up_time"
+    },
+    {
+        "node_id": 1020,
+        "level": 3,
+        "description": "有墨营销-写手管理-列表",
+        "url": "YouMo\/Writer\/index"
+    },
+    {
+        "node_id": 1021,
+        "level": 3,
+        "description": "有墨营销-写手管理-新增",
+        "url": "YouMo\/Writer\/insert"
+    },
+    {
+        "node_id": 1022,
+        "level": 3,
+        "description": "有墨营销-写手管理-详情",
+        "url": "YouMo\/Writer\/detail"
+    },
+    {
+        "node_id": 1023,
+        "level": 3,
+        "description": "有墨营销-写手管理-编辑",
+        "url": "YouMo\/Writer\/update"
+    },
+    {
+        "node_id": 1024,
+        "level": 3,
+        "description": "有墨营销-写手管理-删除",
+        "url": "YouMo\/Writer\/delete"
+    },
+    {
+        "node_id": 1025,
+        "level": 3,
+        "description": "有墨营销-写手结算管理-列表",
+        "url": "YouMo\/WriterSettlement\/index"
+    },
+    {
+        "node_id": 1026,
+        "level": 3,
+        "description": "有墨营销-写手结算管理-详情",
+        "url": "YouMo\/WriterSettlement\/writerDetail"
+    },
+    {
+        "node_id": 1027,
+        "level": 3,
+        "description": "有墨营销-写手结算管理-明细列表",
+        "url": "YouMo\/WriterSettlement\/getTaskDetailList"
+    },
+    {
+        "node_id": 1028,
+        "level": 3,
+        "description": "有墨营销-写手结算管理-明细详情",
+        "url": "YouMo\/WriterSettlement\/getTaskDetail"
+    },
+    {
+        "node_id": 1029,
+        "level": 3,
+        "description": "有墨营销-写手结算管理-确认结算",
+        "url": "YouMo\/WriterSettlement\/Clearing"
+    },
+    {
+        "node_id": 1031,
+        "level": 3,
+        "description": "销售中心-公海客户_列表",
+        "url": "Crm\/CustomerPublic\/index"
+    },
+    {
+        "node_id": 1032,
+        "level": 3,
+        "description": "销售中心-客户详情_编辑订单",
+        "url": "Crm\/Order\/update"
+    },
+    {
+        "node_id": 1033,
+        "level": 3,
+        "description": "销售中心-客户详情_执行资格审批",
+        "url": "Crm\/Order\/applyExecute"
+    },
+    {
+        "node_id": 1034,
+        "level": 3,
+        "description": "销售中心-客户详情_发起申请退款",
+        "url": "Crm\/Order\/applyRefund"
+    },
+    {
+        "node_id": 1035,
+        "level": 3,
+        "description": "销售中心-客户详情_变更执行班次",
+        "url": "Crm\/Order\/updateClass"
+    },
+    {
+        "node_id": 1036,
+        "level": 3,
+        "description": "销售中心-客户详情_删除订单",
+        "url": "Crm\/Order\/delete"
+    },
+    {
+        "node_id": 1038,
+        "level": 3,
+        "description": "销售中心-客户详情_发起开票申请",
+        "url": "Crm\/Order\/applyTax"
+    },
+    {
+        "node_id": 1039,
+        "level": 3,
+        "description": "销售中心-客户详情_发起合同协议审批",
+        "url": "Crm\/Order\/applyAgreement"
+    },
+    {
+        "node_id": 1040,
+        "level": 3,
+        "description": "销售中心-客户详情_创建纸质协议审批",
+        "url": "Crm\/Order\/createApprovalWithPaper"
+    },
+    {
+        "node_id": 1041,
+        "level": 2,
+        "description": "人力中心-业绩",
+        "url": ""
+    },
+    {
+        "node_id": 1042,
+        "level": 3,
+        "description": "人力中心-业绩-列表",
+        "url": "Finance\/Performance\/index"
+    },
+    {
+        "node_id": 1043,
+        "level": 3,
+        "description": "行政中心-物流列表--列表",
+        "url": "OfficeCenter\/LogisticsInfo\/index"
+    },
+    {
+        "node_id": 1044,
+        "level": 3,
+        "description": "行政中心-物流信息上传-校验",
+        "url": "OfficeCenter\/LogisticsUploadInfo\/uploadInfo"
+    },
+    {
+        "node_id": 1046,
+        "level": 3,
+        "description": "销售中心-客户详情_退款申请上传图片",
+        "url": "Crm\/Order\/uploadPic"
+    },
+    {
+        "node_id": 1047,
+        "level": 3,
+        "description": "销售中心-客户详情_变更班次",
+        "url": "Crm\/Order\/changeClass"
+    },
+    {
+        "node_id": 1048,
+        "level": 3,
+        "description": "销售中心-客户详情_订单-上传图片",
+        "url": "Crm\/Order\/uploadImg"
+    },
+    {
+        "node_id": 1049,
+        "level": 3,
+        "description": "销售中心-客户详情_订单-保存上传的图片信息",
+        "url": "Crm\/Order\/uploadImgPath"
+    },
+    {
+        "node_id": 1054,
+        "level": 3,
+        "description": "销售中心_部门客户_列表",
+        "url": "Crm\/CustomerDept\/index"
+    },
+    {
+        "node_id": 1061,
+        "level": 2,
+        "description": "销售中心_客户详情页",
+        "url": ""
+    },
+    {
+        "node_id": 1062,
+        "level": 3,
+        "description": "风控中心-退款审批-退款审批-详情",
+        "url": "Law\/Refund\/detail"
+    },
+    {
+        "node_id": 1063,
+        "level": 3,
+        "description": "风控中心-资格审批-详情",
+        "url": "Law\/Execute\/detail"
+    },
+    {
+        "node_id": 1064,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_学员列表下载",
+        "url": "Operation\/TaodaExecute\/student_down"
+    },
+    {
+        "node_id": 1065,
+        "level": 3,
+        "description": "风控中心-通告管理-新增",
+        "url": "Law\/Notice\/insert"
+    },
+    {
+        "node_id": 1066,
+        "level": 3,
+        "description": "风控中心-通告管理-编辑",
+        "url": "Law\/Notice\/update"
+    },
+    {
+        "node_id": 1067,
+        "level": 3,
+        "description": "风控中心-通告管理-删除",
+        "url": "Law\/Notice\/delete"
+    },
+    {
+        "node_id": 1068,
+        "level": 3,
+        "description": "风控中心-通告管理-详情",
+        "url": "Law\/Notice\/detail"
+    },
+    {
+        "node_id": 1070,
+        "level": 3,
+        "description": "运营中心_淘大执行管理_导出调研表信息",
+        "url": "Operation\/TaodaSurvey\/export"
+    },
+    {
+        "node_id": 1071,
+        "level": 3,
+        "description": "风控中心-标准合同模版管理-列表",
+        "url": "Law\/Compact\/index"
+    },
+    {
+        "node_id": 1072,
+        "level": 3,
+        "description": "风控中心-标准合同模版管理-新增",
+        "url": "Law\/Compact\/insert"
+    },
+    {
+        "node_id": 1073,
+        "level": 3,
+        "description": "风控中心-标准合同模版管理-详情",
+        "url": "Law\/Compact\/detail"
+    },
+    {
+        "node_id": 1074,
+        "level": 3,
+        "description": "风控中心-标准合同模版管理-编辑",
+        "url": "Law\/Compact\/update"
+    },
+    {
+        "node_id": 1075,
+        "level": 3,
+        "description": "风控中心-标准合同模版管理-启用\/停用",
+        "url": "Law\/Compact\/EnableDisable"
+    },
+    {
+        "node_id": 1076,
+        "level": 3,
+        "description": "风控中心-标准合同模版管理-删除",
+        "url": "Law\/Compact\/delete"
+    },
+    {
+        "node_id": 1077,
+        "level": 2,
+        "description": "风控中心-纸质合同协议管理",
+        "url": ""
+    },
+    {
+        "node_id": 1078,
+        "level": 3,
+        "description": "财务中心-交易流水对账管理-编辑",
+        "url": "Finance\/TransactionLog\/update"
+    },
+    {
+        "node_id": 1079,
+        "level": 3,
+        "description": "财务中心-交易流水对账管理-删除",
+        "url": "Finance\/TransactionLog\/delete"
+    },
+    {
+        "node_id": 1080,
+        "level": 3,
+        "description": "风控中心-合同协议制作管理-列表",
+        "url": "Law\/OrderAgreement\/index"
+    },
+    {
+        "node_id": 1081,
+        "level": 3,
+        "description": "销售中心_订单管理_列表",
+        "url": "Crm\/Order\/index"
+    },
+    {
+        "node_id": 1082,
+        "level": 3,
+        "description": "风控中心-合同协议制作管理-详情",
+        "url": "Law\/OrderAgreement\/detail"
+    },
+    {
+        "node_id": 1083,
+        "level": 3,
+        "description": "风控中心-合同协议制作管理-上传纸质word",
+        "url": "Law\/OrderAgreement\/uploadWord"
+    },
+    {
+        "node_id": 1084,
+        "level": 3,
+        "description": "风控中心-纸质合同协议管理-列表",
+        "url": "Law\/OrderAgreement\/index"
+    },
+    {
+        "node_id": 1085,
+        "level": 3,
+        "description": "风控中心-纸质合同协议管理-详情",
+        "url": "Law\/OrderAgreement\/detail"
+    },
+    {
+        "node_id": 1086,
+        "level": 3,
+        "description": "风控中心-纸质合同协议管理-盖章",
+        "url": "Law\/OrderAgreement\/optFileStatus"
+    },
+    {
+        "node_id": 1087,
+        "level": 3,
+        "description": "风控中心-纸质合同协议管理-归档",
+        "url": "Law\/OrderAgreement\/optFileStatus"
+    },
+    {
+        "node_id": 1088,
+        "level": 3,
+        "description": "风控中心-合同协议制作管理-盖章并归档",
+        "url": "Law\/OrderAgreement\/optFileStatus"
+    },
+    {
+        "node_id": 1089,
+        "level": 3,
+        "description": "风控中心-合同审批-列表",
+        "url": "Law\/Approval\/index"
+    },
+    {
+        "node_id": 1090,
+        "level": 3,
+        "description": "风控中心-合同审批-详情",
+        "url": "Law\/Approval\/detail"
+    },
+    {
+        "node_id": 1091,
+        "level": 3,
+        "description": "风控中心-合同审批-同意\/拒绝",
+        "url": "Law\/Approval\/check"
+    },
+    {
+        "node_id": 1092,
+        "level": 3,
+        "description": "风控中心-合同审批-评论",
+        "url": "Law\/Approval\/comment"
+    },
+    {
+        "node_id": 1096,
+        "level": 3,
+        "description": "财务中心-开票管理-编辑不含税金额",
+        "url": "Finance\/Invoice\/updatePrice"
+    },
+    {
+        "node_id": 1097,
+        "level": 2,
+        "description": "风控中心-协议制作审批",
+        "url": ""
+    },
+    {
+        "node_id": 1098,
+        "level": 2,
+        "description": "风控中心-补充协议审批",
+        "url": ""
+    },
+    {
+        "node_id": 1099,
+        "level": 2,
+        "description": "风控中心-解除协议审批",
+        "url": ""
+    },
+    {
+        "node_id": 1100,
+        "level": 3,
+        "description": "风控中心-协议制作审批-列表",
+        "url": "Law\/Approval\/index"
+    },
+    {
+        "node_id": 1101,
+        "level": 3,
+        "description": "风控中心-协议制作审批-详情",
+        "url": "Law\/Approval\/detail"
+    },
+    {
+        "node_id": 1102,
+        "level": 2,
+        "description": "财务中心-开票审批",
+        "url": ""
+    },
+    {
+        "node_id": 1103,
+        "level": 3,
+        "description": "财务中心-开票审批-列表",
+        "url": "Finance\/Invoice\/index"
+    },
+    {
+        "node_id": 1104,
+        "level": 3,
+        "description": "财务中心-开票审批-详情",
+        "url": "Finance\/Invoice\/detail"
+    },
+    {
+        "node_id": 1105,
+        "level": 3,
+        "description": "财务中心-开票审批-同意\/拒绝",
+        "url": "Finance\/Invoice\/updateStatus"
+    },
+    {
+        "node_id": 1106,
+        "level": 3,
+        "description": "财务中心-开票审批-评论",
+        "url": "Finance\/Invoice\/comment"
+    },
+    {
+        "node_id": 1108,
+        "level": 3,
+        "description": "风控中心-协议制作审批-同意\/拒绝",
+        "url": "Law\/Approval\/check"
+    },
+    {
+        "node_id": 1109,
+        "level": 3,
+        "description": "财务中心-赠送服务审批-列表",
+        "url": "Finance\/Gives\/index"
+    },
+    {
+        "node_id": 1110,
+        "level": 3,
+        "description": "财务中心-赠送服务审批-详情",
+        "url": "Finance\/Gives\/detail"
+    },
+    {
+        "node_id": 1111,
+        "level": 3,
+        "description": "财务中心-赠送服务审批-评论",
+        "url": "Finance\/Gives\/comment"
+    },
+    {
+        "node_id": 1112,
+        "level": 3,
+        "description": "财务中心-赠送服务审批-同意\/拒绝",
+        "url": "Finance\/Gives\/check"
+    },
+    {
+        "node_id": 1113,
+        "level": 3,
+        "description": "风控中心-协议制作审批-评论",
+        "url": "Law\/Approval\/comment"
+    },
+    {
+        "node_id": 1114,
+        "level": 3,
+        "description": "风控中心-补充协议审批-列表",
+        "url": "Law\/Approval\/index"
+    },
+    {
+        "node_id": 1115,
+        "level": 3,
+        "description": "风控中心-补充协议审批-详情",
+        "url": "Law\/Approval\/detail"
+    },
+    {
+        "node_id": 1116,
+        "level": 3,
+        "description": "风控中心-补充协议审批-同意\/拒绝",
+        "url": "Law\/Approval\/check"
+    },
+    {
+        "node_id": 1117,
+        "level": 3,
+        "description": "风控中心-补充协议审批-评论",
+        "url": "Law\/Approval\/comment"
+    },
+    {
+        "node_id": 1118,
+        "level": 3,
+        "description": "风控中心-解除协议审批-列表",
+        "url": "Law\/Approval\/index"
+    },
+    {
+        "node_id": 1119,
+        "level": 3,
+        "description": "风控中心-解除协议审批-详情",
+        "url": "Law\/Approval\/detail"
+    },
+    {
+        "node_id": 1120,
+        "level": 3,
+        "description": "风控中心-解除协议审批-同意\/拒绝",
+        "url": "Law\/Approval\/check"
+    },
+    {
+        "node_id": 1121,
+        "level": 3,
+        "description": "风控中心-解除协议审批-评论",
+        "url": "Law\/Approval\/comment"
+    },
+    {
+        "node_id": 1122,
+        "level": 3,
+        "description": "财务中心-机构成本结算-列表",
+        "url": "Finance\/InstitutionClearing\/index"
+    },
+    {
+        "node_id": 1123,
+        "level": 3,
+        "description": "财务中心-机构成本结算-详情",
+        "url": "Finance\/InstitutionClearing\/detail"
+    },
+    {
+        "node_id": 1124,
+        "level": 3,
+        "description": "财务中心-机构成本结算-确认支付",
+        "url": "Finance\/InstitutionClearing\/confirm_pay"
+    },
+    {
+        "node_id": 1125,
+        "level": 3,
+        "description": "财务中心-有墨写手结算-列表",
+        "url": "Finance\/WriterClearing\/index"
+    },
+    {
+        "node_id": 1126,
+        "level": 3,
+        "description": "财务中心-有墨写手结算-详情",
+        "url": "Finance\/WriterClearing\/detail"
+    },
+    {
+        "node_id": 1127,
+        "level": 3,
+        "description": "财务中心-有墨写手结算-确认支付",
+        "url": "Finance\/WriterClearing\/confirm_pay"
+    },
+    {
+        "node_id": 1129,
+        "level": 3,
+        "description": "销售中心-客户详情-调研表管理_删除",
+        "url": "Crm\/Survey\/delete"
+    },
+    {
+        "node_id": 1133,
+        "level": 3,
+        "description": "销售中心-客户详情-调研表管理_查看调研表链接",
+        "url": "Crm\/Survey\/createUrl"
+    },
+    {
+        "node_id": 1134,
+        "level": 3,
+        "description": "财务管理-人数查询-列表",
+        "url": "Finance\/NumberSearch\/index"
+    },
+    {
+        "node_id": 1135,
+        "level": 3,
+        "description": "财务管理-退款查询-详情",
+        "url": "Finance\/Refund\/detail"
+    },
+    {
+        "node_id": 1136,
+        "level": 3,
+        "description": "财务管理-新确认营收查询-列表",
+        "url": "FinanceManage\/NewConfirmExec\/index"
+    },
+    {
+        "node_id": 1137,
+        "level": 3,
+        "description": "财务管理-新确认营收查询-详情",
+        "url": "FinanceManage\/NewConfirmExec\/detail"
+    },
+    {
+        "node_id": 1138,
+        "level": 3,
+        "description": "财务管理-新确认营收查询-下载报表",
+        "url": "FinanceManage\/NewConfirmExec\/download"
+    },
+    {
+        "node_id": 1139,
+        "level": 3,
+        "description": "财务管理-未确认营收查询-下载报表",
+        "url": "FinanceManage\/UnconfirmExec\/unconfirm_exec_download"
+    },
+    {
+        "node_id": 1140,
+        "level": 3,
+        "description": "财务管理-确认营收查询-下载报表",
+        "url": "FinanceManage\/ConfirmExec\/confirm_exec_download"
+    },
+    {
+        "node_id": 1142,
+        "level": 3,
+        "description": "财务管理-销售额完成率-列表",
+        "url": "FinanceManage\/AmountRate\/index"
+    },
+    {
+        "node_id": 1143,
+        "level": 3,
+        "description": "财务管理-销售额目标管理-列表",
+        "url": "FinanceManage\/sales_amount_target\/index"
+    },
+    {
+        "node_id": 1144,
+        "level": 3,
+        "description": "财务管理-销售额目标管理-编辑",
+        "url": "FinanceManage\/sales_amount_target\/edit_target"
+    },
+    {
+        "node_id": 1145,
+        "level": 3,
+        "description": "财务管理-销售额目标管理-变更日志",
+        "url": "FinanceManage\/sales_amount_target\/change_log"
+    },
+    {
+        "node_id": 1146,
+        "level": 3,
+        "description": "财务管理-发票管理-详情",
+        "url": "FinanceManage\/Invoice\/index"
+    },
+    {
+        "node_id": 1147,
+        "level": 3,
+        "description": "财务管理-发票管理-下载报表",
+        "url": "FinanceManage\/Invoice\/invoice_down"
+    },
+    {
+        "node_id": 1149,
+        "level": 3,
+        "description": "销售中心-客户详情-学员信息管理_学员编辑",
+        "url": "Crm\/OrderStudent\/update"
+    },
+    {
+        "node_id": 1150,
+        "level": 3,
+        "description": "销售中心-客户详情-学员信息管理_新建学员",
+        "url": "Crm\/OrderStudent\/insert"
+    },
+    {
+        "node_id": 1151,
+        "level": 3,
+        "description": "财务中心-开票审批-下载报表(审批同意)",
+        "url": "Finance\/Invoice\/agreeDownload"
+    },
+    {
+        "node_id": 1152,
+        "level": 3,
+        "description": "财务中心-退款管理-待退款(下载报表)",
+        "url": "Finance\/Refund\/download"
+    },
+    {
+        "node_id": 1153,
+        "level": 3,
+        "description": "销售中心-客户详情-学员信息管理_变更执行班次",
+        "url": "Crm\/OrderStudent\/updateClass"
+    },
+    {
+        "node_id": 1154,
+        "level": 3,
+        "description": "销售中心-客户详情-学员信息管理_删除",
+        "url": "Crm\/OrderStudent\/delete"
+    },
+    {
+        "node_id": 1155,
+        "level": 3,
+        "description": "销售中心-客户详情-学员信息管理_新建学员",
+        "url": "Crm\/OrderStudent\/add"
+    },
+    {
+        "node_id": 1156,
+        "level": 3,
+        "description": "运营中心-AE团队审批管理-列表",
+        "url": "Operation\/AiyoAeCheck\/index"
+    },
+    {
+        "node_id": 1160,
+        "level": 3,
+        "description": "销售中心-客户详情-合同协议管理_解除协议详情",
+        "url": "Crm\/ContractAgreement\/getEndAgreementDetail"
+    },
+    {
+        "node_id": 1161,
+        "level": 3,
+        "description": "销售中心-客户详情-合同协议管理_新建解除协议",
+        "url": "Crm\/ContractAgreement\/addEndAgt"
+    },
+    {
+        "node_id": 1162,
+        "level": 3,
+        "description": "销售中心-客户详情-合同协议管理_删除解除协议",
+        "url": "Crm\/ContractAgreement\/deleteEndAgt"
+    },
+    {
+        "node_id": 1163,
+        "level": 3,
+        "description": "销售中心-客户详情-合同协议管理_更新签约信息",
+        "url": "Crm\/ContractAgreement\/updateContract"
+    },
+    {
+        "node_id": 1164,
+        "level": 3,
+        "description": "销售中心-客户详情-合同协议管理_下载标准合同确认",
+        "url": "Crm\/ContractAgreement\/downStandardContractConfirm"
+    },
+    {
+        "node_id": 1165,
+        "level": 3,
+        "description": "销售中心-客户详情-合同协议管理_下载纸质合同",
+        "url": "Crm\/ContractAgreement\/downPaperContract"
+    },
+    {
+        "node_id": 1166,
+        "level": 3,
+        "description": "销售中心-客户详情-合同协议管理_上传合同照片",
+        "url": "Crm\/ContractAgreement\/uploadContractPicture"
+    },
+    {
+        "node_id": 1167,
+        "level": 3,
+        "description": "销售中心-客户详情-合同协议管理_合同上传的图片路径信息入库",
+        "url": "Crm\/ContractAgreement\/saveContractPic"
+    },
+    {
+        "node_id": 1168,
+        "level": 3,
+        "description": "销售中心-客户详情-合同协议管理_下载补充协议",
+        "url": "Crm\/ContractAgreement\/downAdditionalAgreement"
+    },
+    {
+        "node_id": 1169,
+        "level": 3,
+        "description": "销售中心-客户详情-合同协议管理_下载解除纸质协议",
+        "url": "Crm\/ContractAgreement\/downEndAgreement"
+    },
+    {
+        "node_id": 1170,
+        "level": 3,
+        "description": "销售中心-客户详情-合同协议管理_协议上传的附件路径信息入库",
+        "url": "Crm\/ContractAgreement\/saveAgtAttachs"
+    },
+    {
+        "node_id": 1172,
+        "level": 3,
+        "description": "运营中心-爱柚AE审批管理-详情",
+        "url": "Operation\/AiyoAeCheck\/detail"
+    },
+    {
+        "node_id": 1173,
+        "level": 3,
+        "description": "运营中心-爱柚AE审批管理-审批",
+        "url": "Operation\/AiyoAeCheck\/check"
+    },
+    {
+        "node_id": 1174,
+        "level": 3,
+        "description": "运营中心-爱柚AE审批管理-评论",
+        "url": "Operation\/AiyoAeCheck\/comment"
+    },
+    {
+        "node_id": 1175,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管审批管理-列表",
+        "url": "Operation\/AiyoExecuteCheck\/index"
+    },
+    {
+        "node_id": 1176,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管审批管理-详情",
+        "url": "Operation\/AiyoExecuteCheck\/detail"
+    },
+    {
+        "node_id": 1177,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管审批管理-审批",
+        "url": "Operation\/AiyoExecuteCheck\/check"
+    },
+    {
+        "node_id": 1178,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管审批管理-评论",
+        "url": "Operation\/AiyoExecuteCheck\/comment"
+    },
+    {
+        "node_id": 1180,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管渠道管理-列表",
+        "url": "Operation\/AiyoExecuteChannel\/index"
+    },
+    {
+        "node_id": 1181,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管渠道管理-新增",
+        "url": "Operation\/AiyoExecuteChannel\/insert"
+    },
+    {
+        "node_id": 1182,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管渠道管理-编辑",
+        "url": "Operation\/AiyoExecuteChannel\/update"
+    },
+    {
+        "node_id": 1183,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管渠道管理-删除",
+        "url": "Operation\/AiyoExecuteChannel\/delete"
+    },
+    {
+        "node_id": 1186,
+        "level": 3,
+        "description": "销售中心-客户详情-变更管理_新建变更服务",
+        "url": "Crm\/AiyoChange\/insert"
+    },
+    {
+        "node_id": 1187,
+        "level": 3,
+        "description": "销售中心-客户详情-赠送管理_新建服务赠送",
+        "url": "Crm\/AiyoGift\/insert"
+    },
+    {
+        "node_id": 1189,
+        "level": 3,
+        "description": "销售中心-客户详情-变更管理_更新变更",
+        "url": "Crm\/AiyoChange\/update"
+    },
+    {
+        "node_id": 1190,
+        "level": 3,
+        "description": "销售中心-客户详情-变更管理_删除",
+        "url": "Crm\/AiyoChange\/delete"
+    },
+    {
+        "node_id": 1191,
+        "level": 3,
+        "description": "销售中心-客户详情-变更管理_服务变更执行",
+        "url": "Crm\/AiyoChange\/applyServiceChangeExec"
+    },
+    {
+        "node_id": 1193,
+        "level": 3,
+        "description": "销售中心-客户详情-赠送管理_更新",
+        "url": "Crm\/AiyoGift\/update"
+    },
+    {
+        "node_id": 1194,
+        "level": 3,
+        "description": "销售中心-客户详情-赠送管理_删除",
+        "url": "Crm\/AiyoGift\/delete"
+    },
+    {
+        "node_id": 1195,
+        "level": 3,
+        "description": "销售中心-客户详情-赠送管理_赠送服务审批",
+        "url": "Crm\/AiyoGift\/applyGift"
+    },
+    {
+        "node_id": 1197,
+        "level": 3,
+        "description": "销售中心-客户详情-邮寄信息管理_新建",
+        "url": "Crm\/CustomerAddress\/insert"
+    },
+    {
+        "node_id": 1198,
+        "level": 3,
+        "description": "销售中心-客户详情-邮寄信息管理_更新",
+        "url": "Crm\/CustomerAddress\/update"
+    },
+    {
+        "node_id": 1199,
+        "level": 3,
+        "description": "销售中心-客户详情-邮寄信息管理_删除",
+        "url": "Crm\/CustomerAddress\/delete"
+    },
+    {
+        "node_id": 1201,
+        "level": 3,
+        "description": "销售中心-客户详情-付款信息管理_新建付款信息",
+        "url": "Crm\/CustomerTax\/insert"
+    },
+    {
+        "node_id": 1202,
+        "level": 3,
+        "description": "销售中心-客户详情-付款信息管理_更新",
+        "url": "Crm\/CustomerTax\/update"
+    },
+    {
+        "node_id": 1203,
+        "level": 3,
+        "description": "销售中心-客户详情-付款信息管理_删除",
+        "url": "Crm\/CustomerTax\/delete"
+    },
+    {
+        "node_id": 1205,
+        "level": 3,
+        "description": "销售中心-客户详情-联系信息管理_编辑客户联系信息",
+        "url": "Crm\/CustomerPrivate\/updateContactInfo"
+    },
+    {
+        "node_id": 1206,
+        "level": 3,
+        "description": "销售中心-客户详情-联系信息管理_发布客户联系小记",
+        "url": "Crm\/CustomerComment\/insert"
+    },
+    {
+        "node_id": 1207,
+        "level": 3,
+        "description": "销售中心-客户详情-联系信息管理_客户联系小记列表",
+        "url": "Crm\/CustomerComment\/index"
+    },
+    {
+        "node_id": 1209,
+        "level": 3,
+        "description": "销售中心-客户详情-联系信息管理_添加图片",
+        "url": "Crm\/CustomerComment\/uploadPic"
+    },
+    {
+        "node_id": 1211,
+        "level": 3,
+        "description": "销售中心-客户详情-基本信息管理_更新客户基本信息",
+        "url": "Crm\/CustomerPrivate\/updateBasicInfo"
+    },
+    {
+        "node_id": 1213,
+        "level": 3,
+        "description": "销售中心-客户详情-基本信息管理_踢入公海",
+        "url": "Crm\/CustomerPrivate\/goPublic"
+    },
+    {
+        "node_id": 1214,
+        "level": 3,
+        "description": "销售中心-客户详情-基本信息管理_转移客户",
+        "url": "Crm\/Customer\/transfer"
+    },
+    {
+        "node_id": 1215,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管产品管理-列表",
+        "url": "Operation\/AiyoExecuteProduct\/index"
+    },
+    {
+        "node_id": 1216,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管产品管理-详情",
+        "url": "Operation\/AiyoExecuteProduct\/detail"
+    },
+    {
+        "node_id": 1217,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管产品管理-新增",
+        "url": "Operation\/AiyoExecuteProduct\/insert"
+    },
+    {
+        "node_id": 1218,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管产品管理-编辑",
+        "url": "Operation\/AiyoExecuteProduct\/update"
+    },
+    {
+        "node_id": 1219,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管产品管理-删除",
+        "url": "Operation\/AiyoExecuteProduct\/delete"
+    },
+    {
+        "node_id": 1220,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管物流管理-列表",
+        "url": "Operation\/AiyoLogisticsManage\/index"
+    },
+    {
+        "node_id": 1221,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管物流管理-物流公司下拉",
+        "url": "Operation\/AiyoLogisticsManage\/getCompany"
+    },
+    {
+        "node_id": 1222,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管物流管理-删除",
+        "url": "Operation\/AiyoLogisticsManage\/delete"
+    },
+    {
+        "node_id": 1223,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管物流管理-编辑",
+        "url": "Operation\/AiyoLogisticsManage\/update"
+    },
+    {
+        "node_id": 1224,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频执行管理-列表",
+        "url": "Operation\/AiyoExecuteZhuguanShipin\/index"
+    },
+    {
+        "node_id": 1225,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管图文执行管理-列表",
+        "url": "Operation\/AiyoExecuteZhuguanTuwen\/index"
+    },
+    {
+        "node_id": 1226,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播执行管理-列表",
+        "url": "Operation\/AiyoExecuteZhuguanZhibo\/index"
+    },
+    {
+        "node_id": 1227,
+        "level": 3,
+        "description": "运营中心-爱柚AE物流管理-列表",
+        "url": "Operation\/AiyoAeLogisticsManage\/index"
+    },
+    {
+        "node_id": 1228,
+        "level": 3,
+        "description": "运营中心-爱柚AE物流管理-物流公司下拉",
+        "url": "Operation\/AiyoAeLogisticsManage\/getCompany"
+    },
+    {
+        "node_id": 1229,
+        "level": 3,
+        "description": "运营中心-爱柚AE物流管理-新增",
+        "url": "Operation\/AiyoAeLogisticsManage\/insert"
+    },
+    {
+        "node_id": 1230,
+        "level": 3,
+        "description": "运营中心-爱柚AE物流管理-编辑",
+        "url": "Operation\/AiyoAeLogisticsManage\/update"
+    },
+    {
+        "node_id": 1231,
+        "level": 3,
+        "description": "运营中心-爱柚AE物流管理-删除",
+        "url": "Operation\/AiyoAeLogisticsManage\/delete"
+    },
+    {
+        "node_id": 1232,
+        "level": 3,
+        "description": "运营中心-爱柚AE订单派发管理-列表",
+        "url": "Operation\/AiyoAeOrder\/index"
+    },
+    {
+        "node_id": 1233,
+        "level": 3,
+        "description": "运营中心-爱柚AE订单派发管理-详情",
+        "url": "Operation\/AiyoAeOrder\/detail"
+    },
+    {
+        "node_id": 1234,
+        "level": 3,
+        "description": "运营中心-爱柚AE订单派发管理-反馈概况",
+        "url": "Operation\/AiyoAeOrder\/overview"
+    },
+    {
+        "node_id": 1235,
+        "level": 3,
+        "description": "运营中心-爱柚AE订单派发管理-支付信息",
+        "url": "Operation\/AiyoAeOrder\/payList"
+    },
+    {
+        "node_id": 1236,
+        "level": 3,
+        "description": "运营中心-爱柚AE任务反馈管理-列表",
+        "url": "Operation\/AiyoAeFeedback\/index"
+    },
+    {
+        "node_id": 1237,
+        "level": 3,
+        "description": "运营中心-爱柚AE任务反馈管理-反馈",
+        "url": "Operation\/AiyoAeFeedback\/update"
+    },
+    {
+        "node_id": 1238,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队物流管理-列表",
+        "url": "Operation\/AiyoExecuteLogisticsManage\/index"
+    },
+    {
+        "node_id": 1239,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队物流管理-物流公司下拉",
+        "url": "Operation\/AiyoExecuteLogisticsManage\/getCompany"
+    },
+    {
+        "node_id": 1240,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队物流管理-新增",
+        "url": "Operation\/AiyoExecuteLogisticsManage\/insert"
+    },
+    {
+        "node_id": 1241,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队物流管理-编辑",
+        "url": "Operation\/AiyoExecuteLogisticsManage\/update"
+    },
+    {
+        "node_id": 1242,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队物流管理-删除",
+        "url": "Operation\/AiyoExecuteLogisticsManage\/delete"
+    },
+    {
+        "node_id": 1243,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-列表",
+        "url": "Operation\/AiyoTuwenDispatch\/aeList"
+    },
+    {
+        "node_id": 1244,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-合并派发",
+        "url": "Operation\/AiyoTuwenDispatch\/mergeDispatch"
+    },
+    {
+        "node_id": 1245,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-订单支付金额",
+        "url": "Operation\/AiyoTuwenDispatch\/mergeDispatch"
+    },
+    {
+        "node_id": 1246,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-合并派发",
+        "url": "Operation\/AiyoTuwenDispatch\/batchDispatch"
+    },
+    {
+        "node_id": 1247,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-获取AE任务派发状态",
+        "url": "Operation\/AiyoTuwenDispatch\/getAeDispatchStatus"
+    },
+    {
+        "node_id": 1248,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-AE任务信息",
+        "url": "Operation\/AiyoTuwenDispatch\/task"
+    },
+    {
+        "node_id": 1249,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-任务信息",
+        "url": "Operation\/AiyoTuwenDispatch\/order"
+    },
+    {
+        "node_id": 1250,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-产品列表",
+        "url": "Operation\/AiyoTuwenDispatch\/product"
+    },
+    {
+        "node_id": 1251,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-直接派发",
+        "url": "Operation\/AiyoTuwenDispatch\/singleDispatch"
+    },
+    {
+        "node_id": 1252,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-宝贝列表",
+        "url": "Operation\/AiyoTuwenDispatch\/products"
+    },
+    {
+        "node_id": 1253,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-宝贝详情",
+        "url": "Operation\/AiyoTuwenDispatch\/productDetails"
+    },
+    {
+        "node_id": 1254,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-物流接口",
+        "url": "Operation\/AiyoTuwenDispatch\/logistics"
+    },
+    {
+        "node_id": 1255,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-执行内容",
+        "url": "Operation\/AiyoTuwenDispatch\/executeContent"
+    },
+    {
+        "node_id": 1256,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-日期表",
+        "url": "Operation\/AiyoTuwenDispatch\/dateList"
+    },
+    {
+        "node_id": 1257,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-服务变更列表",
+        "url": "Operation\/AiyoTuwenDispatch\/contractChangeList"
+    },
+    {
+        "node_id": 1258,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-服务变更详情",
+        "url": "Operation\/AiyoTuwenDispatch\/contractChangeDetails"
+    },
+    {
+        "node_id": 1259,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队图文派发管理-派发任务",
+        "url": "Operation\/AiyoTuwenDispatch\/getAeListDispatchStatus"
+    },
+    {
+        "node_id": 1260,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-列表",
+        "url": "Operation\/AiyoShiPingDispatch\/aeList"
+    },
+    {
+        "node_id": 1261,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-合并派发",
+        "url": "Operation\/AiyoShiPingDispatch\/mergeDispatch"
+    },
+    {
+        "node_id": 1262,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-订单支付金额",
+        "url": "Operation\/AiyoShiPingDispatch\/mergeDispatch"
+    },
+    {
+        "node_id": 1263,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-合并派发",
+        "url": "Operation\/AiyoShiPingDispatch\/batchDispatch"
+    },
+    {
+        "node_id": 1264,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-获取AE任务派发状态",
+        "url": "Operation\/AiyoShiPingDispatch\/getAeDispatchStatus"
+    },
+    {
+        "node_id": 1265,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-AE任务信息",
+        "url": "Operation\/AiyoShiPingDispatch\/task"
+    },
+    {
+        "node_id": 1266,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-任务信息",
+        "url": "Operation\/AiyoShiPingDispatch\/order"
+    },
+    {
+        "node_id": 1267,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-产品列表",
+        "url": "Operation\/AiyoShiPingDispatch\/product"
+    },
+    {
+        "node_id": 1268,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-直接派发",
+        "url": "Operation\/AiyoShiPingDispatch\/singleDispatch"
+    },
+    {
+        "node_id": 1269,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-宝贝列表",
+        "url": "Operation\/AiyoShiPingDispatch\/products"
+    },
+    {
+        "node_id": 1270,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-宝贝详情",
+        "url": "Operation\/AiyoShiPingDispatch\/productDetails"
+    },
+    {
+        "node_id": 1271,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-物流接口",
+        "url": "Operation\/AiyoShiPingDispatch\/logistics"
+    },
+    {
+        "node_id": 1272,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-执行内容",
+        "url": "Operation\/AiyoShiPingDispatch\/executeContent"
+    },
+    {
+        "node_id": 1273,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-日期表",
+        "url": "Operation\/AiyoShiPingDispatch\/dateList"
+    },
+    {
+        "node_id": 1274,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-服务变更列表",
+        "url": "Operation\/AiyoShiPingDispatch\/contractChangeList"
+    },
+    {
+        "node_id": 1275,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-服务变更详情",
+        "url": "Operation\/AiyoShiPingDispatch\/contractChangeDetails"
+    },
+    {
+        "node_id": 1276,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队视频派发管理-派发任务",
+        "url": "Operation\/AiyoShiPingDispatch\/getAeListDispatchStatus"
+    },
+    {
+        "node_id": 1277,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-列表",
+        "url": "Operation\/AiyoZhiBoDispatch\/aeList"
+    },
+    {
+        "node_id": 1278,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-合并派发",
+        "url": "Operation\/AiyoZhiBoDispatch\/mergeDispatch"
+    },
+    {
+        "node_id": 1279,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-订单支付金额",
+        "url": "Operation\/AiyoZhiBoDispatch\/mergeDispatch"
+    },
+    {
+        "node_id": 1280,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-合并派发",
+        "url": "Operation\/AiyoZhiBoDispatch\/batchDispatch"
+    },
+    {
+        "node_id": 1281,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-获取AE任务派发状态",
+        "url": "Operation\/AiyoZhiBoDispatch\/getAeDispatchStatus"
+    },
+    {
+        "node_id": 1282,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-AE任务信息",
+        "url": "Operation\/AiyoZhiBoDispatch\/task"
+    },
+    {
+        "node_id": 1283,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-任务信息",
+        "url": "Operation\/AiyoZhiBoDispatch\/order"
+    },
+    {
+        "node_id": 1284,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-产品列表",
+        "url": "Operation\/AiyoZhiBoDispatch\/product"
+    },
+    {
+        "node_id": 1285,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-直接派发",
+        "url": "Operation\/AiyoZhiBoDispatch\/singleDispatch"
+    },
+    {
+        "node_id": 1286,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-宝贝列表",
+        "url": "Operation\/AiyoZhiBoDispatch\/products"
+    },
+    {
+        "node_id": 1287,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-宝贝详情",
+        "url": "Operation\/AiyoZhiBoDispatch\/productDetails"
+    },
+    {
+        "node_id": 1288,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-物流接口",
+        "url": "Operation\/AiyoZhiBoDispatch\/logistics"
+    },
+    {
+        "node_id": 1289,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-执行内容",
+        "url": "Operation\/AiyoZhiBoDispatch\/executeContent"
+    },
+    {
+        "node_id": 1290,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-日期表",
+        "url": "Operation\/AiyoZhiBoDispatch\/dateList"
+    },
+    {
+        "node_id": 1291,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-服务变更列表",
+        "url": "Operation\/AiyoZhiBoDispatch\/contractChangeList"
+    },
+    {
+        "node_id": 1292,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-服务变更详情",
+        "url": "Operation\/AiyoZhiBoDispatch\/contractChangeDetails"
+    },
+    {
+        "node_id": 1293,
+        "level": 3,
+        "description": "运营中心-爱柚执行团队直播派发管理-派发任务",
+        "url": "Operation\/AiyoZhiBoDispatch\/getAeListDispatchStatus"
+    },
+    {
+        "node_id": 1294,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-列表",
+        "url": "Operation\/AiyoExecuteShipin\/index"
+    },
+    {
+        "node_id": 1295,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-左侧详情",
+        "url": "Operation\/AiyoExecuteShipin\/detail"
+    },
+    {
+        "node_id": 1296,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-左侧编辑",
+        "url": "Operation\/AiyoExecuteShipin\/updateDetail"
+    },
+    {
+        "node_id": 1297,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-比对核实",
+        "url": "Operation\/AiyoExecuteShipin\/contrastCheck"
+    },
+    {
+        "node_id": 1298,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-AE任务列表",
+        "url": "Operation\/AiyoExecuteShipin\/aeList"
+    },
+    {
+        "node_id": 1299,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-AE任务详情",
+        "url": "Operation\/AiyoExecuteShipin\/aeDetail"
+    },
+    {
+        "node_id": 1300,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-AE任务新增",
+        "url": "Operation\/AiyoExecuteShipin\/addAe"
+    },
+    {
+        "node_id": 1301,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-宝贝列表",
+        "url": "Operation\/AiyoExecuteShipin\/taobaoProductList"
+    },
+    {
+        "node_id": 1302,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-宝贝详情",
+        "url": "Operation\/AiyoExecuteShipin\/taobaoProductDetail"
+    },
+    {
+        "node_id": 1303,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-执行内容",
+        "url": "Operation\/AiyoExecuteShipin\/executeContent"
+    },
+    {
+        "node_id": 1304,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-执行内容编辑",
+        "url": "Operation\/AiyoExecuteShipin\/executeContent"
+    },
+    {
+        "node_id": 1305,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-未派发AE任务列表",
+        "url": "Operation\/AiyoExecuteShipin\/noDistributeAeList"
+    },
+    {
+        "node_id": 1306,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-日期表",
+        "url": "Operation\/AiyoExecuteShipin\/dateList"
+    },
+    {
+        "node_id": 1307,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-日期表确认",
+        "url": "Operation\/AiyoExecuteShipin\/updateExecuteDate"
+    },
+    {
+        "node_id": 1308,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-AE任务暂停数",
+        "url": "Operation\/AiyoExecuteShipin\/stopAeCount"
+    },
+    {
+        "node_id": 1309,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-物流信息",
+        "url": "Operation\/AiyoExecuteShipin\/logisticsInfo"
+    },
+    {
+        "node_id": 1310,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-获取OSS签名",
+        "url": "Operation\/AiyoExecuteShipin\/getOssSign"
+    },
+    {
+        "node_id": 1311,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-终止执行",
+        "url": "Operation\/AiyoExecuteShipin\/executeAbort"
+    },
+    {
+        "node_id": 1312,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-恢复执行",
+        "url": "Operation\/AiyoExecuteShipin\/executeStopRecover"
+    },
+    {
+        "node_id": 1313,
+        "level": 3,
+        "description": "运营中心-爱柚视频执行管理-执行下载excel",
+        "url": "Operation\/AiyoExecuteShipin\/download"
+    },
+    {
+        "node_id": 1314,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-列表",
+        "url": "Operation\/AiyoExecuteTuwen\/index"
+    },
+    {
+        "node_id": 1315,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-左侧详情",
+        "url": "Operation\/AiyoExecuteTuwen\/detail"
+    },
+    {
+        "node_id": 1316,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-左侧编辑",
+        "url": "Operation\/AiyoExecuteTuwen\/updateDetail"
+    },
+    {
+        "node_id": 1317,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-比对核实",
+        "url": "Operation\/AiyoExecuteTuwen\/contrastCheck"
+    },
+    {
+        "node_id": 1318,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-AE任务列表",
+        "url": "Operation\/AiyoExecuteTuwen\/aeList"
+    },
+    {
+        "node_id": 1319,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-AE任务详情",
+        "url": "Operation\/AiyoExecuteTuwen\/aeDetail"
+    },
+    {
+        "node_id": 1320,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-AE任务新增",
+        "url": "Operation\/AiyoExecuteTuwen\/addAe"
+    },
+    {
+        "node_id": 1321,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-宝贝列表",
+        "url": "Operation\/AiyoExecuteTuwen\/taobaoProductList"
+    },
+    {
+        "node_id": 1322,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-宝贝详情",
+        "url": "Operation\/AiyoExecuteTuwen\/taobaoProductDetail"
+    },
+    {
+        "node_id": 1323,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-执行内容",
+        "url": "Operation\/AiyoExecuteTuwen\/executeContent"
+    },
+    {
+        "node_id": 1324,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-执行内容编辑",
+        "url": "Operation\/AiyoExecuteTuwen\/executeContent"
+    },
+    {
+        "node_id": 1325,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-未派发AE任务列表",
+        "url": "Operation\/AiyoExecuteTuwen\/noDistributeAeList"
+    },
+    {
+        "node_id": 1326,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-日期表",
+        "url": "Operation\/AiyoExecuteTuwen\/dateList"
+    },
+    {
+        "node_id": 1327,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-日期表确认",
+        "url": "Operation\/AiyoExecuteTuwen\/updateExecuteDate"
+    },
+    {
+        "node_id": 1328,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-AE任务暂停数",
+        "url": "Operation\/AiyoExecuteTuwen\/stopAeCount"
+    },
+    {
+        "node_id": 1329,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-物流信息",
+        "url": "Operation\/AiyoExecuteTuwen\/logisticsInfo"
+    },
+    {
+        "node_id": 1330,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-获取OSS签名",
+        "url": "Operation\/AiyoExecuteTuwen\/getOssSign"
+    },
+    {
+        "node_id": 1331,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-终止执行",
+        "url": "Operation\/AiyoExecuteTuwen\/executeAbort"
+    },
+    {
+        "node_id": 1332,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-恢复执行",
+        "url": "Operation\/AiyoExecuteTuwen\/executeStopRecover"
+    },
+    {
+        "node_id": 1333,
+        "level": 3,
+        "description": "运营中心-爱柚图文执行管理-执行下载excel",
+        "url": "Operation\/AiyoExecuteTuwen\/download"
+    },
+    {
+        "node_id": 1334,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-列表",
+        "url": "Operation\/AiyoExecuteZhibo\/index"
+    },
+    {
+        "node_id": 1335,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-左侧详情",
+        "url": "Operation\/AiyoExecuteZhibo\/detail"
+    },
+    {
+        "node_id": 1336,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-左侧编辑",
+        "url": "Operation\/AiyoExecuteZhibo\/updateDetail"
+    },
+    {
+        "node_id": 1337,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-比对核实",
+        "url": "Operation\/AiyoExecuteZhibo\/contrastCheck"
+    },
+    {
+        "node_id": 1338,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-AE任务列表",
+        "url": "Operation\/AiyoExecuteZhibo\/aeList"
+    },
+    {
+        "node_id": 1339,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-AE任务详情",
+        "url": "Operation\/AiyoExecuteZhibo\/aeDetail"
+    },
+    {
+        "node_id": 1340,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-AE任务新增",
+        "url": "Operation\/AiyoExecuteZhibo\/addAe"
+    },
+    {
+        "node_id": 1341,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-宝贝列表",
+        "url": "Operation\/AiyoExecuteZhibo\/taobaoProductList"
+    },
+    {
+        "node_id": 1342,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-宝贝详情",
+        "url": "Operation\/AiyoExecuteZhibo\/taobaoProductDetail"
+    },
+    {
+        "node_id": 1343,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-执行内容",
+        "url": "Operation\/AiyoExecuteZhibo\/executeContent"
+    },
+    {
+        "node_id": 1344,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-执行内容编辑",
+        "url": "Operation\/AiyoExecuteZhibo\/executeContent"
+    },
+    {
+        "node_id": 1345,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-未派发AE任务列表",
+        "url": "Operation\/AiyoExecuteZhibo\/noDistributeAeList"
+    },
+    {
+        "node_id": 1346,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-日期表",
+        "url": "Operation\/AiyoExecuteZhibo\/dateList"
+    },
+    {
+        "node_id": 1347,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-日期表确认",
+        "url": "Operation\/AiyoExecuteZhibo\/updateExecuteDate"
+    },
+    {
+        "node_id": 1348,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-AE任务暂停数",
+        "url": "Operation\/AiyoExecuteZhibo\/stopAeCount"
+    },
+    {
+        "node_id": 1349,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-物流信息",
+        "url": "Operation\/AiyoExecuteZhibo\/logisticsInfo"
+    },
+    {
+        "node_id": 1350,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-获取OSS签名",
+        "url": "Operation\/AiyoExecuteZhibo\/getOssSign"
+    },
+    {
+        "node_id": 1351,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-终止执行",
+        "url": "Operation\/AiyoExecuteZhibo\/executeAbort"
+    },
+    {
+        "node_id": 1352,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-恢复执行",
+        "url": "Operation\/AiyoExecuteZhibo\/executeStopRecover"
+    },
+    {
+        "node_id": 1353,
+        "level": 3,
+        "description": "运营中心-爱柚直播执行管理-执行下载excel",
+        "url": "Operation\/AiyoExecuteZhibo\/download"
+    },
+    {
+        "node_id": 1354,
+        "level": 3,
+        "description": "销售中心-客户详情-基本信息管理_入我的库",
+        "url": "Crm\/CustomerPublic\/goPrivate"
+    },
+    {
+        "node_id": 1355,
+        "level": 3,
+        "description": "销售中心-客户详情-基本信息管理_分配",
+        "url": "Crm\/CustomerPublic\/allot"
+    },
+    {
+        "node_id": 1356,
+        "level": 3,
+        "description": "系统中心-流出规则配置-列表",
+        "url": "System\/OutRule\/index"
+    },
+    {
+        "node_id": 1357,
+        "level": 3,
+        "description": "系统中心-流出规则配置-编辑",
+        "url": "System\/OutRule\/update"
+    },
+    {
+        "node_id": 1358,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频派发管理-列表",
+        "url": "Operation\/AiyoManagerShiPingDispatch\/aeList"
+    },
+    {
+        "node_id": 1359,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频派发管理-日期表",
+        "url": "Operation\/AiyoManagerShiPingDispatch\/dateList"
+    },
+    {
+        "node_id": 1360,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频派发管理-任务详情",
+        "url": "Operation\/AiyoManagerShiPingDispatch\/task"
+    },
+    {
+        "node_id": 1361,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频派发管理-宝贝列表",
+        "url": "Operation\/AiyoManagerShiPingDispatch\/products"
+    },
+    {
+        "node_id": 1362,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频派发管理-宝贝详情",
+        "url": "Operation\/AiyoManagerShiPingDispatch\/productDetails"
+    },
+    {
+        "node_id": 1363,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频派发管理-执行内容",
+        "url": "Operation\/AiyoManagerShiPingDispatch\/executeContent"
+    },
+    {
+        "node_id": 1364,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频派发管理-物流",
+        "url": "Operation\/AiyoManagerShiPingDispatch\/logistics"
+    },
+    {
+        "node_id": 1365,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频派发管理-变更执行人员",
+        "url": "Operation\/AiyoManagerShiPingDispatch\/updateExecuteUser"
+    },
+    {
+        "node_id": 1366,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频派发管理-获取AE任务当前执行人员",
+        "url": "Operation\/AiyoManagerShiPingDispatch\/updateExecuteUser"
+    },
+    {
+        "node_id": 1367,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管图文派发管理-列表",
+        "url": "Operation\/AiyoManagerTuwenDispatch\/aeList"
+    },
+    {
+        "node_id": 1368,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管图文派发管理-日期表",
+        "url": "Operation\/AiyoManagerTuwenDispatch\/dateList"
+    },
+    {
+        "node_id": 1369,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管图文派发管理-任务详情",
+        "url": "Operation\/AiyoManagerTuwenDispatch\/task"
+    },
+    {
+        "node_id": 1370,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管图文派发管理-宝贝列表",
+        "url": "Operation\/AiyoManagerTuwenDispatch\/products"
+    },
+    {
+        "node_id": 1371,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管图文派发管理-宝贝详情",
+        "url": "Operation\/AiyoManagerTuwenDispatch\/productDetails"
+    },
+    {
+        "node_id": 1372,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管图文派发管理-执行内容",
+        "url": "Operation\/AiyoManagerTuwenDispatch\/executeContent"
+    },
+    {
+        "node_id": 1373,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管图文派发管理-物流",
+        "url": "Operation\/AiyoManagerTuwenDispatch\/logistics"
+    },
+    {
+        "node_id": 1374,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管图文派发管理-变更执行人员",
+        "url": "Operation\/AiyoManagerTuwenDispatch\/updateExecuteUser"
+    },
+    {
+        "node_id": 1375,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管图文派发管理-获取AE任务当前执行人员",
+        "url": "Operation\/AiyoManagerTuwenDispatch\/updateExecuteUser"
+    },
+    {
+        "node_id": 1376,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播派发管理-列表",
+        "url": "Operation\/AiyoManagerZhiBoDispatch\/aeList"
+    },
+    {
+        "node_id": 1377,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播派发管理-日期表",
+        "url": "Operation\/AiyoManagerZhiBoDispatch\/dateList"
+    },
+    {
+        "node_id": 1378,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播派发管理-任务详情",
+        "url": "Operation\/AiyoManagerZhiBoDispatch\/task"
+    },
+    {
+        "node_id": 1379,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播派发管理-宝贝列表",
+        "url": "Operation\/AiyoManagerZhiBoDispatch\/products"
+    },
+    {
+        "node_id": 1380,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播派发管理-宝贝详情",
+        "url": "Operation\/AiyoManagerZhiBoDispatch\/productDetails"
+    },
+    {
+        "node_id": 1381,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播派发管理-执行内容",
+        "url": "Operation\/AiyoManagerZhiBoDispatch\/executeContent"
+    },
+    {
+        "node_id": 1382,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播派发管理-物流",
+        "url": "Operation\/AiyoManagerZhiBoDispatch\/logistics"
+    },
+    {
+        "node_id": 1383,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播派发管理-变更执行人员",
+        "url": "Operation\/AiyoManagerZhiBoDispatch\/updateExecuteUser"
+    },
+    {
+        "node_id": 1384,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播派发管理-获取AE任务当前执行人员",
+        "url": "Operation\/AiyoManagerZhiBoDispatch\/updateExecuteUser"
+    },
+    {
+        "node_id": 1385,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频寄件管理-列表",
+        "url": "Operation\/AiyoShipinLogisticsMail\/index"
+    },
+    {
+        "node_id": 1386,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频寄件管理-执行任务列表",
+        "url": "Operation\/AiyoShipinLogisticsMail\/getExecuteTaskList"
+    },
+    {
+        "node_id": 1387,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管视频寄件管理-派件",
+        "url": "Operation\/AiyoShipinLogisticsMail\/insert"
+    },
+    {
+        "node_id": 1388,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播寄件管理-列表",
+        "url": "Operation\/AiyoZhiboLogisticsMail\/index"
+    },
+    {
+        "node_id": 1389,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播寄件管理-执行任务列表",
+        "url": "Operation\/AiyoZhiboLogisticsMail\/getExecuteTaskList"
+    },
+    {
+        "node_id": 1390,
+        "level": 3,
+        "description": "运营中心-爱柚执行主管直播寄件管理-派件",
+        "url": "Operation\/AiyoZhiboLogisticsMail\/insert"
+    }
+]

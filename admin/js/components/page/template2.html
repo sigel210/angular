@@ -1,0 +1,23 @@
+<ul ng-show="showSinglePage || total > 0" class="paging" ng-class="{'mini': size == 'mini'}">
+    <span ng-hide="hideTotal" class="pagetotal">共
+        <span ng-bind="total"></span>条</span>
+    <li ng-if="hasLastPage">
+        <a ng-click="changePage(1)">
+            <<</a>
+    </li>
+    <li ng-if="hasLastPage">
+        <a ng-click="changePage(pageIndex-1)">
+            <</a>
+    </li>
+    <li ng-repeat="pageNumber in pageNumberList" ng-class="{ 'current':  pageNumber === pageIndex }">
+        <a ng-click="changePage(pageNumber)" ng-bind="pageNumber"></a>
+    </li>
+    <li ng-if="hasNextPage">
+        <a ng-click="changePage(pageIndex + 1)">></a>
+    </li>
+    <li ng-if="hasNextPage">
+        <a ng-click="changePage(pageCount)">>></a>
+    </li>
+    <input ng-hide="hideQuickPass" type="text" ng-model="quickNo" />
+    <button ng-hide="hideQuickPass" ng-click="quickNo <= pageCount && changePage(quickNo)">GO</button>
+</ul>

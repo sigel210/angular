@@ -1,0 +1,89 @@
+<!-- 签约信息 -->
+<!-- <div>
+    <div>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>签约信息</th>
+        </tr>
+        <tr>
+            <td>签约方式</td>
+            <td ng-bind="detailsWrap.data.sign_type | signTypeFilter">
+            </td>
+        </tr>
+        <tr ng-show="detailsWrap.data.sign_type == 1">
+            <td>签约人</td>
+            <td ng-bind="detailsWrap.data.sign_name"></td>
+        </tr>
+        <tr ng-show="detailsWrap.data.sign_type == 1">
+            <td>身份证号</td>
+            <td ng-bind="detailsWrap.data.sign_card_id"></td>
+        </tr>
+        <tr ng-show="detailsWrap.data.sign_type == 1">
+            <td>联系方式</td>
+            <td ng-bind="detailsWrap.data.sign_phone"></td>
+        </tr>
+        <tr ng-show="detailsWrap.data.sign_type == 2">
+            <td>授权签约人</td>
+            <td ng-bind="detailsWrap.data.sign_authorize"></td>
+        </tr>
+        <tr ng-show="detailsWrap.data.sign_type == 2">
+            <td>公司名字</td>
+            <td ng-bind="detailsWrap.data.sign_company"></td>
+        </tr>
+        <tr ng-show="detailsWrap.data.sign_type == 2">
+            <td>办公地址</td>
+            <td ng-bind="detailsWrap.data.sign_address"></td>
+        </tr>
+        <tr ng-show="detailsWrap.data.sign_type == 2">
+            <td>联系方式</td>
+            <td ng-bind="detailsWrap.data.sign_phone"></td>
+        </tr>
+    </div>
+</div> -->
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>签约信息
+        </span>
+    </p>
+    <div class="list-item">
+        <span class="title">签约方式</span>
+        <span class="info" ng-bind="detailsWrap.data.sign_type | signTypeFilter">
+        </span>
+    </div>
+    <div class="list-item" ng-show="detailsWrap.data.sign_type == 1">
+        <span class="title">签约人</span>
+        <span class="info" ng-bind="detailsWrap.data.sign_name">
+        </span>
+    </div>
+    <div class="list-item" ng-show="detailsWrap.data.sign_type == 1">
+        <span class="title">身份证号</span>
+        <span class="info" ng-bind="detailsWrap.data.sign_card_id">
+        </span>
+    </div>
+    <div class="list-item" ng-show="detailsWrap.data.sign_type == 1">
+        <span class="title">联系方式</span>
+        <span class="info" ng-bind="detailsWrap.data.sign_phone">
+        </span>
+    </div>
+    <div class="list-item" ng-show="detailsWrap.data.sign_type == 2">
+        <span class="title">授权签约人</span>
+        <span class="info" ng-bind="detailsWrap.data.sign_authorize">
+        </span>
+    </div>
+    <div class="list-item" ng-show="detailsWrap.data.sign_type == 2">
+        <span class="title">公司名字</span>
+        <span class="info" ng-bind="detailsWrap.data.sign_company">
+        </span>
+    </div>
+    <div class="list-item" ng-show="detailsWrap.data.sign_type == 2">
+        <span class="title">办公地址</span>
+        <span class="info" ng-bind="detailsWrap.data.sign_address">
+        </span>
+    </div>
+    <div class="list-item" ng-show="detailsWrap.data.sign_type == 2">
+        <span class="title">联系方式</span>
+        <span class="info" ng-bind="detailsWrap.data.sign_phone">
+        </span>
+    </div>
+</div>

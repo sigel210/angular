@@ -1,0 +1,334 @@
+<!-- 订单详情主区块 -->
+<div class="c-container f-position-r">
+    <div class="content extends-box" style="padding:0">
+        <div class="c-detail-ctn extends-box has-footer">
+            <div class="c-detail-ctn-top" style="height:263px;">
+                <div class="table-area has-footer" style="padding-bottom: 19px;">
+                    <table style="margin-bottom:7px;">
+                        <thead>
+                            <tr>
+                                <th width="16">序</th>
+                                <th width="120">产品类型</th>
+                                <th>产品名称</th>
+                                <th width="70">到单日期</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-show="https.orderlist">
+                            <tr>
+                                <td colspan="4">
+                                    <div style="display: flex;height: 160px;align-items: center;justify-content: center;">
+                                        <div class="ball-grid-pulse">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody ng-show="!https.orderlist && orderModel.list.length > 0">
+                            <tr ng-class="{'no-pointer':orderModel.list.length == 1,'current': item.order_id == orderModel.order_id}" ng-repeat="item in orderModel.list"
+                                ng-click="orderModel.changeOrder(item.order_id, item.second_product_id, item.third_product_id,item.product_tag)">
+                                <td>{{$index + 1}}</td>
+                                <td title="{{item.product_category_name}}">{{item.product_category_name}}</td>
+                                <td title="{{item.product_name}}">{{item.product_name}}</td>
+                                <td>{{item.order_received_date}}</td>
+                            </tr>
+                        </tbody>
+                        <tbody ng-if="!https.orderlist && orderModel.list.length == 0">
+                            <tr class="no-pointer">
+                                <td colspan="4">
+                                    <div class="no-order">
+                                        <div>
+                                            <img src="images/kong.png" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="slide-footer inside-footer">
+                </div>
+            </div>
+            <div class="c-detail-ctn-bottom rest-box ">
+                <div class="order-detail-box" ng-if="!https.orderdetail && orderModel.order_id != 0">
+                    <p class="menu-title">产品与内容</p>
+                    <div class="outer-ctn">
+                        <div class="product-content" ng-repeat="item in orderModel.product">
+                            <div class="product-header" ng-class="{'active':orderModel.currentProduct.order_product_id == item.order_product_id}" ng-click="handleProductClick(item)">
+                                <span class="title-item">产品名称：{{item.product_name}}</span>
+                                <span class="status">产品状态: {{item.order_product_status}}</span>
+                                <i class="iconfont show-btn" ng-class="{'icon-xiayi': !item.showContent,'icon-shangyi':item.showContent}"></i>
+                            </div>
+                            <div ng-show="item.showContent && item.order_content_list.length> 0">
+                                <table class="content-table">
+                                    <thead>
+                                        <tr>
+                                            <th>内容名称</th>
+                                            <th>内容状态</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-class="{'active':orderModel.currentContent.order_content_no == obj.order_content_no}" ng-click="handleContentClick(obj,item)"
+                                            ng-repeat="obj in item.order_content_list">
+                                            <td>{{obj.content_name}}</td>
+                                            <td>{{obj.order_content_status}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-item extends-box" ng-if="!https.orderdetail && orderModel.order_id == 0">
+                    <img src="images/kong.png">
+                </div>
+                <div class="no-item" ng-show="https.orderdetail">
+                    <div class="ball-grid-pulse">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer slide-footer-border">
+    </div>
+</div>
+<!-- tab区块 -->
+<div class="c-container normal-box" style="margin-bottom: 0;">
+    <div class="flex-column rest-box has-footer" ng-if="orderModel.showType === 1">
+        <div class="u-tabs">
+            <ul>
+                <li ng-class="{current:orderModel.tabIndex == 0}" ng-click="changeTab('0')">订单详情</li>
+                <li ng-class="{current:orderModel.tabIndex == 1}" ng-click="changeTab('1')">支付信息</li>
+                <li ng-class="{current:orderModel.tabIndex == 2}" ng-click="changeTab('2')">退款信息</li>
+            </ul>
+        </div>
+
+        <div class="extends-box f-position-r rest-box flex-column" ng-if="orderModel.tabIndex == 0" ng-include="'./views/customer/order/heiman.html'">
+        </div>
+        <div class="extends-box f-position-r rest-box flex-column" ng-if="orderModel.tabIndex == 1" ng-include="'./views/customer/pay.html'">
+        </div>
+        <div class="extends-box f-position-r rest-box flex-column" ng-if="orderModel.tabIndex == 2" ng-include="'./views/customer/refund.html'">
+        </div>
+    </div>
+    <div class="extends-box c-detail-ctn f-position-r" ng-if="orderModel.showType === 2">
+        <div class="order-detail-box">
+            <p class="menu-title" style="border:0">产品详情</p>
+            <div style="padding: 10px 21px;">
+                <div class="edit-title">
+                    产品信息
+                </div>
+                <div class="list-group main-content-detail" style="margin-bottom:13px;">
+                    <div class="list-item">
+                        <div class="title">产品类型</div>
+                        <div class="info" ng-bind="orderModel.currentProduct.product_category_name"></div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="title">产品名称</div>
+                        <div class="info" ng-bind="orderModel.currentProduct.product_name"></div>
+                    </div>
+                    <div class="list-item">
+                        <div class="title">产品单价</div>
+                        <div class="info" ng-bind="orderModel.currentProduct.order_product_price"></div>
+                    </div>
+                    <div class="list-item">
+                        <div class="title">产品状态</div>
+                        <div class="info" ng-bind="orderModel.currentProduct.order_product_status"></div>
+                    </div>
+                </div>
+                <div class="edit-title">
+                    产品说明
+                </div>
+                <div class="list-group">
+                    <div class="list-item">
+                        <p ng-bind="orderModel.currentProduct.product_remarks || '-'" style="word-break:break-all;white-space: pre-wrap;" class="txt-textarea">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="extends-box c-detail-ctn f-position-r" ng-if="orderModel.showType === 3">
+        <div class="order-detail-box">
+            <p class="menu-title" style="border:0">内容详情</p>
+            <div style="padding: 10px 21px;">
+                <div class="edit-title">
+                    内容信息
+                </div>
+                <div class="list-group main-content-detail" style="margin-bottom:13px;">
+                    <div class="list-item">
+                        <div class="title">内容编号</div>
+                        <div class="info" ng-bind="orderModel.currentContent.order_content_no"></div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="title">内容名称 </div>
+                        <div class="info" ng-bind="orderModel.currentContent.content_name"></div>
+                    </div>
+                    <div class="list-item">
+                        <div class="title">内容类型</div>
+                        <div class="info" ng-bind="orderModel.currentContent.content_category_name"></div>
+                    </div>
+                    <div class="list-item">
+                        <div class="title">内容单价</div>
+                        <div class="info" ng-bind="orderModel.currentContent.content_price"></div>
+                    </div>
+                    <div class="list-item">
+                        <div class="title">内容状态</div>
+                        <div class="info" ng-bind="orderModel.currentContent.order_content_status"></div>
+                    </div>
+                    <div class="list-item">
+                        <div class="title">退款状态</div>
+                        <div class="info" ng-bind="orderModel.currentContent.order_content_refund_status"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--退款申请-->
+<div ng-if="orderModel.refundModal.flag" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="orderModel.refundModal.hide()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="orderModel.refundModal.title">退款申请</h4>
+            </div>
+            <div class="modal-body">
+                <div class="full-content m-form-wrap center-edit-form">
+
+                    <p class="m-form-row" style="border-top:1px solid #f2f2f2">
+                        <span class="table-name">退款类型</span>
+                        <span class="table-text">
+                            <select class="select-w120 pointer" ng-model="orderModel.refundModal.req.approval_type" ng-options="option.refund_type_id as option.refund_type_name for option in orderModel.refundModal.data.refund_type"
+                                ng-change="orderModel.refundModal.changeApprovalType(orderModel.refundModal.req.approval_type)">
+                                <option></option>
+                            </select>
+                            <label ng-show="!orderModel.refundModal.req.approval_type" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.refundModal.req.approval_type = ''"></i>
+                    </p>
+                    <p class="add-edit-title">
+                        <span class="icon-title"></span>退款内容选择
+                    </p>
+                    <table ng-if="orderModel.refundModal.req.approval_type == 3" class="refund-table">
+                        <thead>
+                            <tr>
+                                <th>产品名称</th>
+                                <th></th>
+                                <th>内容名称</th>
+                                <th>内容状态</th>
+                                <th>内容价格</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="item in orderModel.refundModal.data.order_product_list">
+                            <tr ng-class="{'disabled': obj.order_content_refund_status_1 == 2}" ng-repeat="obj in item.order_content_list">
+                                <td ng-style="{'color':obj.is_end ? '#a6adbe': '#323232'}" class="border-right" ng-if="$index== 0" rowspan="{{item.order_content_list.length}}>{{item.product_name}}">{{item.product_name}}</td>
+                                <td>
+                                    <input ng-disabled="obj.order_content_refund_status_1 == 2" type="checkbox" ng-model="obj.checked" ng-checked="obj.checked"
+                                        ng-click="orderModel.refundModal.contentClick(obj.checked,obj.order_content_price,obj.order_content_id)"
+                                    />
+                                </td>
+                                <td>{{obj.order_content_name}}</td>
+                                <td>{{obj.order_content_status}}</td>
+                                <td>{{obj.order_content_price}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="m-form-row">
+                        <span class="table-name">退款渠道</span>
+                        <span class="table-text">
+                            <select ng-change="orderModel.refundModal.resetAccount(orderModel.refundModal.req.refund_channel)" class="select-w120 pointer" ng-model="orderModel.refundModal.req.refund_channel" ng-options="option.id as option.name for option in orderModel.refundChannels">
+                                <!-- <option></option> -->
+                            </select>
+                            <label ng-show="!orderModel.refundModal.req.refund_channel" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.refundModal.req.refund_channel = ''"></i>
+                    </p>
+                    <p class="m-form-row">
+                        <span class="table-name">退款金额</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.refundModal.req.refund_amount" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.refundModal.req.refund_amount = ''"></i>
+                    </p>
+                    <p style="padding-left: 18px;margin: 10px 0px;">
+                        退款上限金额： {{orderModel.refundModal.maxPrice | number:2}}
+                    </p>
+                    <p class="add-edit-title" style="border:none;" ng-show="orderModel.refundModal.req.refund_channel == 1">
+                        <span class="icon-title"></span>客户帐号选择
+                    </p>
+                    <div ng-show="orderModel.refundModal.req.refund_channel == 1">
+                        <div ng-repeat="item in orderModel.refundModal.data.refund_way_list.ali">
+                            <p class="u-radio-box">
+                                <input type="radio" value="{{item.order_received_id}}" ng-model="orderModel.refundModal.req.order_received_id">
+                                <span>帐号【{{$index + 1}}】</span>
+                            </p>
+                            <p class="m-form-row" style="border-top:1px solid #f2f2f2">
+                                <span class="table-name">支付宝</span>
+                                <span class="table-text" ng-bind="item.customer_account">
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- <div ng-show="orderModel.refundModal.req.refund_channel == 2">
+                        <div ng-repeat="item in orderModel.refundModal.data.refund_way_list.bank">
+                            <p class="radio">
+                                <input type="radio" value="{{item.order_received_id}}" ng-model="orderModel.refundModal.req.order_received_id">
+                                <span> 选择退款信息【{{$index + 1}}】</span>
+                            </p>
+                            <p class="m-form-row">
+                                <span class="table-name">银行账户</span>
+                                <span class="table-text" ng-bind="item.customer_account">
+                                </span>
+                            </p>
+                            <p class="m-form-row">
+                                <span class="table-name">开户支行</span>
+                                <span class="table-text" ng-bind="item.customer_bank">
+                                </span>
+                            </p>
+                        </div>
+                    </div> -->
+                    <!-- 附件模块 -->
+                    <p class="add-edit-title">
+                        <span class="icon-title"></span>附件</p>
+                    <div>
+                        <p class="m-form-row" ng-repeat="item in orderModel.fileNames track by $index">
+                            <span class="table-text" ng-bind="item" style="display:inline-block; width:612px;"></span>
+                            <i class="table-clear" ng-click="orderModel.refundModal.deleteimg($index)"></i>
+                        </p>
+                        <p class="m-form-row" ng-show="orderModel.fileNames.length < 10" style="cursor:pointer" ng-click="orderModel.refundModal.uploadImg()">
+                            <span class="table-text" style="display:inline-block; width:612px;color:#ccc;">
+                                点击上传
+                            </span>
+                        </p>
+                        <input type="file" accept="image/jpg,image/png,image/jpeg" style="display: none" id="refund-img" onchange="angular.element(this).scope().orderModel.refundModal.fileAdd()"
+                            multiple/>
+                    </div>
+                    <p class="add-edit-title" style="border:none;">
+                        <span class="icon-title"></span>退款理由</p>
+                    <p class="m-textarea-box">
+                        <span class="table-text full-text textarea-span">
+                            <textarea ng-model="orderModel.refundModal.req.reason" class="u-table-textarea" name="" cols="" rows="" maxlength="200" placeholder="点击输入"></textarea>
+                            <span class="u-textarea-num">
+                                <span>{{orderModel.refundModal.req.reason.length ? orderModel.refundModal.req.reason.length:0}}</span>/200</span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="orderModel.refundModal.confirm()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<header>
+    <div class="tab-bar">
+        <button class="menu-btn-back" onclick="window.history.back()">
+            <i class="icon-back"></i>
+        </button>
+        <span class="menu-tit">新建内容</span>
+    </div>
+</header>
+<div class="cont-page-w">
+    <div class="m-form-wrap add-edit-form">
+        <div class="add-edit-title">
+            <span class="icon-title"></span>基本信息
+        </div>
+        <div class="m-table-from">
+            <div class="m-form-row add-error">
+                <span class="table-name">一级内容类型</span>
+                <span class="table-text">
+                    <select ng-model="firstContent" ng-options="firstContent as firstContent.content_category_name for firstContent in typeList"
+                        ng-change="firstSelect(firstContent)">
+                        <option></option>
+                    </select>
+                    <label class="select-tip" ng-show="!firstContent">点击选择</label>
+                </span>
+                <i class="table-clear" ng-click="clearList()"></i>
+                <i class="table-red-error"></i>
+            </div>
+            <div class="m-form-row add-error">
+                <span class="table-name">二级内容类型</span>
+                <span class="table-text">
+                    <select ng-model="secondContent" ng-options="secondContent as secondContent.content_category_name for secondContent in secondContentList"
+                        ng-change="secondSelect(secondContent)">
+                        <option></option>
+                    </select>
+                    <label class="select-tip" ng-show="!secondContent">点击选择</label>
+                </span>
+                <i class="table-clear" ng-click="clearList_second()"></i>
+                <i class="table-red-error"></i>
+            </div>
+            <div class="m-form-row add-error" ng-class="{'bg-gray':firstContent.content_category_id == 47}">
+                <span class="table-name">三级内容类型</span>
+                <span class="table-text">
+                    <select ng-model="thirdContent" ng-options="thirdContent as thirdContent.content_category_name for thirdContent in thirdContentList"
+                        ng-disabled="firstContent.content_category_id == 47">
+                        <option></option>
+                    </select>
+                    <label class="select-tip" ng-show="!thirdContent">点击选择</label>
+                </span>
+                <i class="table-clear" ng-click="thirdContent = ''"></i>
+                <i class="table-red-error"></i>
+            </div>
+            <div class="m-form-row add-error">
+                <span class="table-name">内容名称</span>
+                <span class="table-text">
+                    <input type="text" name="" ng-model="content_name" placeholder="点击输入" maxlength="30">
+                </span>
+                <i class="table-clear" ng-click="content_name = ''"></i>
+                <i class="table-red-error"></i>
+            </div>
+            <div class="add-edit-title">
+                <span class="icon-title"></span>内容说明
+            </div>
+            <div class="m-table-form">
+                <div class="m-textarea-box">
+                    <textarea class="u-table-textarea" ng-model="content_desc" maxlength="200"></textarea>
+                    <span class="u-textarea-num">
+                        <span>{{content_desc.length ? content_desc.length:0}}</span>/200
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="slide-footer">
+    <button class="btn btn-cancel" onclick="window.history.back()">取消</button>
+    <button class="btn btn-new-blue" ng-click="save()">完成</button>
+</div>

@@ -1,0 +1,34 @@
+<!-- 附件信息 -->
+<!-- <table>
+    <tbody>
+        <tr>
+            <th colspan="2">
+                <span class="icon-title"></span>附件</th>
+        </tr>
+        <tr ng-show="!detailsWrap.data.pics || detailsWrap.data.pics.length == 0">
+            <td colspan="2">-</td>
+        </tr>
+        <tr ng-repeat="item in detailsWrap.data.pics">
+            <td>附件{{detailsWrap.data.pics.length > 1 ? '【'+($index+1)+'】' : ''}}</td>
+            <td>
+                <a style="margin-left:0px;" ng-href="{{item}}" target="_blank">查看</a>
+            </td>
+        </tr>
+    </tbody>
+</table> -->
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>附件
+        </span>
+    </p>
+    <div class="list-item" ng-show="!detailsWrap.data.pics || detailsWrap.data.pics.length == 0">
+        -
+    </div>
+    <div class="list-item" ng-repeat="item in detailsWrap.data.pics">
+        <span class="title">附件{{detailsWrap.data.pics.length > 1 ? '【'+($index+1)+'】' : ''}}</span>
+        <div class="info">
+            <a style="margin-left:0px;" ng-href="{{item}}" target="_blank">查看</a>
+        </div>
+    </div>
+</div>

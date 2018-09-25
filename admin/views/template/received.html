@@ -1,0 +1,202 @@
+<!-- 支付信息 非爱柚-->
+<!-- <div class="content" style="position:static;padding:0;" ng-repeat="item in detailsWrap.data.received_list" ng-if="detailsWrap.data.second_product_id != 10217 && detailsWrap.data.second_product_id != 10013">
+    <div class="list-group right-detail">
+        <div>
+            <div class="label-title">
+                <div>
+                    <span class="icon-title"></span>支付信息【{{$index + 1}}】</div>
+                </div>
+            <div class="list-item">
+                <p class="title">支付编号</p>
+                <p class="info" ng-bind="item.received_no"></p>
+            </div>
+            <div class="list-item" ng-if="detailsWrap.data.sale_type != 1">
+                <p class="title">支付类型</p>
+                <p class="info" ng-bind="item.pay_type | payType"></p>
+            </div>
+            <div class="list-item">
+                <p class="title">支付方式</p>
+                <p class="info" ng-bind="item.pay_way | paymentMethod"></p>
+            </div>
+            <div class="list-item">
+                <p class="title">支付金额</p>
+                <p class="info" ng-bind="item.pay_amount | number:2"></p>
+            </div>
+            <div class="list-item" ng-show="item.pay_way != 3">
+                <p class="title">付款人</p>
+                <p class="info" ng-bind="item.pay_name"></p>
+            </div>
+            <div class="list-item" ng-show="item.pay_way == 3">
+                <p class="title">订单号</p>
+                <p class="info" ng-bind="item.trade_no"></p>
+            </div>
+            <div class="list-item" ng-show="item.pay_way == 1">
+                <p class="title">交易号</p>
+                <p class="info" ng-bind="item.trade_no"></p>
+            </div>
+            <div class="list-item">
+                <p class="title">支付时间</p>
+                <p class="info" ng-bind="item.income_time"></p>
+            </div>
+        </tbody>
+    </div>
+    <div class="list-group right-detail">
+        <div class="label-title">
+            <div>
+                <span class="icon-title"></span>支付信息【{{$index + 1}}】备注</div>
+        </div>
+        <div class="txt-textarea">
+            <span colspan="2" ng-bind="item.received_remark ? item.received_remark : '- '"></span>
+        </div>
+    </div>
+</div> -->
+<!-- 爱柚 支付信息 -->
+<!-- <div ng-if="detailsWrap.data.second_product_id == 10013 || detailsWrap.data.second_product_id == 10217">
+    <table>
+        <div class="list-item" class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>支付信息</th>
+        </div>
+    </table>
+    <div class="detail_include" ng-repeat="item in detailsWrap.data.received_list">
+        <div class="smallBox_detail">
+            <p style="background-color:#e4e4e4">
+                <span class="detail_pspan">编号</span>
+                <span ng-bind="item.received_no"></span>
+            </p>
+            <p ng-if="detailsWrap.data.sale_type != 1">
+                <span class="detail_pspan">支付类型</span>
+                <span ng-bind="item.pay_type | payType"></span>
+            </p>
+            <p>
+                <span class="detail_pspan">支付方式</span>
+                <span ng-bind="item.pay_way | paymentMethod"></span>
+            </p>
+            <p>
+                <span class="detail_pspan">支付金额</span>
+                <span ng-bind="item.price | number:2">29000.00</span>
+            </p>
+            <p ng-show="item.pay_way != 3">
+                <span class="detail_pspan">付款人</span>
+                <span ng-bind="item.pay_name"></span>
+            </p>
+            <p ng-show="item.pay_way == 3">
+                <span class="detail_pspan">订单号</span>
+                <span ng-bind="item.trade_no"></span>
+            </p>
+            <p ng-show="item.pay_way == 1">
+                <span class="detail_pspan">交易号</span>
+                <span ng-bind="item.trade_no"></span>
+            </p>
+            <p>
+                <span class="detail_pspan">支付时间</span>
+                <span ng-bind="item.income_time"></span>
+            </p>
+            <p style="padding:12px 0;height:auto;box-sizing:border-box;overflow:hidden;line-height:16px">
+                <span style="float:left" class="detail_pspan">支付备注</span>
+                <span style="float:left;word-break:break-all;white-space: pre-wrap;text-align:left" ng-bind="item.remark ? item.remark : '- '"></span>
+            </p>
+        </div>
+    </div>
+</div> -->
+<!-- 爱柚支付信息 -->
+<div class="list-group right-detail" ng-repeat="item in detailsWrap.data.received_list" ng-if="detailsWrap.data.second_product_id == 10013 || detailsWrap.data.second_product_id == 10217">
+    <div>
+        <p class="label-title">
+            <span>
+                <span class="icon-title"></span>支付信息【{{$index + 1}}】
+            </span>
+        </p>
+        <div>
+            <div class="list-item">
+                <span class="title">支付编号</span>
+                <span class="info" ng-bind="item.received_no"></span>
+            </div>
+            <div class="list-item" ng-if="detailsWrap.data.sale_type != 1">
+                <span class="title">支付类型</span>
+                <span class="info" ng-bind="item.pay_type | payType"></span>
+            </div>
+            <div class="list-item">
+                <span class="title">支付方式</span>
+                <span class="info" ng-bind="item.pay_way | paymentMethod"></span>
+            </div>
+            <div class="list-item">
+                <span class="title">支付金额</span>
+                <span class="info" ng-bind="item.price | number:2"></span>
+            </div>
+            <div class="list-item" ng-show="item.pay_way != 3">
+                <span class="title">付款人</span>
+                <span class="info" ng-bind="item.pay_name"></span>
+            </div>
+            <div class="list-item" ng-show="item.pay_way == 3">
+                <span class="title">订单号</span>
+                <span class="info" ng-bind="item.trade_no"></span>
+            </div>
+            <div class="list-item" ng-show="item.pay_way == 1">
+                <span class="title">交易号</span>
+                <span class="info" ng-bind="item.trade_no"></span>
+            </div>
+            <div class="list-item">
+                <span class="title">支付时间</span>
+                <span class="info" ng-bind="item.income_time"></span>
+            </div>
+            <div class="list-item auto-height">
+                <span class="title">支付备注</span>
+                <span class="info">
+                    <pre ng-bind="item.remark ? item.remark : '- '"></pre>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-repeat="item in detailsWrap.data.received_list" ng-if="detailsWrap.data.second_product_id != 10217 && detailsWrap.data.second_product_id != 10013">
+    <div class="list-group right-detail">
+        <p class="label-title">
+            <span>
+                <span class="icon-title"></span>支付信息【{{$index + 1}}】
+            </span>
+        </p>
+        <div class="list-item">
+            <span class="title">支付编号</span>
+            <span class="info" ng-bind="item.received_no"></span>
+        </div>
+        <div class="list-item" ng-if="detailsWrap.data.sale_type != 1">
+            <span class="title">支付类型</span>
+            <span class="info" ng-bind="item.pay_type | payType"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">支付方式</span>
+            <span class="info" ng-bind="item.pay_way | paymentMethod"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">支付金额</span>
+            <span class="info" ng-bind="item.pay_amount | number:2"></span>
+        </div>
+        <div class="list-item" ng-show="item.pay_way != 3">
+            <span class="title">付款人</span>
+            <span class="info" ng-bind="item.pay_name"></span>
+        </div>
+        <div class="list-item" ng-show="item.pay_way == 3">
+            <span class="title">订单号</span>
+            <span class="info" ng-bind="item.trade_no"></span>
+        </div>
+        <div class="list-item" ng-show="item.pay_way == 1">
+            <span class="title">交易号</span>
+            <span class="info" ng-bind="item.trade_no"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">支付时间</span>
+            <span class="info" ng-bind="item.income_time"></span>
+        </div>
+    </div>
+    <div class="list-group right-detail">
+        <p class="label-title">
+            <span>
+                <span class="icon-title"></span>支付信息【{{$index + 1}}】备注
+            </span>
+        </p>
+        <div class="txt-textarea">
+            <span class="info" ng-bind="item.received_remark ? item.received_remark : '- '"></span>
+        </div>
+    </div>
+</div>

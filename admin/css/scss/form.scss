@@ -1,0 +1,121 @@
+@charset "UTF-8";
+//全局样式模块，统一引用此base;
+//样式调用
+@import "css3","skin","setting","mixin";
+
+@mixin input-w1 {
+	padding: 6px 5px;
+	width: 220px;
+	color: #a6adbe;
+	@extend %box-sizing-border;
+}
+@mixin input-w2 {
+	width: 340px;
+}
+.cont-page {
+	overflow: auto;
+}
+//form
+.form-wrap {
+	padding-top: 40px;
+	text-align: center;
+	min-width: 900px;
+	table {
+		@extend %inline-block;
+	}
+	thead th,
+	tbody th {
+		padding-left: 40px;
+		text-align: left;
+		color: #323232;
+	}
+	
+	tbody td {
+		padding: 6px 0;
+		line-height: normal;
+		font-size: 0;
+		text-align: left;
+		color: #a6adbe;
+	}
+	.icon-title {
+		@extend %inline-block;
+		margin-right: 10px;
+		width: 4px;
+		height: 20px;
+		vertical-align: top;
+		background-color: #d5d5d5;
+	}
+	.table-name {
+		@extend %inline-block;
+		width: 120px;
+		text-align: right;
+		line-height: 28px;
+		font-size: 12px;
+		vertical-align: top;
+		cite {
+			display: block;
+			line-height: normal;
+		}
+	}
+	.table-text {
+		@extend %inline-block;
+		padding-left: 10px;
+		font-size: 12px;
+		
+	}
+	label {
+		padding-right: 40px;
+		line-height: 28px;
+	}
+	input[type="text"] {
+		@include input-w1;
+		font-size: 12px;
+		//border:1px solid #d9d9d9;
+		@include border-radius(3px);
+		
+		// outline: none;
+// 		&:focus {
+// 			border-color: $input-color;
+// 			@include box-shadow(0 0 4px rgba(0,204,255,.3));
+// 		}
+		@extend %simple-text;
+	}
+	input[type="radio"],
+	input[type="checkbox"]{
+		@extend %reset-radio-checkbox;
+	}
+	input[name="company"],
+	input[name="number"] {
+		@include input-w2;
+	}
+	select {
+		@include input-w1;
+		@extend %simple-select;
+		height: 28px;
+	}
+}
+//底部按钮工具栏
+.footer-bar {
+	position: absolute;	
+	//padding-right: 20px;
+	text-align: right;
+	//width: 100%;
+	bottom: 44px;
+	right: 0;
+	height: 44px;
+	font-size: 0;
+	line-height: 44px;
+	@extend %box-sizing-borde;
+	border-top: 1px solid #d7d7d7;
+	background-color: #f0f0f0;
+}
+//button
+button {
+	@extend %inline-block;
+	margin-right: 20px;
+	width: 60px;
+	height: 28px;
+	line-height: 28px;
+	font-size: 12px;
+	vertical-align: middle;
+}

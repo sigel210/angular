@@ -1,0 +1,621 @@
+<!-- jyh -->
+<!-- <table ng-if="detailsWrap.data.second_product_id==10000&&detailsWrap.data.third_product_id != 10005" ng-repeat="item in detailsWrap.data.product">
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</th>
+        </tr>
+        <tr>
+            <td>产品线</td>
+            <td ng-bind="item.second_product_name"></td>
+        </tr>
+        <tr>
+            <td>产品</td>
+            <td ng-bind="item.third_product_name"></td>
+        </tr>
+        <tr>
+            <td>执行班次</td>
+            <td ng-bind="item.class_name"></td>
+        </tr>
+        <tr>
+            <td>班主任</td>
+            <td ng-bind="item.account"></td>
+        </tr>
+        <tr>
+            <td>产品价格</td>
+            <td ng-bind="item.discount_price|number:2"></td>
+        </tr>
+        <tr>
+            <td>授权账号</td>
+            <td ng-bind="item.authorize_account"></td>
+        </tr>
+        <tr>
+            <td>店铺调研</td> -->
+            <!--jjb-->
+            <!-- <td ng-if="item.third_product_id==10003">
+                <a target="_blank" ng-click="stateNewgoParam('jyhAdvanceCustomerInfo',{contract_id:item.contract_id,customer_id:item.customer_id,order_id:item.order_id,first_product_id:detailsWrap.data.first_product_id,to_survey:1})"
+                    style="margin: 0">查看</a>
+            </td> -->
+            <!--fhb-->
+            <!-- <td ng-if="item.third_product_id==10002">
+                <a target="_blank" ng-click="stateNewgoParam('jyhIncubCustomerInfo',{contract_id:item.contract_id,customer_id:item.customer_id,order_id:item.order_id,first_product_id:detailsWrap.data.first_product_id,to_survey:1})"
+                    style="margin: 0">查看</a>
+            </td> -->
+            <!--jyb-->
+            <!-- <td ng-if="item.third_product_id==10004">
+                <a target="_blank" ng-click="stateNewgoParam('jyhEliteCustomerInfo',{contract_id:item.contract_id,customer_id:item.customer_id,order_id:item.order_id,first_product_id:detailsWrap.data.first_product_id,to_survey:1})"
+                    style="margin: 0">查看</a>
+            </td>
+        </tr>
+    </tbody>
+</table> -->
+<!-- 研修班 -->
+<!-- <table ng-if="detailsWrap.data.second_product_id==10000&&detailsWrap.data.third_product_id == 10005" ng-repeat="item in detailsWrap.data.product">
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</th>
+        </tr>
+        <tr>
+            <td>产品线</td>
+            <td ng-bind="item.second_product_name"></td>
+        </tr>
+        <tr>
+            <td>产品</td>
+            <td ng-bind="item.third_product_name"></td>
+        </tr>
+        <tr>
+            <td>助教</td>
+            <td ng-bind="item.account"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.price_type == 1">
+            <td>标准价格</td>
+            <td ng-bind="item.discount_price | number:2"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.price_type == 2">
+            <td>优惠价格</td>
+            <td ng-bind="item.discount_price | number:2"></td>
+        </tr>
+        <tr>
+            <td>授权账号</td>
+            <td ng-bind="item.authorize_account"></td>
+        </tr>
+        <tr>
+            <td>店铺调研</td>
+            <td>
+                <a target="_blank" ng-click="stateNewgoParam('jyhStudyCustomerInfo',{customer_id:item.customer_id,
+                    order_id:item.order_id,
+                    to_survey:1})"
+                    style="margin: 0">查看</a>
+            </td>
+        </tr>
+    </tbody>
+</table> -->
+<!--玩爆运营-->
+<!-- <table ng-if="detailsWrap.data.second_product_id==10008&&detailsWrap.data.third_product_id == 10101" ng-repeat="item in detailsWrap.data.product">
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</th>
+        </tr>
+        <tr>
+            <td>产品线</td>
+            <td ng-bind="item.second_product_name"></td>
+        </tr>
+        <tr>
+            <td>产品</td>
+            <td ng-bind="item.third_product_name"></td>
+        </tr>
+        <tr>
+            <td>产品单价</td>
+            <td ng-bind="item.discount_price|number:2"></td>
+        </tr>
+        <tr>
+            <td>周期次数</td>
+            <td ng-bind="detailsWrap.data.sum_product_num"></td>
+        </tr>
+        <tr>
+            <td>平台账号</td>
+            <td ng-bind="detailsWrap.data.customer"></td>
+        </tr>
+        <tr>
+            <td>店铺调研</td>
+            <td>
+                <a target="_blank" ng-click="stateNewgoParam('nrCustomerInfo',{
+                    customer_id:item.customer_id,
+                    order_id:item.order_id,
+                    to_survey:1})" style="margin: 0">查看</a>
+            </td>
+        </tr>
+    </tbody>
+</table> -->
+<!--内容引爆/管理掘金-->
+<!-- <table ng-if="detailsWrap.data.second_product_id==10008&&detailsWrap.data.third_product_id != 10101" ng-repeat="item in detailsWrap.data.product">
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</th>
+        </tr>
+        <tr>
+            <td>产品线</td>
+            <td ng-bind="item.second_product_name"></td>
+        </tr>
+        <tr>
+            <td>产品</td>
+            <td ng-bind="item.third_product_name"></td>
+        </tr>
+        <tr>
+            <td>执行班次</td>
+            <td ng-bind="item.class_name"></td>
+        </tr>
+        <tr>
+            <td>班主任</td>
+            <td ng-bind="item.account"></td>
+        </tr>
+        <tr>
+            <td>产品单价</td>
+            <td ng-bind="item.discount_price | number:2"></td>
+        </tr>
+        <tr>
+            <td>培训人数</td>
+            <td ng-bind="item.product_num"></td>
+        </tr>
+        <tr>
+            <td>店铺调研</td>
+            <td>
+                <a target="_blank" ng-click="stateNewgoParam('nrCustomerInfo',{
+                    customer_id:item.customer_id,
+                    order_id:item.order_id,
+                    to_survey:1})" style="margin: 0">查看</a>
+            </td>
+        </tr>
+    </tbody>
+</table> -->
+<!-- 新孵化班 -->
+<!-- <table ng-if="detailsWrap.data.second_product_id==10006&&detailsWrap.data.third_product_id == 10110" ng-repeat="item in detailsWrap.data.product">
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</th>
+        </tr>
+        <tr>
+            <td>产品线</td>
+            <td ng-bind="item.second_product_name"></td>
+        </tr>
+        <tr>
+            <td>产品</td>
+            <td ng-bind="item.third_product_name"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.price_type == 1">
+            <td>标准价格</td>
+            <td ng-bind="item.discount_price | number:2"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.price_type == 2">
+            <td>优惠价格</td>
+            <td ng-bind="item.discount_price | number:2"></td>
+        </tr>
+        <tr>
+            <td>周期次数</td>
+            <td ng-bind="detailsWrap.data.sum_product_num"></td>
+        </tr>
+
+        <tr>
+            <td>授权账号</td>
+            <td ng-bind="item.authorize_account"></td>
+        </tr>
+    </tbody>
+</table> -->
+<!-- txy -->
+<!-- <table ng-if="detailsWrap.data.second_product_id==10007" ng-repeat="item in detailsWrap.data.product">
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</th>
+        </tr>
+        <tr>
+            <td>产品线</td>
+            <td ng-bind="item.second_product_name"></td>
+        </tr>
+        <tr>
+            <td>产品</td>
+            <td ng-bind="item.third_product_name"></td>
+        </tr>
+        <tr>
+            <td>执行班次</td>
+            <td ng-bind="item.class_name"></td>
+        </tr>
+        <tr>
+            <td>班主任</td>
+            <td ng-bind="item.account"></td>
+        </tr>
+        <tr>
+            <td>产品单价</td>
+            <td ng-bind="item.discount_price|number:2"></td>
+        </tr>
+        <tr>
+            <td>培训人数</td>
+            <td ng-bind="item.product_num"></td>
+        </tr>
+        <tr>
+            <td>店铺调研</td>
+            <td>
+                <a target="_blank" ng-click="stateNewgoParam('specialTrainingCustomerInfo',{
+                    customer_id:item.customer_id,
+                    order_id:item.order_id,
+                    status:5,
+                    third_product_id:item.third_product_id,
+                    survey_id:item.survey_id})" style="margin: 0">查看</a>
+            </td>
+        </tr>
+    </tbody>
+</table> -->
+<!-- 新爱柚 --> 
+<!-- <div ng-if="detailsWrap.data.second_product_id==10013||detailsWrap.data.second_product_id==10217">
+    <table>
+        <tr class="title">
+            <th colspan="2"><span class="icon-title"></span>产品信息</th>
+        </tr>
+    </table>
+    <div  class="detail_include" ng-repeat="item in detailsWrap.data.product">
+        <div class="smallBox_detail" style="border-left: 1px solid #f2f2f2;border-right: 1px solid #f2f2f2;">
+            <span>
+                <span class="detail_pspan">编号</span>
+                <span ng-bind="item.contract_no"></span>
+            </span>
+            <span>
+                <span class="detail_pspan">产品线</span>
+                <span ng-bind="item.second_product_name"></span>
+            </span>
+            <span>
+                <span class="detail_pspan">产品</span>
+                <span ng-bind="item.third_product_name"></span>
+            </span>
+            <span>
+                <span class="detail_pspan">价格</span>
+                <span ng-bind="item.discount_price | number:2">29000.00</span>
+            </span>
+            <span>
+                <span class="detail_pspan">数量</span>
+                <span ng-bind="item.product_num"></span>
+            </span>
+            <span style="padding:12px 0;height:auto;box-sizing:border-box;overflow:hidden;line-height:16px">
+                <span style="float:left" class="detail_pspan">服务内容</span>
+                <span style="white-space:pre-wrap;text-align:left;word-break:break-all;width: 80%;display:inline-block;float:left;" ng-bind="item.contract_remark"></span>
+            </span>
+        </div>
+    </div>    -->
+    <!-- <table ng-repeat="item in detailsWrap.data.product">
+        <tbody>
+            <tr>
+                <td>编号</td>
+                <td ng-bind="item.contract_no"></td>
+            </tr>
+            <tr>
+                <td>产品线</td>
+                <td ng-bind="item.second_product_name"></td>
+            </tr>
+            <tr>
+                <td>产品</td>
+                <td ng-bind="item.third_product_name"></td>
+            </tr>
+            <tr>
+                <td>价格</td>
+                <td ng-bind="item.discount_price | number:2"></td>
+            </tr>
+            <tr>
+                <td>数量</td>
+                <td ng-bind="item.product_num"></td>
+            </tr>
+            <tr>
+                <td class="detail_pspan">服务内容</td>
+                <td style="padding:10px;word-break:break-all;white-space:pre-wrap;text-align:left" ng-bind="item.contract_remark"></td>
+            </tr>
+        </tbody>
+    </table> -->
+<!-- </div> -->
+
+
+<!-- jyh -->
+<div class="list-group right-detail" ng-if="detailsWrap.data.second_product_id==10000&&detailsWrap.data.third_product_id != 10005" ng-repeat="item in detailsWrap.data.product">
+        <div class="label-title">
+            <div>
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</div>
+        </div>
+        <div class="list-item">
+            <span class="title">产品线</span>
+            <span class="info" ng-bind="item.second_product_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">产品</span>
+            <span class="info" ng-bind="item.third_product_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">执行班次</span>
+            <span class="info" ng-bind="item.class_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">班主任</span>
+            <span class="info" ng-bind="item.account"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">产品价格</span>
+            <span class="info" ng-bind="item.discount_price|number:2"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">授权账号</span>
+            <span class="info" ng-bind="item.authorize_account"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">店铺调研</span>
+            <!--jjb-->
+            <span class="info" ng-if="item.third_product_id==10003">
+                <a target="_blank" ng-click="stateNewgoParam('jyhAdvanceCustomerInfo',{contract_id:item.contract_id,customer_id:item.customer_id,order_id:item.order_id,first_product_id:detailsWrap.data.first_product_id,to_survey:1})"
+                    style="margin: 0">查看</a>
+            </span>
+            <!--fhb-->
+            <span class="info" ng-if="item.third_product_id==10002">
+                <a target="_blank" ng-click="stateNewgoParam('jyhIncubCustomerInfo',{contract_id:item.contract_id,customer_id:item.customer_id,order_id:item.order_id,first_product_id:detailsWrap.data.first_product_id,to_survey:1})"
+                    style="margin: 0">查看</a>
+            </span>
+            <!--jyb-->
+            <span class="info" ng-if="item.third_product_id==10004">
+                <a target="_blank" ng-click="stateNewgoParam('jyhEliteCustomerInfo',{contract_id:item.contract_id,customer_id:item.customer_id,order_id:item.order_id,first_product_id:detailsWrap.data.first_product_id,to_survey:1})"
+                    style="margin: 0">查看</a>
+            </span>
+        </div>
+    </div>
+    <!-- 研修班 -->
+    <div class="list-group right-detail"  ng-if="detailsWrap.data.second_product_id==10000&&detailsWrap.data.third_product_id == 10005" ng-repeat="item in detailsWrap.data.product">
+        <div class="label-title">
+            <div colspan="2">
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</div>
+        </div>
+        <div class="list-item">
+            <span class="title">产品线</span>
+            <span class="info" ng-bind="item.second_product_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">产品</span>
+            <span class="info" ng-bind="item.third_product_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">助教</span>
+            <span class="info" ng-bind="item.account"></span>
+        </div>
+        <div class="list-item" ng-if="detailsWrap.data.price_type == 1">
+            <span class="title">标准价格</span>
+            <span class="info" ng-bind="item.discount_price | number:2"></span>
+        </div>
+        <div class="list-item" ng-if="detailsWrap.data.price_type == 2">
+            <span class="title">优惠价格</span>
+            <span class="info" ng-bind="item.discount_price | number:2"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">授权账号</span>
+            <span class="info" ng-bind="item.authorize_account"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">店铺调研</span>
+            <span class="info">
+                <a target="_blank" ng-click="stateNewgoParam('jyhStudyCustomerInfo',{customer_id:item.customer_id,
+                    order_id:item.order_id,
+                    to_survey:1})"
+                    style="margin: 0">查看</a>
+            </span>
+        </div>
+    </div>
+    <!--玩爆运营-->
+    <div class="list-group right-detail"  ng-if="detailsWrap.data.second_product_id==10008&&detailsWrap.data.third_product_id == 10101" ng-repeat="item in detailsWrap.data.product">
+        <div class="label-title">
+            <div colspan="2">
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</div>
+        </div>
+        <div class="list-item">
+            <span class="title">产品线</span>
+            <span class="info" ng-bind="item.second_product_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">产品</span>
+            <span class="info" ng-bind="item.third_product_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">产品单价</span>
+            <span class="info" ng-bind="item.discount_price|number:2"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">周期次数</span>
+            <span class="info" ng-bind="detailsWrap.data.sum_product_num"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">平台账号</span>
+            <span class="info" ng-bind="detailsWrap.data.customer"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">店铺调研</span>
+            <span class="info">
+                <a target="_blank" ng-click="stateNewgoParam('nrCustomerInfo',{
+                    customer_id:item.customer_id,
+                    order_id:item.order_id,
+                    to_survey:1})" style="margin: 0">查看</a>
+            </span>
+        </div>
+    </div>
+    <!--内容引爆/管理掘金-->
+    <div class="list-group right-detail"  ng-if="detailsWrap.data.second_product_id==10008&&detailsWrap.data.third_product_id != 10101" ng-repeat="item in detailsWrap.data.product">
+        <div class="label-title">
+            <div>
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</div>
+        </div>
+        <div class="list-item">
+            <span class="title">产品线</span>
+            <span class="info" ng-bind="item.second_product_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">产品</span>
+            <span class="info" ng-bind="item.third_product_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">执行班次</span>
+            <span class="info" ng-bind="item.class_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">班主任</span>
+            <span class="info" ng-bind="item.account"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">产品单价</span>
+            <span class="info" ng-bind="item.discount_price | number:2"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">培训人数</span>
+            <span class="info" ng-bind="item.product_num"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">店铺调研</span>
+            <span class="info">
+                <a target="_blank" ng-click="stateNewgoParam('nrCustomerInfo',{
+                    customer_id:item.customer_id,
+                    order_id:item.order_id,
+                    to_survey:1})" style="margin: 0">查看</a>
+            </span>
+        </div>
+    </div>
+    <!-- 新孵化班 -->
+    <div class="list-group right-detail"  ng-if="detailsWrap.data.second_product_id==10006&&detailsWrap.data.third_product_id == 10110" ng-repeat="item in detailsWrap.data.product">
+        <div class="label-title">
+            <div>
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</div>
+        </div>
+        <div class="list-item">
+            <span class="title">产品线</span>
+            <span class="info" ng-bind="item.second_product_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">产品</span>
+            <span class="info" ng-bind="item.third_product_name"></span>
+        </div>
+        <div class="list-item" ng-if="detailsWrap.data.price_type == 1">
+            <span class="title">标准价格</span>
+            <span class="info" ng-bind="item.discount_price | number:2"></span>
+        </div>
+        <div class="list-item" ng-if="detailsWrap.data.price_type == 2">
+            <span class="title">优惠价格</span>
+            <span class="info" ng-bind="item.discount_price | number:2"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">周期次数</span>
+            <span class="info" ng-bind="detailsWrap.data.sum_product_num"></span>
+        </div>
+    
+        <div class="list-item">
+            <span class="title">授权账号</span>
+            <span class="info" ng-bind="item.authorize_account"></span>
+        </div>
+    </div>
+    <!-- txy -->
+    <div class="list-group right-detail"  ng-if="detailsWrap.data.second_product_id==10007" ng-repeat="item in detailsWrap.data.product">
+        <div class="label-title">
+            <div>
+                <span class="icon-title"></span>产品信息【{{$index + 1}}】</div>
+        </div>
+        <div class="list-item">
+            <span class="title">产品线</span>
+            <span class="info" ng-bind="item.second_product_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">产品</span>
+            <span class="info" ng-bind="item.third_product_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">执行班次</span>
+            <span class="info" ng-bind="item.class_name"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">班主任</span>
+            <span class="info" ng-bind="item.account"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">产品单价</span>
+            <span class="info" ng-bind="item.discount_price|number:2"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">培训人数</span>
+            <span class="info" ng-bind="item.product_num"></span>
+        </div>
+        <div class="list-item">
+            <span class="title">店铺调研</span>
+            <span class="info">
+                <a target="_blank" ng-click="stateNewgoParam('specialTrainingCustomerInfo',{
+                    customer_id:item.customer_id,
+                    order_id:item.order_id,
+                    status:5,
+                    third_product_id:item.third_product_id,
+                    survey_id:item.survey_id})" style="margin: 0">查看</a>
+            </span>
+        </div>
+    </div>
+    <!-- 新爱柚 --> 
+    <div class="list-group right-detail"  ng-if="detailsWrap.data.second_product_id==10013||detailsWrap.data.second_product_id==10217">
+            <div>
+                <div class="label-title">
+                    <div><span class="icon-title"></span>产品信息</div>
+                </div>
+            </div>
+            <div ng-repeat="item in detailsWrap.data.product">
+                <div class="smallBox_detail" style="border-left: 1px solid #f2f2f2;border-right: 1px solid #f2f2f2;">
+                    <p class="list-item bg-gray">
+                        <span  class="title">编号</span>
+                        <span class="info" ng-bind="item.contract_no"></span>
+                    </p>
+                    <p class="list-item">
+                        <span  class="title">产品线</span>
+                        <span class="info" ng-bind="item.second_product_name"></span>
+                    </p>
+                    <p class="list-item">
+                        <span  class="title">产品</span>
+                        <span class="info" ng-bind="item.third_product_name"></span>
+                    </p>
+                    <p class="list-item">
+                        <span  class="title">价格</span>
+                        <span class="info" ng-bind="item.discount_price | number:2">29000.00</span>
+                    </p>
+                    <p class="list-item">
+                        <span  class="title">数量</span>
+                        <span class="info" ng-bind="item.product_num"></span>
+                    </p>
+                    <p class="list-item auto-height">
+                        <span class="title">服务内容</span>
+                        <span class="info" style="white-space:pre-wrap;text-align:left;word-break:break-all;width: 80%;display:inline-block;float:left;" ng-bind="item.contract_remark"></span>
+                    </p>
+                </div>
+            </div>   
+            <!-- <table ng-repeat="item in detailsWrap.data.product">
+                <tbody>
+                    <div>
+                        <p>编号</p>
+                        <p ng-bind="item.contract_no"></p>
+                    </div>
+                    <div>
+                        <p>产品线</p>
+                        <p ng-bind="item.second_product_name"></p>
+                    </div>
+                    <div>
+                        <p>产品</p>
+                        <p ng-bind="item.third_product_name"></p>
+                    </div>
+                    <div>
+                        <p>价格</p>
+                        <p ng-bind="item.discount_price | number:2"></p>
+                    </div>
+                    <div>
+                        <p>数量</p>
+                        <p ng-bind="item.product_num"></p>
+                    </div>
+                    <div>
+                        <p  class="title">服务内容</p>
+                        <p style="padding:10px;word-break:break-all;white-space:pre-wrap;text-align:left" ng-bind="item.contract_remark"></p>
+                    </div>
+                </tbody>
+            </div> -->
+        </div>
+    

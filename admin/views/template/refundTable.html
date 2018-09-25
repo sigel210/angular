@@ -1,0 +1,39 @@
+<!-- 退款明细 -->
+<!-- <table>
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>退款明细</th>
+        </tr>
+    </tbody>
+</table> -->
+<div class="list-group right-detail">
+        <p class="label-title">
+            <span>
+                <span class="icon-title"></span>退款明细
+            </span>
+        </p>
+    </div>
+<table class="table-detail-list table-fixed">
+    <thead>
+        <tr>
+            <th width="16">序</th>
+            <th>概要</th>
+            <th width="80">退款金额</th>
+            <th width="120">退款日期</th>
+            <th width="50">状态</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in detailsWrap.data.refund_list" ng-if="detailsWrap.data.refund_list">
+            <td>{{$index+1}}</td>
+            <td ng-bind="item.installment"></td>
+            <td ng-bind="item.refund_amount | number:2" style="color: #333"></td>
+            <td ng-bind="item.refund_time | limitTo:10" style="color: #333"></td>
+            <td ng-bind="item._status"></td>
+        </tr>
+        <tr ng-if="!detailsWrap.data.refund_list || detailsWrap.data.refund_list.length == 0">
+            <td colspan="5" style="text-align:center;">暂无</td>
+        </tr>
+    </tbody>
+</table>

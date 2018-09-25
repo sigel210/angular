@@ -1,0 +1,139 @@
+<div class="c-detail-ctn extends-box has-footer">
+    <div class="c-detail-ctn-top" style="height:201px;">
+        <div class="table-area right-table">
+            <table ng-show="orderModel.second_product_id != 10007">
+                <thead>
+                    <tr>
+                        <th width="16">序</th>
+                        <th>填表时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="!https.surveylist" ng-class="{'no-pointer':surveyModel.list.length == 1,'current': item.survey_id == surveyModel.tempSurveyId}"
+                        ng-repeat="item in surveyModel.list" ng-click="surveyModel.methods.changeSurvey(item.survey_id)">
+                        <td>{{$index + 1}}</td>
+                        <td ng-bind="item.create_time"></td>
+                    </tr>
+                    <tr class="no-pointer" ng-if="!https.surveylist && !surveyModel.list.length">
+                        <td colspan="2">
+                            <div class="no-content">
+                                <img src="images/kong.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="no-pointer" ng-show="https.surveylist">
+                        <td colspan="2">
+                            <div class="no-content">
+                                <div class="ball-grid-pulse">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table ng-show="orderModel.second_product_id == 10007">
+                <thead>
+                    <tr>
+                        <th width="16">序</th>
+                        <th>填表时间</th>
+                        <th>产品</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="!https.surveylist" ng-class="{'no-pointer':surveyModel.list.length == 1,'current': item.survey_id == surveyModel.tempSurveyId}"
+                        ng-repeat="item in surveyModel.list" ng-click="surveyModel.methods.changeSurvey(item.survey_id)">
+                        <td>{{$index + 1}}</td>
+                        <td ng-bind="item.create_time"></td>
+                        <td ng-bind="item.product_name"></td>
+                    </tr>
+                    <tr class="no-pointer" ng-if="!https.surveylist && !surveyModel.list.length">
+                        <td colspan="3">
+                            <div class="no-content">
+                                <img src="images/kong.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="no-pointer" ng-show="https.surveylist">
+                        <td colspan="3">
+                            <div class="no-content">
+                                <div class="ball-grid-pulse">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slide-footer normal-footer">
+            <button class="btn btn-blue" ng-if="authPermission.createUrl" ng-click="surveyModel.urlModal.show()" ng-class="{'btn-disabled':!isOrigin || mainFlag || rFlag || (orderModel.second_product_id != '10000' && orderModel.second_product_id != '10007' && orderModel.second_product_id != '10008') || buttons.common }">查看调研表链接</button>
+        </div>
+    </div>
+    <div class="c-detail-ctn-bottom slist-box" style="padding-top:20px;">
+        <p class="menu-title" style="border-bottom:1px solid #e4e4e4">调研详情</p>
+        <!-- 菁英汇 -->
+        <div class="detail-ctn" ng-if="!https.surveydetail && surveyModel.tempSurveyId && orderModel.second_product_id != 10007 && orderModel.second_product_id != 10008"
+            ng-include="'./views/customer/survey/jyh.html'">
+        </div>
+        <!-- 特训营 -->
+        <div class="detail-ctn" ng-if="!https.surveydetail && surveyModel.tempSurveyId && orderModel.second_product_id == 10007"
+            ng-include="'./views/customer/survey/txy.html'">
+        </div>
+        <!-- 淘大线下 -->
+        <div class="detail-ctn" ng-if="!https.surveydetail && surveyModel.tempSurveyId && orderModel.second_product_id == 10008"
+            ng-include="'./views/customer/survey/td.html'">
+        </div>
+        <div class="no-item" ng-if="!https.surveydetail && surveyModel.list.length == 0">
+            <img src="images/kong.png">
+        </div>
+        <div class="no-item" ng-if="https.surveydetail">
+            <div class="no-content">
+                <div class="ball-grid-pulse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="slide-footer normal-footer" ng-if="uiModel.choosen.childTabIndex == 3">
+    <button class="btn btn-blue" ng-if="isOrigin && !rFlag && authPermission.deleteSurvey" ng-disabled="mainFlag || !authPermission.deleteSurvey || surveyModel.tempSurveyId == '' || buttons.common"
+        ng-class="{'btn-disabled': mainFlag || !authPermission.deleteSurvey || surveyModel.tempSurveyId == '' || buttons.common}"
+        ng-click="surveyModel.methods.showDeleteResearch()">删除</button>
+</div>
+<!--调研表链接-->
+<div ng-if="surveyModel.urlModal.flag" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <!-- 特训营，淘大，研修班 -->
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="surveyModel.urlModal.hide()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="surveyModel.urlModal.title">调研表链接</h4>
+            </div>
+            <ul class="form-wrap-spleft">
+                <li>产品选择</li>
+                <li ng-repeat="item in surveyModel.urlModal.list" ng-class="{'current':surveyModel.urlModal.product_id == item.product_id}" ng-click="surveyModel.urlModal.productChange(item)"
+                    ng-bind="item.product_name"></li>
+            </ul>
+            <div class="modal-body" style="left:171px;padding: 10px;">
+                <div class="form-wrap add-edit-form form-wrap-w-sm" style="width: 100%">
+                    <span style="word-break:break-all" class="url-content" ng-bind="surveyModel.urlModal.url">
+
+                    </span>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" clip-copy="surveyModel.urlModal.url" clip-click="surveyModel.urlModal.showMessage()">复制链接</button>
+            </div>
+        </div>
+    </div>
+</div>

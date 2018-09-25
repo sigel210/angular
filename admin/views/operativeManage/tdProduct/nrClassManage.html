@@ -1,0 +1,327 @@
+<header>
+    <div class="tab-bar">
+        <button class="menu-btn-back" ng-click="back()">
+            <i class="icon-back"></i>
+        </button>
+        <span class="menu-tit">班次管理</span>
+        <div class="menu-ul">
+            <ul class="tab-wrap ">
+                <li ng-repeat='tab in tabList' ng-class="{'current': uiModel.status.status == tab.value }" ng-click="changeTab(tab.value)">
+                    <a href="javascript:void(0)" ng-bind="tab.title"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="cont-page-w" ng-init="setRootScope();">
+    <!-- 搜索模块 -->
+    <div class="search-wraps search-wrap-new">
+        <div class="search-max-w">
+            <div class="form-group">
+                <label>执行班次：</label>
+                <div class="search-box">
+                    <input type="text" id="classname" name="name-tit" ng-model="uiModel.filters.class_name" class="search-keyup-enter input-name-w"
+                        placeholder="点击输入">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>创建日期：</label>
+                <div class="search-box">
+                    <input id="1" type="text" class="pointer" time-value="uiModel.filters.start_time" format="yyyy-MM-dd" ng-model="uiModel.filters.start_time"
+                        max-date="#F{$dp.$D(\'2\')}" time-module readonly placeholder="点击选择">
+                    <span class="time-division">至</span>
+                    <input id="2" type="text" class="pointer" time-value="uiModel.filters.end_time" format="yyyy-MM-dd" ng-model="uiModel.filters.end_time"
+                        min-date="#F{$dp.$D(\'1\')}" time-module readonly placeholder="点击选择" style="text-indent: 16px;">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>产品：</label>
+                <div class="search-box">
+                    <select name="name" class="select-name-w search-keyup-enter" ng-model="uiModel.filters.third_product_id" ng-options=" product.id as product.name for product in uiModel.selectList.productList">
+                        <option></option>
+                    </select>
+                    <label ng-show="!uiModel.filters.third_product_id&&uiModel.filters.third_product_id!='0'">点击选择</label>
+                </div>
+            </div>
+        </div>
+        <div class="search-btn-wrap">
+            <button class="btn-search" ng-click="search()">搜索</button>
+            <button class="btn-reset" ng-click="reset()">清空</button>
+        </div>
+    </div>
+    <!-- 列表模块 -->
+    <div class="table-ptop-w2">
+        <div class="table-foot">
+            <div class="btn-left">
+                <button class="btn btn-blue" ng-show="permission.add && (uiModel.status.status==100 || uiModel.status.status==110)" ng-click="stategoParam('classesForm',{'product':'TaodaClass','index':uiModel.status.status})">新建班次</button>
+            </div>
+            <div page-link class="page-right" ng-show="list && list.length != 0"></div>
+        </div>
+        <table class="table-list table-fixed js-table" width="100%">
+            <thead>
+                <tr>
+                    <th width="16">序</th>
+                    <th style="min-width:96px;">执行班次</th>
+                    <th width="48">产品线</th>
+                    <th width="192">产品</th>
+                    <th width="88">订单数</th>
+                    <th width="124">创建时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="load-tips">
+                    <td ng-show="!list || list.length === 0" colspan="6">
+                        <div class="loading-cont">
+                        </div>
+                        <div ng-show="!isAjaxError && !pageListLoading" class="load-tips-cont">没有你想要的数据</div>
+                        <div ng-show="isAjaxError && !pageListLoading" class="load-tips-cont">加载超时，点击
+                            <a ng-click="search()">重新加载</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-repeat='item in list' ng-click='clicknum == 0 && showDetail(item, $index)' ng-class="{active: temp == $index}">
+                    <td ng-bind="$index+1"></td>
+                    <td ng-bind="item.class_name"></td>
+                    <td ng-bind="item.second_product_name"></td>
+                    <td ng-bind="item.third_product_name"></td>
+                    <td ng-bind="item.order_count"></td>
+                    <td ng-bind="item.create_time"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 右侧弹出框模块 -->
+    <div class="slide-right-wrap js-slide-right-wrap" style="display: block;">
+        <div class="slide-head">
+            <div class="btn-close">
+                <i class="icon-close" ng-click="detailsWrap.hide()"></i>
+            </div>
+            <h4 class="slide-title" ng-bind="detailsWrap.data.class_info.class_name"></h4>
+        </div>
+        <div class="slide-cont">
+            <div class="form-wrap table-detail">
+                <div class="detail-customer">
+                    <div class="detail-box">
+                        <div class="list-group right-detail">
+                            <div class="label-title">
+                                <div><span class="icon-title"></span>基本信息</div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">班次状态</span>
+                                <p class="info" ng-bind="detailsWrap.data.class_info.status | opClassStatus"></p>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">订单数</span>
+                                <p class="info" ng-bind="detailsWrap.data.class_info.order_count"></p>
+                            </div>
+                        </div>
+                        <div class="list-group right-detail" style="margin-top: 10px; ">
+                            <div class="list-item">
+                                <span class="title">产品线</span>
+                                <p class="info" ng-bind="detailsWrap.data.class_info.second_product_name"></p>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">产品</span>
+                                <p class="info" ng-bind="detailsWrap.data.class_info.third_product_name"></p>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">培训人数</span>
+                                <p class="info" ng-bind="detailsWrap.data.class_info.total_num"></p>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">班主任</span>
+                                <p class="info" ng-bind="detailsWrap.data.class_info.teacher_name"></p>
+                            </div>
+                                <div class="list-item">
+                                    <span class="title">指南地址</span>
+                                    <p class="info">
+                                        <a style="margin:0" ng-show="detailsWrap.data.class_info.guide_url" href="{{detailsWrap.data.class_info.guide_url}}" target="_blank">查看</a>
+                                        <span style="margin:0" ng-show="!detailsWrap.data.class_info.guide_url" target="_blank">-</span>
+                                    </p>
+                                </div>
+                                <div class="list-item">
+                                    <span class="title">服务期</span>
+                                    <p class="info">
+                                        <span ng-bind="detailsWrap.data.class_info.service_start_time"></span>
+                                        <span>&nbsp; 至 &nbsp;</span>
+                                        <span ng-bind="detailsWrap.data.class_info.service_end_time"></span>
+                                    </p>
+                                </div>
+                                <div class="list-item">
+                                    <span class="title">创建时间</span>
+                                    <span class="info" ng-bind="detailsWrap.data.class_info.create_time"></span>
+                                </div>
+                        </div>
+                        <div class="list-group right-detail">
+                            <div class="label-title">
+                                <div><span class="icon-title"></span>班次说明</div>
+                            </div>
+                            <div class="txt-textarea">
+                                <span ng-bind="detailsWrap.data.class_info.intro">
+
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <!-- 公用 -->
+            <button class="btn btn-blue" ng-if="detailsWrap.data.class_info.status == 100 || detailsWrap.data.class_info.status == 110"
+                ng-click="editModal.show1()">信息编辑</button>
+
+            <!-- 未打单 -->
+            <!-- <button class="btn btn-blue" ng-if="(detailsWrap.data.class_info.status == 100)" ng-click="closeClass_Confirm(detailsWrap.data.id)">完结班次</button> -->
+
+            <button class="btn btn-blue" ng-if="(detailsWrap.data.class_info.status == 100)" ng-click="openPrint_Confirm(detailsWrap.data.id)">开启打单</button>
+            <button class="btn btn-blue" ng-if="detailsWrap.data.class_info.status == 100"
+                ng-click="setServiceTime_M.show()">服务期设置</button>
+            <!-- 打单中 -->
+            <button class="btn btn-blue" ng-if="(detailsWrap.data.class_info.status == 110)" ng-click="endPrint_Confirm(detailsWrap.data.id)">关闭打单</button>
+
+
+        </div>
+    </div>
+    <!-- 弹窗模块 -->
+    <div>
+        <!-- 编辑班级（第一步）-->
+        <div ng-if="editModal.isShow1" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="false">
+            <div class="modal-backdrop fade in"></div>
+            <div class="modal-dialog modal-sm responseHeight">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="btn-close" data-dismiss="modal">
+                            <i class="icon-close" ng-click="editModal.hide()"></i>
+                        </div>
+                        <h4 class="modal-title" ng-bind="editModal.title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="m-form-wrap center-edit-form"  name="_form"  novalidate>
+                            <div class="m-table-from">
+                                <div class="m-form-row bg-gray">
+                                    <span class="table-name">产品</span>
+                                    <span class="table-text">
+                                    <input type="text" ng-model="editModal.data.class_info.third_product_name"  ng-disabled="true" name="class_name" placeholder="点击输入"  required></span>
+                                </div>
+                            <div class="m-form-row">
+                                <span class="table-name">执行班次</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="editModal.data.class_info.class_name" name="class_name" placeholder="点击输入"
+                                        maxlength="35" required>
+                                </span>
+                                <i class="table-clear" ng-click="editModal.data.class_info.class_name = ''"></i>
+                            </div>
+                            <div class="m-form-row">
+                                <span class="table-name">培训人数</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="editModal.data.class_info.total_num" name="total_num" placeholder="点击输入"
+                                        maxlength="6" ng-keyup="replaceNum(editModal.data.class_info, 'total_num')" required>
+                                </span>
+                                <i class="table-clear" ng-click="editModal.data.class_info.total_num = ''"></i>
+                            </div>
+                            <div class="m-form-row">
+                                <span class="table-name">服务指南</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="editModal.data.class_info.guide_url" name="guide_url" maxlength="100" placeholder="点击输入"
+                                         required>
+                                </span>
+                                <i class="table-clear" ng-click="editModal.data.class_info.guide_url = ''"></i>
+                            </div>
+                                <span style="display:block;margin:10px 0;"><span class="icon-title"></span>班次说明</span>
+                                <div  class="m-textarea-box">
+                                    <textarea class="u-table-textarea" ng-model="editModal.data.class_info.intro" maxlength="300"></textarea>
+                                    <span class="u-textarea-num" style="right: 17px"><span>{{editModal.data.class_info.length ? editModal.data.class_info.length:0}}</span>/300</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer full-btn-box">
+                        <button type="button" class="btn btn-blue full-btn" ng-click="editModal.confirm1()">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 变更班主任-->
+        <div ng-if="changeMaster_M.isShow" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="false">
+            <div class="modal-backdrop fade in"></div>
+            <div class="modal-dialog modal-sm responseHeight">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="btn-close" data-dismiss="modal">
+                            <i class="icon-close" ng-click="changeMaster_M.hide()"></i>
+                        </div>
+                        <h4 class="modal-title" ng-bind="changeMaster_M.title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form style="margin:39px 0;" class="form-wrap add-edit-form form-wrap-w-sm" name="_form" novalidate>
+                            <p>
+                                <span class="table-name">班主任</span>
+                                <span class="table-text">
+                                    <select name="name" class="select-name-w search-keyup-enter table-select" ng-model="changeMaster_M.data.teacher_uid"
+                                        ng-options=" teacher.teacher_uid as teacher.teacher_name for teacher in uiModel.selectList.teacherList">
+                                        <option></option>
+                                    </select>
+                                    <label class="select-label" ng-show="!changeMaster_M.data.teacher_uid&&changeMaster_M.data.teacher_uid!='0'">点击选择</label>
+                                </span>
+                            </p>
+                        </form>
+                    </div>
+                    <div class="modal-footer full-btn-box">
+                        <button type="button" class="btn btn-blue full-btn" ng-click="changeMaster_M.confirm()">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 服务期设置-->
+        <div ng-if="setServiceTime_M.isShow" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="false">
+            <div class="modal-backdrop fade in"></div>
+            <div class="modal-dialog modal-sm responseHeight">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="btn-close" data-dismiss="modal">
+                            <i class="icon-close" ng-click="setServiceTime_M.hide()"></i>
+                        </div>
+                        <h4 class="modal-title" ng-bind="setServiceTime_M.title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form style="margin:39px 0;" class="form-wrap add-edit-form form-wrap-w-sm" name="_form" novalidate>
+                            <!-- <p class="locked">
+                                <span class="table-name">执行班次</span>
+                                <span class="table-text" style="width: 560px;">
+                                    <span ng-bind="className" style="padding:5px 5px"></span>
+                                </span>
+                            </p> -->
+                            <p>
+                                <span class="table-name">起止时间</span>
+                                <span class="table-text" style="width: 560px;">
+                                    <span class="timecontent">
+                                        <input id="s" type="text" class="carrytime" time-value="setServiceTime_M.data.service_start_time" is-show-clear={{clearBtn}}
+                                            format="yyyy-MM-dd" ng-model="setServiceTime_M.data.service_start_time" max-date="#F{$dp.$D(\'e\')}"
+                                            time-module readonly placeholder="点击选择" style="width: 260px;">
+                                        <!--<span class="time-ling" style="left: 86px;" ng-show="setServiceTime_M.data.service_start_time!=''&& setServiceTime_M.data.service_start_time">00:00:00</span>-->
+                                    </span>
+                                    <span class="time-division" ng-show="setServiceTime_M.data.service_start_time">至</span>
+                                    <span class="timecontent" ng-show="setServiceTime_M.data.service_start_time">
+                                        <input id="e" type="text" class="carrytime" time-value="setServiceTime_M.data.service_end_time" is-show-clear={{clearBtn}}
+                                            format="yyyy-MM-dd" ng-model="setServiceTime_M.data.service_end_time" min-date="#F{$dp.$D(\'s\')}"
+                                            time-module readonly placeholder="点击选择" style="width: 270px;text-indent: 16px;">
+                                        <!--<span class="time-ling" style="left: 102px;" ng-show="setServiceTime_M.data.service_end_time!=''&& setServiceTime_M.data.service_start_time">00:00:00</span>-->
+                                    </span>
+                                </span>
+                            </p>
+                        </form>
+                    </div>
+                    <div class="modal-footer full-btn-box">
+                        <button type="button" class="btn btn-blue full-btn" ng-click="setServiceTime_M.confirm()">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

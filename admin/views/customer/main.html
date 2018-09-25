@@ -1,0 +1,23 @@
+<div name="customer" class="m-container">
+    <header class="m-header">
+        <div class="customer-name" title="{{customer|| '店铺主旺旺'}}">{{customer|| '店铺主旺旺'}}</div>
+        <!-- <div class="child-nav-bar">
+            <ul>
+                <li class="child-nav-item" ng-class="{active:item.pool_id == uiModel.choosen.tabIndex}" ng-click="changeTab(item.pool_id)"
+                    ng-repeat="item in uiModel.business">
+                    <p class="mar3">{{item.pool_name}}</p>
+                    <p class="small">{{item.level_id| levelFilter}}</p>
+                </li>
+            </ul>
+        </div> -->
+    </header>
+    <div class="main-box">
+        <div class="sider-bar-group2">
+            <ul class="sider-bar-2">
+                <li ng-class="{active:$index == uiModel.menuIndex}" ng-repeat="item in uiModel.menus" ng-click="changeMenu($index)">{{item}}</li>
+            </ul>
+        </div>
+        <div class="c-content" ui-view>
+        </div>
+    </div>
+</div>

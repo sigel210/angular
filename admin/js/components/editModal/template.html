@@ -1,0 +1,20 @@
+<div ng-if="config.flag" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog responseHeight" ng-class="{'modal-sm':!size || size == 'sm','modal-lg': size == 'lg'}">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="hide()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="config.title"></h4>
+            </div>
+            <div class="modal-body">
+                <div ng-transclude>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue full-btn" ng-click="confirm({data:config.data})" ng-bind="config.btnName || '确 认'"></button>
+            </div>
+        </div>
+    </div>
+</div>

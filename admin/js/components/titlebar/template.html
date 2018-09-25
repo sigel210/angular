@@ -1,0 +1,15 @@
+<header>
+    <div class="tab-bar">
+        <button class="menu-btn-back" ng-click="goback()">
+            <i class="icon-back"></i>
+        </button>
+        <span class="menu-tit" ng-bind="myTitle"></span>
+        <div class="menu-ul">
+            <ul class="tab-wrap ">
+                <li style="cursor: no-drop" ng-repeat='tab in tabList' ng-class="{'current':tempKey == tab[tabKey] }" ng-click="active && changeTab(tab,$index)">
+                    <a style="cursor: no-drop;" href="javascript:void(0)" ng-bind="tab[tabValue]"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

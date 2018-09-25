@@ -1,0 +1,85 @@
+//分页
+ul.paging {
+  @extend %clearfix;
+  font-size: 0;
+  span {
+    color: #999;
+    font-size: 12px;
+    padding-right: 10px;
+    line-height: 28px;
+  }
+  span.pagetotal span {
+    padding-right: 0px;
+  }
+  li {
+    margin: 0;
+    display: inline;
+    font-size: 12px;
+    a {
+      border: 1px solid #ccc;
+      background-color: #fff;
+      margin-right: -1px;
+      width: 28px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      @extend %inline-block;
+      color: #1E1E1E;
+    }
+    &.current {
+      a {
+        background-color: #798195;
+        border-top: 1px solid #798195;
+        border-bottom: 1px solid #798195;
+        color: #fff;
+      }
+    }
+    &.disabled {
+      a {
+        color: #ccc;
+        pointer-events: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+  input[type="text"] {
+    padding: 6px 5px;
+    border: 1px solid #d7d7d7;
+    box-shadow: none;
+    width: 48px;
+    height: 28px;
+    @extend %inline-block;
+    margin: 0 10px;
+    vertical-align: top !important;
+    @extend %simple-text;
+    font-size: 12px;
+  }
+  button {
+    background-color: #798195;
+    color: #fff;
+    border-radius: 3px;
+    width: 40px;
+    height: 28px;
+    font-size: 12px;
+    border: 0;
+    vertical-align: top;
+  }
+  &.mini {
+    span {
+      line-height: 20px;
+    }
+    li {
+      a {
+        width:22px;
+        height: 22px;
+        line-height: 22px;
+      }
+    }
+    input[type="text"] {
+      height: 24px;
+    }
+    button {
+      height: 24px;
+    }
+  }
+}

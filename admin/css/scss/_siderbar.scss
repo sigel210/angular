@@ -1,0 +1,139 @@
+@charset "utf-8";
+// 各类侧边菜单栏
+// 竖状菜单容器
+.sider-bar-group {
+    position: relative;
+    height: 100%;
+    border-right: 1px solid $c-b2;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+// 带底色侧边框
+.sider-bar-group2 {
+    height: 100%;
+    z-index: 2;
+    width: 150px;
+    border-right: 1px solid $c-b1;
+    font-size: 0;
+    background-color: $c-b5;
+}
+
+//特殊：新建服务赠送 左侧
+.sider-bar-group3 {
+    height: 100%;
+    z-index: 2;
+    width: 260px;
+    border-right: 1px solid $c-b1;
+    font-size: 0;
+    background-color: $c-b5;
+    overflow-y: auto;
+}
+
+// 二级菜单样式
+ul.sider-bar-2 {
+    li {
+        position: relative;
+        height: 40px;
+        line-height: 40px;
+        font-size: 12px;
+        width: 147px;
+        cursor: pointer;
+        text-align: center;
+        // border-left: 3px solid #fff;
+        border-top: 1px solid $c-b5;
+        border-bottom: 1px solid $c-b5;
+        &.active {
+            background-color: #fff;
+            font-weight: bold;
+            // border-right: 1px solid #fff;
+            border-left: 3px solid $c-bg;
+            border-top: 1px solid $c-b1;
+            border-bottom: 1px solid $c-b1;
+        }
+        .count {
+            position: absolute;
+            right: 16px;
+            height: 20px;
+            line-height: 18px;
+            border-radius: 3px;
+            border: 1px solid $c-fontc;
+            color: #666;
+            background-color: #fff;
+            margin: 12px 0px;
+            padding: 0px 5px;
+            font-weight: normal;
+            box-sizing: border-box;
+            text-indent: 0px;
+            text-align: center;
+        }
+        .drop-down {
+            height: 42px;
+            line-height: 42px;
+            font-size: 12px;
+            border-top: 1px solid $c-b3;
+            border-bottom: 1px solid $c-b3;
+            background-color: $c-b2;
+        } //特殊样式：二级菜单侧边栏蓝色背景
+        &.current {
+            color: #fff;
+            background-color: $c-bg;
+            border-color: $c-bg
+        } //特殊样式 小三角
+        &.product-line {
+            background: url(../images/arrow.png) no-repeat 15px center;
+            height: 38px;
+            line-height: 38px;
+        }
+        // 计数特殊样式
+        span {
+        }
+    }
+    li.active:first-child {
+        border-top: 1px solid #fff;
+    }
+}
+
+// 三级菜单栏
+ul.sider-bar-3 {
+    cursor: pointer;
+    li {
+        position: relative;
+        min-width: 212px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0px 12px;
+        text-align: left;
+        color: #999;
+        &.current {
+            color: #fff;
+            background-color: $c-bg;
+        }
+    }
+}
+
+//特殊样式 数字边框
+.num-style {
+    position: absolute;
+    top:0;
+    right: 16px;
+    height: 20px;
+    line-height: 18px;
+    border-radius: 3px;
+    border: 1px solid #2673f2;
+    color: #2673f2;
+    background-color: #fff;
+    margin: 12px 0px;
+    padding: 0px 5px;
+    font-weight: normal;
+    box-sizing: border-box;
+    text-indent: 0px;
+    text-align: center;
+    &.needed {
+        color: red;
+        border: 1px solid red;
+        &.current {
+            border: 1px solid #2673f2;
+        }
+    }
+}

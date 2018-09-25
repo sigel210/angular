@@ -1,0 +1,187 @@
+<div class="sider-bar-group">
+    <ul class="sider-bar-3">
+        <li ng-class="{'current':taxModel.ayChoose == 1}" ng-click="taxModel.changeShowType(1)">付款信息</li>
+        <li ng-class="{'current':taxModel.ayChoose == 2}" ng-click="taxModel.changeShowType(2)">邮寄信息</li>
+    </ul>
+</div>
+<!-- 支付信息 -->
+<div class="extends-box f-position-r flex-column" ng-if="taxModel.ayChoose == 1">
+    <div class="extends-box normal-box">
+        <div>
+            <div class="list-group main-content-detail m-form-wrap" ng-repeat="item in taxModel.payList">
+                <div class="m-form-row locked flex-justify" style="height:40px;">
+                    <span class="pl-16" style="float: left;">付款信息{{$index + 1}}</span>
+                    <span class="pr-16" style="float: right;">
+                        <span class="f-common under-line" ng-click="taxModel.pay.show(item)">编辑</span>
+                        <span class="f-red under-line" ng-click="taxModel.pay.delete(item)">删除</span>
+                    </span>
+                </div>
+                <div class="list-item m-form-row">
+                    <p class="title">企业名称</p>
+                    <p class="info" ng-bind="item.tax_title"></p>
+                </div>
+                <div class="list-item m-form-row">
+                    <p class="title">企业税号</p>
+                    <p class="info" ng-bind="item.tax_no"></p>
+                </div>
+                <div class="list-item m-form-row">
+                    <p class="title">公司地址</p>
+                    <p class="info" ng-bind="item.tax_address"></p>
+                </div>
+                <div class="list-item m-form-row">
+                    <p class="title">公司电话</p>
+                    <p class="info" ng-bind="item.tax_phone"></p>
+                </div>
+                <div class="list-item m-form-row">
+                    <p class="title" title="公司银行账号">银行账号</p>
+                    <p class="info" ng-bind="item.tax_account"></p>
+                </div>
+                <div class="list-item m-form-row">
+                    <p class="title">公司开户行</p>
+                    <p class="info" ng-bind="item.tax_bank"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer slide-footer-border">
+        <button ng-if="authPermission.insertTax" class="btn btn-new-blue" ng-click="taxModel.pay.show()">新建付款信息</button>
+    </div>
+</div>
+<!-- 邮寄信息 -->
+<div class="extends-box f-position-r flex-column" ng-if="taxModel.ayChoose == 2">
+    <div class="extends-box normal-box">
+        <div>
+            <div class="list-group main-content-detail m-form-wrap" ng-repeat="item in taxModel.mailList">
+                <div class="locked flex-justify m-form-row" style="height:40px;">
+                    <span class="pl-16" style="float: left;">邮寄信息{{$index + 1}}</span>
+                    <span class="pr-16" style="float: right;">
+                        <span class="f-common under-line" ng-click="taxModel.mail.show(item)">编辑</span>
+                        <span class="f-red under-line" ng-click="taxModel.mail.delete(item)">删除</span>
+                    </span>
+                </div>
+                <div class="list-item m-form-row">
+                    <p class="title">邮寄地址</p>
+                    <p class="info" ng-bind="item.mail_address"></p>
+                </div>
+                <div class="list-item m-form-row">
+                    <p class="title">收件人</p>
+                    <p class="info" ng-bind="item.receiver"></p>
+                </div>
+                <div class="list-item m-form-row">
+                    <p class="title">联系电话</p>
+                    <p class="info" ng-bind="item.receiver_phone"></p>
+                </div>          
+            </div>   
+        </div>   
+    </div>
+    <div class="slide-footer slide-footer-border">
+        <button ng-if="authPermission.insertAddress" class="btn btn-new-blue" ng-click="taxModel.mail.show()">新建邮寄信息</button>
+    </div>
+</div>
+<!-- 新建/编辑付款信息 -->
+<div ng-if="taxModel.pay.flag" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="taxModel.pay.hide()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="taxModel.pay.title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p>
+                        <span class="table-name">企业名称</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="taxModel.pay.data.tax_title" placeholder="点击输入" maxlength="45">
+                        </span>
+                        <i class="table-clear" ng-click="taxModel.pay.data.tax_title = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">企业税号</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="taxModel.pay.data.tax_no" placeholder="点击输入" maxlength="30">
+                        </span>
+                        <i class="table-clear" ng-click="taxModel.pay.data.tax_no = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">公司地址</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="taxModel.pay.data.tax_address" placeholder="点击输入" maxlength="50">
+                        </span>
+                        <i class="table-clear" ng-click="taxModel.pay.data.tax_address = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">公司电话</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="taxModel.pay.data.tax_phone" placeholder="点击输入" maxlength="15" ng-keyup="replaceNum(taxModel.pay.data, 'tax_phone')">
+                        </span>
+                        <i class="table-clear" ng-click="taxModel.pay.data.tax_phone = ''"></i>
+                    </p>
+                    <p>
+                        <span title="公司银行帐号" class="table-name" style="width:55px;">银行帐号</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="taxModel.pay.data.tax_account" placeholder="点击输入" maxlength="40">
+                        </span>
+                        <i class="table-clear" ng-click="taxModel.pay.data.tax_account = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">开户行</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="taxModel.pay.data.tax_bank" placeholder="点击输入" maxlength="35">
+                        </span>
+                        <i class="table-clear" ng-click="taxModel.pay.data.tax_bank = ''"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="taxModel.pay.confirm()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 新建/编辑付款信息 -->
+<div ng-if="taxModel.mail.flag" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="taxModel.mail.hide()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="taxModel.mail.title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p>
+                        <span class="table-name">邮寄地址</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="taxModel.mail.data.mail_address" placeholder="点击输入" maxlength="35">
+                        </span>
+                        <i class="table-clear" ng-click="taxModel.mail.data.mail_address = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">收件人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="taxModel.mail.data.receiver" placeholder="点击输入" maxlength="15">
+                        </span>
+                        <i class="table-clear" ng-click="taxModel.mail.data.receiver = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">联系电话</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="taxModel.mail.data.receiver_phone" placeholder="点击输入" maxlength="15">
+                        </span>
+                        <i class="table-clear" ng-click="taxModel.mail.data.receiver_phone = ''"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="taxModel.mail.confirm()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

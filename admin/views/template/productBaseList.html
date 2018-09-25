@@ -1,0 +1,72 @@
+<!--产品管理-基本信息-->
+<!-- <table>
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>基本信息</th>
+        </tr>
+        <tr>
+            <td>产品线</td>
+            <td ng-bind="detailsWrap.data.second_product_name"></td>
+        </tr>
+        <tr>
+            <td>产品名称</td>
+            <td ng-bind="detailsWrap.data.third_product_name"></td>
+        </tr>
+        <tr>
+            <td>标准价格</td>
+            <td ng-bind="detailsWrap.data.standard_price ? detailsWrap.data.standard_price : '—'"></td>
+        </tr>
+        <tr>
+            <td>优惠价格</td>
+            <td ng-bind="detailsWrap.data.discount_price ? detailsWrap.data.discount_price : '—'"></td>
+        </tr>
+        <tr>
+            <td>服务周期</td>
+            <td ng-bind="detailsWrap.data.product_cycle ? detailsWrap.data.product_cycle + '个月' : '—'"></td>
+        </tr>
+        <tr>
+            <td>执行次数</td>
+            <td ng-bind="detailsWrap.data.execute_num ? detailsWrap.data.execute_num : '—'"></td>
+        </tr>
+        <tr>
+            <td>打单开关</td>
+            <td ng-bind="detailsWrap.data.product_status==1?'关':'开'"></td>
+        </tr>
+    </tbody>
+</table> -->
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>基本信息
+        </span>
+    </p>
+    <div class="list-item">
+        <span class="title">产品线</span>
+        <span class="info" ng-bind="detailsWrap.data.second_product_name"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">产品名称</span>
+        <span class="info" ng-bind="detailsWrap.data.third_product_name"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">标准价格</span>
+        <span class="info" ng-bind="detailsWrap.data.standard_price ? detailsWrap.data.standard_price : '—'"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">优惠价格</span>
+        <span class="info" ng-bind="detailsWrap.data.discount_price ? detailsWrap.data.discount_price : '—'"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">服务周期</span>
+        <span class="info" ng-bind="detailsWrap.data.product_cycle ? detailsWrap.data.product_cycle + '个月' : '—'"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">执行次数</span>
+        <span class="info" ng-bind="detailsWrap.data.execute_num ? detailsWrap.data.execute_num : '—'"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">打单开关</span>
+        <span class="info" ng-bind="detailsWrap.data.product_status==1?'关':'开'"></span>
+    </div>
+</div>

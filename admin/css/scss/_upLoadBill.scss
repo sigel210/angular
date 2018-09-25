@@ -1,0 +1,129 @@
+@charset "UTF-8";
+//全局样式模块，统一引用此base;
+//样式调用
+@import "css3", "skin", "setting", "mixin";
+.m-upload-box {
+  padding-bottom: 20px;
+  .u-upload-title {
+    display: table;
+    width: 790px;
+    padding-top: 19px;
+    line-height: 27px;
+    font-size: 12px;
+    margin: 0 auto;
+    color: #333;
+  }
+  .u-upload-content {
+    width: 790px;
+    margin: 10px auto;
+    background: #fff;
+    td {
+      height: 78px;
+      border: 1px solid #f2f2f2;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      vertical-align: middle;
+      p {
+        line-height: 20px;
+      }
+    }
+    .gray {
+      background-color: #e4e4e4;
+    }
+    .upload-btn-box {
+      position: absolute;
+      display: inline-block;
+      width: 100%;
+      vertical-align: top;
+      overflow: hidden;
+      height: 28px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .upload-input {
+      border: none;
+      line-height: 36px;
+      padding-left: 30px;
+      position: relative;
+      .upload-name {
+        color: #333;
+      }
+    }
+    .pointer {
+      background-color: #2673f2;
+      cursor: pointer;
+      color: #fff;
+      &:active {
+        background: #246df1;
+      }
+      &:hover {
+        background-color: #2c84f4;
+      }
+    }
+    .download {
+      a {
+        line-height: 25px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #6c7ba6;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+//错误页面样式
+.u-check_fail {
+  width: 590px;
+  margin: 0 auto;
+  .error-tip {
+    display: block;
+    margin: 20px 0 5px 0;
+  }
+  .icon_error {
+    display: block;
+    float: left;
+    width: 18px;
+    height: 24px;
+    background: url(../images/icon-error.png) no-repeat 0 4px;
+  }
+  .error-intro {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    color: #ff9900;
+  }
+}
+
+//成功页面样式
+.u-check_success {
+  width: 200px;
+  margin: 45px auto 0 auto;
+  img {
+    padding-left: 75px;
+  }
+  .check_title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+  }
+  .btn-cyan {
+    margin-top: 26px;
+    margin-left: 25px;
+    background-color: #09c;
+    width: 148px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+  }
+  .btn-blue {
+    background: #2673f2;
+  }
+  .check_detail {
+    font-size: 12px;
+    text-align: center;
+  }
+}

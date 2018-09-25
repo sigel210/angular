@@ -1,0 +1,168 @@
+<header>
+    <div class="tab-bar">
+        <button class="menu-btn-back" onclick="window.history.back()">
+            <i class="icon-back"></i>
+        </button>
+        <span class="menu-tit">对账上传</span>
+    </div>
+</header>
+<div class="cont-page-w">
+    <div class="m-upload-box" ng-show="uploadModel.isShow">
+        <!-- <div class="u-upload-title">天下网商</div>
+        <table class="u-upload-content">
+            <tbody>
+                <tr>
+                    <td width="78">支付宝</td>
+                    <td width="130">
+                        <p>支付宝模板</p>
+                        <p class="download">
+                            <a ng-click="saveReport(1)" href="javascript:void(0)">下载</a>
+                        </p>
+                    </td>
+                    <td width="504">
+                        <div class="upload-input">
+                            <span href="javascript:void(0)" class="upload-name" ng-bind="uploadModel.uploadAlipayData.name"></span>
+                            <span class="upload-btn-box alipay-control" ng-show="!uploadModel.uploadAlipayData">
+                                <span class="upload-show">点击上传excel表</span>
+                                <input class="upload-hide" type="file" id='uploadAlipay' onchange='angular.element(this).scope().uploadModel.fileChange(this.files,1)' accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                            </span>
+                            <span class="icon-close2" ng-click="uploadModel.clearUploadData(1)"></span>
+                        </div>
+                    </td>
+                    <td width="78" ng-class="{'pointer':uploadModel.uploadAlipayData.name.length>0}" ng-click="uploadModel.uploadAlipayData.name&&uploadModel.uploadFile(1)"
+                        class="gray">校验
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="u-upload-content">
+            <tbody>
+                <tr>
+                    <td width="78">银行</td>
+                    <td width="130">
+                        <p>银行模板</p>
+                        <p class="download">
+                            <a ng-click="saveReport(2)" href="javascript:void(0)">下载</a>
+                        </p>
+                    </td>
+                    <td width="504">
+                        <div class="upload-input">
+                            <span href="javascript:void(0)" class="upload-name" ng-bind="uploadModel.uploadUnionPayData.name"></span>
+                            <span class="upload-btn-box unionpay-control" ng-show="!uploadModel.uploadUnionPayData">
+                                <span class="upload-show">点击上传excel表</span>
+                                <input class="upload-hide" id='uploadUnion' type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange='angular.element(this).scope().uploadModel.fileChange(this.files,2)'>
+                            </span>
+                            <span class="icon-close2" ng-click="uploadModel.clearUploadData(2)"></span>
+                        </div>
+                    </td>
+                    <td width="78" ng-class="{'pointer':uploadModel.uploadUnionPayData.name.length>0}" ng-click="uploadModel.uploadUnionPayData.name&&uploadModel.uploadFile(2)"
+                        class="gray">校验
+                    </td>
+                </tr>
+            </tbody>
+        </table> -->
+        <div class="u-upload-title">淘大培训</div>
+        <table class="u-upload-content">
+            <tbody>
+                <tr>
+                    <td width="78">支付宝</td>
+                    <td width="130">
+                        <p>支付宝模板</p>
+                        <p class="download">
+                            <a ng-click="saveReport(3)" href="javascript:void(0)">下载</a>
+                        </p>
+                    </td>
+                    <td width="504">
+                        <div class="upload-input">
+                            <span class="upload-name" ng-bind="uploadModel.uploadContentPayData.name"></span>
+                            <span class="upload-btn-box unionpay-control" ng-show="!uploadModel.uploadContentPayData">
+                                <span class="upload-show">点击上传excel表</span>
+                                <input class="upload-hide" id='uploadContentPayData' type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange='angular.element(this).scope().uploadModel.fileChange(this.files,3)'>
+                            </span>
+                            <span class="icon-close2" ng-click="uploadModel.clearUploadData(3)"></span>
+                        </div>
+                    </td>
+                    <td width="78" ng-class="{'pointer':uploadModel.uploadContentPayData.name.length>0}" ng-click="uploadModel.uploadContentPayData.name&&uploadModel.uploadFile(3)"
+                        class="gray">校验
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 淘大银行卡 -->
+        <table class="u-upload-content">
+            <tbody>
+                <tr>
+                    <td width="78">银行</td>
+                    <td width="130">
+                        <p>银行模板</p>
+                        <p class="download">
+                            <a ng-click="saveReport(4)" href="javascript:void(0)">下载</a>
+                        </p>
+                    </td>
+                    <td width="504">
+                        <div class="upload-input">
+                            <span class="upload-name" ng-bind="uploadModel.uploadTDBankData.name"></span>
+                            <span class="upload-btn-box unionpay-control" ng-show="!uploadModel.uploadTDBankData">
+                                <span class="upload-show">点击上传excel表</span>
+                                <input class="upload-hide" id='uploadTDBankData' type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange='angular.element(this).scope().uploadModel.fileChange(this.files,4)'>
+                            </span>
+                            <span class="icon-close2" ng-click="uploadModel.clearUploadData(4)"></span>
+                        </div>
+                    </td>
+                    <td width="78" ng-class="{'pointer':uploadModel.uploadTDBankData.name.length>0}" ng-click="uploadModel.uploadTDBankData.name&&uploadModel.uploadFile(4)"
+                        class="gray">校验
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-show="loadingModal.isShow" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="false">
+            <div class="modal-backdrop fade in"></div>
+            <div class="loading-bg modal-loading">
+                <div class="loading-title">校验中</div>
+                <div class="loading-cont loading-modal">
+                    <div class="ball-grid-pulse">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="resultModal.uploadContentF">
+        <div class="u-check_fail">
+            <div class="error-tip">
+                <i class="icon_error"></i>
+                <span class="error-intro">excel表校验结果</span>
+            </div>
+            <div class="check_detail" ng-bind="resultModal.errorTip"></div>
+            <table ng-show="resultModal.errorGroup.length" class="table-list uploadcheck-table" width="100%">
+                <thead>
+                    <tr>
+                        <th>行数</th>
+                        <th>错误信息</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="errorLine in resultModal.errorGroup">
+                        <td ng-bind="errorLine.line"></td>
+                        <td ng-bind="errorLine.error"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slide-footer">
+            <button class="btn btn-blue btn-ok" ng-click="reSubmit()">重新上传excel表</button>
+        </div>
+    </div>
+    <div ng-show="resultModal.uploadContentS">
+        <div class="u-check_success">
+            <img src="images/icon_checksuccess.png" />
+            <p class="check_title">Excel上传成功</p>
+            <div class="check_detail" ng-bind="resultModal.dataS"></div>
+            <button type="button" class="btn btn-cyan btn-blue" ng-click="resultModal.confirmBill()">确认</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<!-- 退款信息 -->
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>退款信息
+        </span>
+    </p>
+    <div class="list-item">
+        <span class="title">退款类型</span>
+        <span class="info" ng-bind="detailsWrap.data.approval_type | approvalTypeFilter"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">退款金额</span>
+        <span class="info" ng-bind="detailsWrap.data.refund_amount | number:2"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">退款渠道</span>
+        <span class="info" ng-bind="detailsWrap.data.refund_channel | refundChannelFilter"></span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.refund_channel==1">
+        <span class="title">退款账号</span>
+        <span class="info" ng-bind="detailsWrap.data.customer_account"></span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.refund_channel==2">
+        <span class="title">网银用户</span>
+        <span class="info" ng-bind="detailsWrap.data.customer_account"></span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.refund_channel==2">
+        <span class="title">开户行名</span>
+        <span class="info" ng-bind="detailsWrap.data.customer_bank"></span>
+    </div>
+    <div class="list-item">
+        <span class="title">退款时间</span>
+        <span class="info" ng-bind="detailsWrap.data.refund_time ? detailsWrap.data.refund_time :'-'"></span>
+    </div>
+    <!-- <tr>
+        <td>退款类型</td>
+        <td ng-bind="detailsWrap.data.approval_type | approvalTypeFilter"></td>
+    </tr>
+    <tr>
+        <td>退款金额</td>
+        <td ng-bind="detailsWrap.data.refund_amount | number:2"></td>
+    </tr>
+    <tr>
+        <td>退款渠道</td>
+        <td ng-bind="detailsWrap.data.refund_channel | refundChannelFilter"></td>
+    </tr>
+    <tr ng-if="detailsWrap.data.refund_channel==1">
+        <td>退款账号</td>
+        <td ng-bind="detailsWrap.data.customer_account"></td>
+    </tr>
+    <tr ng-if="detailsWrap.data.refund_channel==2">
+        <td>网银用户</td>
+        <td ng-bind="detailsWrap.data.customer_account"></td>
+    </tr>
+    <tr ng-if="detailsWrap.data.refund_channel==2">
+        <td>开户行名</td>
+        <td ng-bind="detailsWrap.data.customer_bank"></td>
+    </tr>
+    <tr>
+        <td>退款时间</td>
+        <td ng-bind="detailsWrap.data.refund_time ? detailsWrap.data.refund_time :'-'"></td>
+    </tr> -->
+</div>
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>退款理由
+        </span>
+    </p>
+    <div class="txt-textarea">
+        <span ng-bind="detailsWrap.data.refund_reason">
+
+        </span>
+    </div>
+</div>
+<!-- <table>
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>退款理由</th>
+        </tr>
+    </tbody>
+</table>
+<table class="table-detail-list">
+    <tbody>
+        <tr>
+            <th style="color:#333;padding:10px;word-break:break-all;white-space:pre-wrap;" ng-bind="detailsWrap.data.refund_reason"></th>
+        </tr>
+    </tbody>
+</table> -->

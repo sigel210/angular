@@ -1,0 +1,301 @@
+<div title-bar my-title="编辑订单" tab-list="tabList" tab-key="tab_id" tab-value="tab_name" current-value="2"></div>
+<div class="extends-box">
+    <div class="extends-box" ng-show="uiModel.step == 1">
+        <div class="sider-bar-group bg-gray">
+            <ul class="sider-bar-2">
+                <li class="product-line" ng-if="uiModel.secondProductId!=10008">特训营</li>
+                <li class="product-line" ng-if="uiModel.secondProductId==10008">淘大培训</li>
+                <li class="product bg-white" ng-class="{'current':uiModel.productId == item.third_product_id}" ng-repeat="item in uiModel.productList"
+                    ng-click="chooseProduct(item,$index,uiModel)">{{item.product_name}}
+                    <span class="num-style" ng-class="{'needed':item.flag}" ng-show="item.total_number || item.flag" ng-bind="item.flag ? '！' : item.total_number"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="sider-bar-group">
+            <ul class="sider-bar-3">
+                <li ng-class="{'current':uiModel.classId == item.class_id}" ng-repeat="item in uiModel.classList" title="{{item.class_name}}"
+                    ng-click="chooseClass(item,$index)">{{item.class_name}}
+                    <span class="num-style" ng-class="{'needed':item.flag}" ng-show="item.product_num || item.flag" ng-bind="item.flag ? '！' : item.product_num"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="rest-box" ng-show="uiModel.showData">
+            <div class="extends-box f-position-r">
+                <!--第一步-->
+                <div class="cont-page-w content" style="padding:0">
+                    <form name="_form" class="m-form-wrap add-edit-form form-wrap-w-sm order">
+                        <div class="remark-box" ng-bind="uiModel.dataForShow.intro">备注</div>
+                        <p class="add-edit-title">
+                            <span class="icon-title"></span>产品信息</p>
+                        <div>
+                            <p class="locked m-form-row">
+                                <span class="table-name">产品名称</span>
+                                <span class="table-text" ng-bind="uiModel.dataForShow.productName">
+                                </span>
+                            </p>
+                            <p class="locked m-form-row">
+                                <span class="table-name">合同班次</span>
+                                <span class="table-text" ng-bind="uiModel.dataForShow.className">
+                                </span>
+                            </p>
+                            <p class="m-form-row">
+                                <span class="table-name">产品单价</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="uiModel.dataForShow.discount_price" placeholder="点击输入" ng-change="reload()" ng-keyup="replaceNum(uiModel.dataForShow,'discount_price')">
+                                </span>
+                                <i class="table-clear" ng-click="uiModel.dataForShow.discount_price = '';reload()"></i>
+                            </p>
+                            <p class="m-form-row">
+                                <span class="table-name">培训人数</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="uiModel.dataForShow.product_num" placeholder="点击输入" ng-change="reload(uiModel.dataForShow.product_num)"
+                                        maxlength="4" ng-keyup="replaceNum(uiModel.dataForShow,'product_num')">
+                                </span>
+                                <i class="table-clear" ng-click="uiModel.dataForShow.product_num = '';reload()"></i>
+                            </p>    
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <button class="btn btn-cancel" ng-click="cancel()">取消</button>
+            <button class="btn btn-new-blue" ng-click="next()">下一步</button>
+        </div>
+    </div>
+    <div class="extends-box" ng-show="uiModel.step == 2">
+        <div class="sider-bar-group bg-gray">
+            <ul class="sider-bar-2">
+                <li class="product-line">签约方式</li>
+                <li class="product" ng-class="{'current':uiModel.data.sign_type == 1}" ng-click="changeSignType(1)">个人签约</li>
+                <li class="product" ng-class="{'current':uiModel.data.sign_type == 2}" ng-click="changeSignType(2)">公司签约</li>
+            </ul>
+        </div>
+        <div class="rest-box">
+            <div class="extends-box flex-column" style="padding:0">
+                <form name="_form" class="m-form-wrap add-edit-form form-wrap-w-sm order">
+                    <p class="add-edit-title">
+                        <span class="icon-title"></span>签约信息</p>
+                    <!---个人-->
+                    <div ng-show="uiModel.data.sign_type ==1">
+                        <p class="m-form-row">
+                            <span class="table-name">签约人</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="uiModel.data.sign_name" placeholder="点击输入" maxlength="15">
+                            </span>
+                            <i class="table-clear" ng-click="uiModel.data.sign_name = ''"></i>
+                        </p>
+                        <p class="m-form-row">
+                            <span class="table-name">身份证号码</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="uiModel.data.sign_card_id" placeholder="点击输入" maxlength="18">
+                            </span>
+                            <i class="table-clear" ng-click="uiModel.data.sign_card_id = ''"></i>
+                        </p>
+                        <p class="m-form-row">
+                            <span class="table-name">联系方式</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="uiModel.data.sign_phone" placeholder="点击输入" maxlength="15">
+                            </span>
+                            <i class="table-clear" ng-click="uiModel.data.sign_phone = ''"></i>
+                        </p>
+                    </div>
+                    <!----公司---->
+                    <div ng-show="uiModel.data.sign_type ==2">
+                        <p class="m-form-row">
+                            <span class="table-name">签约授权人</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="uiModel.data.sign_authorize" placeholder="点击输入" maxlength="15">
+                            </span>
+                            <i class="table-clear" ng-click="uiModel.data.sign_authorize = ''"></i>
+                        </p>
+                        <p class="m-form-row">
+                            <span class="table-name">联系方式</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="uiModel.data.sign_phone" placeholder="点击输入" maxlength="15">
+                            </span>
+                            <i class="table-clear" ng-click="uiModel.data.sign_phone = ''"></i>
+                        </p>
+                        <p class="m-form-row">
+                            <span class="table-name">公司名字</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="uiModel.data.sign_company" placeholder="点击输入" maxlength="35">
+                            </span>
+                            <i class="table-clear" ng-click="uiModel.data.sign_company = ''"></i>
+                        </p>
+                        <p class="m-form-row">
+                            <span class="table-name">办公地址</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="uiModel.data.sign_address" placeholder="点击输入" maxlength="50">
+                            </span>
+                            <i class="table-clear" ng-click="uiModel.data.sign_address = ''"></i>
+                        </p>
+                    </div>
+                    <p class="add-edit-title">
+                        <span class="icon-title"></span>订单信息</p>
+                    <div>
+                        <p class="m-form-row">
+                            <span class="table-name">到单日期</span>
+                            <span class="search-box" style="width: 549px;display: inline-block">
+                                <input id="table-data" type="text" class="pointer" time-value="uiModel.data.received_date" max-date="{{today}}" format="yyyy-MM-dd"
+                                    ng-model="uiModel.data.received_date" time-module readonly placeholder="点击选择" style="padding-left:16px;">
+                            </span>
+                            <i class="table-clear" ng-click="uiModel.data.received_date = ''"></i>
+                        </p>
+                        <p class="m-form-row">
+                            <span class="table-name">签约类型</span>
+                            <span class="table-text">
+                                <select ng-model="uiModel.data.is_new" ng-options=" option.id as option.status for option in uiModel.selectList.typeList"></select>
+                                <label ng-show="!uiModel.data.is_new" class="select-tip">点击选择</label>
+                            </span>
+                            <i class="table-clear" ng-click="uiModel.data.is_new = ''"></i>
+                        </p>    
+                    </div>
+                    
+                    <p class="add-edit-title">
+                        <span class="icon-title"></span>订单备注</p>
+                    <div class="top-border  m-textarea-box">
+                        <textarea class="u-table-textarea" ng-model="uiModel.data.remarks" maxlength="300"></textarea>
+                        <span class="u-textarea-num">
+                            <span>{{uiModel.data.remarks.length ? uiModel.data.remarks.length:0}}</span>/300</span>
+                        <i style="position: absolute;right: 10px;top: 10px;" class="table-clear" ng-click="uiModel.data.remarks = ''"></i>
+                    </div>
+                    <!--<div>-->
+                    <!--<p style="border: none" class="add-edit-title"><span class="icon-title"></span>订单备注</p>-->
+                    <!--<div class="top-border  m-textarea-box">-->
+                    <!--<textarea  class="u-table-textarea" ng-model="uiModel.data.remarks" maxlength="300"></textarea>-->
+                    <!--<span class="u-textarea-num">-->
+                    <!--<span>{{uiModel.data.remarks.length ? uiModel.data.remarks.length:0}}</span>/300</span>-->
+                    <!--<i style="position: absolute;right: 10px;top: 10px;" class="table-clear" ng-click="uiModel.data.remarks = ''"></i>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </form>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <button class="btn btn-cancel" ng-click="cancel()">取消</button>
+            <button class="btn btn-new-blue" ng-click="showModal('confirm')">确认</button>
+            <button class="btn btn-new-blue" ng-click="back()">上一步</button>
+        </div>
+    </div>
+</div>
+<!--弹窗 -->
+<div>
+    <!-- 信息确认-->
+    <div ng-show="uiModel.modal.confirm" style="display: block;overflow: auto" class="modal fade in" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="false">
+        <div class="modal-backdrop fade in"></div>
+        <div class="modal-dialog modal-sm responseHeight">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="btn-close" data-dismiss="modal">
+                        <i class="icon-close" ng-click="hideModal('confirm')"></i>
+                    </div>
+                    <h4 class="modal-title">订单确认</h4>
+                </div>
+                <div class="modal-body editdetail edit">
+                    <form class="form-wrap add-edit-form form-wrap-w-sm order">
+                        <p style="background: transparent;font-size: 12px" class="add-edit-title">
+                            <span class="icon-title"></span>订单信息</p>
+                        <div>
+                            <p>
+                                <span class="table-name">合同金额</span>
+                                <span class="table-text" ng-bind="uiModel.data.total_price | number:2">
+                                </span>
+                            </p>
+                            <p>
+                                <span class="table-name">到单日期</span>
+                                <span class="table-text" ng-bind="uiModel.data.received_date">
+                                </span>
+                            </p>
+                            <p>
+                                <span class="table-name">签约类型</span>
+                                <span class="table-text" ng-bind="uiModel.data.is_new==1 ? '续签':'新签'">
+                                </span>
+                            </p>
+                            <p style="background: transparent;font-size: 12px" class="add-edit-title">
+                                <span class="icon-title"></span>产品信息</p>
+                            <p ng-class="{'edit-modal-title':$index > 0}" ng-repeat-start="item in uiModel.data.classList">
+                                <span class="table-name">产品名称</span>
+                                <span class="table-text" ng-bind="item.product_name">
+                                </span>
+                            </p>
+                            <p>
+                                <span class="table-name">合同班次</span>
+                                <span class="table-text" ng-bind="item.class_name"></span>
+                            </p>
+                            <p>
+                                <span class="table-name">产品单价</span>
+                                <span class="table-text" ng-bind="item.discount_price|number:2"></span>
+                            </p>
+                            <p ng-repeat-end>
+                                <span class="table-name">培训人数</span>
+                                <span class="table-text" ng-bind="item.product_num">
+                                </span>
+                            </p>    
+                        </div>
+                        
+                        <p class="add-edit-title">
+                            <span class="icon-title"></span>签约信息</p>
+                        <!---个人-->
+                        <div ng-show="uiModel.data.sign_type == 1">
+                            <p>
+                                <span class="table-name">签约人</span>
+                                <span class="table-text" ng-bind="uiModel.data.sign_name"></span>
+                            </p>
+                            <p>
+                                <span class="table-name">身份证号码</span>
+                                <span class="table-text" ng-bind="uiModel.data.sign_card_id"></span>
+                            </p>
+                            <p>
+                                <span class="table-name">联系方式</span>
+                                <span class="table-text" ng-bind="uiModel.data.sign_phone"></span>
+                            </p>
+                        </div>
+                        <!----公司---->
+                        <div ng-show="uiModel.data.sign_type == 2">
+                            <p>
+                                <span class="table-name">签约授权人</span>
+                                <span class="table-text" ng-bind="uiModel.data.sign_authorize"> </span>
+                            </p>
+                            <p>
+                                <span class="table-name">联系方式</span>
+                                <span class="table-text" ng-bind="uiModel.data.sign_phone">
+                                </span>
+                            </p>
+                            <p>
+                                <span class="table-name">公司名字</span>
+                                <span class="table-text" ng-bind="uiModel.data.sign_company">
+                                </span>
+                            </p>
+                            <p>
+                                <span class="table-name">办公地址</span>
+                                <span class="table-text" ng-bind="uiModel.data.sign_address">
+                                </span>
+                            </p>
+                        </div>
+                        <!-- <p class="add-edit-title"><span class="icon-title"></span>订单信息</p>
+                        <p>
+                            <span class="table-name">订单金额</span>
+                            <span class="table-text" ng-bind="orderprice|number:2">
+                                </span>
+                        </p>
+                        <p>
+                            <span class="table-name">到单日期</span>
+                            <span class="table-text" ng-bind="received_date">
+                                 </span>
+                        </p> -->
+                        <p class="add-edit-title">
+                            <span class="icon-title"></span>订单备注</p>
+                        <p>
+                            <textarea readonly class="textarea-content table-text confirm_remarks" ng-bind-html="uiModel.data.remarks"></textarea>
+                        </p>
+                    </form>
+                </div>
+                <div class="modal-footer full-btn-box">
+                    <button type="button" class="btn btn-blue full-btn" ng-click="updateTeXun()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

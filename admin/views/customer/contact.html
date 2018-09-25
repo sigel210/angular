@@ -1,0 +1,75 @@
+<!--联系信息-->
+<div class="extends-box flex-column has-footer p21 content" style="padding-top:19px;">
+    <div class="list-group main-content-detail">
+        <div class="list-item">
+            <div class="title">联系人姓名 </div>
+            <div class="info">{{contactModel.detail.contact_name}}</div>
+        </div>
+        <div class="list-item">
+            <div class="title">联系人手机号</div>
+            <div class="info">{{contactModel.detail.contact_phone}}</div>
+        </div>
+        <div class="list-item">
+            <div class="title">联系人旺旺</div>
+            <div class="info">{{contactModel.detail.contact_ww}}</div>
+        </div>
+        <div class="list-item">
+            <div class="title">联系人职务</div>
+            <div class="info">{{contactModel.detail.contact_job}}</div>
+        </div>
+    </div>
+</div>
+<div class="slide-footer slide-footer-border">
+    <button class="btn btn-new-blue" ng-if="isOrigin && !rFlag && authPermission.updateContact" ng-class="{'btn-disabled': mainFlag || !authPermission.baseEdit}"
+        ng-disabled="mainFlag || !authPermission.baseEdit" ng-click="contactModel.editModel.show()">信息编辑</button>
+</div>
+<!-- 联系信息编辑弹窗 -->
+<div ng-if="contactModel.editModel.flag" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="contactModel.editModel.hide()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="contactModel.editModel.title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p>
+                        <span class="table-name">联系人姓名</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="contactModel.editModel.data.contact_name" placeholder="点击选择" maxlength="15">
+                        </span>
+                        <i class="table-clear" ng-click="contactModel.editModel.data.contact_name = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">联系手机号</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="contactModel.editModel.data.contact_phone" placeholder="点击输入" maxlength="15" ng-keyup="replaceNum(contactModel.editModel.data, 'contact_phone')">
+                        </span>
+                        <i class="table-clear" ng-click="contactModel.editModel.data.contact_phone = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">联系人旺旺</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="contactModel.editModel.data.contact_ww" placeholder="点击输入" maxlength="35">
+                        </span>
+                        <i class="table-clear" ng-click="contactModel.editModel.data.contact_ww = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">联系人职务</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="contactModel.editModel.data.contact_job" placeholder="点击输入" maxlength="15">
+                        </span>
+                        <i class="table-clear" ng-click="contactModel.editModel.data.contact_job = ''"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="contactModel.editModel.confirm()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

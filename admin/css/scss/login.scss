@@ -1,0 +1,870 @@
+@charset "UTF-8";
+//登录页面样式;
+//样式调用
+@import "css3",
+"skin",
+"setting",
+"mixin";
+/* 背景 */
+
+.login-bg {
+    background: url("../images/login/login-bg.png") no-repeat center;
+    background-size: 100% 100%; //background-size: cover;
+    &2 {
+        background: url("../images/login/login-bg2.png") no-repeat center;
+        background-size: 100% 100%;
+    }
+}
+
+/* 外部链接组件 */
+
+.m-link_menu {
+    display: inline-block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    .u-link_btn {
+        float: right;
+        margin-bottom: 4px;
+        cursor: pointer;
+    }
+    .u-minWidth_outbound_link {
+        .item {
+            a {
+                float: left;
+                padding: 10px 20px;
+                width: 84px;
+                color: #a9b6d1;
+                background: #556fa0;
+                font-size: 12px;
+                cursor: pointer;
+                &:hover {
+                    background: #6f83ae;
+                }
+            }
+        }
+    }
+    .u-outbound_link {
+        width: 136px;
+        .item {
+            a {
+                float: left;
+                padding: 6px 10px;
+                text-align: center;
+                color: #fff;
+                filter: alpha(opacity=50);
+                -moz-opacity: 0.5;
+                -khtml-opacity: 0.5;
+                opacity: 0.5;
+                font-size: 12px;
+                cursor: pointer;
+                &:hover {
+                    background: #526fa1;
+                    -webkit-border-radius: 4px;
+                    -moz-border-radius: 4px;
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+}
+
+/* 错误提示 */
+
+.m-topInfor {
+    .u-tips {
+        position: fixed;
+        margin-bottom: 6px;
+        font-size: 16px;
+        color: #fff; //width: 100%;
+        height: 64px;
+        line-height: 64px;
+        z-index: 9999; //background: url(../images/login/login-tip-old.png) no-repeat center;
+        text-align: center; //改为渐变背景加入以下代码
+        left: 50%;
+        margin-left: -330px;
+        width: 660px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        background-color: #2673f2;
+        background: -moz-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+        background: -webkit-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+        background: -o-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+        background: -ms-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+        background: linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+        .tips_icon {
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: -4px;
+            height: 24px;
+            width: 24px;
+            background: url(../images/login/login-tip.png) no-repeat center;
+            vertical-align: middle;
+        }
+    }
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .tips_show {
+        top: 0px;
+        transition: top 0.3s linear;
+        &.ng-enter {
+            &.ng-enter-active {
+                top: 0px;
+            }
+            top: -64px;
+        }
+        &.ng-leave {
+            &.ng-leave-active {
+                top: -64px;
+            }
+            top: 0px;
+        }
+    }
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .u-advice_tips {
+        position: fixed;
+        left: 50%;
+        margin-left: -330px;
+        margin-bottom: 6px;
+        font-size: 16px;
+        color: #fff;
+        width: 660px;
+        height: 64px;
+        line-height: 64px;
+        z-index: 9998; //background: url(../images/login/login-tips.png) no-repeat center;
+        text-align: center; //加渐变
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        background-color: #2673f2;
+        background: -moz-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+        background: -webkit-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+        background: -o-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+        background: -ms-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+        background: linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+        .tips_icon {
+            display: inline-block;
+            float: right;
+            margin-right: 10px;
+            margin-top: 20px;
+            height: 24px;
+            width: 24px;
+            background: url(../images/login/advice-tips-close.png) no-repeat center;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+    }
+    .advice_show {
+        top: 0px;
+        transition: top 0.3s linear;
+        &.ng-enter {
+            &.ng-enter-active {
+                top: 0px;
+            }
+            top: -64px;
+        }
+        &.ng-leave {
+            &.ng-leave-active {
+                top: -64px;
+            }
+            top: 0px;
+        }
+    }
+}
+
+/* 中间的登录模块 */
+
+.g-login-box {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -203px;
+    margin-top: -319px;
+    width: 407px;
+    padding: 0;
+    .g-login-left {
+        float: left;
+    }
+    .g-login-right {
+        margin: 0 auto;
+        float: left;
+        height: 533px;
+        background: #0a141d;
+        width: 407px;
+        border: 1px solid #2f3845;
+        border-radius: 8px;
+        .m-logo-box {
+            position: relative;
+            height: 172px;
+            margin-bottom: 43px;
+            img {
+                position: absolute;
+                top: -33px;
+                left: 50%;
+                margin-left: -70px;
+            }
+        }
+        .u-login-wrap {
+            width: 318px;
+            border-radius: 8px;
+            /* height: 50px; */
+            margin: 0 auto 20px;
+            position: relative;
+            &.active {
+                box-shadow: 0 0 4px #c4141c;
+            }
+            label {
+                position: absolute;
+                left: 17px;
+                top: 8px;
+                width: 20px;
+                height: 20px;
+                z-index: 9999;
+                .icon-login {
+                    width: 254px;
+                    font-size: 22px;
+                    color: #a0a0a0;
+                }
+            }
+            span {
+                position: absolute;
+                left: 38px;
+                top: 15px;
+                width: 10px;
+                height: 20px;
+                border-right: 1px solid #3d4a54;
+            }
+            input {
+                position: relative;
+                border: 1px solid #3d4a54;
+                border-radius: 4px;
+                width: 258px;
+                height: 44px;
+                padding: 0 0 0 60px;
+                font-size: 14px;
+                color: #fff;
+                line-height: 1;
+                background: #0a141d;
+                @extend %simple-text;
+            }
+            .input-shadow {
+                position: absolute;
+                top: -21px;
+                left: -15px;
+            }
+            input:-webkit-autofill,
+            textarea:-webkit-autofill,
+            select:-webkit-autofill {
+                -webkit-box-shadow: 0 0 0 1000px #0a141d inset;
+                background: #0a141d !important;
+                text-fill-color: #fff;
+                -webkit-text-fill-color: #fff;
+            }
+            input[type="text"]:focus,
+            input[type="password"]:focus,
+            textarea:focus {
+                border: 1px solid #93ffff;
+                -webkit-box-shadow: 0 0 0 1000px #0a141d inset;
+            }
+            input[type="text"]:hover,
+            input[type="password"]:hover,
+            textarea:hover {
+                -webkit-box-shadow: 0 0 0 1000px #0a141d inset;
+            }
+            input::-webkit-input-placeholder {
+                color: #353c43;
+            }
+            i {
+                color: #3d4a54 !important;
+                line-height: 29px;
+            }
+            i.focus {
+                color: #12a8c4 !important;
+                line-height: 29px;
+            }
+            a.forget_password {
+                float: right;
+                margin-right: 8px;
+                margin-top: 12px;
+                text-decoration: underline;
+                color: #353c43 !important;
+                text-decoration: none;
+            }
+        }
+        .u-btn-box {
+            margin-top: 72px;
+            width: 100%;
+            text-align: center;
+            .btn-login {
+                @extend %box-sizing-border;
+                width: 320px;
+                height: 50px;
+                border: none;
+                border-radius: 8px;
+                font-size: 18px;
+                line-height: 20px;
+                padding: 15px 0;
+                color: #fff;
+                background-color: #2673f2;
+                background: -moz-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+                background: -webkit-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+                background: -o-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+                background: -ms-linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+                background: linear-gradient(left, #1a7bd5 0%, #10c3e4 100%);
+                position: relative;
+                transition: padding-right 218ms ease;
+                outline: none;
+                cursor: pointer;
+                .icon-login-arrow {
+                    position: absolute;
+                    top: 12px;
+                    font-size: 26px;
+                    line-height: 26px;
+                    margin-left: 8px;
+                    -webkit-transition: opacity 218ms ease;
+                    -o-transition: opacity 218ms ease;
+                    transition: opacity 218ms ease;
+                }
+                .icon-login-arrow:before {
+                    opacity: 0;
+                    -webkit-transition: opacity 218ms ease;
+                    -o-transition: opacity 218ms ease;
+                    transition: opacity 218ms ease;
+                }
+                &:hover {
+                    padding-right: 34px;
+                    background: -moz-linear-gradient(left, #22a1e2 0%, #15d6ec 100%);
+                    background: -webkit-linear-gradient(left, #22a1e2 0%, #15d6ec 100%);
+                    background: -o-linear-gradient(left, #22a1e2 0%, #15d6ec 100%);
+                    background: -ms-linear-gradient(left, #22a1e2 0%, #15d6ec 100%);
+                    background: linear-gradient(left, #22a1e2 0%, #15d6ec 100%);
+                    .icon-login-arrow:before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* 底部文字 */
+
+p.u-declare {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    margin-left: -374px;
+    color: #fff;
+    filter: alpha(opacity=20);
+    -moz-opacity: 0.2;
+    -khtml-opacity: 0.2;
+    opacity: 0.2;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* 下面是新主题的样式，上面是基础样式 */
+
+.wuyi {
+    .login-bg {
+        background: url("../images/login/login-bg-wuyi.png") no-repeat center;
+        background-size: 100% 100%;
+    }
+    .m-topInfor {
+        .u-tips {
+            background: url(../images/login/login-tips-wuyi.png) no-repeat center;
+        }
+    }
+    .g-login-box {
+        //margin-top: -336px;
+        .g-login-right {
+            border: none;
+            background: #fff;
+            box-shadow: 0 2px 4px #cec2b3;
+            .u-login-wrap {
+                span {
+                    height: 17px;
+                    z-index: 1;
+                    border-right: 1px solid #d3d3d3;
+                }
+                input:-webkit-autofill,
+                textarea:-webkit-autofill,
+                select:-webkit-autofill {
+                    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+                    background: #fff !important;
+                    text-fill-color: #333;
+                    -webkit-text-fill-color: #333;
+                }
+                input[type="text"]:focus,
+                input[type="password"]:focus,
+                textarea:focus {
+                    caret-color: #c4141c;
+                    border: 1px solid #dc7277;
+                    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+                }
+                input[type="text"]:hover,
+                input[type="password"]:hover,
+                textarea:hover {
+                    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+                }
+                input::-webkit-input-placeholder {
+                    color: #d3d3d3;
+                }
+                input {
+                    width: 256px;
+                    border-radius: 6px;
+                    border: 1px solid #b7bfc5;
+                    background: #fff;
+                    color: #333;
+                }
+                .input-shadow {
+                    position: absolute;
+                    top: -4px;
+                    left: -4px;
+                }
+                i {
+                    color: #b7bfc5 !important;
+                    line-height: 29px;
+                }
+                i.focus {
+                    color: #c4141c !important;
+                    line-height: 29px;
+                }
+            }
+            .u-btn-box {
+                .btn-login {
+                    background: #c4141c;
+                    &:hover {
+                        background: #c4141c;
+                        .icon-login-arrow:before {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+        &.g-login-rightM {
+            background: url("../images/login/login-right") no-repeat center;
+        }
+    }
+    p.u-declare {
+        color: #f8e9ea;
+        filter: alpha(opacity=100);
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+        opacity: 1;
+    }
+    .u-advice_tips {
+        background: url(../images/login/login-tips-wuyi.png) no-repeat center;
+    }
+}
+
+/*母亲节主题样式*/
+
+.mom {
+    background: url("../images/login/login-bg2-mom.jpg") no-repeat center;
+    .login-bg {
+        background: url("../images/login/login-bg-mom.jpg") no-repeat center;
+        background-size: 100% 100%;
+        &2 {
+            background: url("../images/login/login-bg2-mom.jpg") no-repeat center;
+            background-size: 100% 100%;
+        }
+        .m-topInfor {
+            .u-tips {
+                background: #6e5ce1;
+                background: -moz-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                background: -webkit-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                background: -o-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                background: -ms-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                background: linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+            }
+            .u-advice_tips {
+                background: #6e5ce1;
+                background: -moz-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                background: -webkit-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                background: -o-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                background: -ms-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                background: linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+            }
+        }
+    }
+    .g-login-box {
+        //margin-top: -336px;
+        background: url("../images/login/login-right2.png") no-repeat center;
+        .g-login-right {
+            border: none; //background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            .u-login-wrap {
+                span {
+                    height: 17px;
+                    z-index: 1;
+                    border-right: 1px solid #d3d3d3;
+                }
+                input:-webkit-autofill,
+                textarea:-webkit-autofill,
+                select:-webkit-autofill {
+                    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+                    background: #fff !important;
+                    text-fill-color: #333;
+                    -webkit-text-fill-color: #333;
+                }
+                input[type="text"]:focus,
+                input[type="password"]:focus,
+                textarea:focus {
+                    caret-color: #6e5ce1;
+                    border: 1px solid #6e5ce1;
+                    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+                }
+                input[type="text"]:hover,
+                input[type="password"]:hover,
+                textarea:hover {
+                    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+                }
+                input::-webkit-input-placeholder {
+                    color: #d3d3d3;
+                }
+                input {
+                    width: 256px;
+                    border-radius: 6px;
+                    border: 1px solid #b2b9b9;
+                    background: #fff;
+                    color: #333;
+                }
+                .input-shadow {
+                    position: absolute;
+                    top: -4px;
+                    left: -4px;
+                }
+                i {
+                    color: #878787 !important;
+                    line-height: 29px;
+                }
+                i.focus {
+                    color: #6e5ce1 !important;
+                    line-height: 29px;
+                }
+                a.forget_password {
+                    color: #5342d4 !important;
+                }
+                &.active {
+                    box-shadow: 0 0 4px #6e5ce1;
+                }
+            }
+            .u-btn-box {
+                .btn-login {
+                    background: #6e5ce1;
+                    background: -moz-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                    background: -webkit-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                    background: -o-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                    background: -ms-linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                    background: linear-gradient(left, #6e5ce1 0%, #a560cc 100%);
+                    &:hover {
+                        padding-right: 34px;
+                        background: -moz-linear-gradient(left, #7d69ff 0%, #bb6de8 100%);
+                        background: -webkit-linear-gradient(left, #7d69ff 0%, #bb6de8 100%);
+                        background: -o-linear-gradient(left, #7d69ff 0%, #bb6de8 100%);
+                        background: -ms-linear-gradient(left, #7d69ff 0%, #bb6de8 100%);
+                        background: linear-gradient(left, #7d69ff 0%, #bb6de8 100%);
+                        .icon-login-arrow:before {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            &.g-login-rightM {
+                background: url("../images/login/login-right.png") no-repeat center;
+                &.g-login-rightM2 {
+                    background: url("../images/login/login-right2.png") no-repeat center;
+                }
+            }
+        }
+    }
+    p.u-declare {
+        color: #fff;
+        filter: alpha(opacity=100);
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+        opacity: 1;
+    }
+}
+
+/* 儿童节主题样式 */
+
+.child {
+    background: url("../images/login/login-bg2-child.png") no-repeat center;
+    .login-bg {
+        background: url("../images/login/login-bg2-child.png") no-repeat center;
+        background-size: 100% 100%;
+        &2 {
+            background: url("../images/login/login-bg2-child.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+        .m-topInfor {
+            .u-tips {
+                background: #5CC161;
+                background: -moz-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                background: -webkit-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                background: -o-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                background: -ms-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                background: linear-gradient(left, #5CC161 0%, #5CC161 100%);
+            }
+            .u-advice_tips {
+                background: #5CC161;
+                background: -moz-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                background: -webkit-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                background: -o-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                background: -ms-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                background: linear-gradient(left, #5CC161 0%, #5CC161 100%);
+            }
+        }
+    }
+    .g-login-box {
+        //margin-top: -336px;
+        // background: url("../images/login/login-right2.png") no-repeat center;
+        .g-login-right {
+            border: none; //background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            .u-login-wrap {
+                span {
+                    height: 17px;
+                    z-index: 1;
+                    border-right: 1px solid #d3d3d3;
+                }
+                input:-webkit-autofill,
+                textarea:-webkit-autofill,
+                select:-webkit-autofill {
+                    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+                    background: #fff !important;
+                    text-fill-color: #333;
+                    -webkit-text-fill-color: #333;
+                }
+                input[type="text"]:focus,
+                input[type="password"]:focus,
+                textarea:focus {
+                    caret-color: #7dcd81;
+                    border: 1px solid #7dcd81;
+                    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+                }
+                input[type="text"]:hover,
+                input[type="password"]:hover,
+                textarea:hover {
+                    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+                }
+                input::-webkit-input-placeholder {
+                    color: #d3d3d3;
+                }
+                input {
+                    width: 256px;
+                    border-radius: 6px;
+                    border: 1px solid #b2b9b9;
+                    background: #fff;
+                    color: #333;
+                }
+                .input-shadow {
+                    position: absolute;
+                    top: -4px;
+                    left: -4px;
+                }
+                i {
+                    color: #878787 !important;
+                    line-height: 29px;
+                }
+                i.focus {
+                    color: #aed7b0 !important;
+                    line-height: 29px;
+                }
+                a.forget_password {
+                    color: #5cc161 !important;
+                }
+                &.active {
+                    box-shadow: 0 0 4px #5CC161;
+                }
+            }
+            .u-btn-box {
+                .btn-login {
+                    background: #5CC161;
+                    background: -moz-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                    background: -webkit-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                    background: -o-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                    background: -ms-linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                    background: linear-gradient(left, #5CC161 0%, #5CC161 100%);
+                    &:hover {
+                        padding-right: 34px;
+                        background: -moz-linear-gradient(left, #4a9a4e 0%, #4a9a4e 100%);
+                        background: -webkit-linear-gradient(left, #4a9a4e 0%, #4a9a4e 100%);
+                        background: -o-linear-gradient(left, #4a9a4e 0%, #4a9a4e 100%);
+                        background: -ms-linear-gradient(left, #4a9a4e 0%, #4a9a4e 100%);
+                        background: linear-gradient(left, #4a9a4e 0%, #4a9a4e 100%);
+                        .icon-login-arrow:before {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            &.g-login-rightM {
+                background: #fff;
+                &.g-login-rightM2 {
+                    background: #fff;
+                }
+            }
+        }
+    }
+    p.u-declare {
+        color: #ccc;
+        filter: alpha(opacity=100);
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+        opacity: 1;
+    }
+}
+
+// 端午节样式
+.duanwu {
+    background: url("../images/login/duanwu-bg.jpg") no-repeat center;
+    .bt-img {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 2;
+        background: url("../images/login/duanwu-bottom.png") no-repeat 0% 100%;
+        background-size: 100% 100%;
+    }
+    .login-bg {
+        background: url("../images/login/duanwu-bg.jpg") no-repeat center;
+        background-size: 100% 100%;
+        &2 {
+            background: url("../images/login/duanwu-bg.jpg") no-repeat center;
+            background-size: 100% 100%;
+        }
+        .m-topInfor {
+            .u-tips {
+                background: #2fae41;
+                background: -moz-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                background: -webkit-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                background: -o-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                background: -ms-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                background: linear-gradient(left, #2fae41 0%, #79cd50 100%);
+            }
+            .u-advice_tips {
+                background: #2fae41;
+                background: -moz-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                background: -webkit-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                background: -o-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                background: -ms-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                background: linear-gradient(left, #2fae41 0%, #79cd50 100%);
+            }
+        }
+    }
+    .g-login-box {
+        //margin-top: -336px;
+        background: url("../images/login/login-right-duanwu.png") no-repeat center;
+        .g-login-right {
+            border: none; //background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            .m-login-input {
+                position: relative;
+                z-index: 99;
+            }
+            .u-login-wrap {
+                span {
+                    height: 17px;
+                    z-index: 1;
+                    border-right: 1px solid #d3d3d3;
+                }
+                input:-webkit-autofill,
+                textarea:-webkit-autofill,
+                select:-webkit-autofill {
+                    -webkit-box-shadow: 0 0 0 1000px #f1faff inset !important;
+                    // background: #fff !important;
+                    background-color:#f1faff!important;
+                    text-fill-color: #333;
+                    -webkit-text-fill-color: #333;
+                }
+                input[type="text"]:focus,
+                input[type="password"]:focus,
+                textarea:focus {
+                    caret-color: #2fae41;
+                    border: 1px solid #2fae41;
+                    -webkit-box-shadow: 0 0 0 1000px #f1faff inset !important;
+                }
+                input[type="text"]:hover,
+                input[type="password"]:hover,
+                textarea:hover {
+                    -webkit-box-shadow: 0 0 0 1000px #f1faff inset !important;
+                }
+                input::-webkit-input-placeholder {
+                    color: #d3d3d3;
+                }
+                input {
+                    width: 256px;
+                    border-radius: 6px;
+                    border: 1px solid #b2b9b9;
+                    background: #fff;
+                    color: #333;
+                }
+                .input-shadow {
+                    position: absolute;
+                    top: -4px;
+                    left: -4px;
+                }
+                i {
+                    color: #878787 !important;
+                    line-height: 29px;
+                }
+                i.focus {
+                    color: #2fae41 !important;
+                    line-height: 29px;
+                }
+                a.forget_password {
+                    color: #2fae41 !important;
+                }
+                &.active {
+                    box-shadow: 0 0 4px #2fae41;
+                }
+            }
+            .u-btn-box {
+                .btn-login {
+                    background: #2fae41;
+                    background: -moz-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                    background: -webkit-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                    background: -o-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                    background: -ms-linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                    background: linear-gradient(left, #2fae41 0%, #79cd50 100%);
+                    &:hover {
+                        padding-right: 34px;
+                        // background: -moz-linear-gradient(left, #4a9a4e 0%, #4a9a4e 100%);
+                        // background: -webkit-linear-gradient(left, #4a9a4e 0%, #4a9a4e 100%);
+                        // background: -o-linear-gradient(left, #4a9a4e 0%, #4a9a4e 100%);
+                        // background: -ms-linear-gradient(left, #4a9a4e 0%, #4a9a4e 100%);
+                        // background: linear-gradient(left, #4a9a4e 0%, #4a9a4e 100%);
+                        .icon-login-arrow:before {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            &.g-login-rightM {
+                background: inherit;
+                &.g-login-rightM2 {
+                    background: inherit;
+                }
+            }
+        }
+    }
+    p.u-declare {
+        color: #ccc;
+        filter: alpha(opacity=100);
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+        opacity: 1;
+    }
+}

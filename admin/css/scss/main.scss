@@ -1,0 +1,339 @@
+@charset "utf-8";
+// index scss文件主入口
+@import "css3",
+"skin",
+"setting",
+"mixin",
+"params",
+"content", // 容器模块scss cwj
+"follow", // 跟进模块
+"pop-up", //弹窗模块scss
+"header", //头部信息scss 
+"modulpage", //豆腐块
+"list", //搜索框
+"multipleBox", //
+"body", //body主模块
+"siderbar", // 侧边栏
+"streamRule", //流入流出规则
+"commonunit", // 通用单元模块。
+"addFrom",
+"pageBar", //精简分页组件样式
+"upLoadBill",
+"authority", //权限页面样式
+"two-part-page", //主页两分
+"filterMember", //筛选人员
+"customer", //客户详情
+"nextList", //看md文档
+"components",
+"printPage" //打印
+;
+// 占据全部行高的flex容器
+.flex-box-100 {
+    display: flex;
+    height: 100%;
+    overflow-y: auto;
+}
+
+// 全继承父模型大小flex容器
+.extends-box {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+// 填充剩余空间容器
+.rest-box {
+    display: flex;
+    flex-grow: 1;
+}
+
+// flex布局改为竖状排布
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+// flex布局横状排布
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+}
+
+// 填充剩余容器 滚动条
+.rest-box-y {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+// cursor
+.no-pointer {
+    cursor: default !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+// 通用间距
+.p21 {
+    padding-left: 21px;
+    padding-right: 21px;
+}
+
+//flex布局 两端对齐
+.flex-justify {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+//padding:0;
+.pt-0 {
+    padding-top: 0 !important;
+}
+
+//margin-top:20px;
+.mt-20 {
+    margin-top: 20px;
+}
+
+//margin-top:10px;
+.mt-10 {
+    margin-top: 10px;
+}
+
+//margin-top:0;
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+//红色
+.red {
+    color: red !important;
+}
+
+// 重置样式
+ul.paging input[type="text"],
+address,
+center,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+ul,
+ol,
+dl,
+table,
+form,
+div {
+    box-sizing: border-box;
+}
+
+.left-padding {
+    padding: 0 16px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-bottom {
+    border-bottom: 1px solid #ccc;
+}
+
+/*各页面特殊样式暂时写在这*/
+
+.input_100 {
+    width: calc(96.7% + 3px) !important;
+}
+
+.message-w {
+    padding: 15px 10px;
+    width: calc(100% - 330px) !important;
+    .message {
+        text-align: left;
+        border: 1px solid #F1F1F1;
+        padding: 10px 15px;
+        @include c-flex(row, flex-start, space-between);
+        flex-wrap: wrap;
+        .form-group {
+            color: #333;
+            font-size: 12px;
+            margin-left: 1.1%;
+            margin-right: 1.1%;
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #fff;
+            margin-bottom: 10px;
+            vertical-align: middle;
+            line-height: 28px;
+            .message-box {
+                border: 1px solid #F1F1F1;
+                padding: 5px 10px;
+                .table-name {
+                    display: inline-block;
+                    color: $c-font9;
+                    width: 62px;
+                }
+            }
+            &.flex-grow1 {
+                flex: auto;
+            }
+            &:first-child {
+                margin-left: 1.1%;
+            }
+        }
+        &:nth-of-type(1) {
+            height: 122px;
+            flex-shrink: 0;
+        }
+        &:nth-of-type(2) {
+            margin-top: 10px;
+            flex-shrink: 0;
+            .table-ptop-w2 {
+                padding-top: 0;
+                margin-bottom: 20px;
+                .table_foot {
+                    background: $c-b10;
+                    border: 1px solid $c-b11;
+                    height: 54px;
+                    position: relative;
+                    line-height: 52px;
+                    button {
+                        border: 1px solid $c-bg;
+                        color: $c-bg4;
+                        background-color: $c-bg;
+                        -webkit-border-radius: 4px;
+                        -moz-border-radius: 4px;
+                        border-radius: 4px;
+                        margin-left: 1.1%;
+                        width: 107px;
+                        height: 28px;
+                        line-height: 1;
+                        outline: none;
+                    }
+                    a {
+                        text-decoration: underline;
+                        position: absolute;
+                        right: 12px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        color: #199ED8;
+                        display: inline-block;
+                        height: 28px;
+                        line-height: 28px;
+                        background: transparent;
+                        cursor: pointer;
+                    }
+                }
+                &:after {
+                    content: "";
+                    height: 50px;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+// 流程盒模型
+.c-list-box {
+    border: 1px solid $c-b2;
+    padding: 14px 16px;
+    margin-bottom: 13px;
+    white-space: pre-wrap;
+    text-align: left;
+    word-break: break-all;
+    .item-box {
+        height: 24px;
+        line-height: 24px;
+        color: #999999;
+        .item-r {
+            float: right;
+            min-width: 172px;
+            .title {
+                font-size: 12px;
+                margin-right: 4px;
+            }
+        }
+    }
+    &.bg1 {
+        background-color: $c-b2;
+    }
+}
+
+// 新建订单特殊样式
+.new_create_product {
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #798195;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.new_create_product:hover {
+    background-color: #919aaa;
+}
+
+.tab-wrap {
+    li.forbin_click {
+        cursor: no-drop;
+        a {
+            cursor: no-drop;
+        }
+    }
+}
+
+.product-content {
+    margin-bottom: 10px;
+    .product-header {
+        position: relative;
+        height: 40px;
+        line-height: 40px;
+        background-color: #f2f2f2;
+        color: #666666;
+        font-size: 12px;
+        text-align: right;
+        cursor: pointer;
+        padding: 0 15px;
+        .title-item {
+            float: left;
+        }
+        .status {
+            margin-right: 20px;
+        }
+        .show-btn {
+            float: right;
+        }
+        &.active {
+            background-color: #ccc;
+        }
+    }
+    table.content-table {
+        width: 100%;
+        text-align: center;
+        tr {
+            height: 40px;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        tbody {
+            tr {
+                border: 1px solid #ccc;
+                background-color: #f2f2f2;
+                &.active {
+                    background-color: #ccc;
+                }
+            }
+        }
+    }
+}

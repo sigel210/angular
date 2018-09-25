@@ -1,0 +1,305 @@
+@charset "utf-8";
+@charset "utf-8";
+// 容器模块，最小兼容1280。
+.m-container {
+    display: flex;
+    flex-direction: column;
+    font-size: $f-size-base;
+    color: $c-font6;
+    text-align: center;
+    height: 100%;
+    &.resize {
+        height: calc(100%);
+    }
+    header {
+        height: 44px;
+    }
+    .main-box {
+        display: flex;
+        flex-direction: row;
+        height: calc(100% - 44px);
+        min-width: 1129px;
+        .c-content {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            &.has-sider {
+                //width: calc(100% - 150px);
+                flex: auto;
+                display: flex;
+            }
+            .c-content-overflow {
+                width: 100%;
+                height: 100%;
+                overflow-y: auto;
+                padding-top: 10px;
+            }
+            .margin-auto {
+                margin: 0 auto;
+                width: 656px;
+            }
+            .boundray-line {
+                height: 90%;
+                margin: auto;
+                width: 2px;
+                border-left: 1px dashed #d7d7d7;
+            }
+            .list-title-span {
+                display: inline-block;
+                float: left;
+                margin-top: 8px;
+            }
+            .page-right {
+                padding: 6px 0px 6px 0px;
+            }
+        }
+    }
+}
+
+// 模块内独占所有区域。
+.one-modul {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    .wrap {
+        width: 656px;
+        padding-top: 12px;
+        padding-left: 32px;
+        box-sizing: border-box;
+    }
+}
+
+// footer 空间计算
+.has-footer {
+    height: calc(100% - 44px) !important;
+}
+
+.c-container-wrap {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+// 左右二分区块容器
+.c-container {
+    width: 50%;
+    min-width: 481px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    &.border-r {
+        border-right: 1px solid $c-b2;
+    }
+    &.margin-center {
+        margin: 0 auto;
+    } // 按钮区域
+    .bottom-ctn {
+        flex-grow: 1;
+        overflow-y: auto;
+        margin-bottom: 44px;
+    } // 特殊情况处理
+    &.left-fixed {
+        width: calc(100% - 573px);
+    }
+    &.right-fixed {
+        width: 573px;
+    }
+    .top-show {
+        background-color: #f2f2f2;
+        padding: 4px 0px;
+        text-align: left;
+        color: #999;
+        margin-bottom: 16px;
+        font-size: 12px;
+        .table-name {
+            width: 85px;
+            display: inline-block;
+            min-width: 55px;
+            padding-left: 18px;
+            line-height: 28px;
+            font-size: 12px;
+        }
+    }
+    .table-foot-list {
+        height: 36px;
+        margin-top: 9px;
+        border: none;
+        background: #fff;
+        padding: 0;
+    }
+    .normal-box-t .table-foot-t {
+        margin-top: 0 !important;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+    .function-bar {
+        text-align: right;
+        padding-right: 10px;
+        line-height: 44px;
+        height: 44px;
+        border: 1px solid #d7d7d7;
+        background-color: #e6e6e6;
+        margin-bottom: 0;
+    }
+}
+
+// 容器默认间距
+.normal-box {
+    padding: 18px 21px 0 21px;
+    margin-bottom: 44px;
+}
+
+// 上下区分容器。
+.c-detail-ctn {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box; // 4分页面沿用下面样式，将页面区分为2个区块，top区块高度固定。可写行内样式自定义高度。默认158px
+    // 详情页上半部分，如果下面有按钮 增加 pb-44样式
+    .c-detail-ctn-top {
+        position: relative;
+        height: 158px;
+        flex-shrink: 0;
+    } // 详情页下半部分,自动填充下半部分大小。
+    .c-detail-ctn-bottom {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        position: relative; // 详情区块
+        .detail-ctn {
+            position: relative;
+            border-left: 1px solid $c-b3;
+            border-right: 1px solid $c-b3;
+            padding: 18px 10px 0px 10px;
+            flex-grow: 1;
+            background-color: #fff;
+        }
+    } // 详情上半部分高度不固定
+    .c-detail-ctn-top-flex {
+        position: relative;
+        order: 1;
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+    .c-detail-ctn-bottom-fixed {
+        position: relative;
+        order: 2;
+    }
+}
+
+// 4分区域table样式 v3.0.10+
+.table-p-border {
+    border: 1px solid #f2f2f2;
+    table.table-list {
+        border: 0;
+        thead {
+            th {
+                border-top: 0 !important;
+                border-right: 1px solid #f2f2f2 !important;
+                border-bottom: 1px solid #f2f2f2 !important;
+                &:first-child {
+                    border-left: 0 !important;
+                }
+                &:last-child {
+                    border-right: 0 !important;
+                }
+            }
+        }
+        tr {
+            border-bottom: 1px solid #f2f2f2;
+            &:last-child {
+                border: 0 !important;
+            }
+        }
+    }
+}
+
+//运营退款
+body .table-detail-list.refund-money {
+    margin-top: 20px;
+    th {
+        background-color: #fff;
+        font-weight: normal;
+        height: 39px;
+        color: #999;
+        padding: 0 15px;
+        text-align: left;
+        border-right: 1px solid #eff2f7;
+        border-top: 1px solid #eff2f7;
+        box-sizing: border-box;
+    }
+    tr {
+        td {
+            color: #666;
+            height: 40px;
+            border-right: 1px solid #fff;
+            padding: 0 15px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: left;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            &:last-child {
+                border-right: 1px solid #eff2f7;
+            }
+        }
+        .no-item1 {
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            color: #cccccc;
+            margin-top: 18px;
+            margin-bottom: 18px;
+            img {
+                width: 60px;
+            }
+        }
+    }
+}
+
+//运营调研表
+.name-list {
+    width: 315px;
+    border-right: 1px solid #f2f2f2;
+    background-color: #fff;
+    position: relative;
+    overflow-y: auto;
+    li {
+        font-size: 12px;
+        height: 40px;
+        line-height: 40px;
+        text-align: left;
+        padding-left: 26px;
+        border-bottom: 1px solid #f5f5f5;
+        cursor: pointer;
+        &.active {
+            background-color: #798195;
+            color: #fff;
+            border-bottom: 1px solid #798195;
+        }
+    }
+    .btngeturl {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        color: #fff;
+        background-color: #2673f2;
+        height: 46px;
+        line-height: 46px;
+        border: none;
+        outline: none;
+        &:hover {
+            background-color: #2c84f4;
+        }
+    }
+    .kong-center {
+        text-align: center;
+        color: #aaa;
+        margin-top: 40px;
+    }
+}

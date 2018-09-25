@@ -1,0 +1,103 @@
+<!-- 审批合同信息 -->
+<!-- <table>
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>合同信息</th>
+        </tr>
+        <tr>
+            <td>电子合同</td>
+            <td ng-if="detailsWrap.data.second_product_id != 10217 ">
+                <a target="_blank" ng-click="stateNewgoParam('constract',{
+                order_id:detailsWrap.data.order_id,
+                sign_id:detailsWrap.data.sign_id,
+                customer:detailsWrap.data.customer,
+                product_id:detailsWrap.data.third_product_id,
+                second_product_id:detailsWrap.data.second_product_id})" style="margin: 0">查看</a>
+            </td>
+            <td ng-if="detailsWrap.data.second_product_id == 10217 && detailsWrap.data.order_img_count !=0">
+                <a target="_blank" ng-click="stateNewgoParam('constract',{
+                            order_id:detailsWrap.data.order_id,
+                            sign_id:detailsWrap.data.sign_id,
+                            customer:detailsWrap.data.customer,
+                            product_id:detailsWrap.data.third_product_id,
+                            second_product_id:detailsWrap.data.second_product_id})" style="margin: 0">查看</a>
+            </td>
+            <td ng-if="detailsWrap.data.second_product_id == 10217 && detailsWrap.data.order_img_count ==0">-</td>
+        </tr>
+        <tr>
+            <td>合同类型</td>
+            <td ng-bind="detailsWrap.data.contract_type | constractTypeFilter "></td>
+        </tr>
+        <tr>
+            <td>纸质编号</td>
+            <td ng-bind="detailsWrap.data.contract_no || '-'"></td>
+        </tr>
+    </tbody>
+</table>
+<table ng-if="detailsWrap.data.contract_type==2">
+    <tbody>
+        <tr class="title">
+            <th>
+                <span class="icon-title"></span>非标备注</th>
+            </th>
+        </tr>
+    </tbody>
+</table>
+<table ng-if="detailsWrap.data.contract_type==2" class="table-detail-list">
+    <tbody>
+        <tr>
+            <th style="color:#333;padding:10px;word-break:break-all;white-space: pre-wrap;" ng-bind="detailsWrap.data.nonstandard_remarks || '-'"></th>
+        </tr>
+    </tbody>
+</table> -->
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>合同信息
+        </span>
+    </p>
+    <div class="list-item">
+        <span class="title">电子合同</span>
+        <span class="info" ng-if="detailsWrap.data.second_product_id != 10217 ">
+            <a target="_blank" ng-click="stateNewgoParam('constract',{
+                    order_id:detailsWrap.data.order_id,
+                    sign_id:detailsWrap.data.sign_id,
+                    customer:detailsWrap.data.customer,
+                    product_id:detailsWrap.data.third_product_id,
+                    second_product_id:detailsWrap.data.second_product_id})" style="margin: 0">查看</a>
+        </span>
+        <span class="info" ng-if="detailsWrap.data.second_product_id == 10217 && detailsWrap.data.order_img_count !=0">
+            <a target="_blank" ng-click="stateNewgoParam('constract',{
+                    order_id:detailsWrap.data.order_id,
+                    sign_id:detailsWrap.data.sign_id,
+                    customer:detailsWrap.data.customer,
+                    product_id:detailsWrap.data.third_product_id,
+                    second_product_id:detailsWrap.data.second_product_id})" style="margin: 0">查看</a>
+        </span>
+        <span class="info" ng-if="detailsWrap.data.second_product_id == 10217 && detailsWrap.data.order_img_count ==0">
+            -
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">合同类型</span>
+        <span class="info" ng-bind="detailsWrap.data.contract_type | constractTypeFilter ">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">纸质编号</span>
+        <span class="info" ng-bind="detailsWrap.data.contract_no || '-'">
+        </span>
+    </div>
+</div>
+<div class="list-group right-detail" ng-if="detailsWrap.data.contract_type==2">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>非标备注
+        </span>
+    </p>
+    <div class="txt-textarea">
+        <span ng-bind="detailsWrap.data.nonstandard_remarks || '-'">
+        </span>
+    </div>
+</div>

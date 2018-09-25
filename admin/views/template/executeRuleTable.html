@@ -1,0 +1,53 @@
+<!-- 执行规则 -->
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>标准价格执行规则
+        </span>
+    </p>
+</div>
+<table class="table-detail-list table-fixed">
+    <thead>
+    <tr>
+        <th width="80">执行次数</th>
+        <th width="80">执行时间</th>
+        <th width="120">执行金额</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in detailsWrap.data.extend.standard_rule">
+        <td style="color: #333">第{{$index+1}}次</td>
+        <td style="color: #333">第{{item.month_cycle}}月</td>
+        <td ng-bind="item.price | number:2" style="color: #333"></td>
+    </tr>
+    <tr ng-if="!detailsWrap.data.extend || !detailsWrap.data.extend.standard_rule || detailsWrap.data.extend.standard_rule.length == 0">
+        <td colspan="3" style="text-align:center;">暂无</td>
+    </tr>
+    </tbody>
+</table>
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>优惠价格执行规则
+        </span>
+    </p>
+</div>
+<table class="table-detail-list table-fixed">
+    <thead>
+    <tr>
+        <th width="80">执行次数</th>
+        <th width="80">执行时间</th>
+        <th width="120">执行金额</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in detailsWrap.data.extend.discount_rule">
+        <td style="color: #333">第{{$index+1}}次</td>
+        <td style="color: #333">第{{item.month_cycle}}月</td>
+        <td ng-bind="item.price | number:2" style="color: #333"></td>
+    </tr>
+    <tr ng-if="!detailsWrap.data.extend || !detailsWrap.data.extend.discount_rule || detailsWrap.data.extend.discount_rule.length == 0">
+        <td colspan="3" style="text-align:center;">暂无</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,18 @@
+<div class="detail-modal" ng-click="stopProgration($event)" ng-class="{'is-show': show}">
+    <div class="slide-head">
+        <div class="btn-close">
+            <i class="icon-close" ng-click="hide()"></i>
+        </div>
+        <h4 class="slide-title" ng-bind="detailTitle" style="word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:400px"></h4>
+    </div>
+    <div class="slide-cont">
+        <div class="form-wrap table-detail">
+            <div ng-transclude>
+            </div>
+            <div class="slide-footer" ng-if="buttons">
+                <button ng-if="!item.hide" ng-repeat="item in buttons" class="btn btn-blue" ng-class="{'btn-disabled' : item.disabled}"
+                    ng-class="item.class" ng-click="item.func()" ng-bind="item.text"></button>
+            </div>
+        </div>
+    </div>
+</div>

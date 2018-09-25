@@ -1,0 +1,241 @@
+<div class="content p21 mb-44">
+    <table class="table-r">
+        <tbody>
+            <tr>
+                <td width="80">新老客户</td>
+                <td>{{baseModel.detail.is_old| isOld}}</td>
+            </tr>
+            <tr>
+                <td width="80">成熟度</td>
+                <td>{{baseModel.detail.level_id| levelFilter }}</td>
+            </tr>
+            <tr>
+                <td width="80">客户ID</td>
+                <td>{{baseModel.detail.customer}}</td>
+            </tr>
+            <tr>
+                <td width="80">客户类型</td>
+                <td>{{baseModel.detail.typeid| customerTypeFilter}}</td>
+            </tr>
+            <tr>
+                <td width="80">主营类目</td>
+                <td>{{baseModel.detail.category_name}}</td>
+            </tr>
+            <tr>
+                <td width="80">店铺名称</td>
+                <td>{{baseModel.detail.shop_name}}</td>
+            </tr>
+            <tr>
+                <td width="80">店铺电话</td>
+                <td>{{baseModel.detail.shop_phone}}</td>
+            </tr>
+            <tr>
+                <td width="80">店铺网址</td>
+                <td>
+                    <a ng-show="baseModel.detail.shop_url" ng-href="{{baseModel.detail.shop_url}}" target="_blank">点击查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td width="80">公司名称</td>
+                <td>{{baseModel.detail.company}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table-r">
+        <tbody>
+            <tr>
+                <td width="80">国家</td>
+                <td>中国</td>
+            </tr>
+            <tr>
+                <td width="80">省份</td>
+                <td>{{baseModel.detail.province_name}}</td>
+            </tr>
+            <tr>
+                <td>市</td>
+                <td>{{baseModel.detail.city_name}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table-r">
+        <tbody>
+            <tr>
+                <td width="100">当前授权帐号</td>
+                <td>{{baseModel.detail.authorize_account}}</td>
+            </tr>
+            <tr>
+                <td width="100">店铺状态</td>
+                <td>{{baseModel.detail.customer_status| shopStatusFilter}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table-r">
+        <tbody>
+            <tr>
+                <td width="100">归属</td>
+                <td>{{baseModel.detail.belong}}</td>
+            </tr>
+            <tr>
+                <td width="100">创建时间</td>
+                <td>{{baseModel.detail.history.create_time}}</td>
+            </tr>
+            <tr>
+                <td width="100">创建者</td>
+                <td>{{baseModel.detail.history.create_account}}</td>
+            </tr>
+            <tr>
+                <td width="100">最近编辑时间</td>
+                <td>{{baseModel.detail.history.update_time}}</td>
+            </tr>
+            <tr>
+                <td width="100">最近编辑者</td>
+                <td>{{baseModel.detail.history.update_account}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="slide-footer slide-footer-border">
+    <button class="btn btn-new-blue" ng-if="isOrigin && comeType ==1" ng-click="deleteCustomer(baseModel.detail.customer)">删除</button>
+    <button class="btn btn-new-blue" ng-if="isOrigin && comeType ==1" ng-click="modalList.edit1Show = true">信息编辑</button>
+    <button class="btn btn-new-blue" ng-if="isOrigin && comeType ==1" ng-class="{'btn-disabled': !authPermission.distribution}"
+        ng-disabled="!authPermission.distribution" ng-click="mTransferModal.show()">分配</button>
+    <button class="btn btn-new-blue" ng-if="isOrigin && comeType !=1 && comeType == 3" ng-class="{'btn-disabled': !authPermission.distribution}"
+        ng-disabled="!authPermission.distribution" ng-click="mTransferModal.show()">分配</button>
+    <button class="btn btn-new-blue" ng-if="isOrigin && comeType !=1 && (comeType == 4 || comeType == 2)" ng-class="{'btn-disabled': !authPermission.transfer}"
+        ng-disabled="!authPermission.transfer" ng-click="mTransferModal.show()">转移</button>
+    <button class="btn btn-new-blue" ng-show="isOrigin && comeType !=1" ng-class="{'btn-disabled':mainFlag || !authPermission.baseEdit}"
+        ng-disabled="mainFlag || !authPermission.baseEdit" ng-click="modalList.editShow = true">客户编辑</button>
+    <button class="btn btn-new-blue" ng-if="isOrigin && (comeType == 2 || comeType == 4)" ng-class="{'btn-disabled': !authPermission.inPublic}"
+        ng-disabled="!authPermission.inPublic" ng-click="showGoPublic()">踢入公海</button>
+    <button class="btn btn-new-blue" ng-show="isOrigin && levelShow && comeType == 3" ng-click="showGoPrivate()">入我的库</button>
+</div>
+<!-- 分配，转移等 -->
+<div allot show="mTransferModal.isShow" callback="mTransferModal.confirm(obj)" model="mTransferModal.data" title="{{mTransferModal.title}}"></div>
+<!-- 基本信息编辑弹窗 -->
+<div ng-if="modalList.editShow" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="modalList.editShow = false"></i>
+                </div>
+                <h4 class="modal-title">客户编辑</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p>
+                        <span class="table-name">主营类目</span>
+                        <span class="table-text">
+                            <select id="category" class="select-w120" ng-model="baseModel.editModel.category_id" ng-options="item.category_id as item.category_name group by item.parent_category for item  in uiModel.selectList.categories">
+                                <option value=""></option>
+                            </select>
+                            <label ng-show="!baseModel.editModel.category_id || baseModel.editModel.category_id == '0'" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="baseModel.editModel.category_id = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">店铺名称</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="baseModel.editModel.shop_name" placeholder="点击输入" maxlength="35">
+                        </span>
+                        <i class="table-clear" ng-click="baseModel.editModel.shop_name = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">店铺电话</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="baseModel.editModel.shop_phone" placeholder="点击输入" maxlength="15" ng-keyup="replaceNum(baseModel.editModel, 'shop_phone')">
+                        </span>
+                        <i class="table-clear" ng-click="baseModel.editModel.shop_phone = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">店铺网址</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="baseModel.editModel.shop_url" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="baseModel.editModel.shop_url = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">公司名称</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="baseModel.editModel.company" placeholder="点击输入" maxlength="35">
+                        </span>
+                        <i class="table-clear" ng-click="baseModel.editModel.company = ''"></i>
+                    </p>
+
+                    <p ng-class="{'choose-edit': true}">
+                        <span class="table-name">国家</span>
+                        <span class="table-text">
+                            <input type="text" value="中国" placeholder="点击输入" disabled>
+                        </span>
+                        <!--<i class="table-clear" ng-click="baseModel.editModel.country = ''"></i>-->
+                    </p>
+                    <p>
+                        <span class="table-name">省份</span>
+                        <span class="table-text">
+                            <select class="select-w120" ng-model="baseModel.editModel.province" ng-options="option.id as option.name for option in baseModel.selectList.provinceList"
+                                ng-change="baseModel.methods.refreashCityList(baseModel.editModel.province)">
+                                <option></option>
+                            </select>
+                            <label ng-show="!baseModel.editModel.province || baseModel.editModel.province == '0'" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="baseModel.editModel.province = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">市</span>
+                        <span class="table-text">
+                            <select id="city" class="select-w120" ng-model="baseModel.editModel.city" ng-options="option.id as option.name for option in baseModel.selectList.cityList">
+                                <option></option>
+                            </select>
+                            <label ng-show="!baseModel.editModel.city || baseModel.editModel.city == '0'" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="baseModel.editModel.city = ''"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="baseModel.methods.update()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 基本信息编辑弹窗1，资源管理 -->
+<div ng-if="modalList.edit1Show" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="modalList.edit1Show = false"></i>
+                </div>
+                <h4 class="modal-title">信息编辑</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p>
+                        <span class="table-name">客户ID</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="sourceEdit.customer" placeholder="点击输入" maxlength="35">
+                        </span>
+                        <i class="table-clear" ng-click="sourceEdit.customer = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">客户类型</span>
+                        <span class="table-text">
+                            <select class="select-w120" ng-model="sourceEdit.typeid" ng-options="customer.type_id as customer.type_name for customer in customerTypeList">
+
+                            </select>
+                            <label ng-show="!sourceEdit.typeid || sourceEdit.typeid == '0'" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="sourceEdit.typeid = ''"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="baseModel.methods.sourceInfoEdit()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

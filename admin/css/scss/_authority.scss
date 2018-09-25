@@ -1,0 +1,48 @@
+.authority-wrap {
+	padding: 30px 30px 50px;
+	.authority-cont-tit {
+		border: 1px solid #d4d4d4;
+		margin-bottom: 20px;
+		.authority-tit{
+			background-color: #f5f6fa;
+			border-bottom: 1px solid #d6d5da;
+			font-size: 14px;
+			color: #000;
+			height: 46px;
+			line-height: 46px;
+			padding-left: 40px;
+			span{
+				padding-left: 5px;
+			}
+		}
+	}
+	.authority-cont{
+		border: 1px solid #dddddd;
+		margin: 20px;
+		h3{
+			background-color: #f5f6fa;
+			border-bottom: 1px solid #dcdcdc;
+			font-size: 12px;
+			color: #000;
+			height: 46px;
+			line-height: 46px;
+			padding-left: 20px;
+			span{
+				padding-left: 5px;
+			}
+		}
+		ul{
+			@extend %clearfix;
+			padding: 10px 20px 10px 0;
+			li{
+				@extend %float;
+				font-size: 12px;
+				line-height: 30px;
+				padding-left: 20px;
+				span{
+					padding-left: 5px;
+				}
+			}
+		}
+	}
+}

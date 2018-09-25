@@ -1,0 +1,24 @@
+<header>
+    <div class="tab-bar active"><span class="menu-tit">财务中心</span></div>
+</header>
+<div class="cont-page cont-page-new">
+    <div class="menu-page">
+        <div class="menu-page-sale">
+            <div>
+                <ul class="menu-btn">
+                    <li ng-repeat="item in operativeList.checkSecondMenuList" ng-if="item.is_show">
+                        <span class="count" ng-show="count[item.js_page]"
+                            ng-bind="count[item.js_page]"></span>
+                        <a href="javascript:void(0)" ng-click="statego(item.js_page)">
+                            <span class="menu-box" ng-class="colorArr[$index].color">
+                                <i class="{{item.js_icon}}"></i>
+                            </span>
+                            <img class="new-icon" ng-if="item.isNew" src="./images/NEW-icon.png">
+                            <span class="menu-tit" ng-bind="item.title"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

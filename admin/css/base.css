@@ -1,0 +1,1296 @@
+@charset "UTF-8";
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ * 0. sassCore's style
+ */
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Microsoft Yahei", "Wenquanyi Micro Hei", sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  overflow-y: scroll;
+  /* 0 */
+  -webkit-overflow-scrolling: touch;
+  /* 0 */ }
+
+/**
+ * 1. Remove default margin
+ * 0. sassCore's style.
+ */
+body {
+  margin: 0;
+  /* 1 */
+  font-size: 11.9px;
+  /* 0 */
+  line-height: 1.5;
+  /* 0 */
+  color: #333;
+  /* 0 */
+  background-color: #fff;
+  /* 0 */ }
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block; }
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ * 3. Correct `inline-block` display in IE 6/7.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+  *display: inline;
+  /* 3 */
+  *zoom: 1;
+  /* 3 */ }
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none; }
+
+/* Links
+   ========================================================================== */
+/**
+ * 1. Remove the gray background color from active links in IE 10.
+ * 2. Improve readability when focused and also mouse hovered in all browsers.
+ * 0. sassCore's style.
+ */
+a {
+  background: transparent;
+  /* 1 */
+  cursor: pointer;
+  /* 0 */
+  text-decoration: none;
+  color: #08c; }
+  a:active, a:hover {
+    outline: 0;
+    /* 2 */ }
+  a:hover {
+    color: #006699; }
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold; }
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+  font-style: italic; }
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000; }
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%; }
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * 1. Remove border when inside `a` element in IE 8/9/10.
+ * 2. Improve image quality when scaled in IE 7.
+ * 0. sassCore's style.
+ */
+img {
+  border: 0;
+  /* 1 */
+  vertical-align: middle;
+  /* 0 */
+  -ms-interpolation-mode: bicubic;
+  /* 2 */ }
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0; }
+
+/**
+ * 1. Contain overflow in all browsers.
+ * 2. Improve readability of pre-formatted text in all browsers.
+ */
+pre {
+  overflow: auto;
+  /* 1 */
+  white-space: pre;
+  /* 2 */
+  white-space: pre-wrap;
+  /* 2 */
+  word-wrap: break-word;
+  /* 2 */ }
+
+/**
+ * 1. Address odd `em`-unit font size rendering in all browsers.
+ * 2. Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  _font-family: 'courier new', monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */ }
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible; }
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none; }
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+  *overflow: visible;
+  /* 4 */ }
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal; }
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+  *height: 13px;
+  /* 3 */
+  *width: 13px;
+  /* 3 */ }
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box; }
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ * 3. Correct alignment displayed oddly in IE 6/7.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+  *margin-left: -7px;
+  /* 3 */ }
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9/10/11.
+ * 0. sassCore's style
+ */
+textarea {
+  overflow: auto;
+  /* 1 */
+  resize: vertical;
+  /* 0 */ }
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold; }
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td,
+th {
+  padding: 0; }
+
+/**
+ * Address CSS quotes not supported in IE 6/7.
+ */
+q {
+  quotes: none; }
+
+html,
+button,
+input,
+select,
+textarea {
+  font-family: "Helvetica Neue", "PingFang SC", "Microsoft Yahei", 微软雅黑, STXihei, 华文细黑, sans-serif; }
+
+h1, h2, h3, h4, h5, h6, p, figure, form, blockquote {
+  margin: 0; }
+
+ul, ol, li, dl, dd {
+  margin: 0;
+  padding: 0; }
+
+ul, ol {
+  list-style: none outside none; }
+
+h1, h2, h3 {
+  line-height: 2;
+  font-weight: normal; }
+
+h1 {
+  font-size: 21px; }
+
+h2 {
+  font-size: 18.2px; }
+
+h3 {
+  font-size: 16.38px; }
+
+h4 {
+  font-size: 14px; }
+
+h5, h6 {
+  font-size: 11.9px;
+  text-transform: uppercase; }
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #ccc; }
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #ccc; }
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #ccc; }
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #ccc; }
+
+/*不是使用-9999px hack使文本超出屏幕达到隐藏文本的目的，他的技术在隐藏文本的同时保留了文本在屏幕范围之内*/
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden; }
+
+/*字体图标-start*/
+@font-face {
+  font-family: 'iconfont';
+  /* project id 140737 */
+  src: url("//at.alicdn.com/t/font_140737_k3hkepysd7f4j9k9.eot");
+  src: url("//at.alicdn.com/t/font_140737_k3hkepysd7f4j9k9.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_140737_k3hkepysd7f4j9k9.woff") format("woff"), url("//at.alicdn.com/t/font_140737_k3hkepysd7f4j9k9.ttf") format("truetype"), url("//at.alicdn.com/t/font_140737_k3hkepysd7f4j9k9.svg#iconfont") format("svg"); }
+[class^="icon-"], [class*=" icon-"] {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  /*抗锯齿处理*/
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-dengluzhanghaotubiao:before {
+  content: "\e634"; }
+
+/*用户名*/
+.icon-login-name:before {
+  content: "\e601"; }
+
+/*用户名*/
+.icon-icon-test:before {
+  content: "\e61d"; }
+
+/*登录密码*/
+.icon-login-pw:before {
+  content: "\e600"; }
+
+/*密码*/
+.icon-login-arrow:before {
+  content: "\e602"; }
+
+/*箭头*/
+.icon-message:before {
+  content: "\e613"; }
+
+/*消息图标*/
+.icon-download:before {
+  content: "\e612"; }
+
+/*下载图标*/
+.icon-menu {
+  display: inline-block;
+  margin-top: 13px;
+  width: 16px;
+  height: 16px;
+  background: url(../images/left-menu.png) 0 4px no-repeat; }
+
+/*全部分类*/
+.icon-finance:before {
+  content: "\e604"; }
+
+/*财务中心*/
+.icon-sale:before {
+  content: "\e615"; }
+
+/*销售中心*/
+.icon-operate:before {
+  content: "\e618"; }
+
+/*运营中心*/
+.icon-admin:before {
+  content: "\e60e"; }
+
+/*平台管理*/
+.icon-comunication {
+  background: url(../images/left-menu.png) -2px -146px no-repeat; }
+
+/*沟通计划*/
+.icon-msg:before {
+  content: "\e614"; }
+
+/*消息中心*/
+.icon-user:before {
+  content: "\e609"; }
+
+/*个人中心*/
+.icon-train:before {
+  content: "\e625"; }
+
+/*培训平台*/
+.icon-modifypw:before {
+  content: "\e6fc"; }
+
+/*修改密码*/
+.icon-success:before {
+  content: "\e605"; }
+
+/*操作成功*/
+.icon-failure:before {
+  content: "\e606"; }
+
+/*操作失败*/
+.icon-error:before {
+  content: "\e610"; }
+
+/*网络异常*/
+.icon-prompt:before {
+  content: "\e610"; }
+
+/*提示图标*/
+.icon-duizhangguanli:before {
+  content: "\e6ff"; }
+
+/*财务中心-对账管理*/
+.icon-contractTemplate:before {
+  content: "\e701"; }
+
+/*财务中心-订单对账管理*/
+.icon-transactionLog:before {
+  content: "\e702"; }
+
+/*财务中心-交易流水对账管理*/
+.icon-invoice:before {
+  content: "\e68c"; }
+
+/*财务中心-开票管理*/
+.icon-refund:before {
+  content: "\e6fe"; }
+
+/*财务中心-退款管理*/
+.icon-refundsearch:before {
+  content: "\e670"; }
+
+/*财务中心-退款查询*/
+.icon-comfirmRevenue:before {
+  content: "\e71e"; }
+
+/*财务管理-确认营收查询*/
+.icon-noSalesConfirm:before {
+  content: "\e71b"; }
+
+/*财务管理-未确认营收查询*/
+.icon-productAllocate:before {
+  content: "\e722"; }
+
+/*财务管理-产品分布*/
+.icon-customerAllocate:before {
+  content: "\e723"; }
+
+/*财务管理-客户分布*/
+.icon-saleRate:before {
+  content: "\e674"; }
+
+/*财务管理-销售额完成率*/
+.icon-saleTarget:before {
+  content: "\e675"; }
+
+/*财务管理-销售额完成率*/
+.icon-saleTargetDown:before {
+  content: "\e696"; }
+
+/*财务管理-销售额完成率侧边栏下三角*/
+.icon-saleTargetLeft:before {
+  content: "\e697"; }
+
+/*财务管理-销售额完成率侧边栏左三角*/
+.icon-performance:before {
+  content: "\e64f"; }
+
+/*财务中心-业绩*/
+.icon-realIncome:before {
+  content: "\e6f9"; }
+
+/*财务中心-确认营收统计*/
+.icon-contractManagement:before {
+  content: "\e6fa"; }
+
+/*财务中心-合同管理*/
+.icon-rscx:before {
+  content: "\e66b"; }
+
+/*财务中心-合同管理*/
+.icon-fpgl:before {
+  content: "\e671"; }
+
+/*财务中心-发票管理*/
+.icon-billManage:before {
+  content: "\e703"; }
+
+/*财务中心-开票管理*/
+.icon-giveService:before {
+  content: "\e692"; }
+
+/*财务中心-赠送服务审批*/
+.icon-cost:before {
+  content: "\e67a"; }
+
+/*财务中心-机构成本结算*/
+.icon-writer:before {
+  content: "\e68f"; }
+
+/*财务中心-有墨写手结算*/
+.icon-duizhangbbxz:before {
+  content: "\e63d"; }
+
+/*对账报表下载*/
+.icon-kxcx:before {
+  content: "\e60d"; }
+
+/*款项查询*/
+.icon-bmkh:before {
+  content: "\e705"; }
+
+/*销售中心－部门客户*/
+.icon-khgj:before {
+  content: "\e61c"; }
+
+/*销售中心－客户轨迹*/
+.icon-htgl:before {
+  content: "\e60b"; }
+
+/*销售中心－合同管理*/
+.icon-wdkh:before {
+  content: "\e611"; }
+
+/*销售中心－我的客户*/
+.icon-khgl:before {
+  content: "\e709"; }
+
+/*销售中心－客户管理*/
+.icon-ghgl:before {
+  content: "\e649"; }
+
+/*销售中心－公海管理*/
+.icon-khgj:before {
+  content: "\e709"; }
+
+/*销售中心－客户轨迹*/
+.icon-dzgl:before {
+  content: "\e706"; }
+
+/*销售中心－对账管理*/
+.icon-ddgl:before {
+  content: "\e707"; }
+
+/*销售中心－订单管理*/
+.icon-yxlxxj:before {
+  content: "\e704"; }
+
+/*销售中心－有效联系小计统计*/
+.icon-gkqktj:before {
+  content: "\e700"; }
+
+/*销售中心－顾客情况统计*/
+.icon-ghkh:before {
+  content: "\e60a"; }
+
+/*销售中心－公海客户*/
+.icon-dzyc:before {
+  content: "\e61b"; }
+
+/*销售中心－对账异常*/
+.icon-cjmb:before {
+  content: "\e60c"; }
+
+/*销售中心－创建模版*/
+.icon-kehuqingkuangtongji:before {
+  content: "\e637"; }
+
+/*销售中心－客户情况统计*/
+.icon-youxiaolianxitongji:before {
+  content: "\e638"; }
+
+/*销售中心－有效联系统计*/
+.icon-jinqiliusi:before {
+  content: "\e65c"; }
+
+/*销售中心－近期流失*/
+.icon-ziyuanguanli:before {
+  content: "\e639"; }
+
+/*销售中心－资源管理*/
+.icon-daozhangguanli:before {
+  content: "\e6c5"; }
+
+/*销售中心－到账管理*/
+.icon-daodanguanli:before {
+  content: "\e6c7"; }
+
+/*销售中心－到单管理*/
+.icon-banciguanli:before {
+  content: "\e6c4"; }
+
+/*销售中心－班次管理*/
+.icon-shenpi:before {
+  content: '\e64c'; }
+
+/*审批*/
+.icon-applycheck:before {
+  content: '\e70c'; }
+
+.icon-applytax:before {
+  content: '\e70b'; }
+
+.icon-applyrefund:before {
+  content: '\e70a'; }
+
+.icon-shgl:before {
+  content: "\e60f"; }
+
+/*运营中心－审核管理*/
+.icon-zxgl:before {
+  content: "\e619"; }
+
+/*运营中心－执行管理*/
+.icon-kehutuikuan:before {
+  content: "\e61e"; }
+
+/*运营中心－客户退款*/
+.icon-tuikuanguanli:before {
+  content: "\e6c3"; }
+
+/*运营中心－退款管理*/
+.icon-yggl:before {
+  content: "\e617"; }
+
+/*员工管理*/
+.icon-bmfz:before {
+  content: "\e603"; }
+
+/*部门分组*/
+.icon-close:before {
+  content: "\e658";
+  color: #a8adb9; }
+
+/*关闭*/
+.icon-back:before {
+  content: "\e620"; }
+
+/*返回*/
+.icon-qrsr:before {
+  content: "\e61f"; }
+
+/*确认收入*/
+.icon-khtk:before {
+  content: "\e61e"; }
+
+/*客户退款*/
+.icon-train:before {
+  content: "\e625"; }
+
+/*培训平台*/
+.icon-lecturer:before {
+  content: "\e623"; }
+
+/*讲师管理*/
+.icon-course:before {
+  content: "\e624"; }
+
+/*课程管理*/
+.icon-class:before {
+  content: "\e622"; }
+
+/*班级管理*/
+.icon-zhgl:before {
+  content: "\e627"; }
+
+/*平台管理－账号管理*/
+.icon-jiaoseguanli:before {
+  content: "\e659"; }
+
+/*平台管理－角色管理*/
+.icon-jiedianguanli:before {
+  content: '\e65a'; }
+
+/*平台管理-节点管理*/
+.icon-zhanghuguanli:before {
+  content: '\e65b'; }
+
+/*平台管理-账户管理*/
+.icon-zsgl:before {
+  content: "\e630"; }
+
+/*培训平台－证书管理*/
+.icon-xygl:before {
+  content: "\e62f"; }
+
+/*培训平台－学员管理*/
+.icon-rzsjgl:before {
+  content: "\e62e"; }
+
+/*培训平台－认证试卷管理*/
+.icon-rzpjgl:before {
+  content: "\e62d"; }
+
+/*培训平台－认证批卷管理*/
+.icon-pjgl:before {
+  content: "\e62c"; }
+
+/*培训平台－批卷管理*/
+.icon-kcgl:before {
+  content: "\e624"; }
+
+/*培训平台－课程管理*/
+.icon-jsgl:before {
+  content: "\e623"; }
+
+/*培训平台－讲师管理*/
+.icon-bfgl:before {
+  content: "\e629"; }
+
+/*培训平台－播放管理*/
+.icon-bjgl:before {
+  content: "\e622"; }
+
+/*培训平台－班级管理*/
+.icon-tkgl:before {
+  content: "\e6be"; }
+
+/*培训平台－题库管理*/
+.icon-zhuanzhuguanli:before {
+  content: "\e62a"; }
+
+/*企业培训－专业管理*/
+.icon-zhangjieguanli:before {
+  content: "\e62b"; }
+
+/*企业培训－章节管理*/
+.icon-keshiguanli1:before {
+  content: "\e632"; }
+
+/*企业培训－课时管理*/
+.icon-qiyezhanghao:before {
+  content: "\e635"; }
+
+/*企业培训－企业账号管理*/
+.icon-zhanghaochaxun:before {
+  content: "\e636"; }
+
+/*企业培训－账号查询*/
+.icon-shangyi:before {
+  content: "\e628"; }
+
+/*排序－上移*/
+.icon-xiayi:before {
+  content: "\e631"; }
+
+/*排序－下移*/
+.icon-riskRefund:before {
+  content: "\e724"; }
+
+/* 退款审批 */
+.icon-auditManage:before {
+  content: "\e64d"; }
+
+/*审批管理*/
+.icon-carryOutManage:before {
+  content: "\e656"; }
+
+/*执行管理*/
+.icon-classManage:before {
+  content: "\e645"; }
+
+/*班次管理*/
+.icon-productManage:before {
+  content: "\e657"; }
+
+/*子产品管理*/
+.icon-imgExecuteManage:before {
+  content: "\e64e"; }
+
+/*图文执行管理*/
+.icon-realPlayManage:before {
+  content: "\e653"; }
+
+/*直播执行管理*/
+.icon-shortVideoManage:before {
+  content: "\e646"; }
+
+/*短视频执行管理*/
+.icon-institutionData:before {
+  content: "\e647"; }
+
+/*机构数据*/
+.icon-dingdanguanli1:before {
+  content: "\e707"; }
+
+/*订单管理*/
+.icon-kurongguanli1:before {
+  content: "\e64a"; }
+
+/*库容管理*/
+.icon-xinlaokehuguanli1:before {
+  content: "\e652"; }
+
+/*新老客户管理*/
+.icon-xiaoshouziyuanguanli1:before {
+  content: "\e650"; }
+
+/*销售资源管理*/
+.icon-yewuzhongxinkehuku1:before {
+  content: "\e651"; }
+
+/*业务中心客户库*/
+.icon-ziyuanzhongxinkehuku1:before {
+  content: "\e655"; }
+
+/*资源中心客户库*/
+.icon-gryj:before {
+  content: "\e65d"; }
+
+.icon-panhuotongji:before {
+  content: "\e65e"; }
+
+/*团队管理--盘活统计*/
+.icon-xinjiandaodantongji:before {
+  content: "\e660"; }
+
+/*团队管理--新建到单统计*/
+.icon-xinzengkehutongji:before {
+  content: "\e65f"; }
+
+/*团队管理--新增客户统计*/
+.icon-gjjs::before {
+  content: "\e661"; }
+
+.icon-xzgshddtj::before {
+  content: "\e719"; }
+
+/*团队管理--需资格审核订单统计*/
+.icon-xdzddtj::before {
+  content: "\e718"; }
+
+/*团队管理--需对账订单统计*/
+.icon-gjyxltj::before {
+  content: "\e717"; }
+
+/*团队管理--跟进有效率统计*/
+.icon-newGetOrderStatistics::before {
+  content: "\e726"; }
+
+/*团队管理--战报单数排名*/
+.icon-zbjepm::before {
+  content: "\e715"; }
+
+/*团队管理--战报金额排名*/
+.icon-zbmx::before {
+  content: "\e716"; }
+
+/*团队管理--战报明细*/
+.icon-krsylpm::before {
+  content: "\e714"; }
+
+/*团队管理--库容使用率排名*/
+.icon-lstj::before {
+  content: "\e713"; }
+
+/*团队管理--流失统计*/
+.icon-jqlstj::before {
+  content: "\e712"; }
+
+/*团队管理--近期流失统计*/
+.icon-xzrsks::before {
+  content: "\e710"; }
+
+/*团队管理--新增入司库数*/
+.icon-khfbqk::before {
+  content: "\e711"; }
+
+/*团队管理--客户分布情况*/
+.icon-gjrz::before {
+  content: "\e662"; }
+
+/*团队管理--轨迹日志*/
+.icon-tggl::before {
+  content: "\e664"; }
+
+/*风控中心--通告管理*/
+.icon-ktltj::before {
+  content: "\e663"; }
+
+/*团队管理--开通率统计*/
+.icon-tdgtjh::before {
+  content: "\e71c"; }
+
+/*团队管理--团队沟通计划*/
+.icon-csdtj::before {
+  content: "\e71b"; }
+
+/*团队管理--成熟度统计*/
+.icon-refundRiskMange::before {
+  content: "\e677"; }
+
+/*风控中心--退款风险查询*/
+.icon-standard::before {
+  content: "\e678"; }
+
+/*风控中心--标准合同模板管理*/
+.icon-paperFile::before {
+  content: "\e683"; }
+
+/*风控中心--合同协议管理*/
+.icon-paperMake::before {
+  content: "\e687"; }
+
+/*风控中心--协议制作管理*/
+.icon-removeXy::before {
+  content: "\e67f"; }
+
+/*风控中心--解除协议审批*/
+.icon-changeXy::before {
+  content: "\e67c"; }
+
+/*风控中心--补充协议审批*/
+.icon-paperXy::before {
+  content: "\e686"; }
+
+/*风控中心--协议制作审批*/
+.icon-contract::before {
+  content: "\e67e"; }
+
+/*风控中心--订单合同审批*/
+.icon-classVideoS::before {
+  content: "\e725"; }
+
+/*jyh管理--班次视频数据统计*/
+.icon-pjzdztj::before {
+  content: "\e669"; }
+
+/*jyh管理--平均诊断值统计*/
+.icon-jjfatj::before {
+  content: "\e668"; }
+
+/*jyh管理--解决方案统计*/
+.icon-bczdtj::before {
+  content: "\e667"; }
+
+/*jyh管理--班次诊断数统计*/
+.icon-bancirijundenglucishu::before {
+  content: "\e66f"; }
+
+/*jyh管理--班次日均*/
+.icon-yonghurijundenglucishu::before {
+  content: "\e66e"; }
+
+/*jyh管理--用户日均*/
+.icon-checked::before {
+  content: "\e66a"; }
+
+/*复选框勾选*/
+.icon-tkl::before {
+  content: "\e66d"; }
+
+/*财务管理--退款率*/
+.icon-outRulePrompt::before {
+  content: "\e721"; }
+
+/*系统中心-流出规则提示管理*/
+/*字体图标-over*/
+.icon-approveManagement::before {
+  content: "\e672"; }
+
+/*运营中心-客户执行管理*/
+/*字体图标-over*/
+.icon-productManagement::before {
+  content: "\e673"; }
+
+/*运营中心-产品管理*/
+/*字体图标-over*/
+.icon-anchorsManage::before {
+  content: "\e694"; }
+
+/*运营中心-主播管理*/
+.icon-liveDistribution::before {
+  content: "\e693"; }
+
+/*运营中心-直播派发管理*/
+.icon-liveSendCourierManage::before {
+  content: "\e695"; }
+
+/*运营中心- 直播寄件管理*/
+.icon-liveTaskManage::before {
+  content: "\e6f6"; }
+
+/*运营中心- 直播执行管理*/
+.icon-phoneManage::before {
+  content: "\e676"; }
+
+/*行政中心-话机管理*/
+/*字体图标-over*/
+.icon-logisticsUpload::before {
+  content: "\e682"; }
+
+/*行政中心-物流信息上传*/
+/*字体图标-over*/
+.icon-logisticList::before {
+  content: "\e681"; }
+
+/*行政中心-物流列表*/
+/*字体图标-over*/
+.icon-videoDistribution::before {
+  content: "\e689"; }
+
+/*运营中心-短视频派发管理*/
+.icon-videoSendCourierManage::before {
+  content: "\e68e"; }
+
+/*运营中心- 短视频寄件管理*/
+.icon-videoTaskManage::before {
+  content: "\e646"; }
+
+/*运营中心- 短视频执行管理*/
+.icon-graphicDistribution::before {
+  content: "\e691"; }
+
+/*运营中心-图文派发管理*/
+.icon-graphicTaskManage::before {
+  content: "\e64e"; }
+
+/*运营中心-图文执行管理*/
+.icon-logistic::before {
+  content: "\e68d"; }
+
+/*运营中心-物流管理*/
+.icon-channelManage::before {
+  content: "\e68e"; }
+
+/*运营中心-渠道管理*/
+.icon-distributeManage::before {
+  content: "\e68a"; }
+
+/*运营中心-订单派发管理*/
+.icon-feedbackManage::before {
+  content: "\e68c"; }
+
+/*运营中心-任务反馈管理*/
+.hidden {
+  display: none; }
+
+/* 有墨 */
+.icon-fenpeiguanli::before {
+  content: "\e679"; }
+
+/*分配管理*/
+.icon-zhanghaoguanli::before {
+  content: "\e627"; }
+
+/*账号管理*/
+.icon-xieshouguanli::before {
+  content: "\e684"; }
+
+/*写手管理*/
+.icon-xieshoujiesuanguanli::before {
+  content: "\e685"; }
+
+/*写手结算管理*/
+.icon-neirongyunying::before {
+  content: "\e680"; }
+
+/*内容运营*/
+/* 渠道运营 */
+.icon-jigouguanli::before {
+  content: "\e67b"; }
+
+/* 机构管理 */
+.icon-jigouchenbenjiesuan::before {
+  content: "\e67a"; }
+
+/* 机构成本结算 */
+.icon-jigoushujushangchuan::before {
+  content: "\e67d"; }
+
+/* 机构数据上传 */
+/*数字化营销*/
+.icon-darenguanli::before {
+  content: "\e697"; }
+
+/* 机构数据上传 */
+/*body左侧侧边栏icon*/
+.icon-hr {
+  background: url(../images/left-menu.png) 0px -86px no-repeat; }
+
+.icon-gropManage {
+  background: url(../images/left-menu.png) 0px -186px no-repeat; }
+
+.icon-talentManege {
+  background: url(../images/left-menu.png) 0px -108px no-repeat; }
+
+.icon-resource {
+  background: url(../images/left-menu.png) -2px -49px no-repeat; }
+
+.icon-person {
+  background: url(../images/left-menu.png) -2px -126px no-repeat; }
+
+.icon-setting {
+  background: url(../images/left-menu.png) -2px -108px no-repeat; }
+
+.icon-finance1 {
+  background: url(../images/left-menu.png) -2px -70px no-repeat; }
+
+.icon-yunying {
+  background: url(../images/left-menu.png) -2px -31px no-repeat; }
+
+.icon-sale1 {
+  background: url(../images/left-menu.png) -2px -12px no-repeat; }
+
+.icon-riskCenter {
+  background: url(../images/left-menu.png) -2px -166px no-repeat; }
+
+.icon-cloudCollege {
+  background: url(../images/left-menu.png) -2px -204px no-repeat; }
+
+.icon-jyhManagement {
+  background: url(../images/left-menu.png) -2px -225px no-repeat; }
+
+.icon-OfficeCenter {
+  background: url(../images/left-menu.png) -2px -126px no-repeat; }
+
+.icon-refundRate {
+  background: url(../images/left-menu.png) -2px -242px no-repeat; }
+
+.icon-systemCenter {
+  background: url(../images/left-menu.png) -2px -260px no-repeat; }
+
+.icon-youmo {
+  background: url(../images/left-menu.png) -2px -296px no-repeat; }
+
+.icon-bd {
+  background: url(../images/left-menu.png) -2px -278px no-repeat; }
+
+.icon-digitalMarketing {
+  background: url(../images/left-menu.png) -2px -315px no-repeat; }
+
+/*# sourceMappingURL=base.css.map */

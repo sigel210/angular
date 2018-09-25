@@ -1,0 +1,676 @@
+<div class="table-area flex-column extends-box">
+    <!--菁英汇+非研修班-->
+    <div ng-if="orderIncomeModel.model.type == 1 && orderModel.third_product_id != 10005">
+        <table class="table-r">
+            <thead>
+                <tr>
+                    <th width="16">序</th>
+                    <th>概要</th>
+                    <th width="80">金额</th>
+                    <th width="130">执行时间</th>
+                    <th width="40">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.income">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="'第' + (item.installment) + '期确认营收'"></td>
+                    <td ng-bind="item.execute_price | number:2"></td>
+                    <td ng-bind="item.settlement_time"></td>
+                    <td ng-bind="item.step_status | stepStatus"></td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.income.length == 0 && orderIncomeModel.model.refund.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="4">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--退款，没有不显示-->
+        <div class="edit-title mt-20">
+            退款明细
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th width="16">序</th>
+                    <th>概要</th>
+                    <th width="80">金额</th>
+                    <th width="130">执行时间</th>
+                    <th width="40">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.refund">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.approval_type | approvalTypeFilter"></td>
+                    <td ng-bind="item.refund_amount | number:2"></td>
+                    <td ng-bind="item.update_time"></td>
+                    <td>已执行</td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.refund.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="4">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 菁英汇研修班 -->
+    <div ng-if="orderModel.third_product_id == 10005">
+        <div class="edit-title">
+            执行营收
+        </div>
+        <table class="table-r">
+            <tbody>
+                <tr class="locked  no-pointer">
+                    <td width="60">执行总额</td>
+                    <td ng-bind="orderIncomeModel.model.total_execute_price | number:2"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table-r" style="margin-top:10px;">
+            <thead>
+                <tr>
+                    <th width="16">序</th>
+                    <th>概要</th>
+                    <th width="80">金额</th>
+                    <th width="130">执行时间</th>
+                    <th width="40">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.income">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="'执行金额'+item.installment"></td>
+                    <td ng-bind="item.execute_price | number:2"></td>
+                    <td ng-bind="item.settlement_time || '-'"></td>
+                    <td ng-bind="item.step_status | stepStatus"></td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.income.length == 0 && orderIncomeModel.model.refund.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--退款，没有不显示-->
+        <div class="edit-title mt-20">
+            退款明细
+        </div>
+        <table>
+            <thead>
+                <tr class="no-pointer">
+                    <th width="16">序</th>
+                    <th>概要</th>
+                    <th width="80">金额</th>
+                    <th width="130">执行时间</th>
+                    <th width="40">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.refund">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.approval_type | approvalTypeFilter"></td>
+                    <td ng-bind="item.refund_amount | number:2"></td>
+                    <td ng-bind="item.update_time || '-'"></td>
+                    <td>已执行</td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.refund.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--爱柚-->
+    <div ng-if="orderIncomeModel.model.type == 3">
+        <div class="edit-title">
+            执行营收
+        </div>
+        <table class="table-r">
+            <tbody>
+                <tr class="locked  no-pointer">
+                    <td width="60">执行总额</td>
+                    <td ng-bind="orderIncomeModel.model.total_execute_price | number:2"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table-r" style="margin-top:10px;">
+            <thead>
+                <tr>
+                    <th width="16">序</th>
+                    <th width="42">内容形态</th>
+                    <th width="30">渠道</th>
+                    <th width="36">状态</th>
+                    <th width="80">确认营收</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.income">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.content_type"></td>
+                    <td ng-bind="item.channel_name"></td>
+                    <td ng-bind="item.status"></td>
+                    <td ng-bind="item.execute_amount | number:2"></td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.income.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--退款，没有不显示-->
+        <div class="edit-title mt-20">
+            退款明细
+        </div>
+        <table>
+            <thead>
+                <tr class="no-pointer">
+                    <th width="16">序</th>
+                    <th>概要</th>
+                    <th width="80">金额</th>
+                    <th width="130">执行时间</th>
+                    <th width="40">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.refund">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.approval_type | approvalTypeFilter"></td>
+                    <td ng-bind="item.refund_amount | number:2"></td>
+                    <td ng-bind="item.update_time || '-'"></td>
+                    <td>已执行</td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.refund.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--特训营-->
+    <div ng-if="orderIncomeModel.model.type == 2 && orderModel.second_product_id == 10007">
+        <div class="edit-title">
+            执行营收
+        </div>
+        <table class="table-r">
+            <tbody>
+                <tr class="locked  no-pointer">
+                    <td width="60">执行总额</td>
+                    <td ng-bind="orderIncomeModel.model.total_execute_price | number:2"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table-r" style="margin-top:10px;" ng-repeat="item in orderIncomeModel.model.income">
+            <tbody>
+                <tr class="locked  no-pointer">
+                    <td width="60">执行班次</td>
+                    <td ng-bind="item.class_name"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">产品线</td>
+                    <td ng-bind="item.second_name"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">产品</td>
+                    <td ng-bind="item.third_name"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">服务起止</td>
+                    <td>
+                        <span ng-bind="item.service_start_time"></span>至
+                        <span ng-bind="item.service_end_time"></span>
+                    </td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">班主任</td>
+                    <td ng-bind="item.account"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">班次状态</td>
+                    <td ng-bind="item.status | classStatusFilter"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">培训人数</td>
+                    <td ng-bind="item.student_count"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">金额</td>
+                    <td ng-bind="item.total_class_price | number:2"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">实到人数</td>
+                    <td ng-bind="item.arrival_count"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">执行营收</td>
+                    <td ng-bind="item.class_execute_price | number:2"></td>
+                </tr>
+            </tbody>
+        </table>
+        <!--退款，没有不显示-->
+        <div class="edit-title mt-20">
+            退款明细
+        </div>
+        <table>
+            <thead>
+                <tr class="no-pointer">
+                    <th width="16">序</th>
+                    <th>概要</th>
+                    <th width="80">金额</th>
+                    <th width="130">执行时间</th>
+                    <th width="40">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.refund">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.approval_type | approvalTypeFilter"></td>
+                    <td ng-bind="item.refund_amount | number:2"></td>
+                    <td ng-bind="item.update_time"></td>
+                    <td>已执行</td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.refund.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="4">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 淘大 -->
+    <div ng-if="orderModel.second_product_id == 10008 && orderModel.third_product_id != 10101">
+        <div class="edit-title">
+            执行营收
+        </div>
+        <table class="table-r">
+            <tbody>
+                <tr class="locked  no-pointer">
+                    <td width="60">执行总额</td>
+                    <td ng-bind="orderIncomeModel.model.total_execute_price | number:2"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table-r" style="margin-top:10px;" ng-repeat="item in orderIncomeModel.model.income">
+            <tbody>
+                <tr class="locked  no-pointer">
+                    <td width="60">执行班次</td>
+                    <td ng-bind="item.class_name"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">产品线</td>
+                    <td ng-bind="item.second_name"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">产品</td>
+                    <td ng-bind="item.third_name"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">服务起止</td>
+                    <td>
+                        <span ng-bind="item.service_start_time"></span>至
+                        <span ng-bind="item.service_end_time"></span>
+                    </td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">班主任</td>
+                    <td ng-bind="item.account"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">班次状态</td>
+                    <td ng-bind="item.status | classStatusFilter"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">培训人数</td>
+                    <td ng-bind="item.student_count"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">金额</td>
+                    <td ng-bind="item.total_class_price | number:2"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">实到人数</td>
+                    <td ng-bind="item.arrival_count"></td>
+                </tr>
+                <tr class="no-pointer">
+                    <td width="60">执行营收</td>
+                    <td ng-bind="item.class_execute_price | number:2"></td>
+                </tr>
+            </tbody>
+        </table>
+        <!--退款，没有不显示-->
+        <div class="edit-title mt-20">
+            退款明细
+        </div>
+        <table>
+            <thead>
+                <tr class="no-pointer">
+                    <th width="16">序</th>
+                    <th>概要</th>
+                    <th width="80">金额</th>
+                    <th width="130">执行时间</th>
+                    <th width="40">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.refund">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.approval_type | approvalTypeFilter"></td>
+                    <td ng-bind="item.refund_amount | number:2"></td>
+                    <td ng-bind="item.update_time || '-'"></td>
+                    <td>已执行</td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.refund.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="4">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div ng-if="orderModel.second_product_id == 10008 && orderModel.third_product_id == 10101">
+        <div class="edit-title">
+            执行营收
+        </div>
+        <table class="table-r">
+            <tbody>
+                <tr class="locked  no-pointer">
+                    <td width="60">执行总额</td>
+                    <td ng-bind="orderIncomeModel.model.total_execute_price | number:2"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table-r" style="margin-top:10px;">
+            <thead>
+                <tr>
+                    <th width="16">序</th>
+                    <th>概要</th>
+                    <th width="80">金额</th>
+                    <th width="120">执行日期</th>
+                    <th width="40">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.income">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="'周期'+ item.cycle_num"></td>
+                    <td ng-bind="item.execute_price | number:2"></td>
+                    <td ng-bind="item.settlement_time || '-'"></td>
+                    <td ng-bind="item.step_status | stepStatus"></td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.income.length == 0 && orderIncomeModel.model.refund.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="4">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--退款，没有不显示-->
+        <div class="edit-title mt-20">
+            退款明细
+        </div>
+        <table>
+            <thead>
+                <tr class="no-pointer">
+                    <th width="16">序</th>
+                    <th>概要</th>
+                    <th width="80">金额</th>
+                    <th width="130">执行时间</th>
+                    <th width="40">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.refund">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.approval_type | approvalTypeFilter"></td>
+                    <td ng-bind="item.refund_amount | number:2"></td>
+                    <td ng-bind="item.update_time || '-'"></td>
+                    <td>已执行</td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.refund.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="4">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 新孵化班type ==4  -->
+    <div ng-if="orderModel.third_product_id == 10110">
+        <div class="edit-title">
+            执行营收
+        </div>
+        <table class="table-r">
+            <tbody>
+                <tr class="locked  no-pointer">
+                    <td width="60">执行总额</td>
+                    <td ng-bind="orderIncomeModel.model.total_execute_price | number:2"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table-r" style="margin-top:10px;">
+            <thead>
+                <tr>
+                    <th width="16">序</th>
+                    <th>概要</th>
+                    <th width="80">金额</th>
+                    <th width="130">执行时间</th>
+                    <th width="40">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.income">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="'周期'+item.cycle_num+'执行金额'+item.installment"></td>
+                    <td ng-bind="item.execute_price | number:2"></td>
+                    <td ng-bind="item.settlement_time || '-'"></td>
+                    <td ng-bind="item.step_status | stepStatus"></td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.income.length == 0 && orderIncomeModel.model.refund.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="4">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--退款，没有不显示-->
+        <div class="edit-title mt-20">
+            退款明细
+        </div>
+        <table>
+            <thead>
+                <tr class="no-pointer">
+                    <th width="16">序</th>
+                    <th>概要</th>
+                    <th width="80">金额</th>
+                    <th width="130">执行时间</th>
+                    <th width="40">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="!https.incomelist" class="no-pointer" ng-repeat="item in orderIncomeModel.model.refund">
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.approval_type | approvalTypeFilter"></td>
+                    <td ng-bind="item.refund_amount | number:2"></td>
+                    <td ng-bind="item.update_time || '-'"></td>
+                    <td>已执行</td>
+                </tr>
+                <tr class="no-pointer" ng-if="!https.incomelist && orderIncomeModel.model.refund.length == 0">
+                    <td colspan="5">
+                        <div class="no-content">
+                            <img src="images/kong.png">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="no-pointer" ng-show="https.incomelist">
+                    <td colspan="4">
+                        <div class="no-content">
+                            <div class="ball-grid-pulse">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="height:100%" ng-if="orderIncomeModel.model && orderIncomeModel.model.income.length == 0 && orderIncomeModel.model.refund.length == 0">
+        <div class="no-item" style="background-color:#fff;height:100%">
+            <img src="images/kong.png">
+        </div>
+    </div>
+</div>

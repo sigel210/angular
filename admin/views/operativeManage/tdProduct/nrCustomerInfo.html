@@ -1,0 +1,952 @@
+<div class="m-container">
+    <header class="m-header">
+        <div class="customer-name" ng-bind="customerInfo.customer"></div>
+        <div class="child-nav-bar">
+            <ul>
+                <li class="child-nav-item active">
+                    线下培训
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="main-box">
+        <div class="sider-bar-group2">
+            <ul class="sider-bar-2">
+                <li ng-class="{active:status==1}" ng-if="!only_survey" ng-click="changeMenu(1)">基本信息</li>
+                <li ng-class="{active:status==2}" ng-if="!only_survey" ng-click="changeMenu(2)">联系信息</li>
+                <li ng-class="{active:status==3}" ng-if="!only_survey&&third_product_id!=='10101'" ng-click="changeMenu(3)">学员信息</li>
+                <li ng-class="{active:status==4}" ng-if="!only_survey" ng-click="changeMenu(4)">营收／退款</li>
+                <li ng-class="{active:status==5}" ng-click="changeMenu(5)">调研信息</li>
+            </ul>
+        </div>
+        <div class="c-content">
+            <!--基本信息-->
+            <div ng-show="status==1||status==2" class="c-content-overflow">
+                <div ng-show="status==1" class="margin-auto">
+                    <div class="list-group main-content-detail">
+                        <div class="list-item">
+                            <span class="title">订单状态</span>
+                            <span class="info" ng-bind="customerInfo.order_status"></span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">服务起止</span>
+                            <span class="info"><span ng-if="customerInfo.service_start_time!='0000-00-00'"><span ng-bind="customerInfo.service_start_time|dateFormat:10"></span><span>至</span><span ng-bind="customerInfo.service_end_time|dateFormat:10"></span></span></span>
+                        </div>
+                    </div>
+                    <div class="list-group main-content-detail">
+                        <div class="list-item">
+                            <span class="title">新老客户</span>
+                            <span class="info" ng-bind="customerInfo.is_old|isOld"></span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">客户ID</span>
+                            <span class="info" ng-bind="customerInfo.customer"></span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">客户类型</span>
+                            <span class="info" ng-bind="customerInfo.typeid|customerTypeFilter"></span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">经营年限</span>
+                            <span class="info" ng-bind="customerInfo.operating_life"></span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">店铺网址</span>
+                            <span class="info" ng-if="customerInfo.shop_url"><a ng-href="{{customerInfo.shop_url}}" target="_blank">查看</a></span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">主营类目</span>
+                            <span class="info"  ng-bind="customerInfo.category_name"></span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">店铺名称</span>
+                            <span class="info" ng-bind="customerInfo.shop_name"></span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">店铺电话</span>
+                            <span class="info" ng-bind="customerInfo.shop_phone">
+                </span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">公司名称</span>
+                            <span class="info"  ng-bind="customerInfo.company">正常
+                </span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">金牌卖家</span>
+                            <span class="info"  ng-bind="customerInfo.gold_seller|hasDataOrNot">
+                </span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">有无其他<br/>淘宝店铺</span>
+                            <span class="info" ng-bind="customerInfo.has_taobao|hasDataOrNot2">
+                </span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">有无<br/>天猫店铺</span>
+                            <span class="info" ng-bind="customerInfo.has_tianmao|hasDataOrNot2">
+                </span>
+                        </div>
+                    </div>
+                    <div class="list-group main-content-detail">
+                        <div class="list-item">
+                            <span class="title">国家</span>
+                            <span class="info">中国</span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">省份</span>
+                            <span class="info"  ng-bind="customerInfo.province_name">
+                </span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">市</span>
+                            <span class="info"  ng-bind="customerInfo.city_name">
+                </span>
+                        </div>
+                    </div>
+                    <div class="list-group operate main-content-detail">
+                        <div class="list-item">
+                            <span class="title">老板</span>
+                            <span class="info"  ng-bind="customerInfo.boss_name">
+                </span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">电话</span>
+                            <span class="info"  ng-bind="customerInfo.boss_phone">
+                </span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="status==2" class="margin-auto">
+                    <div class="list-group main-content-detail">
+                        <div class="list-item">
+                            <span class="title">联系人姓名</span>
+                            <span class="info" ng-bind="customerLinkInfo.contact_name"></span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">联系手机号</span>
+                            <span class="info"  ng-bind="customerLinkInfo.contact_phone"></span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">联系人旺旺</span>
+                            <span class="info" ng-bind="customerLinkInfo.contact_ww">未开始</span>
+                        </div>
+                        <div class="list-item">
+                            <span class="title">联系人职务</span>
+                            <span class="info" ng-bind="customerLinkInfo.contact_job">未开始</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="status==3" class="c-container-wrap">
+                <div class="name-list" ng-if="show">
+                    <ul class="info-con3">
+                        <li ng-repeat="item in studentList" ng-bind="item.name" ng-class="{active:item.student_id==firstStudent}" ng-click="changeStudent(item)">谁谁谁</li>
+                    </ul>
+                </div>
+                <div class="name-list" ng-if="!show">
+                    <div class="kong-center">没有你想要的数据</div>
+                </div>
+                <div class="c-content-overflow" ng-if="show">
+                    <div class="margin-auto">
+                        <div class="list-group main-content-detail">
+                            <div class="label-title">
+                                <div><span class="icon-title"></span>基本信息</div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">姓名</span>
+                                <span class="info" ng-bind="studentInfo.name"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">性别</span>
+                                <span class="info" ng-bind="studentInfo.sex | sex"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">学历</span>
+                                <span class="info" ng-bind="studentInfo.educational|educational"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">职务</span>
+                                <span class="info" ng-bind="studentInfo.job"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">手机</span>
+                                <span class="info" ng-bind="studentInfo.phone"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">邮箱</span>
+                                <span class="info" ng-bind="studentInfo.email"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">QQ</span>
+                                <span class="info" ng-bind="studentInfo.qq"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">旺旺</span>
+                                <span class="info" ng-bind="studentInfo.ww"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">身份证</span>
+                                <span class="info" ng-bind="studentInfo.card_id"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">报名时间</span>
+                                <span class="info" ng-bind="studentInfo.apply_time"></span>
+                            </div>
+                        </div>
+                        <div class="list-group main-content-detail">
+                            <div class="label-title">
+                                <div><span class="icon-title"></span>执行信息</div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">执行班次</span>
+                                <span class="info" ng-bind="studentInfo.class_name"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">学员状态</span>
+                                <span class="info" ng-bind="studentInfo.status | studentStatus"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">执行营收</span>
+                                <span class="info" ng-bind="studentInfo.execute_price"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">执行时间</span>
+                                <span class="info" ng-bind="studentInfo.execute_time"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">执行者</span>
+                                <span class="info" ng-bind="studentInfo.teacher_name"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="display-detail display-detail-last">
+
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="status==4" class="c-container-wrap">
+                <div class="c-container">
+                    <table class="table-detail-list refund-money"  ng-if="third_product_id!='10101'">
+                        <thead>
+                        <tr>
+                            <th width="16">序</th>
+                            <th width="210">概要</th>
+                            <th width="80">金额</th>
+                            <th>人数</th>
+                            <th width="80">执行金额</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat='item in incomeList' ng-if="incomeList.length!=0">
+                            <td ng-bind="$index + 1"></td>
+                            <td ng-bind="item.class_name"></td>
+                            <td ng-bind="item.contract_price | number:2"></td>
+                            <td ng-bind="item.student_count"></td>
+                            <td ng-bind="item.execute_price| number:2"></td>
+                        </tr>
+                        <tr ng-if="incomeList.length==0">
+                            <td colspan="5">
+                                <div class="no-item1">
+                                    <img src="images/kong.png">
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="table-detail-list refund-money"  ng-if="third_product_id=='10101'">
+                        <thead>
+                        <tr>
+                            <th width="16">序</th>
+                            <th width="210">概要</th>
+                            <th width="80">金额</th>
+                            <th>执行日期</th>
+                            <th width="80">状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat='item in incomeList' ng-if="incomeList.length!=0">
+                            <td ng-bind="$index + 1"></td>
+                            <td ng-bind="'执行金额'+item.cycle_num"></td>
+                            <td ng-bind="item.execute_price | number:2"></td>
+                            <td ng-bind="item.settlement_time"></td>
+                            <td ng-bind="item.step_status|stepStatus"></td>
+                        </tr>
+                        <tr ng-if="incomeList.length==0">
+                            <td colspan="5">
+                                <div class="no-item1">
+                                    <img src="images/kong.png">
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--分解线-->
+                <div class="boundray-line"></div>
+                <div class="c-container">
+                    <table class="table-detail-list refund-money">
+                        <thead>
+                        <tr>
+                            <th width="16">序</th>
+                            <th>概要</th>
+                            <th width="80">金额</th>
+                            <th width="130">执行时间</th>
+                            <th width="96">状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr ng-repeat="item in refundList">
+                            <td ng-bind="$index+1"></td>
+                            <td  ng-if="item.approval_type">{{item.approval_type|approvalTypeFilter}}</td>
+                            <td  ng-if="!item.approval_type">退款</td>
+                            <td ng-bind="item.refund_amount | number:2"></td>
+                            <td ng-bind="item.update_time"></td>
+                            <td >已执行</td>
+                        </tr>
+                        <tr ng-if="refundList.length == 0">
+                            <td colspan="5">
+                                <div class="no-item1">
+                                    <img src="images/kong.png">
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            <div ng-show="status==5" class="c-container-wrap">
+                <div class="name-list">
+                    <ul class="info-con3">
+                        <li ng-repeat="item in orderSurveyList" ng-bind="item.create_time" ng-class="{active:item.survey_id==firstSurvey}"
+                            ng-click="changeSurvey(item)">2017-12-12 23:23:12</li>
+                    </ul>
+
+                </div>
+                <div class="c-content-overflow" ng-show="third_product_id=='10011'||third_product_id=='10100'">
+                    <div class="margin-auto">
+                        <div class="list-group operate">
+                            <div class="label-title">
+                                <div><span class="icon-title"></span>调研信息</div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">填表时间</span>
+                                <p class="info" ng-bind="orderSurveyInfo.create_time"></p>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">产品</span>
+                                <p class="info" ng-bind="orderSurveyInfo.class_name"></p>
+                            </div>
+                        </div>
+                        <div class="list-group operate">
+                            <div class="label-title">
+                                <div><span class="icon-title"></span>店铺基本信息</div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">主营店铺ID</span>
+                                <span class="info" ng-bind="orderSurveyInfo.customer"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">主营店铺所属类目</span>
+                                <span class="info" ng-bind="orderSurveyInfo.category_name"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">主营店铺链接</span>
+                                <span class="info"><a ng-href="{{orderSurveyInfo.shop_url}}" target="_blank">查看</a></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">主营店铺所在省市</span>
+                                <span class="info" ng-bind="'中国'+'/'+orderSurveyInfo._province+'/'+orderSurveyInfo._city"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">主营店铺开店时长</span>
+                                <span class="info" ng-bind="orderSurveyInfo.operating_life"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">主营店铺类型</span>
+                                <span class="info" ng-bind="orderSurveyInfo.shop_type"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title" width="110">各平台其他店铺</span>
+                                <div class="info">
+                                    <p class="check-box"><input type="checkbox" disabled value="1" ng-checked="checkedTest(orderSurveyInfo.other_shop,1)"/><span>天猫店 &nbsp;&nbsp;&nbsp;{{checkedText(orderSurveyInfo.other_shop,1)}}</span></p>
+                                    <p class="check-box"><input type="checkbox" disabled value="2" ng-checked="checkedTest(orderSurveyInfo.other_shop,2)"/>淘宝店&nbsp;&nbsp;&nbsp;{{checkedText(orderSurveyInfo.other_shop,2)}}</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="3" ng-checked="checkedTest(orderSurveyInfo.other_shop,3)"/>独立商城&nbsp;&nbsp;&nbsp;{{checkedText(orderSurveyInfo.other_shop,3)}}</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="4" ng-checked="checkedTest(orderSurveyInfo.other_shop,4)"/>其他，如京东、一号店&nbsp;&nbsp;&nbsp;{{checkedText(orderSurveyInfo.other_shop,4)}}</p>
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">供货渠道及产品是否多样化</span>
+                                <div class="info">
+                                    <div class="check-box"><input type="checkbox" disabled value="1" ng-checked="checkedTest2(orderSurveyInfo.is_diversify.id,1)">有强大的渠道商，产品多样化</div>
+                                    <div class="check-box"><input type="checkbox" disabled value="2" ng-checked="checkedTest2(orderSurveyInfo.is_diversify.id,2)">自己有工厂、合作商，有能力更换类目</div>
+                                    <div class="check-box"><input type="checkbox" disabled value="3" ng-checked="checkedTest2(orderSurveyInfo.is_diversify.id,3)">自己有工厂、合作商，有能力更换类目</div>
+                                    <div class="check-box"><input type="checkbox" disabled value="4" ng-checked="checkedTest2(orderSurveyInfo.is_diversify.id,4)">其他{{orderSurveyInfo.is_diversify.name}}</div>
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">店铺层级</span>
+                                <span class="info" ng-bind="orderSurveyInfo.shop_type"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title" width="110">店铺整体转化率</span>
+                                <span class="info" ng-bind="orderSurveyInfo.shop_rate+'%'"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title" width="110">电商团队的人数</span>
+                                <span class="info" ng-bind="orderSurveyInfo.team_num"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">店铺外包</span>
+                                <div class="info">
+                                    <p class="check-box"><input type="checkbox" disabled value="1" ng-checked="checkedTest2(orderSurveyInfo.shop_out,'1')">运营外包</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="2" ng-checked="checkedTest2(orderSurveyInfo.shop_out,'2')">推广外包</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="3" ng-checked="checkedTest2(orderSurveyInfo.shop_out,'3')">美工外包</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="4" ng-checked="checkedTest2(orderSurveyInfo.shop_out,'4')">客服外包</p>
+                                    <p class="check-box-25"><input type="checkbox" disabled value="5" ng-checked="checkedTest2(orderSurveyInfo.shop_out,'5')">无任何外包</p>
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">店铺每月投入的营销费用</span>
+                                <span class="info" ng-bind="orderSurveyInfo.shop_cost"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">过去12个月的店铺交易额</span>
+                                <span class="info" ng-bind="orderSurveyInfo.shop_trading_volume"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">是否参加过其他的管理培训课程</span>
+                                <span class="info" ng-bind="orderSurveyInfo.is_join_other"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">您是否准备为店铺团队成长进行相应培训</span>
+                                <span class="info" ng-bind="orderSurveyInfo.team_to_train"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">您的团队需要哪些方面的知识学习： </span>
+                                <span class="info" ng-bind="orderSurveyInfo.team_to_learn"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">请您结合团队管理情况说说管理中的困惑？ </span>
+                                <span class="info" ng-bind="orderSurveyInfo.confusion_in_manage"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">您期望从本次课程中学到哪些东西？</span>
+                                <span class="info" ng-bind="orderSurveyInfo.need_to_learn"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="c-content-overflow" ng-show="third_product_id=='10101'">
+                    <div class="margin-auto">
+                        <div class="list-group operate">
+                            <div class="label-title">
+                                <div><span class="icon-title"></span>调研信息</div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">填表时间</span>
+                                <p class="info" ng-bind="orderSurveyInfo.create_time"></p>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">产品</span>
+                                <p class="info" ng-bind="orderSurveyInfo.class_name"></p>
+                            </div>
+                        </div>
+                        <div class="list-group  operate">
+                            <div class="label-title">
+                                <div><span class="icon-title"></span>店铺基本信息</div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">拍下订单时间</span>
+                                <span class="info" ng-bind="orderSurveyInfo.purchase_time"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">拍课id（用哪个旺旺购买的）</span>
+                                <span class="info" ng-bind="orderSurveyInfo.purchase_customer_ww"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">拍课订单编号</span>
+                                <span class="info" ng-bind="orderSurveyInfo.purchase_customer_order_no"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">拍单预留手机号</span>
+                                <span class="info" ng-bind="orderSurveyInfo.purchase_order_pre_phone"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">客户名字</span>
+                                <span class="info" ng-bind="orderSurveyInfo.name"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">客户电话</span>
+                                <span class="info" ng-bind="orderSurveyInfo.phone"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">【重要】开通店铺主旺旺</span>
+                                <span class="info" ng-bind="orderSurveyInfo.customer"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">【重要】开通店铺公司（与开通店铺一一对应)</span>
+                                <span class="info" ng-bind="orderSurveyInfo.store_master_company"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">开通所在店铺预留联系人名字（淘宝或天猫）</span>
+                                <span class="info" ng-bind="orderSurveyInfo.store_pre_name"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title" >开通所在店铺预留的联系人电话</span>
+                                <span class="info" ng-bind="orderSurveyInfo.store_pre_phone"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title" >开通所在店铺预留邮箱</span>
+                                <span class="info" ng-bind="orderSurveyInfo.store_pre_email"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title" >【重要】店铺对接人旺旺（开通服务之后有专人联系此号）</span>
+                                <span class="info" ng-bind="orderSurveyInfo.store_contact_ww"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">您所在的城市是</span>
+                                <span class="info" ng-bind="'中国'+'/'+orderSurveyInfo._province+'/'+orderSurveyInfo._city"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">开通店铺所属类目</span>
+                                <span class="info" ng-bind="orderSurveyInfo.category_name"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title" >您的电商团队人数</span>
+                                <span class="info" ng-bind="orderSurveyInfo.team_num"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">您的店铺人员架构组成</span>
+                                <div class="info">
+                                    <p class="check-box"><input type="checkbox" disabled value="1" ng-checked="checkedTest2(orderSurveyInfo.shop_architecture,'1')">运营</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="2" ng-checked="checkedTest2(orderSurveyInfo.shop_architecture,'2')">推广</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="3" ng-checked="checkedTest2(orderSurveyInfo.shop_architecture,'3')">视觉</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="4" ng-checked="checkedTest2(orderSurveyInfo.shop_architecture,'4')">内容编辑</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="5" ng-checked="checkedTest2(orderSurveyInfo.shop_architecture,'5')">客服</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="6" ng-checked="checkedTest2(orderSurveyInfo.shop_architecture,'6')">仓储</p>
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">您的店铺层级</span>
+                                <span class="info" ng-bind="orderSurveyInfo.shop_level"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title" >您目前最感兴趣的话题是</span>
+                                <div class="info">
+                                    <p class="check-box"><input type="checkbox" disabled value="1" ng-checked="checkedTest2(orderSurveyInfo.interested_topic,'1')">搜索</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="2" ng-checked="checkedTest2(orderSurveyInfo.interested_topic,'2')">内容营销</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="3" ng-checked="checkedTest2(orderSurveyInfo.interested_topic,'3')">直通车</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="4" ng-checked="checkedTest2(orderSurveyInfo.interested_topic,'4')">钻展</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="5" ng-checked="checkedTest2(orderSurveyInfo.interested_topic,'5')">活动</p>
+                                    <p class="check-box"><input type="checkbox" disabled value="6" ng-checked="checkedTest2(orderSurveyInfo.interested_topic,'6')">视觉</p>
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">请您描述一下店铺的现状与需求</span>
+                                <span class="info" ng-bind="orderSurveyInfo.shop_status_requirement"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-content-overflow" ng-if="third_product_id=='10151'">
+                    <div class="margin-auto">
+                        <div class="list-group operate">
+                            <div class="label-title">
+                                <div>
+                                    <span class="icon-title"></span>调研信息</div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">填表时间</span>
+                                <p class="info" ng-bind="orderSurveyInfo.create_time"></p>
+                            </div>
+                        </div>
+                        <div class="list-group operate">
+                            <div class="label-title">
+                                <div>
+                                    <span class="icon-title"></span>参训人信息</div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">参训人姓名</span>
+                                <span class="info" ng-bind="orderSurveyInfo.join_name"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">参训人手机号</span>
+                                <span class="info" ng-bind="orderSurveyInfo.join_phone"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">参训人年龄段</span>
+                                <span class="info" ng-bind="orderSurveyInfo.join_job"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">参训人职务</span>
+                                <span class="info" ng-bind="orderSurveyInfo.join_birth"></span>
+                            </div>
+                        </div>
+                        <div class="list-group operate">
+                            <div class="label-title">
+                                <div>
+                                    <span class="icon-title"></span>店铺基本信息</div>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">所在省市</span>
+                                <span class="info" ng-bind="'中国'+'/'+orderSurveyInfo._province+'/'+orderSurveyInfo._city"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">店铺ID</span>
+                                <span class="info" ng-bind="orderSurveyInfo.customer"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">店铺链接</span>
+                                <span class="info">
+                                    <a ng-href="{{orderSurveyInfo.shop_url}}" target="_blank">查看</a>
+                                </span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">店铺层级</span>
+                                <span class="info" ng-bind="orderSurveyInfo.shop_level"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">店铺一级类目</span>
+                                <span class="info" ng-bind="orderSurveyInfo.category_name"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">店铺二级类目</span>
+                                <span class="info" ng-bind="orderSurveyInfo.category_names"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">开店时长</span>
+                                <span class="info" ng-bind="orderSurveyInfo.operating_life_start"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">您的电商团队人数</span>
+                                <span class="info" ng-bind="orderSurveyInfo.team_num"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">您的店铺人员架构组成</span>
+                                <div class="info">
+                                    <p class="check-box">
+                                        <input type="checkbox" disabled value="1" ng-checked="orderSurveyInfo.team_member.indexOf('1')!=-1">运营</p>
+                                    <p class="check-box">
+                                        <input type="checkbox" disabled value="2" ng-checked="orderSurveyInfo.team_member.indexOf('2')!=-1">推广</p>
+                                    <p class="check-box">
+                                        <input type="checkbox" disabled value="3" ng-checked="orderSurveyInfo.team_member.indexOf('3')!=-1">客服</p>
+                                    <p class="check-box">
+                                        <input type="checkbox" disabled value="4" ng-checked="orderSurveyInfo.team_member.indexOf('4')!=-1">视觉</p>
+                                    <p class="check-box">
+                                        <input type="checkbox" disabled value="5" ng-checked="orderSurveyInfo.team_member.indexOf('5')!=-1">仓储</p>
+                                    <p class="check-box">
+                                        <input type="checkbox" disabled value="6" ng-checked="orderSurveyInfo.team_member.indexOf('6')!=-1">文案</p>
+                                </div>
+                            </div>
+
+                            <div class="list-item">
+                                <span class="title">店铺年销售额为</span>
+                                <span class="info" ng-bind="orderSurveyInfo.sales_amount_365"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">微淘等级</span>
+                                <span class="info" ng-bind="orderSurveyInfo.wt_level"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">微淘粉丝数</span>
+                                <span class="info" ng-bind="orderSurveyInfo.weitao_fans_num"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">淘外各营销账号总粉丝数</span>
+                                <p>
+                                    <span>微信：{{orderSurveyInfo.taobao_outer_fans_num.wx}}</span><br>
+                                    <span>微博：{{orderSurveyInfo.taobao_outer_fans_num.wb}}</span>
+                                    <!--  <div>淘外直播平台：{{orderSurveyInfo.taobao_outer_fans_num.twzbpt}}</div>
+                                     <div>其他：{{orderSurveyInfo.taobao_outer_fans_num.other}}</div> -->
+                                </p>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">是否有和淘宝达人合作过</span>
+                                <span class="info" ng-bind="orderSurveyInfo.has_doyen_cooperation"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">是否拥有自己的达人账号</span>
+                                <span class="info" ng-bind="orderSurveyInfo.is_doyen"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">是您跟达人合作过什么渠道</span>
+                                <span class="info" ng-bind="orderSurveyInfo.doyen_names"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">您对内容营销最大的困惑是什么</span>
+                                <span class="info" ng-bind="orderSurveyInfo.content_marketing_max_issue"></span>
+                            </div>
+                            <div class="list-item">
+                                <span class="title">您的店铺运营中目前遇到最大的3个问题是什么</span>
+                                <p class="info">
+                                    <span>问题一{{orderSurveyInfo.now_issue_3.one}}</span><br>
+                                    <span>问题二{{orderSurveyInfo.now_issue_3.two}}</span><br>
+                                    <span>问题三{{orderSurveyInfo.now_issue_3.three}}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="name-detail research"  style="margin:0" ng-show="third_product_id=='10101'">
+                    <div class="outer-ctn white-bg outer-mtn">
+
+                        <table class="table-r">
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="status==1" class="slide-footer ">
+            <button class="btn btn-blue" ng-click="showModal('basicInfoEdit')" ng-if="authPermission.updateCustomer">信息编辑</button>
+            <button class="btn btn-blue" ng-click="showModal('changeClass')" ng-if="authPermission.changeClassList&&changeClassBtn">变更执行班次</button>
+        </div>
+        <div ng-if="show" ng-show="status==3" class="slide-footer">
+            <button class="btn btn-blue" ng-click="showModal('studentInforEdit')" ng-if="authPermission.updateStudent">学员编辑</button>
+        </div>
+    </div>
+
+</div>
+<div>
+</div>
+    <!--基本信息编辑-->
+<div ng-if="modalList.basicInfoEdit" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="false">
+        <div class="modal-backdrop fade in"></div>
+        <div class="modal-dialog modal-sm responseHeight">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="btn-close" data-dismiss="modal"><i class="icon-close" ng-click="hideModal('basicInfoEdit')"></i></div>
+                    <h4 class="modal-title">信息编辑</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-wrap add-edit-form form-wrap-w-sm">
+                        <p>
+                            <span class="table-name">经营年限</span>
+                            <span class="table-text">
+                                <input type="text"  ng-model="basicInfoEditData.operating_life" placeholder="点击输入">
+                            </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.operating_life= ''"></i>
+                        </p>
+                        <p>
+                            <span class="table-name">店铺网址</span>
+                            <span class="table-text">
+                                <input type="text"  ng-model="basicInfoEditData.shop_url" placeholder="点击输入">
+                            </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.shop_url = ''"></i>
+                        </p>
+                        <p>
+                            <span class="table-name">主营类目</span>
+                            <span class="table-text">
+                                 <select  class="select-w120" ng-model="basicInfoEditData.category_id"  ng-options="item.category_id as item.category_name group by item.parent_category for item  in categoryWithTitle">
+                                      <option value=""></option>
+                                 </select>
+                            <label ng-show="!basicInfoEditData.category_id||basicInfoEditData.category_id==0" class="select-tip">点击选择</label>
+                            </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.category_id = ''"></i>
+                        </p>
+                        <p>
+                            <span class="table-name">店铺名称</span>
+                            <span class="table-text">
+                                    <input type="text"  ng-model="basicInfoEditData.shop_name" placeholder="点击输入">
+                            </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.shop_name = ''"></i>
+                        </p>
+                        <p>
+                            <span class="table-name">店铺电话</span>
+                            <span class="table-text">
+                                    <input type="text"  ng-model="basicInfoEditData.shop_phone" placeholder="点击输入">
+                                </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.shop_phone= ''"></i>
+                        </p>
+                        <p>
+                            <span class="table-name">公司名称</span>
+                            <span class="table-text">
+                                    <input type="text"  ng-model="basicInfoEditData.company" placeholder="点击输入">
+                                </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.company = ''"></i>
+                        </p>
+                        <p>
+                            <span class="table-name">金牌卖家</span>
+                            <span class="table-text">
+                                <select class="select-w120" ng-model="basicInfoEditData.gold_seller">
+                                    <option value="2"></option>
+                                    <option value="0">否</option>
+                                    <option value="1">是</option>
+                                </select>
+                                <label ng-show="!basicInfoEditData.gold_seller||basicInfoEditData.gold_seller==2" class="select-tip">点击选择</label>
+                                </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.gold_seller=2"></i>
+                        </p>
+                        <p class="big-dis">
+                            <span class="table-name">有无其他<br/>淘宝店铺</span>
+                            <span class="table-text">
+                                  <select class="select-w120" ng-model="basicInfoEditData.has_taobao">
+                                    <option value="2"></option>
+                                    <option value="0">无</option>
+                                    <option value="1">有</option>
+                                </select>
+                                   <label ng-show="!basicInfoEditData.has_taobao||basicInfoEditData.has_taobao==2" class="select-tip">点击选择</label>
+                                </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.has_taobao=2"></i>
+                        </p>
+                        <p class="big-dis">
+                            <span class="table-name">有无天<br/>猫店铺</span>
+                            <span class="table-text">
+                                <select class="select-w120" ng-model="basicInfoEditData.has_tianmao">
+                                    <option value="2"></option>
+                                    <option value="0">无</option>
+                                    <option value="1">有</option>
+                                </select>
+                                <label ng-show="!basicInfoEditData.has_tianmao||basicInfoEditData.has_tianmao==2" class="select-tip">点击选择</label>
+                                </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.has_tianmao=2"></i>
+                        </p>
+                        <p ng-class="{'choose-edit': true}">
+                            <span class="table-name">省份</span>
+                            <span class="table-text">
+                                    <select class="select-w120" ng-model="basicInfoEditData.province" ng-options="option.id as option.name for option in provinceList" ng-change="basicInfoEditData.city = ''">
+                                    </select>
+                                    <label ng-show="!basicInfoEditData.province" class="select-tip">点击选择</label>
+                                </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.province = ''"></i>
+                        </p>
+                        <p>
+                            <span class="table-name">市</span>
+                            <span class="table-text">
+                                    <select id="city" class="select-w120" ng-model="basicInfoEditData.city" ng-options="option.id as option.name for option in cityList">
+                                    </select>
+                                    <label ng-show="!basicInfoEditData.city" class="select-tip">点击选择</label>
+                                </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.city = ''"></i>
+                        </p>
+                        <p ng-class="{'choose-edit': true}">
+                            <span class="table-name">老板</span>
+                            <span class="table-text">
+                                    <input type="text"  ng-model="basicInfoEditData.boss_name" placeholder="点击输入">
+                                </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.boss_name = ''"></i>
+                        </p>
+                        <p>
+                            <span class="table-name">电话</span>
+                            <span class="table-text">
+                                    <input type="text"  ng-model="basicInfoEditData.boss_phone" placeholder="点击输入">
+                                </span>
+                            <i class="table-clear" ng-click="basicInfoEditData.boss_phone = ''"></i>
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer full-btn-box">
+                    <button type="button" class="btn btn-blue" style="width:100%" ng-click="updateBasicInfo()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--学员信息编辑-->
+<div ng-if="modalList.studentInforEdit" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal"><i class="icon-close" ng-click="hideModal('studentInforEdit')"></i></div>
+                <h4 class="modal-title">学员编辑</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p>
+                        <span class="table-name">姓名</span>
+                        <span class="table-text">
+                            <input type="text"  ng-model="studentInforEditData.name" placeholder="" maxlength="15">
+                        </span>
+                        <i class="table-clear" ng-click="studentInforEditData.name=''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">性别</span>
+                        <span class="table-text">
+                            <select class="select-w120" ng-model="studentInforEditData.sex" >
+                                <option value="0"></option>
+                                <option value="1">男</option>
+                                <option value="2">女</option>
+                            </select>
+                            <label ng-show="!studentInforEditData.sex||studentInforEditData.sex==0" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="studentInforEditData.sex='0'"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">学历</span>
+                        <span class="table-text">
+                            <select class="select-w120" ng-model="studentInforEditData.educational">
+                                 <option value="0">无</option>
+                                 <option value="1">小学</option>
+                                 <option value="2">初中</option>
+                                 <option value="3">高中</option>
+                                 <option value="4">中专</option>
+                                 <option value="5">大专</option>
+                                 <option value="6">本科及以上</option>
+                            </select>
+                            <label ng-show="!studentInforEditData.educational" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="studentInforEditData.educational=''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">职务</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="studentInforEditData.job" placeholder="" maxlength="15">
+                        </span>
+                        <i class="table-clear" ng-click="studentInforEditData.job=''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">手机</span>
+                        <span class="table-text">
+                            <input type="text" maxlength="11"  ng-model="studentInforEditData.phone" placeholder="">
+                        </span>
+                        <i class="table-clear" ng-click="studentInforEditData.phone=''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">邮箱</span>
+                        <span class="table-text">
+                            <input type="text" name="" ng-model="studentInforEditData.email" placeholder="">
+                        </span>
+                        <i class="table-clear" ng-click="studentInforEditData.email=''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">QQ</span>
+                        <span class="table-text">
+                            <input type="text" name="" ng-model="studentInforEditData.qq" placeholder="">
+                        </span>
+                        <i class="table-clear" ng-click="studentInforEditData.qq=''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">旺旺</span>
+                        <span class="table-text">
+                            <input type="text" name="" ng-model="studentInforEditData.ww" placeholder="" maxlength="25">
+                        </span>
+                        <i class="table-clear" ng-click="studentInforEditData.ww=''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">身份证</span>
+                        <span class="table-text">
+                            <input type="text" name="" ng-model="studentInforEditData.card_id" placeholder="" maxlength="35">
+                        </span>
+                        <i class="table-clear" ng-click="studentInforEditData.card_id=''"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="saveStudentInfo()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

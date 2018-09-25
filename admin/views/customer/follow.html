@@ -1,0 +1,167 @@
+<!--跟进区块-->
+<div class="m-follow">
+    <div class="m-follow-top extends-box">
+        <div ng-show="!https.followlist" class="tab-content" ng-if="followModel.list.length > 0">
+            <ul class="content-list">
+                <li ng-repeat="item in followModel.list">
+                    <div class="content-cols">
+                        <span class="name">{{item.account}}</span>
+                        <span style="color:#ddd">|</span>
+                        <span class="state" ng-class="{'green-font':item.is_effect == '1','red-font':item.is_effect == '0'}">{{item.is_effect| templateStatus}}</span>
+                        <span style="color:#ddd">|</span>
+                        <span class="state" ng-bind="item.level_id | levelFilter"></span>
+                        <span class="time">{{item.contact_time}}</span>
+                    </div>
+                    <div>
+                        <div class="content-cols2 clearfix">
+                            <div class="customer_base clearfix">
+                                <span class="option1">联系人：{{item.contact_name}}</span>
+                                <span class="ng-binding option3">预约时间：{{item.next_time}}</span>
+                                <span class="option2">联系方式：{{item.contact_way | concatFilter:item.contact_phone}}</span>
+                            </div>
+                            <div>
+                                <span class="tab_base">内容:</span>
+                                <div class="content_info">
+                                    {{item.info}}
+                                </div>
+
+                                <div style="display:inline-block;margin-right:11px;cursor:pointer" ng-repeat="img in item.img_list" ng-click="followModel.bigImage.show(img)">
+                                    <img ng-src="{{img}}" alt="图片" width="100" height="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <p style="text-align:center;color:#999999">没有更多了</p>
+        </div>
+        <div class="no-follow" ng-show="!https.followlist && followModel.list.length == 0">
+            <div>
+                <img src="images/kong.png" alt="">
+            </div>
+        </div>
+        <div ng-show="https.followlist" class="no-follow">
+            <div class="ball-grid-pulse">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div class="m-follow-bottom">
+        <div class="edit-content">
+            <div class="edit-item" ng-class="{disabled:mainFlag || !authPermission.insertComment}">
+                <div class="title">
+                    店铺状态：
+                </div>
+                <select ng-model="followModel.editModel.shop_status" ng-options="option.id as option.name for option in followModel.status"
+                    ng-disabled="mainFlag || !authPermission.insertComment" ng-class="{disabled:mainFlag || !authPermission.insertComment}">
+                    <option value="" hidden></option>
+                </select>
+            </div>
+            <div class="edit-item" ng-class="{disabled:mainFlag || !authPermission.insertComment}">
+                <div class="title">
+                    联系方式：
+                </div>
+                <select ng-model="followModel.editModel.contact_way" ng-options="option.id as option.name for option in followModel.contactTypes"
+                    ng-disabled="mainFlag || !authPermission.insertComment" ng-class="{disabled:mainFlag || !authPermission.insertComment}"
+                    ng-change="followModel.editModel.contact_phone = ''">
+                    <option value="" hidden></option>
+                </select>
+            </div>
+            <div class="edit-item" ng-class="{disabled:mainFlag || !authPermission.insertComment}">
+                <div class="title">
+                    联系人：
+                </div>
+                <input type="text" ng-model="followModel.editModel.contact_name" placeholder="点击输入" maxlength="15" ng-disabled="mainFlag || !authPermission.insertComment"
+                    ng-class="{disabled:mainFlag || !authPermission.insertComment}">
+            </div>
+            <div class="edit-item" ng-class="{disabled:mainFlag || !authPermission.insertComment}">
+                <div class="title">
+                    联系号码：
+                </div>
+                <input ng-show="'156'.indexOf(followModel.editModel.contact_way) != -1" type="text" ng-model="followModel.editModel.contact_phone"
+                    placeholder="点击输入" ng-disabled="mainFlag || !authPermission.insertComment" ng-class="{disabled:mainFlag || !authPermission.insertComment}"
+                    ng-keyup="replaceNum(followModel.editModel,'contact_phone')">
+                <input type="text" ng-show="'24'.indexOf(followModel.editModel.contact_way) != -1" ng-model="followModel.editModel.contact_phone"
+                    placeholder="点击输入" ng-disabled="mainFlag || !authPermission.insertComment" ng-class="{disabled:mainFlag || !authPermission.insertComment}"
+                    ng-keyup="replaceNum3(followModel.editModel,'contact_phone')">
+                <input type="text" ng-show="followModel.editModel.contact_way == 3 || followModel.editModel.contact_way ==''" ng-model="followModel.editModel.contact_phone"
+                    placeholder="点击输入" ng-disabled="mainFlag || !authPermission.insertComment" ng-class="{disabled:mainFlag || !authPermission.insertComment}">
+            </div>
+            <div class="edit-item" ng-class="{disabled:mainFlag || !authPermission.insertComment}">
+                <div class="title">
+                    成熟度：
+                </div>
+                <select ng-model="followModel.editModel.level_id" ng-options="option.id as option.name for option in followModel.levels"
+                    ng-change="followModel.methods.canChangeTime()" ng-disabled="mainFlag || !authPermission.insertComment" ng-class="{disabled:mainFlag || !authPermission.insertComment}">
+                    <option value="" hidden></option>
+                </select>
+                <label ng-show="followModel.editModel.level_id == 8" class="select-default">XO类</label>
+            </div>
+            <div class="edit-item" ng-class="{disabled:mainFlag || !authPermission.insertComment}">
+                <div class="title">
+                    联系类型：
+                </div>
+                <select ng-model="followModel.editModel.is_effect" ng-options="option.id as option.name for option in followModel.effect"
+                    ng-disabled="mainFlag || !authPermission.insertComment" ng-class="{disabled:mainFlag || !authPermission.insertComment}">
+                    <option value="" hidden></option>
+                </select>
+            </div>
+            <div class="edit-item disabled">
+                <div class="title">
+                    本次时间：
+                </div>
+                <input id="1" type="text" time-value="followModel.editModel.contact_time" ng-model="followModel.editModel.contact_time" time-module
+                    placeholder="点击选择" style="width: 160px;" format="yyyy-MM-dd HH:mm" max-date="#F{$dp.$D(\'2\')}" disabled>
+            </div>
+            <div class="edit-item" ng-class="{disabled:mainFlag || !authPermission.insertComment || !followModel.canChange}">
+                <div class="title">
+                    预约时间：
+                </div>
+                <input id="2" type="text" time-value="followModel.editModel.next_time" ng-model="followModel.editModel.next_time" time-module
+                    placeholder="点击选择" style="width: 160px;" format="yyyy-MM-dd HH:mm" min-date="#F{$dp.$D(\'1\')}" ng-disabled="mainFlag || !authPermission.insertComment || !followModel.canChange"
+                    ng-class="{'disabled':mainFlag || !authPermission.insertComment || !followModel.canChange , 'pointer':!(mainFlag || !authPermission.insertComment || !followModel.canChange)}">
+            </div>
+        </div>
+        <div class="edit-footer">
+            <table>
+                <tbody>
+                    <tr height="67">
+                        <td>
+                            <textarea ng-disabled="mainFlag || !authPermission.insertComment" ng-class="{disabled:mainFlag || !authPermission.insertComment}"
+                                type="text" ng-model="followModel.editModel.info" placeholder="点击输入" maxlength="200" style="resize:none;"></textarea>
+                        </td>
+                        <td rowspan="2" style="border:none;width:105px;">
+                            <button class="btn-release" ng-disabled="!isOrigin || mainFlag || !authPermission.insertComment" ng-class="{disabled:!isOrigin || mainFlag || !authPermission.insertComment}"
+                                ng-click="followModel.methods.insert()">发布</button>
+                        </td>
+                    </tr>
+                    <tr height="36">
+                        <td class="file-add-bar">
+                            <a ng-show="!(mainFlag || !authPermission.insertComment)" style="text-decoration:underline;line-height:36px;" href="javascript:void(0)"
+                                ng-click="followModel.methods.fileClick()">添加图片</a>
+                            <div class="imgs-list" ng-repeat="item in followModel.fileNames">
+                                <span ng-bind="item" title="{{item}}"></span>
+                                <i class="clear" ng-click="followModel.methods.fileDelete($index)"></i>
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="file" accept="image/jpg,image/png,image/jpeg" style="display: none" id="payload" onchange="angular.element(this).scope().followModel.methods.fileAdd()"
+                multiple/>
+        </div>
+    </div>
+</div>
+<!-- 跟进图片大图预览 -->
+<div ng-if="followModel.bigImage.flag" style="display: block" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="false">
+    <div class="modal-backdrop fade in">
+    </div>
+    <div class="image-ctn">
+        <img class="close-ctn" src="images/close.png" ng-click="followModel.bigImage.hide()"></img>
+        <img ng-src="{{followModel.bigImage.data}}" alt="大图">
+    </div>
+</div>

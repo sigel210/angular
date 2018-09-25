@@ -1,0 +1,261 @@
+<header>
+    <div class="tab-bar">
+        <button class="menu-btn-back" onclick='window.history.back()'>
+            <i class="icon-back"></i>
+        </button>
+        <span class="menu-tit">执行管理</span>
+    </div>
+</header>
+<div class="con-page-left-menu">
+    <div class="tab-left-menu-con">
+        <div>
+            <div class="tab-left-menu-bar">
+                <div class="form-group">
+                    <select class="label" ng-model="leftSreach_M.type" ng-change="leftSreach_M.reset()">
+                        <option value="1">班次状态</option>
+                        <option value="2">执行班次</option>
+                    </select>
+                    <select class="inp" ng-model="leftSreach_M.data.status" ng-show="leftSreach_M.type==1">
+                        <option value="">全部</option>
+                        <option value="100">未打单</option>
+                        <option value="110">打单中</option>
+                        <option value="120">执行中</option>
+                        <option value="130">已完结</option>
+                    </select>
+                    <input class="inp" ng-show="leftSreach_M.type==2" ng-model="leftSreach_M.data.class_name" />
+                </div>
+                <button class="search" ng-click="leftSreach_M.classListSearch()">搜索</button>
+            </div>
+            <ul class="tab-left-menu-list  info-con" ng-if="leftSreach_M.list_show">
+                <li ng-repeat="item in tabMenuConList" ng-click="clickTabMenu(item)" ng-class="{'active': uiModel.class_id == item.class_id}">
+                    <span class="carry-status" ng-bind="item.status|opClassStatus"></span>
+                    <span class="class-id" ng-bind="item.class_name" title="{{item.class_name}}"></span>
+                </li>
+            </ul>
+            <div class="tab-left-menu-list kong-center" ng-if="!leftSreach_M.list_show">
+                <span>没有你想要的数据</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cont-page-w cont-page-right-menucon" ng-init="setRootScope();" ng-show="!show">
+    <!-- 搜索模块 -->
+    <div class="search-wraps search-wrap-new">
+        <div class="search-max-w">
+            <div class="form-group">
+                <label>客户ID：</label>
+                <div class="search-box">
+                    <input type="text" name="name-tit" ng-model="uiModel.filters.customer" class="search-keyup-enter input-name-w" placeholder="点击输入">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>学员名字：</label>
+                <div class="search-box">
+                    <input type="text" name="name-tit" ng-model="uiModel.filters.name" class="search-keyup-enter input-name-w" placeholder="点击输入">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>学员状态：</label>
+                <div class="search-box">
+                    <select name="name" class="select-name-w search-keyup-enter" ng-model="uiModel.filters.status" ng-options="item.id as item.name for item in uiModel.selectList.studentStatusList">
+                    </select>
+                    <label ng-show="!uiModel.filters.status&&uiModel.filters.status!='0'">点击选择</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>淘大订单号：</label>
+                <div class="search-box">
+                    <input type="text" name="name-tit" ng-model="uiModel.filters.trade_no" class="search-keyup-enter input-name-w" placeholder="点击输入">
+                </div>
+            </div>
+        </div>
+        <div class="search-btn-wrap">
+            <button class="btn-search" ng-click="search()">搜索</button>
+            <button class="btn-reset" ng-click="reset()">清空</button>
+        </div>
+    </div>
+    <div class="product-details">
+        <div class="product-max-w clearfix">
+            <div class="detail-group">
+                <span class="label">产品线</span>
+                <div class="detail-con" ng-bind="classInfo.second_product_name|lengthCut:10">
+                </div>
+            </div>
+            <div class="detail-group">
+                <span class="label">产品</span>
+                <div class="detail-con" ng-bind="classInfo.third_product_name|lengthCut:10">
+                </div>
+            </div>
+            <div class="detail-group">
+                <span class="label">班主任</span>
+                <div class="detail-con" ng-bind="classInfo.account|lengthCut:10">
+                </div>
+            </div>
+            <div class="detail-group">
+                <span class="label">服务起止</span>
+                <div class="detail-con">
+                    <span class="time1" ng-bind="classInfo.service_start_time|dateFormat:10"></span>
+                    <span class="time1" style="width:20px;" ng-show="classInfo.service_start_time">至</span>
+                    <span class="time1" ng-bind="classInfo.service_end_time|dateFormat:10"></span>
+                </div>
+            </div>
+            <div class="detail-group">
+                <span class="label">执行班次</span>
+                <div class="detail-con" ng-bind="classInfo.class_name" title="{{classInfo.class_name}}">
+                </div>
+            </div>
+            <div class="detail-group">
+                <span class="label">班次状态</span>
+                <div class="detail-con" ng-bind="classInfo.status|opClassStatus">
+                </div>
+            </div>
+            <div class="detail-group">
+                <span class="label">订单数</span>
+                <!-- 字段修改 -->
+                <div class="detail-con">
+                    <span ng-bind="orderList.class_info.order_num || '0'" style="color: steelblue;cursor: pointer;" ng-click="orderListModal.show()"></span>
+                </div>
+            </div>
+        </div>
+        <div class="product-btn-wrap">
+            <!--  <button class="btn btn-blue" ng-if="authPermission.setClassServiceDate" ng-click="changeClassBtn2&&showModal('servicePeriodSet')" ng-class="{'btndisabled':!changeClassBtn2}">服务期设置</button> -->
+            <button class="btn btn-blue" ng-if="authPermission.finishClass" ng-click="finishClassConfirm(classInfo.class_name)" ng-class="{'btndisabled':!changeClassBtn3}">班次完结</button>
+            <a href="javascript:;" class="export" ng-click="exportSurvey()">导出店铺调研表</a>
+        </div>
+    </div>
+    <!-- 列表模块 -->
+    <div class="table-ptop-w2 table-ptop-w3">
+        <div class="table-foot">
+            <div class="btn-left">
+                <!--  <button class="btn btn-blue" ng-if="authPermission.editBatchClass" ng-click="changeClassBtn&&showModal('changeClass')" ng-class="{'btndisabled':!changeClassBtn}">变更执行班次</button> -->
+                <button class="btn btn-blue" ng-if="authPermission.finishExecute" ng-click="carryOut()" ng-class="{'btndisabled':!changeClassBtn3}">确认执行</button>
+            </div>
+            <a href="javascript:;" style="float: right;line-height: 58px;" class="export" ng-click="downloadStudent()">下载学员名单</a>
+        </div>
+        <table class="table-list table-fixed js-table" width="100%">
+            <thead>
+                <tr>
+                    <th width="16">
+                        <input type='checkbox' ng-checked='checkedList.length === list.length' ng-click='isCheckedAll($event)' />
+                    </th>
+                    <th width="16">序</th>
+                    <th width="72">学员名字</th>
+                    <th style="min-width:120px;">客户ID（店铺主旺旺）</th>
+                    <th width="48">学员状态</th>
+                    <th style="min-width:96px;">合同班次</th>
+                    <th width="110">确认营收</th>
+                    <th style="min-width:120px;">淘大订单号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="load-tips">
+                    <td ng-show="!list || list.length === 0" colspan="8">
+                        <div class="loading-cont" ng-show="searchStatus=='loading'"></div>
+                        <div ng-show="searchStatus=='noData'" class="load-tips-cont">没有你想要的数据</div>
+                        <div ng-show="searchStatus=='reload'" class="load-tips-cont">加载超时，点击
+                            <a ng-click="search()">重新加载</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-repeat='item in list' ng-click='seeDetailCustomer(item.customer_id,item.order_id)' ng-class="{active: temp == $index}">
+                    <td>
+                        <input ng-disabled="item.student_status=='300'||item.student_status=='500'||item.student_status=='400'" type='checkbox' ng-checked='isChecked(item.student_id)'
+                            ng-click='changeChecked(item.student_id, $event)' />
+                    </td>
+                    <td ng-bind="$index + 1"></td>
+                    <td ng-bind="item.name" title="{{item.name}}"></td>
+                    <td ng-bind="item.customer|lengthCut:20" title="{{item.customer}}"></td>
+                    <td ng-bind="item.student_status | studentStatus"></td>
+                    <td ng-bind="item.order_class_name" title="{{item.order_class_name}}"></td>
+                    <td ng-bind="item.execute_price"></td>
+                    <td ng-bind="item.trade_no" title="{{item.trade_no}}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <!--执行班次-->
+        <div style="display: block;" ng-if="modalList.changeClass" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="false">
+            <div class="modal-backdrop fade in"></div>
+            <div class="modal-dialog modal-sm responseHeight">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="btn-close" data-dismiss="modal">
+                            <i class="icon-close" ng-click="hideModal('changeClass')"></i>
+                        </div>
+                        <h4 class="modal-title">执行班次</h4>
+                    </div>
+                    <div class="modal-body modal-body115">
+                        <div class="form-wrap add-edit-form form-wrap-w-sm" style="margin-top: 30px">
+                            <p>
+                                <span class="table-name">执行班次</span>
+                                <span class="table-text">
+                                    <select class="select-w120" ng-model="changeClassData.new_class_id" ng-options="class.class_id as class.class_name for class in classList">
+                                    </select>
+                                    <label ng-show="!changeClassData.new_class_id || changeClassData.new_class_id == '0'" class="select-tip">点击选择</label>
+                                </span>
+                                <i class="table-clear" ng-click="changeClassData.new_class_id = ''"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-blue full-btn" ng-click="changeClass(changeClassData.new_class_id)">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div edit-modal size="lg" config="orderListModal" confirm="orderListModal.confirm()">
+            <div class="m-form-wrap add-edit-form form-wrap-w-sm" style="width: auto">
+                <div class="u-table-form">
+                    <table class="table-marging table-fixed">
+                        <thead class="bg-gray">
+                            <tr>
+                                <th width="32" class="text-center">序</th>
+                                <th>客户ID（店铺主旺旺）</th>
+                                <th width="64">订单状态</th>
+                                <th width="80">销售</th>
+                                <th width='100' class="f-position-r">
+                                    <span>订单学员数</span>
+                                    <span class="icon_help" ng-mouseover="hover = true" ng-mouseleave="hover = false"></span>
+                                    <span class="pop_help" ng-show="hover">销售创建订单时所填写的该班次学员的数量，合计值不包含已退款学员</span>
+                                </th>
+                                <th width='100' class="f-position-r">
+                                    <span>创建学员数</span>
+                                    <span class="icon_help" ng-mouseover="hover0 = true" ng-mouseleave="hover0 = false"></span>
+                                    <span class="pop_help" ng-show="hover0">销售订单中，学员列表中该班次的学员数量，合计值不包含已退款学员</span>
+                                </th>
+                                <th width='122' class="f-position-r">
+                                    <span>审核通过学员数</span>
+                                    <span class="icon_help" ng-mouseover="hover1 = true" ng-mouseleave="hover1 = false"></span>
+                                    <span class="pop_help" ng-show="hover1">审核通过订单中该班次的学员数量，合计值不包含已退款学员</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>合计</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td ng-bind="orderList.orderData.order_total_num || '0'">-</td>
+                                <td ng-bind="orderList.orderData.order_create_total_num || '0'">-</td>
+                                <td ng-bind="orderList.orderData.approval_total_num || '0'">-</td>
+                            </tr>
+                            <tr ng-repeat="item in orderList.orderData.order_list">
+                                <td ng-bind="$index+1"></td>
+                                <td ng-bind="item.customer || '-'" title="item.customer || '-'"></td>
+                                <td ng-bind="item.order_status_name || '-'"></td>
+                                <td ng-bind="item.account || '-'"></td>
+                                <td ng-bind="item.order_num || '0'"></td>
+                                <td ng-bind="item.order_create_num || '0'"></td>
+                                <td ng-bind="item.approval_num || '0'"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

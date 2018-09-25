@@ -1,0 +1,34 @@
+<!-- 赠送信息-->
+<div class="list-group right-detail" ng-if="detailsWrap.data.second_product_id==10013||detailsWrap.data.second_product_id==10217">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>赠送信息
+        </span>
+    </p>
+    <div >
+        <p class="list-item">
+            <span class="title">有无成本</span>
+            <span class="info" ng-bind="detailsWrap.data.gift_cost"></span>
+        </p>
+        <p class="list-item">
+            <span style="float:left" class="title">赠送理由</span>
+            <span style="float:left;word-break:break-all;white-space:pre-wrap;max-width:430px" ng-bind="detailsWrap.data.gift_reason"></span>
+        </p>
+    </div>
+</div>
+<div class="list-group right-detail" ng-if="detailsWrap.data.second_product_id==10013||detailsWrap.data.second_product_id==10217">
+    <div class="smallBox_detail">
+        <p class="list-item" style="background-color:#e4e4e4">
+            <span class="title">产品编号</span>
+            <span class="info" ng-bind=" detailsWrap.data.gift_contract_no"></span>
+        </p>
+        <p class="list-item">
+            <span class="title">产品名称</span>
+            <span class="info" ng-bind="detailsWrap.data.gift_product_name"></span>
+        </p>
+        <p class="list-item auto-height">
+            <span style="float:left" class="title">赠送服务</span>
+            <span style="float:left;word-break:break-all;white-space:pre-wrap;" ng-bind="detailsWrap.data.gift_data"></span>
+        </p>
+    </div>
+</div>

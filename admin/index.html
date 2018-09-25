@@ -1,0 +1,212 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache" />
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate" />
+    <META HTTP-EQUIV="expires" CONTENT="0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="renderer" content="webkit" />
+    <title>宙斯|天下网商CRM</title>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./css/base.css?v=1.0.0.1">
+    <link rel="stylesheet" type="text/css" href="./css/other.css?v=1.0.0.1">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/select.min.css?v=1.0.0.1">
+    <link rel="stylesheet" type="text/css" href="./css/main.css?v=1.0.0.1">
+    <link rel="icon" href="./images/crm_ico (2).ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="./images/crm_ico (2).ico" type="image/x-icon" />
+    <link rel="stylesheet" href="js/lib/My97DatePicker/skin/twoer/datepicker.css">
+    <!-- 滚动条美化 -->
+    <link rel="stylesheet" href="./js/lib/jquery.scrollbar-gh-pages/includes/prettify/prettify.css" />
+    <link rel="stylesheet" href="./js/lib/jquery.scrollbar-gh-pages/jquery.scrollbar.css" />
+    <!-- 富文本编辑器 -->
+    <link rel="stylesheet" type="text/css" href="./js/lib/wangEditor-2.1.23/dist/css/wangEditor.min.css">
+
+
+    <style type="text/css">
+        .scroll-y {
+            overflow-y: initial;
+        }
+    </style>
+
+</head>
+
+<body ng-controller='myController'>
+    <div class="header">
+        <div class="logo">
+            <span class="logo-box"></span>
+        </div>
+        <ul class="user-bar">
+            <!-- <li class="br-line" ng-click="msgnum = 0;statego('message');">
+                <a class="bar-msg" style="display:inline-block;">消息
+                    <span ng-class="{count2:msgnum >0 }" ng-show="msgnum >0" ng-bind="msgnum"></span>
+                </a>
+            </li> -->
+            <li class="br-line" ng-click="statego('personalCenter')">
+                <a class="account-box" ng-bind='user.name'></a>
+            </li>
+            <li ng-click='logoutConfirm()'>
+                <a class="logout-btn">退出</a>
+            </li>
+        </ul>
+        <!-- <span class="version-btn" ng-click="statego('version_illustrate')">版本说明</span> -->
+        <!-- <div my-message class="alert-bar"></div> -->
+    </div>
+    <div class="main js-contheight">
+        <ul class="menu">
+            <span class="menu-bar">
+                <i class="icon-menu"></i>
+            </span>
+            <ul class="menu-nav">
+                <li id="{{item.page}}" ng-repeat="item in functionArray" ng-class="{current: oldId == item.page}">
+                    <a href="javascript:void(0)" ng-click="statego(item.page,item.name)">
+                        <i class="{{item.icon}}"></i>
+                        <span ng-bind="item.name"></span>
+                        <img class="new-icon" ng-class="{'intShow':item.isNew}" ng-if="item.isNew" src="./images/left-new-icon.png" />
+                    </a>
+                </li>
+            </ul>
+            <!-- <div class="help-position initHide" ng-class="{'intShow':pageshow}">
+            <div class="help-box" ng-show="help.show">
+                <div class="help-title">
+                    <span ng-bind="help.title"></span>
+                    <img src="images/help-close-btn.png" class="help-close" alt="close" ng-click="help.toggle()"
+                    />
+                </div>
+                <div>
+                    <div class="help-content-box">
+                        <div class="help-content scrollbar-dynamic" data-jquery-scrollbar="help.jqueryScrollbarOptions">
+                            <div ng-bind-html="help.content"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="help-triangle"></div>
+            </div>
+            <img ng-src="{{help.btnImg}}" class="help-img breathe-btn" ng-show="oldId == 'customer'" alt="help" ng-click="help.toggle()"
+            />
+        </div> -->
+            <!--  <ul class="menu-btn">
+            <img src="images/btn-menu-pic.png" />
+            <li ng-repeat="item in systems"><a style="display: block" href="{{item.url}}" target="_blank"><i class=""></i>{{item.name}}</a></li>
+        </ul> -->
+            <!-- 成交显示 -->
+            <!-- <div real-time-data></div> -->
+        </ul>
+        <div class="wrap" id="uiViews" ui-view></div>
+        <div class='containers' id='containers'></div>
+        <div ng-click="lightbox.hide()" class="lightbox" id="lightbox"></div>
+
+    </div>
+    <!-- 弹窗模块 -->
+    <div>
+        <!-- 版本说明 -->
+        <div class="modal fade in initHide" ng-class="{'intShow':editModal.isShow}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="false">
+            <div class="modal-backdrop fade in"></div>
+            <div class="modal-dialog modal-sm responseHeight">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="btn-close" ng-show="!editModal.closeShow" data-dismiss="modal" ng-bind="countDown">
+                            </i>
+                        </div>
+                        <div class="btn-close" ng-show="editModal.closeShow" data-dismiss="modal">
+                            <i class="icon-close" ng-click="editModal.hide()"></i>
+                        </div>
+                        <h4 class="modal-title" ng-bind="editModal.title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-wrap add-edit-form form-wrap-w-sm" name="_form" novalidate>
+                            <p>
+                                <span class="table-name">版本号</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="editModal.data.name" ng-disabled="true" name="class_name" placeholder="点击输入" required>
+                                </span>
+                            </p>
+                            <p>
+                                <span class="table-name">标题</span>
+                                <span class="table-text">
+                                    <input type="text" ng-model="editModal.data.title" ng-disabled="true" name="class_name" placeholder="点击输入" maxlength="35"
+                                        required>
+                                </span>
+                            </p>
+                        </form>
+                        <form class="form-wrap form-wrap-w-sm" name="_form" novalidate>
+                            <div style="margin: 10px 0">
+                                <span class="icon-title"></span>正文</div>
+                            <div ng-bind-html="editModal.data.content" style="padding: 10px;background: #fff"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 通告信息 -->
+        <div class="modal fade in initHide" ng-class="{'intShow':annunciate_M.isShow}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="false">
+            <div class="modal-backdrop fade in"></div>
+            <div class="modal-dialog modal-sm responseHeight">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="btn-close" ng-show="!annunciate_M.closeShow" data-dismiss="modal" ng-bind="countDown"></div>
+                        <div class="btn-close" ng-show="annunciate_M.closeShow" data-dismiss="modal">
+                            <i class="icon-close" ng-click="annunciate_M.guanbiEvent()"></i>
+                        </div>
+                        <h4 class="modal-title" ng-bind="annunciate_M.title"></h4>
+                    </div>
+                    <div class="modal-body" style="padding:20px;bottom:0;">
+                        <div style="text-align: center;
+                    padding-bottom: 30px;
+                    border-bottom: 1px solid #e5e5e5;
+                    margin-bottom: 30px;
+                    color:#999">
+                            <p style="font-size:20px;color:#333;word-break:break-all;padding-bottom:8px;" ng-bind="notice_title"></p>
+                            <span style="display: inline-block;padding-right:40px;">类型：{{notice_type | noticeTypeFilter}}</span>
+                            <span ng-bind="'时间: '+create_time"></span>
+                        </div>
+                        <div ng-bind-html="notice_content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/lib/jquery.scrollbar-gh-pages/includes/prettify/prettify.js"></script>
+    <script src="./js/lib/jquery-3.1.0.min.js"></script>
+    <script src="./js/lib/extend.js"></script>
+    <!-- <script src="./js/lib/socket.io.js"></script> -->
+    <script src='./js/lib/angular.min.js'></script>
+    <script type="text/javascript" src="./js/lib/wangEditor-2.1.23/dist/js/wangEditor.min.js"></script>
+    <script src="js/lib/jquery.scrollbar-gh-pages/jquery.scrollbar.js"></script>
+    <script src='./js/lib/angular-animate.min.js'></script>
+    <script src='./js/lib/angular-cookies.min.js'></script>
+    <script src="./js/lib/bootstrap.min.js"></script>
+    <script src='./js/lib/angular-ui-router.min.js'></script>
+    <script src="./js/lib/angular-sanitize.min.js"></script>
+    <script src='./js/lib/bootstrap-datetimepicker.min.js'></script>
+    <script src="./js/lib/bootstrap-datetimepicker.language.js"></script>
+    <script src='./js/lib/zeroclipboard/ZeroClipboard.min.js'></script>
+    <script src='./js/lib/zeroclipboard/ngClip.js'></script>
+    <script src='./js/lib/angular-ui-select/select.min.js'></script>
+    <script src='./js/lib/script.js'></script>
+    <script src='./js/lib/route.js?v=1.0.0.1'></script>
+    <script src='./js/lib/service.js'></script>
+    <script src='./js/lib/filters.js?v=1.0.0.1'></script>
+    <script src='./js/lib/userservice.js'></script>
+
+
+    <!-- <script src='./js/components/message/directive.js?v=1.0.0.1'></script> -->
+    <!-- <script src="./js/components/realTimeData/directive.js?v=1.0.0.1"></script> -->
+
+    <script src='./js/controller/index/index.js?v=1.0.0.1.1'></script>
+    <script src="./js/lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script src='./js/lib/upload.js'></script>
+    <script src='./js/lib/common.js'></script>
+    <script src="js/lib/My97DatePicker/WdatePicker.js"></script>
+</body>
+
+</html>

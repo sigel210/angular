@@ -1,0 +1,356 @@
+<div class="c-detail-ctn extends-box has-footer">
+    <div class="c-detail-ctn-top" style="height:201px;">
+        <div class="table-area right-table" ng-show="orderModel.second_product_id != 10007 && orderModel.second_product_id != 10008">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="16">序</th>
+                        <th>姓名</th>
+                        <th width="80">手机</th>
+                        <th width="130">报名时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="!https.studentlist" ng-class="{'no-pointer':studentModel.list.length == 1,'current': item.student_id == studentModel.tempStuId}"
+                        ng-repeat="item in studentModel.list" ng-click="studentModel.methods.changeStu(item.student_id)">
+                        <td ng-bind="$index + 1"></td>
+                        <td ng-bind="item.name" title="{{item.name}}"></td>
+                        <td ng-bind="item.phone"></td>
+                        <td ng-bind="item.apply_time == '0000-00-00 00:00:00' ? '' : item.apply_time"></td>
+                    </tr>
+                    <tr class="no-pointer" ng-if="!https.studentlist && studentModel.list && studentModel.list.length == 0">
+                        <td colspan="4">
+                            <div class="no-content">
+                                <img src="images/kong.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="no-pointer" ng-show="https.studentlist">
+                        <td colspan="4">
+                            <div class="no-content">
+                                <div class="ball-grid-pulse">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-area right-table" ng-show="orderModel.second_product_id == 10007">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="16">序</th>
+                        <th>姓名</th>
+                        <th width="104">执行营收</th>
+                        <th width="120">学员状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="!https.studentlist" ng-class="{'no-pointer':studentModel.list.length == 1,'current': item.student_id == studentModel.tempStuId}"
+                        ng-repeat="item in studentModel.list" ng-click="studentModel.methods.changeStu(item.student_id)">
+                        <td ng-bind="$index + 1"></td>
+                        <td ng-bind="item.name" title="{{item.name}}"></td>
+                        <td ng-bind="item.execute_price | number:2"></td>
+                        <td ng-bind="item.status | studentStatus"></td>
+                    </tr>
+                    <tr class="no-pointer" ng-if="!https.studentlist && studentModel.list && studentModel.list.length == 0">
+                        <td colspan="4">
+                            <div class="no-content">
+                                <img src="images/kong.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="no-pointer" ng-show="https.studentlist">
+                        <td colspan="4">
+                            <div class="no-content">
+                                <div class="ball-grid-pulse">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-area right-table" ng-show="orderModel.second_product_id == 10008">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="16">序</th>
+                        <th>姓名</th>
+                        <th width="104">执行营收</th>
+                        <th width="120">执行状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="!https.studentlist" ng-class="{'no-pointer':studentModel.list.length == 1,'current': item.student_id == studentModel.tempStuId}"
+                        ng-repeat="item in studentModel.list" ng-click="studentModel.methods.changeStu(item.student_id)">
+                        <td ng-bind="$index + 1"></td>
+                        <td ng-bind="item.name" title="{{item.name}}"></td>
+                        <td ng-bind="item.execute_price | number:2"></td>
+                        <td ng-bind="item.status | studentStatus"></td>
+                    </tr>
+                    <tr class="no-pointer" ng-if="!https.studentlist && studentModel.list && studentModel.list.length == 0">
+                        <td colspan="4">
+                            <div class="no-content">
+                                <img src="images/kong.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="no-pointer" ng-show="https.studentlist">
+                        <td colspan="4">
+                            <div class="no-content">
+                                <div class="ball-grid-pulse">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slide-footer normal-footer">
+            <button class="btn btn-blue" ng-if="authPermission.insertStu" ng-click="studentModel.methods.initInsertModel()" ng-class="{'btn-disabled':!isOrigin || mainFlag || rFlag || !orderModel.order_id || buttons.common}">新建学员</button>
+        </div>
+    </div>
+    <div class="c-detail-ctn-bottom rest-box">
+        <div class="outer-ctn" ng-if="!https.studentdetail && studentModel.tempStuId != 0">
+            <p class="menu-title">学员详情</p>
+            <div class="detail-ctn">
+                <p class="edit-title">
+                    学员信息
+                </p>
+                <div class="list-group right-detail">
+                    <div class="list-item">
+                        <p class="title">学员编号</p>
+                        <p class="info" ng-bind="studentModel.detail.student_no"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">姓名</p>
+                        <p class="info" ng-bind="studentModel.detail.name"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">性别</p>
+                        <p class="info" ng-bind="studentModel.detail.sex | sex"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">学历</p>
+                        <p class="info" ng-bind="studentModel.detail.educational | educational"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">职务</td>
+                        <p class="info" ng-bind="studentModel.detail.job"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">手机</td>
+                        <p class="info" ng-bind="studentModel.detail.phone"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">邮箱</td>
+                        <p class="info" ng-bind="studentModel.detail.email"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">QQ</td>
+                        <p class="info" ng-bind="studentModel.detail.qq"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">身份证</td>
+                        <p class="info" ng-bind="studentModel.detail.card_id"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">报名时间</p>
+                        <p class="info" ng-bind="studentModel.detail.apply_time == '0000-00-00 00:00:00' ? '' : studentModel.detail.apply_time"></ptd>
+                    </div>
+                </div>
+                <p class="edit-title" ng-show="orderModel.second_product_id == 10007 || orderModel.second_product_id == 10008">
+                    执行信息
+                </p>
+                <div class="list-group right-detail" ng-show="orderModel.second_product_id == 10007 || orderModel.second_product_id == 10008">
+                    <div class="list-item">
+                        <p class="title">执行班次</p>
+                        <p class="info" ng-bind="studentModel.detail.class_name"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">学员状态</p>
+                        <p class="info" ng-bind="studentModel.detail.status | studentStatus"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">执行营收</p>
+                        <p class="info" ng-bind="studentModel.detail.execute_price | number:2"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">执行时间</p>
+                        <p class="info" ng-bind="studentModel.detail.execute_time"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">执行者</p>
+                        <p class="info" ng-bind="studentModel.detail.teacher_name"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="no-item" ng-if="!https.studentdetail && studentModel.tempStuId == 0">
+            <img src="images/kong.png">
+        </div>
+        <div class="no-item" ng-if="https.studentdetail">
+            <div class="no-content">
+                <div class="ball-grid-pulse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="slide-footer normal-footer">
+    <button class="btn btn-blue" ng-if="isOrigin && !rFlag && authPermission.deleteStudent" ng-disabled="mainFlag || !authPermission.deleteStudent || orderModel.order_id == 0 || studentModel.tempStuId == 0"
+        ng-class="{'btn-disabled': mainFlag || !authPermission.deleteStudent || orderModel.order_id == 0 || studentModel.tempStuId == 0 || buttons.common}"
+        ng-click="studentModel.methods.showDeleteStudent()">删除</button>
+    <button class="btn btn-blue" ng-if="isOrigin && !rFlag && authPermission.studentEdit" ng-disabled="mainFlag || !authPermission.studentEdit || orderModel.order_id == 0 || studentModel.tempStuId == 0"
+        ng-class="{'btn-disabled': mainFlag || !authPermission.studentEdit || orderModel.order_id == 0 || studentModel.tempStuId == 0 || buttons.studentEdit}"
+        ng-click="studentModel.editModal.show()">学员编辑</button>
+    <button class="btn btn-blue" ng-if="isOrigin && !rFlag && authPermission.changeClassRank && orderModel.second_product_id != 10000" ng-disabled="mainFlag || !authPermission.changeClassRank || orderModel.order_id == 0 || studentModel.tempStuId == 0"
+        ng-class="{'btn-disabled': mainFlag || !authPermission.changeClassRank || orderModel.order_id == 0 || studentModel.tempStuId == 0 || buttons.changeClass}"
+        ng-click="studentModel.changeClass.show()">变更执行班次</button>
+</div>
+<!--学员信息编辑-->
+<div ng-if="studentModel.editModal.flag" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="studentModel.editModal.hide()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="studentModel.editModal.title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p>
+                        <span class="table-name">姓名</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="studentModel.editModal.data.name" placeholder="点击输入" maxlength="15">
+                        </span>
+                        <i class="table-clear" ng-click="studentModel.editModal.data.name = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">性别</span>
+                        <span class="table-text">
+                            <select class="select-w120" ng-model="studentModel.editModal.data.sex" ng-options="option.id as option.name for option in studentModel.selectList.sex "
+                                ng-change="">
+                                <option></option>
+                            </select>
+                            <label ng-show="!studentModel.editModal.data.sex || studentModel.editModal.data.sex == ''" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="studentModel.editModal.data.sex = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">学历</span>
+                        <span class="table-text">
+                            <select class="select-w120" ng-model="studentModel.editModal.data.educational" ng-options="option.id as option.name for option in studentModel.selectList.education">
+                                <option></option>
+                            </select>
+                            <label ng-show="studentModel.editModal.data.educational == ''" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="studentModel.editModal.data.educational = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">职务</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="studentModel.editModal.data.job" placeholder="点击输入" maxlength="15">
+                        </span>
+                        <i class="table-clear" ng-click="studentModel.editModal.data.job = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">手机</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="studentModel.editModal.data.phone" placeholder="点击输入" ng-keyup="replaceNum(studentModel.editModal.data, 'phone')"
+                                maxlength="15">
+                        </span>
+                        <i class="table-clear" ng-click="studentModel.editModal.data.phone = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">邮箱</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="studentModel.editModal.data.email" placeholder="点击输入" maxlength="35">
+                        </span>
+                        <i class="table-clear" ng-click="studentModel.editModal.data.email = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">QQ</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="studentModel.editModal.data.qq" placeholder="点击输入" ng-keyup="replaceNum(studentModel.editModal.data, 'qq')"
+                                maxlength="15">
+                        </span>
+                        <i class="table-clear" ng-click="studentModel.editModal.data.qq = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">身份证</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="studentModel.editModal.data.card_id" placeholder="点击输入" maxlength="18">
+                        </span>
+                        <i class="table-clear" ng-click="studentModel.editModal.data.card_id = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">报名时间</span>
+                        <span class="table-text">
+                            <input id="1" type="text" time-value="studentModel.editModal.data.apply_time" ng-model="studentModel.editModal.data.apply_time"
+                                time-module placeholder="点击选择" style="width: 539px;" format="yyyy-MM-dd">
+                        </span>
+                        <i class="table-clear" ng-click="studentModel.editModal.data.apply_time = ''"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="studentModel.editModal.confirm()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--执行班次2-->
+<div  ng-if="studentModel.changeClass.flag"  style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="studentModel.changeClass.hide()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="studentModel.changeClass.title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p class="locked" ng-show="orderModel.second_product_id == 10007 || orderModel.second_product_id == 10008">
+                        <span class="table-name">产品</span>
+                        <span class="table-text" ng-bind="studentModel.detail.product_name">
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">执行班次</span>
+                        <span class="table-text">
+                            <select class="select-w120" ng-model="studentModel.changeClassId" ng-options="option.class_id as option.class_name for option in studentModel.selectList.classList">
+                                <option></option>
+                            </select>
+                            <label ng-show="!studentModel.changeClassId" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="studentModel.changeClassId = ''"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="studentModel.changeClass.confirm()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

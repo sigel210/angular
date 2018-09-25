@@ -1,0 +1,11 @@
+<div class="m-multiple-box" ng-click="toggle($event)">
+    <input type="text" placeholder="点击选择" ng-model="choose2show" disabled>
+    <!-- <div class="text-show" ng-style="{color:!choose2show ? '#ccc':'#333'}" ng-bind="choose2show || '点击输入' "></div> -->
+    <div class="u-multiple-select" ng-show="isShow"  ng-mouseleave="leave()">
+        <ul>
+            <li class="select-item" ng-repeat="item in list" ng-click="choose(item,$index,$event)">{{item[value]}}
+                <i class="icon-checked checked" ng-show="choosen.indexOf(item[key]) != -1"></i>
+            </li>
+        </ul>
+    </div>
+</div>

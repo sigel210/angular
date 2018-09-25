@@ -1,0 +1,236 @@
+<div class="c-detail-ctn extends-box has-footer">
+    <div class="c-detail-ctn-top" style="height:201px;"> 
+        <div class="table-area right-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="16">序</th>
+                        <th width="144">编号</th>
+                        <th>产品</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="!https.productlist" ng-class="{'no-pointer':productModel.productList.length == 1,'current':item.contract_id == productModel.chooseItem.contract_id}"
+                        ng-repeat="item in productModel.productList" ng-click="productModel.methods.choose(item)">
+                        <td ng-bind="$index + 1"></td>
+                        <td ng-bind="item.contract_no"></td>
+                        <td ng-bind="item.product_name"></td>
+                    </tr>
+                    <tr class="no-pointer" ng-if="!https.productlist && productModel.productList.length == 0">
+                        <td colspan="3">
+                            <div class="no-content">
+                                <img src="images/kong.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="no-pointer" ng-show="https.productlist">
+                        <td colspan="3">
+                            <div class="no-content">
+                                <div class="ball-grid-pulse">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slide-footer normal-footer">
+        </div>
+    </div>
+    <div class="c-detail-ctn-bottom content" ng-if="productModel.productList.length > 0">
+        <div class="u-tabs">
+            <ul>
+                <li ng-class="{current:productModel.tab == 0}" ng-click="productModel.methods.changeTab(0)">产品详情</li>
+                <li ng-class="{current:productModel.tab == 1}" ng-click="productModel.methods.changeTab(1)">变更内容</li>
+                <li ng-class="{current:productModel.tab == 2}" ng-click="productModel.methods.changeTab(2)">赠送内容</li>
+            </ul>
+        </div>
+        <!-- 产品详情 -->
+        <div class="detail-ctn" style="border-bottom:0;" ng-if="!https.productdetail && productModel.tab == 0">
+            <p class="c-title">产品信息</p>
+            <table class="c-table-d">
+                <tbody>
+                    <tr>
+                        <td>编号</td>
+                        <td ng-bind="productModel.detail.contract_no"></td>
+                    </tr>
+                    <tr>
+                        <td>产品线</td>
+                        <td ng-bind="productModel.detail.second_product_name"></td>
+                    </tr>
+                    <tr>
+                        <td>产品</td>
+                        <td ng-bind="productModel.detail.product_name"></td>
+                    </tr>
+                    <tr>
+                        <td>产品单价</td>
+                        <td ng-bind="productModel.detail.discount_price"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="c-title">服务内容</p>
+            <div class="c-list-box" ng-bind="productModel.detail.contract_remark">
+
+            </div>
+        </div>
+        <div class="detail-ctn c-border" style="height:208px;" ng-if="productModel.tab == 1">
+            <div class="c-title">
+                列表
+                <div ng-show="productModel.changeList.length > 0" style="float:right;" pages list="productModel.changeList" url="{{productModel.pageForChange.url}}"
+                    page="productModel.pageForChange.page" pageid="'1'" page-max-no="2" callback="productModel.methods.getChangeDetail(list)"
+                    filter="productModel.pageForChange.filters" ajaxing="productModel.pageForChange.ajaxing" size="mini"></div>
+            </div>
+            <table class="c-table">
+                <thead>
+                    <tr>
+                        <th width="16px">序</th>
+                        <th>变更编号</th>
+                        <th>创建日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="!productModel.pageForChange.ajaxing" ng-click="productModel.methods.chooseChange(item)" ng-repeat="item in productModel.changeList">
+                        <td ng-bind="$index+1"></td>
+                        <td ng-bind="item.change_no"></td>
+                        <td ng-bind="item.create_time"></td>
+                    </tr>
+                    <tr class="no-pointer" ng-if="!productModel.pageForChange.ajaxing && productModel.changeList.length == 0">
+                        <td colspan="3">
+                            <div class="no-content">
+                                <img src="images/kong.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="no-pointer" ng-show="productModel.pageForChange.ajaxing">
+                        <td colspan="3">
+                            <div class="no-content">
+                                <div class="ball-grid-pulse">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-if="!https.productchange && productModel.tab == 1 && productModel.changeList.length > 0" class="detail-ctn" style="border-top:0;border-bottom:0;">
+            <p class="c-title">变更信息</p>
+            <table class="c-table-d">
+                <tr class="bg-bar">
+                    <td colspan="2">变更后的订单</td>
+                </tr>
+                <tr>
+                    <td>订单金额</td>
+                    <td ng-bind="productModel.changeDetail.final.discount_price"></td>
+                </tr>
+                <tr style="height:105px;">
+                    <td>服务内容</td>
+                    <td>
+                        <pre ng-bind="productModel.changeDetail.final.contract_remark"></pre>
+                    </td>
+                </tr>
+            </table>
+            <table class="c-table-d">
+                <tr class="bg-bar">
+                    <td colspan="2">原服务内容需要变更的部分</td>
+                </tr>
+                <tr>
+                    <td>订单金额</td>
+                    <td ng-bind="productModel.changeDetail.need_change.discount_price"></td>
+                </tr>
+                <tr style="height:105px;">
+                    <td>服务内容</td>
+                    <td ><pre ng-bind="productModel.changeDetail.need_change.contract_remark"></pre></td>
+                </tr>
+            </table>
+            <table class="c-table-d">
+                <tr class="bg-bar">
+                    <td colspan="2">
+                        变更为的部分</td>
+                </tr>
+                <tr>
+                    <td>订单金额</td>
+                    <td ng-bind="productModel.changeDetail.change_to.discount_price"></td>
+                </tr>
+                <tr style="height:105px;">
+                    <td>服务内容</td>
+                    <td ><pre ng-bind="productModel.changeDetail.change_to.contract_remark"></pre></td>
+                </tr>
+            </table>
+        </div>
+        <div ng-if="https.productchange && productModel.tab == 1" class="detail-ctn" style="border-top:0;border-bottom:0;">
+        </div>
+        <div class="detail-ctn c-border" style="height:208px;" ng-if="productModel.tab == 2">
+            <div class="c-title">
+                列表
+                <div ng-show="productModel.changeList.length > 0" style="float:right;" pages list="productModel.changeList" url="{{productModel.pageForPresent.url}}"
+                    page="productModel.pageForPresent.page" pageid="'2'" page-max-no="2" filter="productModel.pageForPresent.filters"
+                    ajaxing="productModel.pageForPresent.ajaxing" size="mini"></div>
+            </div>
+            <table class="c-table">
+                <thead>
+                    <tr>
+                        <th width="16px">序</th>
+                        <th>赠送编号</th>
+                        <th>创建日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="productModel.pageForPresent.ajaxing" ng-click="productModel.methods.choosePresent(item)" ng-repeat="item in productModel.presentList">
+                        <td ng-bind="$index+1"></td>
+                        <td ng-bind="item.change_no	"></td>
+                        <td ng-bind="item.create_time"></td>
+                    </tr>
+                    <tr class="no-pointer" ng-if="!productModel.pageForPresent.ajaxing && productModel.presentList.length == 0">
+                        <td colspan="3">
+                            <div class="no-content">
+                                <img src="images/kong.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="no-pointer" ng-show="productModel.pageForPresent.ajaxing">
+                        <td colspan="3">
+                            <div class="no-content">
+                                <div class="ball-grid-pulse">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-if="productModel.tab == 2 && productModel.presentList.length > 0" class="detail-ctn" style="border-top:0;border-bottom:0;">
+            <p class="c-title">赠送信息</p>
+            <table class="c-table-d">
+                <tr style="height:105px;">
+                    <td>服务内容</td>
+                    <td> <pre ng-bind="productModel.choosePresent.change_data"></pre></td>
+                </tr>
+            </table>
+        </div>
+        <div class="no-item" ng-if="https.productdetail && https.productchange && https.productpresent">
+            <div class="no-content">
+                <div class="ball-grid-pulse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="c-detail-ctn-bottom mt-18" ng-if="productModel.productList.length == 0">
+        <div class="no-item">
+            <img src="images/kong.png">
+        </div>
+    </div>
+</div>
+<div class="slide-footer normal-footer">
+</div>

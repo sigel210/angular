@@ -1,0 +1,278 @@
+<div class="c-detail-ctn extends-box has-footer">
+    <div class="c-detail-ctn-top" style="height:201px;">
+            <div class="table-area right-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="16">序</th>
+                                <th width="48">类型</th>
+                                <th>变更编号</th>
+                                <th width="120">创建日期</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-show="!https.changePresentlist" ng-class="{'no-pointer':changePresentModel.list.length == 1,'current':item.change_no == changePresentModel.chooseItem.change_no}"
+                                ng-repeat="item in changePresentModel.list" ng-click="changePresentModel.methods.choose(item)">
+                                <td ng-bind="$index + 1"></td>
+                                <td ng-bind="item.change_type_name"></td>
+                                <td ng-bind="item.change_no"></td>
+                                <td ng-bind="item.create_time"></td>
+                            </tr>
+                            <tr class="no-pointer" ng-if="!https.changePresentlist && changePresentModel.list.length == 0">
+                                <td colspan="4">
+                                    <div class="no-content">
+                                        <img src="images/kong.png">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="no-pointer" ng-show="https.changePresentlist">
+                                <td colspan="4">
+                                    <div class="no-content">
+                                        <div class="ball-grid-pulse">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+        
+                    </table>
+                </div>
+                <div class="slide-footer inside-footer" style="left:0;right:0;">
+                    <button class="btn btn-blue" ng-if="authPermission.insertGift" ng-class="{'btn-disabled':!changePresentModel.button.gift}" ng-click="changePresentModel.methods.createPresent()">新建服务赠送</button>
+                    <button class="btn btn-blue" ng-if="authPermission.insertChange" ng-class="{'btn-disabled':!changePresentModel.button.change}" ng-click="changePresentModel.methods.createServiceChange()">新建变更服务</button>
+                </div>  
+    </div>
+    <div class="c-detail-ctn-bottom content" ng-if="!https.changePresentdetail && changePresentModel.chooseItem.change_type == 1">
+        <!-- <div class="u-tabs">
+            <ul>
+                <li ng-class="{current:changePresentModel.tab == 1}" ng-click="changePresentModel.methods.changeTab(1)">变更详情</li>
+                <li ng-class="{current:changePresentModel.tab == 2}" ng-click="changePresentModel.methods.changeTab(2)">变更支付</li>
+            </ul>
+        </div> -->
+        <p class="menu-title">变更内容</p>
+        <!-- 变更详情 -->
+        <div class="outer-ctn" style="border-bottom:0;">
+            <p class="edit-title">基本信息</p>
+            <div class="list-group main-content-detail">
+                <div class="list-item">
+                    <p class="title">变更编号</p>
+                    <p class="info" ng-bind="changePresentModel.detail.change_no"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">变更金额</p>
+                    <p class="info" ng-bind="changePresentModel.detail.change_amount | number:2"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">创建时间</p>
+                    <p class="info" ng-bind="changePresentModel.detail.create_time"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">申请状态</p>
+                    <p class="info" ng-bind="changePresentModel.detail.change_status_name"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">申请结果</td>
+                    <p class="info" ng-bind="changePresentModel.detail.change_result_name|| '-'"></p>
+                </div>
+            </div>
+            <p class="edit-title">变更信息</p>
+            <div ng-repeat="item in changePresentModel.detail.change_data track by $index">
+                <div class="list-group main-content-detail">
+                    <div class="list-item">
+                        <p class="title">产品编号</p>
+                        <p class="info" ng-bind="item.contract_no"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">产品名称</p>
+                        <p class="info" ng-bind="item.product_name"></p>
+                    </div>
+                </div>
+                <div class="list-group main-content-detail">
+                    <div class="list-item bg-gray">
+                        <p>变更后的订单</p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">产品金额</p>
+                        <p class="info" ng-bind="item.json.final.discount_price"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">服务内容</p>
+                        <div>
+                            <pre ng-bind="item.json.final.contract_remark"></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group main-content-detail">
+                    <div class="list-item bg-gray">
+                        <p>原服务内容需要变更的部分</p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">金额</p>
+                        <p class="info" ng-bind="item.json.need_change.discount_price"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">服务内容</p>
+                        <div>
+                            <pre ng-bind="item.json.need_change.contract_remark"></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group main-content-detail">
+                    <div class="list-item bg-gray">
+                        <p>
+                            变更为的部分</p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">金额</p>
+                        <p class="info" ng-bind="item.json.change_to.discount_price"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">服务内容</td>
+                        <div>
+                            <pre ng-bind="item.json.change_to.contract_remark"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="edit-title">操作记录</p>
+            <div class="list-box-r " ng-if="changePresentModel.detail.log && changePresentModel.detail.log.length > 0">
+                <div class="item-box " ng-repeat="item in changePresentModel.detail.log">
+                    <span class="item-l" ng-bind="item.operate_type == '11' ? customer :(item.account + '/' + item.department_name)">
+                    </span>
+                    <div class="item-r ">
+                        <span class="title" ng-bind="item.operate_type_text"></span>
+                        <span style="float:right" ng-bind="item.create_time"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="detail-ctn" style="border-bottom:0;" ng-if="changePresentModel.tab == 2">
+            <p class="edit-title">支付对账</p>
+            <div class="list-group main-content-detail">
+                <tbody>
+                    <tr>
+                        <td>支付对账</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </div>
+            <p class="edit-title">支付信息</p>
+            <div class="list-group main-content-detail">
+                <tbody>
+                    <tr>
+                        <td>支付编号</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>支付类型</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>支付方式</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>支付金额</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>付款人</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>交易号</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>支付时间</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </div>
+            <p class="edit-title">支付备注</p>
+            <div class="c-list-box"></div>
+            <p class="edit-title">操作记录</p>
+            <div class="c-list-box"></div>
+        </div> -->
+    </div>
+    <div class="c-detail-ctn-bottom content" ng-if="!https.changePresentdetail &&changePresentModel.chooseItem.change_type == 2">
+        <p class="menu-title" style="margin:0;">赠送详情</p>
+        <!-- 产品详情 -->
+        <div class="detail-ctn" style="border-bottom:0;">
+            <p class="edit-title">基本信息</p>
+            <div class="list-group main-content-detail">
+                    <div class="list-item">
+                        <p class="title">赠送编号</p>
+                        <p class="info" ng-bind="changePresentModel.detail.change_no"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">有无成本</p>
+                        <p class="info" ng-bind="changePresentModel.detail.gift_cost == 1? '有':'无'"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">创建时间</td>
+                        <p class="info" ng-bind="changePresentModel.detail.create_time"></p>
+                    </div>
+                    <div class="list-item">
+                        <p class="title">申请状态</td>
+                        <p class="info" ng-bind="changePresentModel.detail.change_status_name"></p>
+                    </div>
+            </div>
+            <p class="edit-title">赠送信息</p>
+            <div class="list-group main-content-detail">
+                <div class="list-item">
+                    <p class="title"td>产品编号</td>
+                    <p class="info" ng-bind="changePresentModel.detail.contract_no"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">产品名称</td>
+                    <p class="info" ng-bind="changePresentModel.detail.product_name"></p>
+                </div>
+                <div class="list-item">
+                    <p class="title">服务内容</td>
+                    <div>
+                        <pre ng-bind="changePresentModel.detail.change_data"></pre>
+                    </div>
+                </div>
+            </div>
+            <p class="edit-title">操作记录</p>
+            <div class="list-box-r " ng-if="changePresentModel.detail.log && changePresentModel.detail.log.length > 0">
+                <div class="item-box " ng-repeat="item in changePresentModel.detail.log">
+                    <span class="item-l" ng-bind="item.operate_type == '11' ? customer :(item.account + '/' + item.department_name)">
+                    </span>
+                    <div class="item-r ">
+                        <span class="title" ng-bind="item.operate_type_text"></span>
+                        <span style="float:right" ng-bind="item.create_time"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="no-item bg-gray" ng-if="!https.changePresentdetail && changePresentModel.list.length == 0">
+        <img src="images/kong.png">
+    </div>
+    <div class="no-item" ng-if="https.changePresentdetail">
+        <div class="no-content">
+            <div class="ball-grid-pulse">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 按钮区域 -->
+<div class="slide-footer normal-footer" ng-if="changePresentModel.chooseItem.change_type == 1">
+    <button class="btn btn-blue" ng-if="authPermission.deleteChange" ng-class="{'btn-disabled': !changePresentModel.detail.button.delete }" ng-click="changePresentModel.methods.deleteChange()">删除变更</button>
+    <button class="btn btn-blue" ng-if="authPermission.updateChange" ng-class="{'btn-disabled': !changePresentModel.detail.button.update }" ng-click="changePresentModel.methods.updateServiceChange()">编辑变更</button>
+    <button class="btn btn-blue" ng-if="authPermission.excuteChange" ng-class="{'btn-disabled': !changePresentModel.detail.button.change_execute }" ng-click="changePresentModel.methods.applyExcute()">申请执行</button>
+    <button class="btn btn-blue" ng-if="authPermission.createApprovalWithPaper" ng-class="{'btn-disabled': !changePresentModel.detail.button.change_paper }" ng-click="changePresentModel.methods.applyProtocolPaper()">申请纸质协议</button>
+</div>
+<div class="slide-footer normal-footer" ng-if="changePresentModel.chooseItem.change_type == 2">
+    <button class="btn btn-blue" ng-if="authPermission.deleteGift" ng-class="{'btn-disabled': !changePresentModel.detail.button.gift_delete }"ng-click="changePresentModel.methods.deletePresent()">删除赠送</button>
+    <button class="btn btn-blue" ng-if="authPermission.updateGift" ng-class="{'btn-disabled': !changePresentModel.detail.button.gift_update }"ng-click="changePresentModel.methods.updatePresent()">编辑赠送</button>
+    <button class="btn btn-blue" ng-if="authPermission.applyPresentExcute" ng-class="{'btn-disabled': !changePresentModel.detail.button.gift_execute }"ng-click="changePresentModel.methods.applyPresentExcute()">申请执行</button>
+</div>

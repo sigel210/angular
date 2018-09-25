@@ -1,0 +1,460 @@
+@charset "UTF-8";
+//全局样式模块，统一引用此base;
+//样式调用
+@import "css3", "skin", "setting", "mixin";
+
+@mixin input-w1 {
+  padding: 6px 5px;
+  @extend %box-sizing-border;
+}
+@mixin input-w2 {
+  width: 340px;
+}
+.cont-page {
+  overflow: auto;
+}
+//form
+.responseHeight .m-form-wrap {
+  padding-top: 0;
+}
+.m-form-wrap {
+  width: 658px;
+  margin: 0 auto;
+  text-align: left;
+  padding-top: 40px;
+  .btn_upload{
+    position: absolute;
+    top: 65px;
+    right: 30px;
+    display: block;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 18px;
+    background: url(../images/img_upload.png) no-repeat left center;
+    outline: none;
+    font-size: 12px;
+    color: #6C7BA6;
+  }
+  &.padding-zero {
+    padding-top: 0;
+  }
+  thead th,
+  tbody th {
+    padding-left: 40px;
+    text-align: left;
+    color: #323232;
+  }
+
+  tbody td {
+    padding: 6px 0;
+    line-height: normal;
+    font-size: 12px;
+    text-align: left;
+    color: #a6adbe;
+  }
+  .icon-title {
+    @extend %inline-block;
+    margin-right: 10px;
+    width: 4px;
+    height: 20px;
+    vertical-align: top;
+    background-color: #d5d5d5;
+  }
+  .m-form-row {
+    display: flex;
+    padding: 4px 0px;
+    border-left: 1px solid #f2f2f2;
+    border-right: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+    background: #fff;
+    &:first-child {
+      border-top: 1px solid #f2f2f2;
+    }
+    &.upload {
+      padding-bottom: 0;
+    }
+    &.bg-gray {
+      background: #f2f2f2 !important;
+      .table-text{
+        padding-left: 14px !important;
+      }
+    }
+    .table-name {
+      @extend %inline-block;
+      min-width: 60px;
+      padding-left: 18px;
+      font-size: 12px;
+      line-height: 35px;
+      color: #999;
+      label {
+        padding-right: 40px;
+      } 
+    }
+    .table-text {
+      @extend %inline-block;
+      flex: auto;
+      position: relative;
+      padding-left: 10px;
+      font-size: 12px;
+      line-height: 35px;
+      select {
+        width: 100%;
+        line-height: 14px;
+        border: none;
+        vertical-align: baseline;
+      }
+      textarea {
+        width: 99%;
+        border:none;
+        resize: none;
+      }
+    }
+    .table-clear {
+      min-width: 30px;
+      display: inline-block;
+      width: 14px;
+      margin-left: -3px;
+      background: url(../images/icon_tableclear.png) no-repeat center;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+    span.timecontent {
+      position: relative;
+    }
+    span.time-ling {
+      position: absolute;
+      left: 86px;
+    }
+  }
+  /* 单选样式 */
+  .u-radio-box {
+    @extend %inline-block;
+    width: 100%;
+    .radio {
+      @extend %inline-block;
+      position: relative;
+      margin: 0 6px;
+      padding-left: 20px;
+      vertical-align: middle;
+      input {
+        width: auto;
+      }
+    }
+  }
+  /* 复选表样式 */
+  .u-checkBox-box {
+    @extend %inline-block;
+    width: 100%;
+    .checkBox {
+      @extend %inline-block;
+      position: relative;
+      margin: 0 6px;
+      padding-right: 20px;
+      vertical-align: middle;
+      input {
+        width: auto;
+      }
+    }
+  }
+  /* 时间元件样式 */
+  .u-time-box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    .startTime {
+      flex: auto;
+    }
+    .time-division {
+      margin: 0 5px;
+      width: 20px;
+    }
+    .endTime {
+      flex: auto;
+    }
+  }
+  /* textarea样式 */
+  .m-textarea-box {
+    position: relative;
+    .u-table-textarea {
+      resize: none;
+      padding: 4px 22px 4px 4px;
+      width: calc(100% - 28px);
+      height: 200px;
+      border: 1px solid #d9d9d9;
+    }
+    .u-textarea-num {
+      position: absolute;
+      right: 17px;
+      bottom: 10px;
+      color: #a6adb7;
+    }
+  }
+  /* 收件人样式 */
+  .u-member {
+    display: flex;
+    margin: 0 auto;
+    padding: 0 58px 0 10px;
+    max-height: 105px;
+    overflow: auto;
+    cursor: pointer;
+    align-items: center;
+    line-height: 0;
+    .member-box {
+      display: inline-block;
+      padding: 0 4px;
+      margin: 0 6px 4px 0;
+      border: 1px solid #ccc;
+      line-height: 24px;
+      .delete-img {
+        margin-left: 4px;
+        vertical-align: inherit;
+        cursor: pointer;
+      }
+    }
+  }
+
+  /* 上传元件样式 */
+  .u-upload-btn-box {
+    position: relative;
+    display: inline-block;
+    height: 28px;
+    width: 100%;
+    vertical-align: top;
+    overflow: hidden;
+    text-align: left;
+    cursor: pointer;
+    a {
+      position: absolute;
+      display: inline-block;
+      padding-left: 6px;
+    }
+    .upload-show {
+      position: absolute;
+      margin-left: 6px;
+      color: #ccc;
+      cursor: pointer;
+    }
+    .upload-hide {
+      position: absolute;
+      z-index: 1;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  /* 表格样式 */
+  .u-table-form {
+    .table-fixed {
+      table-layout: fixed;
+    }
+    table {
+        display: table;
+        width: 100%;
+        border-left: 1px solid #f2f2f2;
+        border-top: 1px solid #f2f2f2;
+        border-collapse:collapse;
+        background: #fff;
+        tr {
+            font-weight: 400;
+            font-style: normal;
+            font-size: 12px;
+            th {
+                padding: 10px;
+                color: #999999;
+                border-right: 1px solid #f2f2f2;
+                border-bottom: 1px solid #f2f2f2;
+            }
+            td {
+                padding: 10px;
+                color: #666666;
+                border-right: 1px solid #f2f2f2;
+                border-bottom: 1px solid #f2f2f2;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                .table-input {
+                    padding: 4px 4px 4px 10px;
+                    width: 86% !important;
+                }
+                .table-text {
+                    width: 90%;
+                    input {
+                        width: 100% !important;
+                    }
+                }
+            }
+            .text-center {
+                text-align: center;
+            }
+        }
+        .num-input{
+          width:40px;
+          height: 30px;
+          border:1px solid #ccc;
+          text-align: center;
+        }
+        .price-input{
+          width:80px;
+          height: 30px;
+        }
+    }
+} 
+  label {
+    line-height: 28px;
+  }
+  input[type="text"],
+  input[type="number"] {
+    @include input-w1;
+    font-size: 12px;
+    //border:1px solid #d9d9d9;
+    @include border-radius(3px);
+
+    // outline: none;
+    // 		&:focus {
+    // 			border-color: $input-color;
+    // 			@include box-shadow(0 0 4px rgba(0,204,255,.3));
+    // 		}
+
+    width: 100%;
+    border: none;
+    vertical-align: baseline;
+    &.outline-no {
+      outline: none;
+    }
+  }
+  input[type="radio"],
+  input[type="checkbox"] {
+    @extend %reset-radio-checkbox;
+    vertical-align: middle;
+    box-sizing: border-box;
+    margin-left: -20px;
+  }
+  input[name="number"] {
+    @include input-w2;
+  }
+  input[type="file"] {
+    cursor: pointer;
+    outline: none;
+    padding: 6px 5px;
+    width: 220px;
+    color: #a6adbe;
+  }
+  input:disabled,
+  textarea:disabled {
+    background-color: #f2f2f2;
+  }
+
+  textarea {
+    &.outline-no {
+      outline: none;
+    }
+  }
+  select {
+    position: relative;
+    @include input-w1;
+    @extend %simple-select;
+    height: 28px;
+    z-index: 2;
+    background: none;
+  }
+
+  &.add-edit-form {
+    min-width: 500px;
+    .repeat-box:nth-of-type(1){
+      .add-edit-title{
+        margin-top:0;
+      }
+    }
+    .add-edit-title {
+      margin: 10px 0;
+      display: block;
+      border-left: none;
+      border-right: none;
+      background: transparent;
+      border-top: none;
+      font-size: 12px;
+      color: #333;
+      &:first-child{
+        margin: 0 0 10px 0;
+      }
+    }
+    
+    .select-tip {
+      position: absolute;
+      left: 0px;
+      top: 4px;
+      z-index: 1;
+      padding-left: 16px;
+      color: #ccc;
+    }
+    .uiSelect {
+      padding: 6px 5px;
+      width: 100%;
+      border: none;
+    }
+    .select2-container{
+      border:none;
+      padding-left:0px;
+      .select2-default{
+        color: #ccc!important;
+      }
+      .select2-results li{
+        line-height:16px;
+      }
+      .select2-choices{
+        padding-left: 0;
+      }
+    }
+  }
+  &.center-edit-form {
+    @extend .add-edit-form;
+    padding: 0px;
+  }
+  .add-error {
+    position: relative;
+    .table-red-error {
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          margin-left: 5px;
+          cursor: pointer;
+          vertical-align: middle;
+          position: absolute;
+          right: -18px;
+          top:13px;
+          background: url(../images/errorJL.png) no-repeat center;
+      }
+  }
+  .icon_help{
+      margin: 2px 10px 0 2px;
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      background: url(../images/icon_help.png) no-repeat;
+      background-size:12px; 
+      cursor: pointer;
+    }
+  .pop_help{
+    position: absolute;
+    top: -40px;
+    left: -55px;
+    z-index: 99;
+    width: 200px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3490196078);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3490196078);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3490196078);
+    text-align: left;
+    font-size: 12px;
+    color: #666666;
+    line-height: 1.25;
+  }
+}
+
+.z {
+  &-fullWidth {
+    width: 100%;
+  }
+}

@@ -1,0 +1,19 @@
+<header>
+    <div class="tab-bar active"><span class="menu-tit">个人中心</span></div>
+</header>
+<div class="cont-page cont-page-new">
+    <div class="menu-page">
+        <ul class="menu-btn">
+            <li ng-repeat="item in functionArray"><a ui-sref="{{item.page}}">
+              <span class="menu-box" ng-class="colorArr[$index].color"><i class="{{item.icon}}"></i></span><span class="menu-tit" ng-bind="item.name"></span></a></li>
+        </ul>
+    </div>
+</div>
+<!-- 底部操作按钮 -->
+<script type="text/javascript">
+    app.registerCtrl('personalCenter', ['$scope', 'UserService', function ($scope, UserService) {
+        $scope.$emit('id', 'personalCenter');
+        $scope.functionArray = [{ name: '修改密码', page: 'modifyPassword', icon: 'icon-modifypw' }];
+    }]);
+
+</script>

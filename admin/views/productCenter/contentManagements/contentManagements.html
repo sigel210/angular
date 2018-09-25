@@ -1,0 +1,206 @@
+<header>
+    <div class="tab-bar">
+        <button class="menu-btn-back" onclick='window.history.back()'>
+            <i class="icon-back"></i>
+        </button>
+        <span class="menu-tit">内容管理</span>
+    </div>
+</header>
+<div class="cont-page-w">
+    <div class="search-wraps">
+        <div class="search-max-w">
+            <div class="form-group">
+                <label>内容名称:</label>
+                <div class="search-box">
+                    <input type="text" id="content_name" name="name-tit" ng-model="uiModel.filters.content_name" class="search-keyup-enter input-name-w"
+                        placeholder="点击输入" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>创建时间：</label>
+                <div class="search-box">
+                    <input id="1" type="text" class="pointer" time-value="uiModel.filters.start_time" format="yyyy-MM-dd HH:mm:ss" ng-model="uiModel.filters.start_time"
+                        max-date="#F{$dp.$D(\'2\')}" time-module placeholder="点击选择">
+                    <span class="time-division">至</span>
+                    <input id="2" type="text" class="pointer" time-value="uiModel.filters.end_time" format="yyyy-MM-dd HH:mm:ss" ng-model="uiModel.filters.end_time"
+                        min-date="#F{$dp.$D(\'1\')}" time-module placeholder="点击选择">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>内容状态:</label>
+                <div class="search-box">
+                    <select ng-model='uiModel.filters.content_status' ng-options="status.content_status as status.content_status_name for status in uiModel.content_status_list">
+                        <option></option>
+                    </select>
+                    <label class="select-tips" ng-show="!uiModel.filters.content_status">点击选择</label>
+                </div>
+            </div>
+            <div class=" search-btn-wrap">
+                <button class="btn-search" ng-click="search()">搜索</button>
+                <!-- <button class="btn-reset" ng-click="reset()">清空</button> -->
+            </div>
+        </div>
+    </div>
+    <div class="table-ptop-w2">
+        <div class="table-ptop-w2">
+            <div class="table-foot">
+                <div class="btn-left">
+                    <button class="btn btn-new-blue" ng-click="creatContent()" ng-show="permission.creat">新建内容</button>
+                </div>
+                <div pages2 class="page-right" page-index="uiModel.page.page_no" page-size="uiModel.page.pageSize" total="uiModel.page.total"
+                    page-count="uiModel.page.pageCount" page-change="getList(pageIndex)"></div>
+            </div>
+            <table class="table-list table-fixed js-table" width="100%" ng-show="permission.list">
+                <thead>
+                    <tr>
+                        <th width="16">序</th>
+                        <th width="180">内容名称</th>
+                        <th>一级内容类型</th>
+                        <th>二级内容类型</th>
+                        <th>三级内容类型</th>
+                        <th>内容状态</th>
+                        <th>创建时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="load-tips">
+                        <td ng-show="!list || list.length === 0" colspan="7">
+                            <div class="loading-cont">
+                            </div>
+                            <div ng-show="!isAjaxError && !pageListLoading" class="load-tips-cont">没有你想要的数据</div>
+                            <div ng-show="isAjaxError && !pageListLoading" class="load-tips-cont">加载超时，点击
+                                <a ng-click="search()">重新加载</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-repeat='item in list' ng-click="showDetail(item.content_id,$index)" ng-class="{active: temp == $index}">
+                        <td ng-bind="$index + 1"></td>
+                        <td ng-bind="item.content_name" title="{{item.content_name}}"></td>
+                        <td ng-repeat="item0 in item.content_categorys" ng-bind="item0 || '-'"></td>
+                        <td ng-bind="item.content_status"></td>
+                        <td ng-bind="item.create_time || '-'"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div detail-modal show="detailsWrap.isShow" buttons="detailsWrap.buttons" ng-show="permission.detail" detail-title="detailsWrap.data.content_info.content_name">
+        <div class="detail-box" style="padding-top:10px">
+            <div class="list-group right-detail">
+                <p class="label-title">
+                    <span>
+                        <span class="icon-title"></span>基本信息
+                    </span>
+                </p>
+                <div class="list-item">
+                    <span class="title">一级内容类型</span>
+                    <span class="info" ng-bind="detailsWrap.data.content_info.content_categorys[0] || '-'">
+                    </span>
+                </div>
+                <div class="list-item">
+                    <span class="title">二级内容类型</span>
+                    <span class="info" ng-bind="detailsWrap.data.content_info.content_categorys[1] || '-'">
+                    </span>
+                </div>
+                <div class="list-item">
+                    <span class="title">三级内容类型</span>
+                    <span class="info" ng-bind="detailsWrap.data.content_info.content_categorys[2] || '-'">
+                    </span>
+                </div>
+                <!-- <div class="list-item">
+                    <span class="title">内容单价</span>
+                    <span class="info" ng-bind="detailsWrap.data.content_info.content_price || '-'">
+                    </span>
+                </div> -->
+                <div class="list-item">
+                    <span class="title">内容名称</span>
+                    <span class="info" ng-bind="detailsWrap.data.content_info.content_name || '-'">
+                    </span>
+                </div>
+                <div class="list-item">
+                    <span class="title">内容状态</span>
+                    <span class="info" ng-bind="detailsWrap.data.content_info.content_status || '-'">
+                    </span>
+                </div>
+            </div>
+            <div class="list-group right-detail">
+                <p class="label-title">
+                    <span>
+                        <span class="icon-title"></span>内容说明
+                    </span>
+                </p>
+                <div class="txt-textarea">
+                    <span ng-bind="detailsWrap.data.content_info.content_desc ? detailsWrap.data.content_info.content_desc :'- '">
+
+                    </span>
+                </div>
+            </div>
+            <div class="right-detail list-group">
+                <p class="label-title">
+                    <span>
+                        <span class="icon-title"></span>操作记录
+                    </span>
+                </p>
+                <div class="list-box-r ">
+                    <div class="item-box " ng-repeat="item in detailsWrap.data.operate_log">
+                        <span class="item-l" ng-bind="item.account">
+                        </span>
+                        <div class="item-r ">
+                            <span class="title" ng-bind="item.operate_description"></span>
+                            <span style="float:right" ng-bind="item.create_time"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div edit-modal size="sm" config="editModal" confirm="editModal.confirm(data)">
+    <div class="m-form-wrap add-edit-form form-wrap-w-sm">
+        <div class="add-edit-title">
+            <span class="icon-title"></span>基本信息
+        </div>
+        <div class="m-table-from">
+            <div class="m-form-row bg-gray add-error">
+                <span class="table-name">一级内容类型</span>
+                <span class="table-text">
+                    <span type="text" ng-bind="editModal.data.content_info.content_categorys[0] || '-'"></span>
+                </span>
+                <i class="table-red-error"></i>
+            </div>
+            <div class="m-form-row bg-gray add-error">
+                <span class="table-name">二级内容类型</span>
+                <span class="table-text">
+                    <span type="text" ng-bind="editModal.data.content_info.content_categorys[1] || '-'"></span>
+                </span>
+                <i class="table-red-error"></i>
+            </div>
+            <div class="m-form-row bg-gray add-error">
+                <span class="table-name">三级内容类型</span>
+                <span class="table-text">
+                    <span type="text" ng-bind="editModal.data.content_info.content_categorys[2] || '-'"></span>
+                </span>
+                <i class="table-red-error"></i>
+            </div>
+            <div class="m-form-row add-error">
+                <span class="table-name">内容名称</span>
+                <span class="table-text">
+                    <input type="text" ng-model="editModal.data.content_info.content_name" placeholder="点击输入" maxlength="30">
+                </span>
+                <i class="table-clear" ng-click="editModal.data.content_info.content_name = ''"></i>
+                <i class="table-red-error"></i>
+            </div>
+        </div>
+        <div class="add-edit-title">
+            <span class="icon-title"></span>内容说明
+        </div>
+        <div class="m-table-form">
+            <div class="m-textarea-box">
+                <textarea class="u-table-textarea" ng-model="editModal.data.content_info.content_desc" maxlength="200"></textarea>
+                <span class="u-textarea-num">
+                    <span>{{editModal.data.content_info.content_desc.length ? editModal.data.content_info.content_desc.length:0}}</span>/200
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

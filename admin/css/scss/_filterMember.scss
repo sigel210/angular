@@ -1,0 +1,84 @@
+.m-filtermember{
+    .filtermember-leftBox {
+        display: inline-flex;
+        flex-direction: column;
+        float: left;
+        width: 60%;
+        height: 99%;
+        border: 1px solid #ccc;
+        vertical-align: middle;
+        .top {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            .department {
+                cursor: pointer;
+                .next {
+                    display: inline-block;
+                    margin: 0 6px;
+                    font-size: 16px;
+                }
+            }
+            .department:hover {
+                color: #000;
+                font-weight: bold;
+            }
+        }
+        .bottom {
+            padding-top: 24px;
+            overflow-y: auto;
+            .item {
+                height: 34px;
+                line-height: 34px;
+                font-size: 12px;
+                padding-left: 24px;
+                cursor: pointer;
+                .text {
+                    color: #333;
+                }
+                .text:hover {
+                    color: #000;
+                    font-weight: bold;
+                }
+                .checkbox {
+                    margin-right: 6px;
+                    cursor: pointer;
+                    vertical-align: middle;
+                }
+            }
+            .item:hover {
+                background: rgba(215, 215, 215, 1);
+            }
+        }
+    }
+    .filtermember-middle {
+        display: table;
+        float: left;
+        width: 4%;
+        height: 99%;
+        text-align: center;
+        img {
+            display: inline-block;
+        }
+    }
+    .filtermember-right {
+        float: left;
+        width: 35%;
+        height: 99%;
+        border: 1px solid #ccc;
+        vertical-align: middle;
+        overflow-y: auto;
+        .item {
+            padding: 12px;
+            font-size: 12px;
+            line-height: 16px;
+            .delete-img {
+                float: right;
+                margin-top: 4px;
+                cursor: pointer;
+            }
+        }
+        .item:hover {
+            background: rgba(242, 242, 242, 1);
+        }
+    }
+}

@@ -1,0 +1,70 @@
+<!-- 支付编辑 -->
+<div style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="hideModal('payEdit')"></i>
+                </div>
+                <h4 class="modal-title">支付编辑</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p>
+                        <span class="table-name">支付金额</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="billModel.edit.price" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="billModel.edit.price = ''"></i>
+                    </p>
+                    <p ng-if="!billModel.special.isTD || billModel.edit.pay_way == 4">
+                        <span class="table-name">付款人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="billModel.edit.pay_name" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="billModel.edit.pay_name = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">支付类型</span>
+                        <span class="table-text">
+                            <select ng-model="billModel.edit.pay_type" ng-options="option.id as option.name for option in billModel.selectList.payType">
+                                <option></option>
+                            </select>
+                            <label ng-show="billModel.edit.pay_type == '' || billModel.edit.pay_type === undefined" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="billModel.edit.pay_type = ''"></i>
+                    </p>
+                    <p ng-if="billModel.edit.pay_way == 1 || billModel.edit.pay_way == 3">
+                        <span class="table-name" ng-bind="billModel.special.tradeName"></span>
+                        <span class="table-text" ng-if="!billModel.special.isTD">
+                            <input type="text" ng-model="billModel.edit.trade_no" placeholder="点击输入" maxlength="50" ng-keyup="replaceNum(billModel.edit, 'trade_no')">
+                        </span>
+                        <span class="table-text" ng-if="billModel.special.isTD">
+                            <input type="text" ng-model="billModel.edit.trade_no" placeholder="点击输入" maxlength="50" ng-keyup="replaceNum3(billModel.edit, 'trade_no')">
+                        </span>
+                        <i class="table-clear" ng-click="billModel.edit.trade_no = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">到账日期</span>
+                        <span class="table-text">
+                            <input id="1" type="text" class="pointer" time-value="billModel.edit.pay_date" ng-model="billModel.edit.pay_date" time-module
+                                placeholder="点击选择" style="width: 539px;" format="yyyy-MM-dd" readonly>
+                        </span>
+                        <i class="table-clear" ng-click="billModel.edit.pay_date = ''"></i>
+                    </p>
+                    <p style="margin-top: 10px;">
+                        <span class="table-name">备注</span>
+                        <span class="table-text">
+                            <textarea type="text" style="width: 538px;height:150px;margin:10px 0" ng-model="billModel.edit.remark" name="remark" placeholder="点击输入"
+                                class="textarea-content textarea-w"></textarea>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="billModel.methods.update()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

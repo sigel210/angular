@@ -1,0 +1,70 @@
+<!-- 基本信息 -->
+<!-- <table>
+    <tbody>
+        <tr class="title">
+            <th colspan="2">
+                <span class="icon-title"></span>基本信息</th>
+        </tr>
+        <tr>
+            <td>审批编号</td>
+            <td ng-bind="detailsWrap.data.approval_no">123456789</td>
+        </tr>
+        <tr ng-if="detailsWrap.data.approval_type == 21">
+            <td>变更编号</td>
+            <td ng-bind="detailWraps.data.change_no"></td>
+        </tr>
+        <tr>
+            <td>审批类型</td>
+            <td ng-bind="detailsWrap.data.approval_type | approvalTypeFilter"></td>
+        </tr>
+        <tr ng-if="(detailsWrap.data.second_product_id==10217 ||detailsWrap.data.second_product_id==10013)&&(detailsWrap.data.approval_type== 20 || detailsWrap.data.approval_type== 21 ||detailsWrap.data.approval_type== 22)">
+            <td>制作内容</td>
+            <td ng-bind="(detailsWrap.data.approval_type | approvalMakeFilter)"></td>
+        </tr>
+        <tr ng-if="detailsWrap.data.second_product_id==10217 ||detailsWrap.data.second_product_id==10013">
+            <td>审批状态</td>
+            <td ng-bind="detailsWrap.data.approval_status"></td>
+        </tr>
+        <tr ng-if="(detailsWrap.data.second_product_id==10217 ||detailsWrap.data.second_product_id==10013)&&(detailsWrap.data.approval_type == 3|| detailsWrap.data.approval_type == 10)">
+            <td>解除协议</td>
+            <td ng-bind="detailsWrap.data.ispaper | isPaper"></td>
+        </tr>
+    </tbody>
+</table> -->
+<div class="list-group right-detail">
+    <p class="label-title">
+        <span>
+            <span class="icon-title"></span>基本信息
+        </span>
+    </p>
+    <div class="list-item">
+        <span class="title">审批编号</span>
+        <span class="info" ng-bind="detailsWrap.data.approval_no">
+        </span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.approval_type == 21">
+        <span class="title">变更编号</span>
+        <span class="info" ng-bind="detailWraps.data.change_no">
+        </span>
+    </div>
+    <div class="list-item">
+        <span class="title">审批类型</span>
+        <span class="info" ng-bind="detailsWrap.data.approval_type | approvalTypeFilter">
+        </span>
+    </div>
+    <div class="list-item" ng-if="(detailsWrap.data.second_product_id==10217 ||detailsWrap.data.second_product_id==10013)&&(detailsWrap.data.approval_type== 20 || detailsWrap.data.approval_type== 21 ||detailsWrap.data.approval_type== 22)">
+        <span class="title">制作内容</span>
+        <span class="info" ng-bind="detailsWrap.data.approval_type | approvalMakeFilter">
+        </span>
+    </div>
+    <div class="list-item" ng-if="detailsWrap.data.second_product_id==10217 ||detailsWrap.data.second_product_id==10013">
+        <span class="title">审批状态</span>
+        <span class="info" ng-bind="detailsWrap.data.approval_status">
+        </span>
+    </div>
+    <div class="list-item" ng-if="(detailsWrap.data.second_product_id==10217 ||detailsWrap.data.second_product_id==10013)&&(detailsWrap.data.approval_type == 3|| detailsWrap.data.approval_type == 10)">
+        <span class="title">解除协议</span>
+        <span class="info" ng-bind="detailsWrap.data.ispaper | isPaper">
+        </span>
+    </div>
+</div>

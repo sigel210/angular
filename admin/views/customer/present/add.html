@@ -1,0 +1,72 @@
+<div class="m-container">
+    <header>
+        <div class="tab-bar">
+            <button class="menu-btn-back" onclick="window.history.back()">
+                <i class="icon-back"></i>
+            </button>
+            <span class="menu-tit">新建服务赠送</span>   
+        </div>
+    </header>
+    <div class="main-box extends-box">
+        <div class="sider-bar-group3 bg-white" style="width:278px">
+            <!-- <li>产品信息</li> -->
+            <div ng-class="{'current':!uiModel.infoShow}" class="choose-bar p17" ng-click="chooseBase()">基本信息</div>
+            <div class="choose-bar p17 bg-gray">产品信息</div>
+            <div class="choose-bar" ng-class="{'current':uiModel.infoShow&&uiModel.tempIndex == $index,'disabled':uiModel.tempIndex != $index&&flag}" ng-click="!(uiModel.tempIndex != $index&&flag)&&chooseProduct($index,item)" ng-repeat="item in uiModel.productList">{{item.product_name}}</div>
+        </div>
+        <div class="c-content" style="overflow: auto">
+            <div class="normal-box" ng-show="!uiModel.infoShow" style="width: 100%">
+                <div class="m-form-wrap add-edit-form paddingt-no" style="width:100%;height: 100%">
+                    <p class="m-form-row" style="width: 100%;">
+                        <span class="table-name">有无成本</span>
+                        <span class="table-text" style="width: calc(100% - 126px);">
+                            <select style="width: 100%;" ng-model="uiModel.data.gift_cost" ng-options="option.id as option.name for option in uiModel.selectList.costs">
+                                <option></option>
+                            </select>
+                            <label ng-show="uiModel.data.gift_cost ==='' || uiModel.data.gift_cost === undefined" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="uiModel.data.gift_cost = ''"></i>
+                    </p>
+                    <p class="add-edit-title" style="width: 100%;">
+                        <span class="icon-title"></span>赠送理由
+                    </p>
+                    <div class="m-textarea-box" style="width: 100%;height: calc(100% - 84px);">
+                        <textarea class="outline-no u-table-textarea auto-text "ng-model="uiModel.data.gift_reason" id="textarea1" maxlength="300"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="uiModel.infoShow" class="c-container normal-box" style="height: calc(100% - 44px);">
+                <p class="c-title">金额信息</p>
+                <table class="c-table-d">
+                    <tbody>
+                        <tr>
+                            <td>产品金额</td>
+                            <td ng-bind="uiModel.discount_price|number:2"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="c-title">服务内容</p>
+                <div class="textarea-wrap present">
+                    <textarea name="" disabled ng-model="uiModel.contract_remark"></textarea>
+                </div>
+            </div>
+            <div ng-show="uiModel.infoShow" class="c-container normal-box" style="height: calc(100% - 44px);">
+                <p class="c-title">赠送信息</p>
+                <table class="c-table-d" style="height: calc(100% - 45px);">
+                    <tbody>
+                        <tr>
+                            <td style="width: 60px;">服务内容</td>
+                            <td>
+                                <textarea style="width: calc(100% - 20px);height: calc(100% - 21px);padding-top: 2px" placeholder="点击输入" ng-model="uiModel.dataForShow.change_data" ng-change="reload()"  id="textarea2" maxlength="300"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slide-footer">
+                <button class="btn btn-cancel" ng-click="cancel()">取消</button>
+                <button class="btn btn-new-blue" ng-click="confirm()">完成</button>
+            </div>
+        </div>
+    </div>
+</div>

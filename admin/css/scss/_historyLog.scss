@@ -1,0 +1,61 @@
+.history-box {
+    .history-itemBox {
+        .history-line {
+            border-left: 1px solid #cccccc;
+        }
+        .history-line-noborder {
+            border-left: 1px solid #f7f7f7;
+        }
+        .history-content {
+            padding-bottom: 14px;
+            position: relative;
+            margin-left: 14px;
+            .judge-img {
+                position: absolute;
+                top: 0px;
+                left: -8px;
+                width: 16px;
+                height: 16px;
+                background: url("../images/audit-icon.png") no-repeat;
+                overflow: hidden;
+            }
+            .secusess-img {
+                background: url("../images/audit-icon.png") 0 -16px no-repeat;
+            }
+            .rejuect-img {
+                background: url("../images/audit-icon.png") 0 -32px no-repeat;
+            }
+            .carryon-img {
+                background: url("../images/audit-icon.png") 0 -48px no-repeat;
+            }
+            .history-realContent {
+                display: inline-block;
+                margin-left: 24px;
+                padding: 12px;
+                width: 90%;
+                font-size: 12px;
+                background: #fff;
+                border: 1px solid #f2f2f2;
+                .title {
+                    color: #333;
+                    vertical-align: top;
+                    span {
+                        vertical-align: top;
+                    }
+                }
+                .text {
+                    display: inline-block;
+                    max-width: 222px;
+                    margin-left: 12px;
+                    color: #999;
+                    word-wrap: break-word;
+                }
+                .time {
+                    vertical-align: top;
+                    float: right;
+                    color: #999;
+                }
+            }
+        }
+    }
+} 

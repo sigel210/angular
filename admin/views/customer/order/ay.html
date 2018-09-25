@@ -1,0 +1,235 @@
+<div class="edit-title">
+    订单信息
+</div>
+<div class="list-group main-content-detail" style="margin-bottom:13px;">
+    <div class="list-item">
+        <div class="title">订单编号</div>
+        <div class="info" ng-bind="orderModel.detail.order_no"></div>
+    </div>
+    <div class="list-item" ng-if="orderModel.detail.sale_type == 2">
+        <div class="title">预付对账</div>
+        <div class="info" ng-bind="orderModel.detail.down_payment_status"></div>
+    </div>
+    <div class="list-item" ng-if="orderModel.detail.sale_type == 2">
+        <div class="title">押金对账</div>
+        <div class="info" ng-bind="orderModel.detail.deposit_price_status"></div>
+    </div>
+    <div class="list-item" ng-if="orderModel.detail.sale_type == 1">
+        <div class="title">合同对账</div>
+        <div class="info" ng-bind="orderModel.detail.received_status | receivedStatus"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">订单状态</div>
+        <div class="info" ng-bind="orderModel.detail.status"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">签约类型</div>
+        <div class="info" ng-bind="orderModel.detail.is_new == '0' ? '新签':'续签'"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">营收类型</div>
+        <div class="info" ng-bind="orderModel.detail.income_type"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">订单金额</div>
+        <div class="info" ng-bind="orderModel.detail.total_price | number:2"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">合同金额</div>
+        <div class="info" ng-bind="orderModel.detail.order_price | number:2"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">订单类型</div>
+        <div class="info" ng-bind="orderModel.detail.sale_type | saleTypeFilter"></div>
+    </div>
+    <div class="list-item" ng-if="orderModel.detail.sale_type == 2">
+        <div class="title">预付金额</div>
+        <div class="info" ng-bind="orderModel.detail.down_payment | number:2"></div>
+    </div>
+    <div class="list-item" ng-if="orderModel.detail.sale_type == 2">
+        <div class="title">押金金额</div>
+        <div class="info" ng-bind="orderModel.detail.deposit_price | number:2"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">支付总额</div>
+        <div class="info" ng-bind="orderModel.detail.total_received | number:2"></div>
+    </div>
+    <div class="list-item" ng-if="orderModel.detail.confirm_price">
+        <div class="title">营收总额</div>
+        <div class="info" ng-bind="orderModel.detail.confirm_price | number:2"></div>
+    </div>
+    <div class="list-item" ng-if="orderModel.detail.unconfirm_price">
+        <div class="title">待营收</div>
+        <div class="info" ng-bind="orderModel.detail.unconfirm_price | number:2"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">暂存款</div>
+        <div class="info" ng-bind="orderModel.detail.temp_deposit_price | number:2"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">开票次数</div>
+        <div class="info" ng-bind="orderModel.detail.tax_num"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">开票金额</div>
+        <div class="info" ng-bind="orderModel.detail.tax_amount | number:2"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">服务起止</div>
+        <div class="info" ng-bind="orderModel.detail.service_start_time ? (orderModel.detail.service_start_time + ' 至 ' + orderModel.detail.service_end_time) : '-'"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">到单日期</div>
+        <div class="info" ng-bind="orderModel.detail.received_date"></div>
+    </div>
+    <div class="list-item" ng-if="orderModel.detail.belong_ae">
+        <div class="title">归属AE</div>
+        <div class="info" ng-bind="orderModel.detail.belong_ae"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">订单创建</div>
+        <div class="info" ng-bind="orderModel.detail.sign_dept + '/' + orderModel.detail.sign_user"></div>
+    </div>
+    <div class="list-item">
+        <div class="title">订单归属</div>
+        <div class="info" ng-bind="orderModel.detail.belong_dept + '/' + orderModel.detail.belong_user">></div>
+    </div>
+</div>
+<div class="edit-title">
+    订单备注
+</div>
+<div class="list-box-r" ng-bind="orderModel.detail.remarks || '-'" style="word-break:break-all;white-space: pre-wrap;margin-bottom:13px;">
+    这里是备注信息
+</div>
+<div class="edit-title">
+    操作记录
+</div>
+<div class="list-box-r " ng-if="orderModel.detail.log && orderModel.detail.log.length > 0">
+    <div class="item-box " ng-repeat="item in orderModel.detail.log">
+        <span class="item-l" ng-bind="item.operate_type == '11' ? customer :(item.account + '/' + item.department_name)">
+        </span>
+        <div class="item-r ">
+            <span class="title" ng-bind="item.operate_type_text"></span>
+            <span style="float:right" ng-bind="item.create_time"></span>
+        </div>
+    </div>
+</div>
+<!--爱柚编辑弹窗-->
+<!-- 订单信息编辑,大多都废弃了，除了爱柚还活着 -->
+<div ng-if="aiyouEdit.flag" style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="aiyouEdit.hide()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="step != orderEditModel.maxStep ? '订单编辑' : '订单编辑'"></h4>
+            </div>
+            <div class="modal-body editdetail edit">
+                <form class="form-wrap add-edit-form form-wrap-w-sm order">
+                    <p style="background: transparent;font-size: 12px" class="add-edit-title">
+                        <span class="icon-title"></span>订单信息</p>
+                    <p>
+                        <span class="table-name">订单类型</span>
+                        <span class="table-text order_edit" ng-bind="aiyouEdit.data.sale_type==1?'现销':'赊销'"></span>
+                    </p>
+                    <p>
+                        <span class="table-name">签约类型</span>
+                        <span class="table-text">
+                            <select ng-model="aiyouEdit.data.is_new" ng-options=" option.id as option.status for option in aiyouEdit.selectList.typeList"></select>
+                            <label ng-show="!aiyouEdit.data.is_new" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="aiyouEdit.data.is_new = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">营收类型</span>
+                        <span class="table-text order_edit" ng-bind="aiyouEdit.data.income_type"></span>
+                    </p>
+                    <p>
+                        <span class="table-name">到单日期</span>
+                        <span class="table-text" style="width: 548px;display: inline-block">
+                            <input id="table-data" type="text" class="pointer" time-value="aiyouEdit.data.received_date" max-date="%y-%M-%d" format="yyyy-MM-dd"
+                                ng-model="aiyouEdit.data.received_date" time-module readonly placeholder="点击选择">
+                        </span>
+                        <i class="table-clear" ng-click="aiyouEdit.data.received_date = ''"></i>
+                    </p>
+                    <p style="border: none;" class="add-edit-title">
+                        <span class="icon-title"></span>备注</p>
+                    <p class="top-border f-position-r textarea-box">
+                        <textarea style="border: none;" class="table-textarea textarea-content" ng-model="aiyouEdit.data.remarks" maxlength="300"></textarea>
+                        <span class="textarea-num" >
+                            <span>{{aiyouEdit.data.remarks.length ? aiyouEdit.data.remarks.length:0}}</span>/300</span>
+                        <i style="position: absolute;right:0px;top: 10px;" class="table-clear" ng-click="aiyouEdit.data.remarks = ''"></i>
+                    </p>
+                    <p class="add-edit-title">
+                        <span class="icon-title"></span>金额信息</p>
+                    <p>
+                        <span class="table-name">合同金额</span>
+                        <span class="table-text" ng-bind="aiyouEdit.data.total_price|number:2"></span>
+                    </p>
+                    <p ng-show="aiyouEdit.data.sale_type==2">
+                        <span class="table-name">预付金额</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="aiyouEdit.data.down_payment" placeholder="点击输入" maxlength="10">
+                        </span>
+                        <i class="table-clear" ng-click="aiyouEdit.data.down_payment = ''"></i>
+                    </p>
+                    <p ng-show="aiyouEdit.data.sale_type==2">
+                        <span class="table-name">押金金额</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="aiyouEdit.data.deposit_price" placeholder="点击输入" maxlength="10">
+                        </span>
+                        <i class="table-clear" ng-click="aiyouEdit.data.deposit_price = ''"></i>
+                    </p>
+                    <p class="add-edit-title">
+                        <span class="icon-title"></span>产品信息</p>
+                    <div ng-repeat="item in aiyouEdit.data.product_list">
+                        <p class="locked" style="margin-top:0;">
+                            <span class="table-name">编号</span>
+                            <span class="table-text" style="font-weight: 600;padding-left: 18px" ng-bind="$index<9?'0'+($index+1):$index+1"></span>
+                            <a style="text-decoration: underline;color: #FF0000; float: right;line-height: 28px;padding-right: 8px" ng-show="delstatus"
+                                ng-click="aiyouEdit.deleteProduct($index)">删除</a>
+                        </p>
+                        <p>
+                            <span class="table-name">产品</span>
+                            <span class="table-text">
+                                <select ng-model="item.third_product_id" ng-options=" option.product_id as option.product_name for option in aiyouEdit.selectList.productList"
+                                    ng-change="changeProduct(item.third_product_id)"></select>
+                                <label ng-show="!item.third_product_id" class="select-tip">点击选择</label>
+                            </span>
+                            <i class="table-clear" ng-click="item.third_product_id = '';reload();"></i>
+                        </p>
+                        <p>
+                            <span class="table-name">价格</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="item.discount_price" placeholder="点击输入" maxlength="10" ng-change='aiyouEdit.counterPrice()'>
+                            </span>
+                            <i class="table-clear" ng-click="item.discount_price = '';aiyouEdit.counterPrice();"></i>
+                        </p>
+                        <p class="no-bottom-border" style="border-bottom: none">
+                            <span class="table-name">数量</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="item.product_num" placeholder="点击输入" ng-change='aiyouEdit.counterPrice()'>
+                            </span>
+                            <i class="table-clear" ng-click="item.product_num = '';aiyouEdit.counterPrice();"></i>
+                        </p>
+                        <p class="top-border f-position-r textarea-box" style="border: 1px solid #f2f2f2;background: #fff;align-items:flex-start">
+                            <span class="table-name" style="vertical-align: top">服务内容</span>
+                            <!-- padding-left: 16px;padding-bottom: 24px -->
+                            <textarea class="textarea-content" style="width: 574px;height: 124px;border: none;"
+                                ng-model="item.contract_remark" maxlength="300"></textarea>
+                            <span class="textarea-num" style="right: 17px">
+                                <span>{{item.contract_remark.length ? item.contract_remark.length:0}}</span>/300</span>
+                        </p>
+                    </div>
+                    <button class="btn btn-new-blue" style="float: right;margin-top: 10px" ng-click="aiyouEdit.createProduct()">新建产品信息</button>
+                </form>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue full-btn" ng-click="aiyouEdit.editAiYou()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

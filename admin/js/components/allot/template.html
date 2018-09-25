@@ -1,0 +1,45 @@
+<div ng-show="show" style="display:block;overflow: auto" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="hideList()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="title"></h4>
+            </div>
+            <div class="modal-body grey-bg auto-modal">
+                <ul class="tab-menu">
+                    <li ng-repeat="(key,value) in model" ng-class="{'current': key== temp.tab }" ng-click="changeTab(key)">
+                        <a href="javascript:void(0)">{{value.pool_name}}</a>
+                    </li>
+                </ul>
+                <form class="form-wrap add-edit-form form-wrap-w-sm">
+                    <div ng-click="showList()" class="allot-click">
+                        <span>
+                            <span ng-if="!currentPeople[temp.tab]">点击选择</span>
+                            <span ng-if="currentPeople[temp.tab]" class="allotdepart" ng-bind="currentPeople[temp.tab].department_name"></span>
+                            <span ng-if="currentPeople[temp.tab]" class="allotpeople">{{currentPeople[temp.tab].account}}</span>
+                        </span>
+                    </div>
+                    <div class="allotlist" ng-show="listShow">
+                        <ul class="allotul">
+                            <li ng-repeat="depart in temp.departmentList" ng-class="{'active': $index == temp.departmentIndex }" ng-bind="depart.department_name"
+                                ng-click="showChild($index,depart)"></li>
+                        </ul>
+                        <div class="allotright">
+                            <ul class="peoplelist">
+                                <li ng-repeat="peo in temp.peopleList" ng-class="{active: peo.id == currentPeople[temp.tab].id}" ng-click="choose(peo)">
+                                    <i class="icon_choose"></i>{{peo.account}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue full-btn" ng-click="confirm()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+<div class="c-detail-ctn normal-box" ng-if="!https.orderdetail && orderModel.order_id !=0 ">
+    <div class="c-detail-bottom">
+        <div class="detail-ctn">
+            <div class="edit-title ">
+                订单信息
+            </div>
+            <div class="list-group " style="padding-top:0 ">
+                <div class="list-item ">
+                    <div class="title ">订单编号</div>
+                    <div class="info " ng-bind="orderModel.detail.order_no "></div>
+                </div>
+                <div class="list-item ">
+                    <div class="title ">订单对账</div>
+                    <div class="info " ng-bind="orderModel.detail.order_received_status "></div>
+                </div>
+                <div class="list-item ">
+                    <div class="title ">订单状态</div>
+                    <div class="info " ng-bind="orderModel.detail.order_status "></div>
+                </div>
+                <div class="list-item ">
+                    <div class="title ">到单日期</div>
+                    <div class="info " ng-bind="orderModel.detail.order_received_date "></div>
+                </div>
+                <div class="list-item ">
+                    <div class="title ">签约类型</div>
+                    <div class="info " ng-bind="orderModel.detail.is_new=='0' ? '新签': '续签' "></div>
+                </div>
+                <div class="list-item ">
+                    <div class="title ">营收类型</div>
+                    <div class="info " ng-bind="orderModel.detail.income_type "></div>
+                </div>
+                <div class="list-item ">
+                    <div class="title ">执行周期</div>
+                    <div class="info " ng-bind="orderModel.detail.service_start_time ? (orderModel.detail.service_start_time
+    + ' 至 ' + orderModel.detail.service_end_time) : '-' "></div>
+                </div>
+                <div class="list-item ">
+                    <div class="title ">订单金额</div>
+                    <div class="info " ng-bind="orderModel.detail.order_price | number:2 "></div>
+                </div>
+                <div class="list-item ">
+                    <div class="title ">支付金额</div>
+                    <div class="info " ng-bind="orderModel.detail.total_received | number:2 "></div>
+                </div>
+                <div class="list-item ">
+                    <div class="title ">暂存款</div>
+                    <div class="info " ng-bind="orderModel.detail.temp_deposit_price | number:2 "></div>
+                </div>
+                <div class="list-item ">
+                    <div class="title ">订单创建</div>
+                    <div class="info " ng-bind="orderModel.detail.sign_user "></div>
+                </div>
+                <div class="list-item ">
+                    <div class="title ">订单归属</div>
+                    <div class="info " ng-bind="orderModel.detail.belong_user ">></div>
+                </div>
+            </div>
+            <div class="edit-title ">
+                订单说明
+            </div>
+            <div class="list-group ">
+                <div class="list-item ">
+                    <p ng-bind="orderModel.detail.order_remarks || '-' " style="word-break:break-all;white-space: pre-wrap;
+    " class="txt-textarea ">
+                    </p>
+                </div>
+            </div>
+            <div class="edit-title ">
+                产品信息
+            </div>
+            <div ng-repeat="item in orderModel.detail.product ">
+                <div class="list-group ">
+                    <div class="list-item ">
+                        <span style="font-weight: bold; ">产品{{$index + 1}}</span>
+                    </div>
+                    <div class="list-item ">
+                        <div class="title ">产品类型</div>
+                        <div class="info " ng-bind="item.product_category_name "></div>
+                    </div>
+
+                    <div class="list-item ">
+                        <div class="title ">产品名称</div>
+                        <div class="info " ng-bind="item.product_name "></div>
+                    </div>
+                    <div class="list-item ">
+                        <div class="title ">产品单价</div>
+                        <div class="info " ng-bind="item.product_price "></div>
+                    </div>
+                    <div class="list-item ">
+                        <div class="title ">购买数量</div>
+                        <div class="info " ng-bind="item.order_product_num "></div>
+                    </div>
+                </div>
+                <div class="list-group " ng-repeat="content in item.order_content_list ">
+                    <div class="list-item ">
+                        <span style="font-weight: bold; ">内容{{$index + 1}}</span>
+                    </div>
+                    <div class="list-item ">
+                        <div class="title ">内容名称</div>
+                        <div class="info " ng-bind="content.content_name"></div>
+                    </div>
+                    <div class="list-item ">
+                        <div class="title ">内容单价</div>
+                        <div class="info " ng-bind="content.content_price "></div>
+                    </div>
+                    <div class="list-item ">
+                        <div class="title ">内容数量</div>
+                        <div class="info " ng-bind="content.content_num "></div>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-title ">
+                签约信息
+            </div>
+            <div class="list-group ">
+                <div class="list-item ">
+                    <div class="title ">签约方式</div>
+                    <div class="info " ng-bind="orderModel.detail.order_sign_type"></div>
+                </div>
+                <!--个人签约-->
+                <div class="list-item " ng-if="orderModel.detail.sign_type==1 ">
+                    <div class="title ">签约人</div>
+                    <div class="info " ng-bind="orderModel.detail.order_sign_name "></div>
+                </div>
+                <div class="list-item " ng-if="orderModel.detail.sign_type==1 ">
+                    <div class="title ">身份证号</div>
+                    <div class="info " ng-bind="orderModel.detail.order_sign_card_id "></div>
+                </div>
+                <div class="list-item " ng-if="orderModel.detail.sign_type==1 ">
+                    <div class="title ">联系方式</div>
+                    <div class="info " ng-bind="orderModel.detail.order_sign_phone "></div>
+                </div>
+                <!--公司签约-->
+                <div class="list-item " ng-if="orderModel.detail.sign_type==2 ">
+                    <div class="title ">授权签约人</div>
+                    <div class="info " ng-bind="orderModel.detail.order_sign_authorize "></div>
+                </div>
+                <div class="list-item " ng-if="orderModel.detail.sign_type==2 ">
+                    <div class="title ">公司名字</div>
+                    <div class="info " ng-bind="orderModel.detail.order_sign_company "></div>
+                </div>
+                <div class="list-item " ng-if="orderModel.detail.sign_type==2 ">
+                    <div class="title ">办公地址</div>
+                    <div class="info " ng-bind="orderModel.detail.order_sign_address "></div>
+                </div>
+                <div class="list-item " ng-if="orderModel.detail.sign_type==2 ">
+                    <div class="title ">联系方式</div>
+                    <div class="info " ng-bind="orderModel.detail.order_sign_phone "></div>
+                </div>
+            </div>
+            <div class="edit-title ">
+                操作记录
+            </div>
+            <div class="list-box-r " ng-if="orderModel.detail.log && orderModel.detail.log.length> 0">
+                <div class="item-box " ng-repeat="item in orderModel.detail.log">
+                    <span class="item-l" ng-bind="item.operate_type == '11' ? customer :(item.account)">
+                    </span>
+                    <div class="item-r ">
+                        <span class="title" ng-bind="item.operate_description"></span>
+                        <span style="float:right" ng-bind="item.create_time"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="no-item extends-box" ng-if="!https.orderdetail && orderModel.order_id == 0">
+                <img src="images/kong.png">
+            </div>
+            <div class="no-item" ng-show="https.orderdetail">
+                <div class="ball-grid-pulse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="slide-footer normal-footer">
+    <button class="btn btn-new-blue" ng-if="authPermission.deleteOrder" ng-disabled="!orderModel.order_id" ng-class="{'btn-disabled':!orderModel.order_id || !orderModel.detail.button.delete }"
+        ng-click="orderModel.deleteOrderConfirm()">删除订单</button>
+</div>

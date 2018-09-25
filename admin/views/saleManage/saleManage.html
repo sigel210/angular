@@ -1,0 +1,22 @@
+<header>
+  <div class="tab-bar active"><span class="menu-tit">业务中心</span></div>
+</header>
+<div class="cont-page cont-page-new">
+  <div class="menu-page">
+    <div class="menu-page-sale">
+      <div ng-repeat="menu in opProductList">
+        <p class="menu-page-tit" ng-bind="menu.product_name" ng-class="{'menu-page-tit-haspadding':menu.product_name!=''}" ng-if="menu.product_name"></p>
+        <ul class="menu-btn" style="padding-top: 20px;">
+          <li ng-repeat="item in functionArray" ng-click="stategoParam(item.js_page,{operate_pid:menu.product_id,pool_name:menu.product_name})">
+            <span class="count" ng-show="count[item.js_page] && count[item.js_page][menu.product_id] && count[item.js_page][menu.product_id].count"
+              ng-bind="count[item.js_page][menu.product_id].count">99999</span>
+            <span class="menu-box" ng-class="colorArr[$index].color"><i class="{{item.js_icon}}"></i></span>
+            <span class="menu-tit" ng-bind="item.name"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- <div my-message></div> -->
+</div>
+<!-- 底部操作按钮 -->

@@ -1,0 +1,84 @@
+@charset "utf-8";
+// 组件样式
+div.detail-modal {
+    transition: right 0.7s;
+    border: 1px solid #d5d5d5;
+    position: fixed;
+    top: 50px;
+    right: -700px;
+    display: block;
+    width: 566px;
+    z-index: 3;
+    .slide-head {
+        padding: 15px;
+        position: relative;
+        height: 54px;
+        background: #f1f1f1;
+        border-bottom: 1px solid #d5d5d5;
+        .btn-close {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        .slide-title {
+            word-break: keep-all;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 400px;
+            margin-top: 0;
+        }
+    }
+    .slide-cont {
+        background-color: #f7f7f7;
+        overflow: auto;
+        .detail-box {
+            text-align: left;
+            @extend %clearfix;
+            height: 100%;
+            padding: 0 16px 50px 16px;
+            overflow: auto;
+            .detail-data-part {
+                p {
+                    padding: 6px 16px 6px 0;
+                }
+                .list-item {
+                    background: #fff;
+                    padding-left: 16px;
+                    border: 1px solid #f2f2f2;
+                    border-bottom: none;
+                    .title {
+                        width: 64px;
+                        padding-right: 2px;
+                        text-align: left;
+                        color: #999;
+                    }
+                    &:last-child {
+                        border-bottom: 1px solid #f2f2f2;
+                    }
+                }
+                .title {
+                    color: #666;
+                    .icon-title {
+                        margin-right: 10px;
+                        width: 4px;
+                        height: 20px;
+                        vertical-align: top;
+                        background-color: #d5d5d5;
+                        display: inline-block;
+                    }
+                }
+                span {
+                    display: inline-block;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    &.is-show {
+        right: 0px !important;
+    }
+}

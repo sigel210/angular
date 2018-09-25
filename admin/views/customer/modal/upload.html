@@ -1,0 +1,33 @@
+<!-- 上传图片弹窗 -->
+<div style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="fileUp_M.hide()"></i>
+                </div>
+                <h4 class="modal-title" ng-bind="fileUp_M.title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form .form-wrap-w-sm">
+                    <p ng-repeat="item in fileUp_M.data">
+                        <span class="table-name" ng-bind="'第' + ($index + 1) + '张'"></span>
+                        <span class="table-text">
+                            <input type="text" ng-model="item.origin_name" name="total_num" ng-disabled="true">
+                        </span>
+                        <i class="table-clear" ng-click="fileUp_M.reset($index)"></i>
+                    </p>
+                    <div class="table-operate table-marging">
+                        <button class="btn fileUp-btn" ng-click="fileUp_M.selectImg()">选择图片</button>
+                        <input ng-if="fileUp_M.fileShow" type="file" name="file" id="file" onchange="angular.element(this).scope().fileUp_M.onchange()"
+                            accept="image/jpg,image/png,image/jpeg" style="display: none" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue full-btn" ng-click="fileUp_M.confirm()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

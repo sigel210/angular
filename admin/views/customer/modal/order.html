@@ -1,0 +1,923 @@
+<!-- 订单信息编辑,大多都废弃了，除了爱柚还活着 -->
+<div style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="false">
+<div class="modal-backdrop fade in"></div>
+<div class="modal-dialog modal-sm responseHeight">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="btn-close" data-dismiss="modal">
+                <i class="icon-close" ng-click="hideModal('orderEdit')"></i>
+            </div>
+            <h4 class="modal-title" ng-bind="step != orderEditModel.maxStep ? '订单编辑' : '订单编辑确认'"></h4>
+        </div>
+        <!--精选包-->
+        <div class="modal-body " style="padding-top:5px;" ng-if="orderEditModel.editType == 3">
+
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-show="step == 1">
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>产品信息</p>
+                <p ng-class="{'locked':step == 1}">
+                    <span class="table-name">产品</span>
+                    <span class="table-text">
+                        <input type="text" value="精选包" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">产品数量</span>
+                    <span class="table-text">
+                        <input type="text" ng-model="orderModel.editModel.product[0].product_num" placeholder="点击输入">
+                    </span>
+                    <i ng-show="step == 1" class="table-clear" ng-click="orderModel.editModel.product[0].product_num = ''"></i>
+                </p>
+                <p ng-class="{'locked':step == 1}">
+                    <span class="table-name">产品价格</span>
+                    <span class="table-text">
+                        <span style="padding-left:5px" ng-bind="orderModel.editModel.product[0].product_amount | number:2"></span>
+                    </span>
+                </p>
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>订单信息</p>
+                <p>
+                    <span class="table-name">服务周期</span>
+                    <span class="table-text">
+                        <select class="select-w120" ng-model="orderModel.editModel.cycle" ng-options="option.cycle_id as option.cycle_name for option in orderEditModel.selectList.cycleList">
+                            <option></option>
+                        </select>
+                        <label ng-show="orderModel.editModel.orderModel.editModel.cycle === ''" class="select-tip">点击选择</label>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">服务起止</span>
+                    <span class="search-box" style="width: 549px;display: inline-block">
+                        <input id="1" type="text" time-value="orderModel.editModel.service_start_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_start_time"
+                            max-date="#F{$dp.$D(\'2\')}" time-module placeholder="点击选择" style="padding-left:16px;width: 18%;">
+                        <span class="time-division">至</span>
+                        <input id="2" type="text" time-value="orderModel.editModel.service_end_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_end_time"
+                            min-date="#F{$dp.$D(\'1\')}" time-module placeholder="点击选择" style="width: 20%;padding-left: 20px">
+                    </span>
+                    <i class="table-clear" ng-click="orderModel.editModel.service_start_time = '';
+                        orderModel.editModel.service_end_time = ''"></i>
+                </p>
+                <p>
+                    <span class="table-name">到单日期</span>
+                    <span class="search-box" style="width: 549px;display: inline-block">
+                        <input id="table-data" type="text" time-value="orderModel.editModel.received_date" format="yyyy-MM-dd" ng-model="orderModel.editModel.received_date"
+                            time-module placeholder="点击选择" style="padding-left:16px;" max-date="{{today}}">
+                    </span>
+                    <i ng-show="step == 1" class="table-clear" ng-click="orderModel.editModel.received_date = ''"></i>
+                </p>
+                <p>
+                    <span class="table-name">签约类型</span>
+                    <span class="table-text">
+                        <select class="select-w120" ng-model="orderModel.editModel.is_new" ng-options="option.id as option.name for option in orderEditModel.selectList.typeList">
+                            <option></option>
+                        </select>
+                        <label ng-show="orderModel.editModel.orderModel.editModel.is_new === ''" class="select-tip">点击选择</label>
+                    </span>
+                </p>
+                <!-- <p style="margin-top: 10px;">
+                    <span class="table-name">备注</span>
+                    <span class="table-text">
+                        <textarea type="text" style="width: 538px;height:150px;margin:10px 0" ng-model="orderModel.editModel.remark" maxlength="500" name="remark" placeholder="点击输入" class="textarea-w"></textarea>
+                    </span>
+                </p> -->
+                <p class="add-edit-title">
+                    <span class="icon-title"></span>签约信息</p>
+                <div ng-if="orderModel.editModel.sign_type == 1">
+                    <p>
+                        <span class="table-name">签约人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_name" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_name = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">身份证</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_card_id" placeholder="点击输入" maxlength="18">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_card_id = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_phone = ''"></i>
+                    </p>
+                </div>
+                <div ng-if="orderModel.editModel.sign_type == 2">
+                    <p>
+                        <span class="table-name">签约授权人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_authorize" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_authorize = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">公司名字</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_company" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_company = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">办公地址</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_address" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_address = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_phone = ''"></i>
+                    </p>
+                </div>
+
+
+            </div>
+            <!--子产品-->
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-show="step == 2">
+                <div ng-repeat="item in orderModel.editModel.product[0].include">
+                    <div ng-if="item.name == '包含'" ng-repeat="subProduct in item.list">
+                        <p class="add-edit-title">
+                            <span class="icon-title"></span>子产品{{$index + 1}}</p>
+                        <p class="locked">
+                            <span class="table-name">子产品</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_name" disabled>
+                            </span>
+                        </p>
+                        <p class="locked">
+                            <span class="table-name">销售价格</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.discount_price" disabled>
+                            </span>
+                        </p>
+                        <p class="locked">
+                            <span class="table-name">数量</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_num" disabled>
+                            </span>
+                        </p>
+                    </div>
+                    <div ng-if="item.name == '3选1'">
+                        <p class="add-edit-title ">
+                            <span class="icon-title"></span>3选1</p>
+                        <p class="locked" ng-repeat="subProduct in item.list">
+                            <span class="table-name">子产品</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_name" disabled>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--确认-->
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-show="step == 3">
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>产品信息</p>
+                <p>
+                    <span class="table-name">产品</span>
+                    <span class="table-text">
+                        <input type="text" value="精选包" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">产品数量</span>
+                    <span class="table-text">
+                        <input type="text" ng-model="orderModel.editModel.product[0].product_num" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">产品价格</span>
+                    <span class="table-text">
+                        <span style="padding-left:5px" ng-bind="orderModel.editModel.product[0].product_amount | number:2"></span>
+                    </span>
+                </p>
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>订单信息</p>
+                <p>
+                    <span class="table-name">服务周期</span>
+                    <span class="table-text">
+                        <input type="text" ng-model="orderModel.editModel.cycle" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">服务起止</span>
+                    <span class="search-box" style="width: 549px;display: inline-block">
+                        <input id="1" type="text" time-value="orderModel.editModel.service_start_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_start_time"
+                            max-date="#F{$dp.$D(\'2\')}" time-module style="padding-left:16px;width: 18%;" disabled>
+                        <span class="time-division">至</span>
+                        <input id="2" type="text" time-value="orderModel.editModel.service_end_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_end_time"
+                            min-date="#F{$dp.$D(\'1\')}" time-module style="width: 20%;padding-left: 20px" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">到单日期</span>
+                    <span class="search-box" style="width: 549px;display: inline-block">
+                        <input id="table-data" type="text" time-value="orderModel.editModel.received_date" format="yyyy-MM-dd" ng-model="orderModel.editModel.received_date"
+                            time-module placeholder="点击选择" style="padding-left:16px;" disabled>
+                    </span>
+                    <i ng-show="step == 1" class="table-clear" ng-click="orderModel.editModel.received_date = ''"></i>
+                </p>
+                <p>
+                    <span class="table-name">签约类型</span>
+                    <span class="table-text">
+                        <span ng-bind="orderModel.editModel.is_new == '0' ? '新签':'续签'"></span>
+                    </span>
+                </p>
+                <!-- <p style="margin-top: 10px;">
+                    <span class="table-name">备注</span>
+                    <span class="table-text">
+                        <textarea type="text" style="width: 538px;height:150px;margin:10px 0" ng-model="orderModel.editModel.remark" maxlength="500" name="remark" placeholder="点击输入" class="textarea-w"  disabled></textarea>
+                    </span>
+                </p> -->
+                <p class="add-edit-title">
+                    <span class="icon-title"></span>签约信息</p>
+                <div ng-if="orderModel.editModel.sign_type == 1">
+                    <p>
+                        <span class="table-name">签约人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_name" disabled>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">身份证</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_card_id" disabled>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" disabled>
+                        </span>
+                    </p>
+                </div>
+                <div ng-if="orderModel.editModel.sign_type == 2">
+                    <p>
+                        <span class="table-name">签约授权人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_authorize" disabled>
+                        </span>
+
+                    </p>
+                    <p>
+                        <span class="table-name">公司名字</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_company" disabled>
+                        </span>
+
+                    </p>
+                    <p>
+                        <span class="table-name">办公地址</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_address" disabled>
+                        </span>
+
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" disabled>
+                        </span>
+
+                    </p>
+                </div>
+
+            </div>
+            <!--子产品-->
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-show="step == 3">
+                <div ng-repeat="item in orderModel.editModel.product[0].include">
+                    <div ng-if="item.name == '包含'" ng-repeat="subProduct in item.list">
+                        <p class="add-edit-title ">
+                            <span class="icon-title"></span>子产品{{$index + 1}}</p>
+                        <p>
+                            <span class="table-name">子产品</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_name" disabled>
+                            </span>
+                        </p>
+                        <p>
+                            <span class="table-name">销售价格</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.discount_price" disabled>
+                            </span>
+                        </p>
+                        <p>
+                            <span class="table-name">数量</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_num" disabled>
+                            </span>
+                        </p>
+                    </div>
+                    <div ng-if="item.name == '3选1'">
+                        <p class="add-edit-title ">
+                            <span class="icon-title"></span>3选1</p>
+                        <p ng-repeat="subProduct in item.list">
+                            <span class="table-name">子产品</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_name" disabled>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--图文定制-->
+        <div class="modal-body " style="padding-top:5px;" ng-if="orderEditModel.editType == 4">
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-if="step == 1">
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>产品信息</p>
+                <p ng-class="{'locked':step == 1}">
+                    <span class="table-name">产品</span>
+                    <span class="table-text">
+                        <input type="text" value="图文定制" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">产品数量</span>
+                    <span class="table-text">
+                        <input type="text" ng-model="orderModel.editModel.product[0].product_num" placeholder="点击输入">
+                    </span>
+                    <i ng-show="step == 1" class="table-clear" ng-click="orderModel.editModel.product[0].product_num = ''"></i>
+                </p>
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>订单信息</p>
+                <p>
+                    <span class="table-name">服务周期</span>
+                    <span class="table-text">
+                        <select class="select-w120" ng-model="orderModel.editModel.cycle" ng-options="option.cycle_id as option.cycle_name for option in orderEditModel.selectList.cycleList">
+                            <option></option>
+                        </select>
+                        <label ng-show="orderModel.editModel.orderModel.editModel.cycle === ''" class="select-tip">点击选择</label>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">服务起止</span>
+                    <span class="search-box" style="width: 549px;display: inline-block">
+                        <input id="4" type="text" time-value="orderModel.editModel.service_start_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_start_time"
+                            max-date="#F{$dp.$D(\'5\')}" time-module placeholder="点击选择" style="padding-left:16px;width: 18%;">
+                        <span class="time-division">至</span>
+                        <input id="5" type="text" time-value="orderModel.editModel.service_end_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_end_time"
+                            min-date="#F{$dp.$D(\'4\')}" time-module placeholder="点击选择" style="padding-left:16px;width: 18%;">
+                    </span>
+                    <i class="table-clear" ng-click="orderModel.editModel.service_start_time = '';
+                        orderModel.editModel.service_end_time = ''"></i>
+                </p>
+                <p>
+                    <span class="table-name">到单日期</span>
+                    <span class="search-box" style="width: 549px;display: inline-block">
+                        <input id="3" type="text" time-value="orderModel.editModel.received_date" format="yyyy-MM-dd" ng-model="orderModel.editModel.received_date"
+                            max-date="{{today}}" time-module placeholder="点击选择" style="padding-left:16px;width: 18%;">
+                    </span>
+                    <i ng-show="step == 1" class="table-clear" ng-click=""></i>
+                </p>
+                <p>
+                    <span class="table-name">签约类型</span>
+                    <span class="table-text">
+                        <select class="select-w120" ng-model="orderModel.editModel.is_new" ng-options="option.id as option.name for option in orderEditModel.selectList.typeList">
+                            <option></option>
+                        </select>
+                        <label ng-show="orderModel.editModel.orderModel.editModel.is_new === ''" class="select-tip">点击选择</label>
+                    </span>
+                </p>
+                <p style="margin-top: 10px;">
+                    <span class="table-name">备注{{orderModel.editModel.remark}}</span>
+                    <span class="table-text">
+                        <textarea type="text" style="width: 538px;height:150px;margin:10px 0" ng-model="orderModel.editModel.remarks" maxlength="500"
+                            name="remark" placeholder="点击输入" class="textarea-w"></textarea>
+                    </span>
+                </p>
+                <p class="add-edit-title">
+                    <span class="icon-title"></span>签约信息</p>
+                <div ng-if="orderModel.editModel.sign_type == 1">
+                    <p>
+                        <span class="table-name">签约人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_name" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_name = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">身份证</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_card_id" placeholder="点击输入" maxlength="18">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_card_id = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_phone = ''"></i>
+                    </p>
+                </div>
+                <div ng-if="orderModel.editModel.sign_type == 2">
+                    <p>
+                        <span class="table-name">签约授权人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_authorize" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_authorize = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">公司名字</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_company" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_company = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">办公地址</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_address" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_address = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_phone = ''"></i>
+                    </p>
+                </div>
+
+            </div>
+            <!--子产品-->
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-show="step == 2">
+                <div ng-repeat="item in orderModel.editModel.product[0].include">
+                    <div ng-repeat="subProduct in item.list">
+                        <p class="add-edit-title" ng-class="{'mt-15':$index > 0}">
+                            <span class="icon-title"></span>子产品{{$index + 1}}
+                            <span style="float:right;cursor:pointer" ng-click="orderEditModel.methods.deleteSubProductConfirm(subProduct, $index)">删除</span>
+                        </p>
+                        <p class="locked">
+                            <span class="table-name">子产品</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_name" disabled>
+                            </span>
+                        </p>
+                        <p class="locked">
+                            <span class="table-name">销售价格</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.discount_price" disabled>
+                            </span>
+                        </p>
+                        <p>
+                            <span class="table-name">数量</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_num">
+                            </span>
+                            <i ng-show="step == 1" class="table-clear" ng-click="subProduct.product_num = ''"></i>
+                        </p>
+                    </div>
+                </div>
+                <div class="add-son-product" style="width:100%;margin:20px auto;" ng-click="addSonProduct()">添加子产品</div>
+            </div>
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-if="step == 3">
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>产品信息</p>
+                <p>
+                    <span class="table-name">产品</span>
+                    <span class="table-text">
+                        <input type="text" value="图文定制" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">产品数量</span>
+                    <span class="table-text">
+                        <input type="text" ng-model="orderModel.editModel.product[0].product_num" disabled>
+                    </span>
+                </p>
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>订单信息</p>
+                <p>
+                    <span class="table-name">服务周期</span>
+                    <span class="table-text">
+                        <input type="text" ng-model="orderModel.editModel.cycle" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">服务起止</span>
+                    <span class="search-box" style="width: 549px;display: inline-block">
+                        <input id="1" type="text" time-value="orderModel.editModel.service_start_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_start_time"
+                            max-date="#F{$dp.$D(\'2\')}" time-module placeholder="点击选择" style="padding-left:16px;width: 18%;"
+                            disabled>
+                        <span class="time-division">至</span>
+                        <input id="2" type="text" time-value="orderModel.editModel.service_end_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_end_time"
+                            min-date="#F{$dp.$D(\'1\')}" time-module placeholder="点击选择" style="width: 20%;padding-left: 20px"
+                            disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">到单日期</span>
+                    <span class="search_box">
+                        <input id="3" type="text" time-value="orderModel.editModel.received_date" format="yyyy-MM-dd" ng-model="orderModel.editModel.received_date"
+                            max-date="{{today}}" time-module placeholder="点击选择" style="padding-left:16px;width: 18%;" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">签约类型</span>
+                    <span class="table-text">
+                        <span ng-bind="orderModel.editModel.is_new == '0' ? '新签':'续签'"></span>
+                    </span>
+                </p>
+                <!-- <p style="margin-top: 10px;">
+                    <span class="table-name">备注</span>
+                    <span class="table-text">
+                        <textarea type="text" style="width: 538px;height:150px;margin:10px 0" ng-model="orderModel.editModel.remark" name="remark" placeholder="点击输入" class="textarea-w" disabled></textarea>
+                    </span>
+                </p> -->
+                <p class="add-edit-title">
+                    <span class="icon-title"></span>签约信息</p>
+                <div ng-if="orderModel.editModel.sign_type == 1">
+                    <p>
+                        <span class="table-name">签约人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_name" disabled>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">身份证</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_card_id" disabled>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" disabled>
+                        </span>
+                    </p>
+                </div>
+                <div ng-if="orderModel.editModel.sign_type == 2">
+                    <p>
+                        <span class="table-name">签约授权人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_authorize" disabled>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">公司名字</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_company" disabled>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">办公地址</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_address" disabled>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" disabled>
+                        </span>
+                    </p>
+                </div>
+
+            </div>
+            <!--子产品-->
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-show="step == 3">
+                <div ng-repeat="item in orderModel.editModel.product[0].include">
+                    <div ng-repeat="subProduct in item.list">
+                        <p class="add-edit-title">
+                            <span class="icon-title"></span>子产品{{$index + 1}}
+                        </p>
+                        <p>
+                            <span class="table-name">子产品</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_name" disabled>
+                            </span>
+                        </p>
+                        <p>
+                            <span class="table-name">销售价格</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.discount_price" disabled>
+                            </span>
+                        </p>
+                        <p>
+                            <span class="table-name">数量</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_num" disabled>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--短视频,直播-->
+        <div class="modal-body " style="padding-top:5px;" ng-if="orderEditModel.editType == 5">
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-show="step == 1">
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>产品信息</p>
+                <p ng-class="{'locked':step == 1}">
+                    <span class="table-name">产品</span>
+                    <span class="table-text">
+                        <input type="text" ng-model="orderModel.editModel.product[0].product_name" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">产品数量</span>
+                    <span class="table-text">
+                        <input type="text" ng-model="orderModel.editModel.product[0].product_num" placeholder="点击输入">
+                    </span>
+                    <i ng-show="step == 1" class="table-clear" ng-click="orderModel.editModel.product[0].product_num = ''"></i>
+                </p>
+                <p ng-class="{'locked':step == 1}">
+                    <span class="table-name">产品价格</span>
+                    <span class="table-text">
+                        <span style="padding-left:5px" ng-bind="orderModel.editModel.product[0].product_amount | number:2"></span>
+                    </span>
+                </p>
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>订单信息</p>
+                <p>
+                    <span class="table-name">服务周期</span>
+                    <span class="table-text">
+                        <select class="select-w120" ng-model="orderModel.editModel.cycle" ng-options="option.cycle_id as option.cycle_name for option in orderEditModel.selectList.cycleList">
+                            <option></option>
+                        </select>
+                        <label ng-show="orderModel.editModel.orderModel.editModel.cycle === ''" class="select-tip">点击选择</label>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">服务起止</span>
+                    <span class="search-box" style="width: 549px;display: inline-block">
+                        <input id="6" type="text" time-value="orderModel.editModel.service_start_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_start_time"
+                            max-date="#F{$dp.$D(\'7\')}" time-module placeholder="点击选择" style="padding-left:16px;width: 18%;">
+                        <span class="time-division">至</span>
+                        <input id="7" type="text" time-value="orderModel.editModel.service_end_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_end_time"
+                            min-date="#F{$dp.$D(\'6\')}" time-module placeholder="点击选择" style="width: 20%;padding-left: 20px">
+                    </span>
+                    <i class="table-clear" ng-click="orderModel.editModel.service_start_time = '';
+                        orderModel.editModel.service_end_time = ''"></i>
+                </p>
+                <p>
+                    <span class="table-name">到单日期</span>
+                    <span class="search-box" style="width: 549px;display: inline-block">
+                        <input id="table-data2" type="text" time-value="orderModel.editModel.received_date" format="yyyy-MM-dd" ng-model="orderModel.editModel.received_date"
+                            time-module placeholder="点击选择" style="padding-left:16px;" max-date="{{today}}">
+                    </span>
+                    <i ng-show="step == 1" class="table-clear" ng-click="orderModel.editModel.received_date = ''"></i>
+                </p>
+                <p>
+                    <span class="table-name">签约类型</span>
+                    <span class="table-text">
+                        <select class="select-w120" ng-model="orderModel.editModel.is_new" ng-options="option.id as option.name for option in orderEditModel.selectList.typeList">
+                            <option></option>
+                        </select>
+                        <label ng-show="orderModel.editModel.orderModel.editModel.is_new === ''" class="select-tip">点击选择</label>
+                    </span>
+                </p>
+                <p style="margin-top: 10px;" ng-show="orderModel.third_product_id == '10022' || orderModel.third_product_id == '10023' || orderModel.third_product_id == '10024'">
+                    <span class="table-name">备注</span>
+                    <span class="table-text">
+                        <textarea type="text" style="width: 538px;height:150px;margin:10px 0" ng-model="orderModel.editModel.remarks" maxlength="500"
+                            name="remark" placeholder="点击输入" class="textarea-content textarea-w"></textarea>
+                    </span>
+                </p>
+                <p class="add-edit-title">
+                    <span class="icon-title"></span>签约信息</p>
+                <div ng-if="orderModel.editModel.sign_type == 1">
+                    <p>
+                        <span class="table-name">签约人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_name" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_name = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">身份证</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_card_id" placeholder="点击输入" maxlength="18">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_card_id = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_phone = ''"></i>
+                    </p>
+                </div>
+                <div ng-if="orderModel.editModel.sign_type == 2">
+                    <p>
+                        <span class="table-name">签约授权人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_authorize" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_authorize = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">公司名字</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_company" placeholder="点击输入" maxlength="35">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_company = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">办公地址</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_address" placeholder="点击输入" maxlength="50">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_address = ''"></i>
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.editModel.sign_phone = ''"></i>
+                    </p>
+                </div>
+            </div>
+            <!--子产品-->
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-show="step == 2">
+                <div ng-repeat="item in orderModel.editModel.product[0].include">
+                    <div ng-repeat="subProduct in item.list">
+                        <p class="add-edit-title">
+                            <span class="icon-title"></span>子产品{{$index + 1}}</p>
+                        <p class="locked">
+                            <span class="table-name">子产品</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_name" disabled>
+                            </span>
+                        </p>
+                        <p class="locked">
+                            <span class="table-name">销售价格</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.discount_price" disabled>
+                            </span>
+                        </p>
+                        <p class="locked">
+                            <span class="table-name">数量</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_num" disabled>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--确认-->
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-show="step == 3">
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>产品信息</p>
+                <p ng-class="{'locked':step == 1}">
+                    <span class="table-name">产品</span>
+                    <span class="table-text">
+                        <input type="text" ng-model="orderModel.editModel.product[0].product_name" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">产品数量</span>
+                    <span class="table-text">
+                        <input type="text" ng-model="orderModel.editModel.product[0].product_num" disabled>
+                    </span>
+                </p>
+                <p ng-class="{'locked':step == 1}">
+                    <span class="table-name">产品价格</span>
+                    <span class="table-text">
+                        <span style="padding-left:5px" ng-bind="orderModel.editModel.product[0].product_amount | number:2"></span>
+                    </span>
+                </p>
+                <p class="add-edit-title ">
+                    <span class="icon-title"></span>订单信息</p>
+                <p>
+                    <span class="table-name">服务周期</span>
+                    <span class="table-text">
+                        <input type="text" ng-model="orderModel.editModel.cycle" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">服务起止</span>
+                    <span class="search-box" style="width: 549px;display: inline-block">
+                        <input id="1" type="text" time-value="orderModel.editModel.service_start_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_start_time"
+                            max-date="#F{$dp.$D(\'2\')}" time-module style="padding-left:16px;width: 18%;" disabled>
+                        <span class="time-division">至</span>
+                        <input id="2" type="text" time-value="orderModel.editModel.service_end_time" format="yyyy-MM-dd" ng-model="orderModel.editModel.service_end_time"
+                            min-date="#F{$dp.$D(\'1\')}" time-module style="width: 20%;padding-left: 20px" disabled>
+                    </span>
+                </p>
+                <p>
+                    <span class="table-name">到单日期</span>
+                    <span class="search-box" style="width: 549px;display: inline-block">
+                        <input id="table-data" type="text" time-value="orderModel.editModel.received_date" format="yyyy-MM-dd" ng-model="orderModel.editModel.received_date"
+                            time-module placeholder="点击选择" style="padding-left:16px;" disabled>
+                    </span>
+                    <i ng-show="step == 1" class="table-clear" ng-click="orderModel.editModel.received_date = ''"></i>
+                </p>
+                <p>
+                    <span class="table-name">签约类型</span>
+                    <span class="table-text">
+                        <span ng-bind="orderModel.editModel.is_new == '0' ? '新签':'续签'"></span>
+                    </span>
+                </p>
+                <p style="margin-top: 10px;" ng-show="orderModel.third_product_id == '10022' || orderModel.third_product_id == '10023' || orderModel.third_product_id == '10024'">
+                    <span class="table-name">备注</span>
+                    <span class="table-text">
+                        <textarea type="text" style="width: 538px;height:150px;margin:10px 0;background-color:#fff" ng-model="orderModel.editModel.remarks"
+                            name="remark" placeholder="点击输入" class="textarea-content textarea-w" disabled></textarea>
+                    </span>
+                </p>
+                <p class="add-edit-title">
+                    <span class="icon-title"></span>签约信息</p>
+                <div ng-if="orderModel.editModel.sign_type == 1">
+                    <p>
+                        <span class="table-name">签约人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_name" disabled>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">身份证</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_card_id" disabled>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" disabled>
+                        </span>
+                    </p>
+                </div>
+                <div ng-if="orderModel.editModel.sign_type == 2">
+                    <p>
+                        <span class="table-name">签约授权人</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_authorize" disabled>
+                        </span>
+
+                    </p>
+                    <p>
+                        <span class="table-name">公司名字</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_company" disabled>
+                        </span>
+
+                    </p>
+                    <p>
+                        <span class="table-name">办公地址</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_address" disabled>
+                        </span>
+
+                    </p>
+                    <p>
+                        <span class="table-name">联系方式</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.editModel.sign_phone" disabled>
+                        </span>
+
+                    </p>
+                </div>
+
+            </div>
+            <!--子产品-->
+            <div class="form-wrap add-edit-form form-wrap-w-sm order" ng-show="step == 3">
+                <div ng-repeat="item in orderModel.editModel.product[0].include">
+                    <div ng-repeat="subProduct in item.list">
+                        <p class="add-edit-title ">
+                            <span class="icon-title"></span>子产品{{$index + 1}}</p>
+                        <p>
+                            <span class="table-name">子产品</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_name" disabled>
+                            </span>
+                        </p>
+                        <p>
+                            <span class="table-name">销售价格</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.discount_price" disabled>
+                            </span>
+                        </p>
+                        <p>
+                            <span class="table-name">数量</span>
+                            <span class="table-text">
+                                <input type="text" ng-model="subProduct.product_num" disabled>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer full-btn-box">
+            <button type="button" ng-show="step > 1" class="btn btn-cancel" style="width:18.5%;line-height: 0;" ng-click="step = step - 1">上一步</button>
+            <button type="button" ng-show="step == 1" class="btn btn-blue full-btn" style="margin-left:0px;width:100%;" ng-click="step = step + 1">下一步</button>
+            <button type="button" ng-show="step != 1 && step != orderEditModel.maxStep" class="btn btn-blue" style="margin-left:0px;width:80%;"
+                ng-click="step = step + 1">下一步</button>
+            <button type="button" ng-show="step == orderEditModel.maxStep" class="btn btn-blue" style="width:80%" ng-click="orderEditModel.methods.update()">确定</button>
+        </div>
+    </div>
+</div>
+</div>

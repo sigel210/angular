@@ -1,0 +1,29 @@
+<div>
+    <header>
+        <div class="tab-bar active"><span class="menu-tit" ng-bind="menuTitle"></span></div>
+    </header>
+    <div class="cont-page cont-page-new">
+        <div class="menu-page">
+            <div class="menu-page-sale">
+                <div class="item" ng-repeat="menu in menuList" ng-if="secondMenuShow(menu.secondMenuList)">
+                    <p class="menu-page-tit" ng-if="menu.title" ng-bind="menu.title"></p>
+                    <ul class="menu-btn">
+                        <li ng-repeat="item in menu.secondMenuList | filter:{is_show:true}">
+                            <span class="count" ng-show="count[item.page]"
+                            ng-bind="count[item.page]"></span>
+                            <a href="javascript:void(0)" ng-click="statego(item.page, item.payload)">
+                                <span class="menu-box" ng-class="colorArr[$index].color">
+                                    <i class="{{item.icon}}"></i>
+                                </span>
+                                <div>
+                                    <img class="new-icon ng-scope" ng-if="item.isNew" src="./images/NEW-icon.png">
+                                    <span class="menu-tit" ng-bind="item.title"></span>    
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>

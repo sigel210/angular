@@ -1,0 +1,36 @@
+<!-- 执行班次1 -->
+<div style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="hideModal('classEdit')"></i>
+                </div>
+                <h4 class="modal-title">执行班次</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <!-- <p class="locked" ng-show="orderModel.second_product_id == 10007">
+                    <span class="table-name">产品</span>
+                    <span class="table-text" ng-bind=""> 产品名
+                </span>
+                </p> -->
+                    <p>
+                        <span class="table-name">执行班次</span>
+                        <span class="table-text">
+                            <select class="select-w120" ng-model="orderIncomeModel.classRank" ng-options="option.class_id as option.class_name for option in orderModel.selectList.classList">
+                                <option></option>
+                            </select>
+                            <label ng-show="!orderIncomeModel.classRank" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="orderIncomeModel.classRank = ''"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="orderIncomeModel.methods.changeClassRank()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

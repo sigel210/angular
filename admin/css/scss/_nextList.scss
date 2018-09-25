@@ -1,0 +1,46 @@
+.next-list {
+    position: relative;
+    min-width: 1168px;
+    border: 1px solid #eaecee;
+    background-color: #fbfbfb;
+    padding: 13px 0 0 0;
+    margin-top: 20px;
+    .next-list-box {
+        min-width: 1168px;
+        width: 100%;
+        overflow: hidden;
+        .form-group {
+            height: 38px;
+            font-size: 12px;
+            width: 48%;
+            margin-left: 1.1%;
+            display: inline-block;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            background-color: #fff;
+            margin-bottom: 10px;
+            float: left;
+            label {
+                position: absolute;
+                min-width: 55px;
+                height: 38px;
+                line-height: 38px;
+                display: inline-block;
+                text-align: left;
+                color: #999;
+                padding-left: 12px;
+            }
+            div {
+                position: relative;
+                margin-left: 83px;
+                height: 38px;
+                line-height: 38px;
+                color: #333;
+                font-weight: 600;
+            }
+        }
+        .form-group-3 {
+            width: 31.5%;
+        }
+    }
+}

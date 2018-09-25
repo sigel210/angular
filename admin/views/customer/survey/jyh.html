@@ -1,0 +1,436 @@
+<!-- 菁英汇调研表 -->
+<!-- 其他 -->
+<div class="outer-ctn" ng-if="surveyModel.detail.third_product_id != 10005">
+        <div class="edit-title">
+            调研信息
+        </div>
+        <table class="c-table-d">
+            <tbody>
+                <tr>
+                    <td width="80">填表时间</td>
+                    <td ng-bind="surveyModel.detail.create_time"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="edit-title">
+            店铺基础经营
+        </div>
+        <table class="c-table-d">
+            <tbody>
+                <tr>
+                    <td width="80">店铺层级</td>
+                    <td ng-bind="surveyModel.detail.survey_result.store_level"></td>
+                </tr>
+                <tr>
+                    <td width="80">钻冠级</td>
+                    <td ng-bind="surveyModel.detail.survey_result.crown_grade"></td>
+                </tr>
+                <tr>
+                    <td width="80">30天访客</td>
+                    <td ng-bind="surveyModel.detail.survey_result.visit_30"></td>
+                </tr>
+                <tr>
+                    <td width="80">30天支付额</td>
+                    <td ng-bind="surveyModel.detail.survey_result.pay_30 + ' 元'"></td>
+                </tr>
+                <tr>
+                    <td width="80">30天推广费</td>
+                    <td ng-bind="surveyModel.detail.survey_result.spread_30 + ' 元'"></td>
+                </tr>
+                <tr>
+                    <td width="80">货品来源</td>
+                    <td>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('1') != -1" disabled>线下批发市场</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('2') != -1" disabled>实体店拿货</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('3') != -1" disabled>阿里巴巴批发</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('4') != -1" disabled>分销/代销</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('5') != -1" disabled>自己生产/代工生产</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('6') != -1" disabled>自由公司渠道</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('7') != -1" disabled>代沟渠道</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div  class="edit-title">
+            团队结构
+        </div>
+        <table class="c-table-d">
+            <tbody>
+                <tr>
+                    <td width="80">团队人数</td>
+                    <td ng-bind="surveyModel.detail.survey_result.team_num"></td>
+                </tr>
+                <tr>
+                    <td width="80">团队成员</td>
+                    <td>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.team_member.indexOf('1') != -1" disabled>专职运营</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.team_member.indexOf('2') != -1" disabled>专职推广</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.team_member.indexOf('3') != -1" disabled>专职美工</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.team_member.indexOf('4') != -1" disabled>专职客服</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="80">外包情况</td>
+                    <td>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.bpo.indexOf('1') != -1" disabled>运营外包</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.bpo.indexOf('2') != -1" disabled>推广外包</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.bpo.indexOf('3') != -1" disabled>美工外包</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.bpo.indexOf('4') != -1" disabled>客服外包</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="edit-title">
+            运营现状能力
+        </div>
+        <table class="c-table-d">
+            <tbody>
+                <tr>
+                    <td width="80">数据分析能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.data_analyze.indexOf('1') != -1" disabled>了解店铺内各项数据，能进行统计分析。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.data_analyze.indexOf('2') != -1" disabled>日常运营数据的分析、反馈、跟踪，并能做到优化。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.data_analyze.indexOf('3') != -1" disabled>熟悉同行运营及市场动态，发掘新商机和商品。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.data_analyze.indexOf('4') != -1" disabled>没有做数据分析。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.data_analyze.indexOf('5') != -1" disabled>能有效分析行业包括竞品的行为和数据。</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="80">店铺运营能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('1') != -1" disabled>能独立完成店铺基础运营（后台设置、发布宝贝等）</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('2') != -1" disabled>能完成橱窗推荐、类目优化等日常店铺运营</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('3') != -1" disabled>能完成选品、定价、商品组合、上新、卖点提炼等商品运营</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('4') != -1" disabled>能完成店铺年度品类规划和运营节奏规划</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('5') != -1" disabled>能分析店铺在同行里的优劣势</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('6') != -1" disabled>能梳理或建立运营团队工作流程，并系统性优化和提升</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('7') != -1" disabled>能优化供应链，缩短现金周转周期</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('8') != -1" disabled>以上都没有做到。</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="80">内容运营能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.content_operation.indexOf('1') != -1" disabled>能与视觉有效沟通，并策划营销主题活动</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.content_operation.indexOf('2') != -1" disabled>能日常运作微淘、微博、微信公众号等自媒体区块，并保持粉丝活跃度。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.content_operation.indexOf('3') != -1" disabled>能完成店铺及商品文案规划，有效传达品牌故事。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.content_operation.indexOf('4') != -1" disabled>能针对店铺，以品牌为核心，有别于竞争对手做年度综合性策划</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.content_operation.indexOf('5') != -1" disabled>以上都没有做到。</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="80">视觉能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_sight.indexOf('1') != -1" disabled>初具设计需求理解、分析能力，能按部就班完成设计任务。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_sight.indexOf('2') != -1" disabled>能配合团队完成设计方案，并提出简单的设想。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_sight.indexOf('3') != -1" disabled>能从商业角度独立策划店铺视觉和定位，准确传达店铺调性。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_sight.indexOf('4') != -1" disabled>以上都没有做到。</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="80">推广能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('1') != -1" disabled>了解免费引流的方法和工具，包括搜索的基础规则、排名规则、展现量、点击率、转化率等。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('2') != -1" disabled>掌握直通车、淘宝客等营销工具的基本操作手法</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('3') != -1" disabled>掌握店铺红包等各类促销工具的玩法。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('4') != -1" disabled>掌握聚划算、淘抢购等平台活动的玩法。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('5') != -1" disabled>掌握直通车、淘宝客的优化技巧。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('6') != -1" disabled>熟悉站外推广方法。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('7') != -1" disabled>能够进行活动定位、策划、预热、活动执行与复盘等全面活动管理。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('8') != -1" disabled>掌握淘金币、清仓、天天特价等平台活动的玩法。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('9') != -1" disabled>能独立策划整店营销方案，有效把控营销节奏。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('10') != -1" disabled>以上都没有做到。</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="80">客服能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('1') != -1" disabled>能耐心回应客户需求，解决常规性问题。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('2') != -1" disabled>能快速判断客户个性化诉求，尽可能快的解决问题。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('3') != -1" disabled>能关注客户需求变化，并定位分层，有效维护与激活。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('4') != -1" disabled>能主动提炼产品卖点，并对客户做有针对性的解答。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('5') != -1" disabled>能灵活利用卖点做组合销售，增加客单价。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('6') != -1" disabled>能分析、归类并熟练解答客户疑问，并用于产品优化。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('7') != -1" disabled>能主动应对客户的负面反馈，探寻客户动机，及时处理负面事件。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('8') != -1" disabled>能处理重大纠纷，归类分层店铺评价应对策略和处理体系。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('9') != -1" disabled>以上都没有做到。</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+<!-- 研修班 -->
+<div class="outer-ctn" ng-if="surveyModel.detail.third_product_id == 10005">
+        <table class="c-table-d">
+            <tbody>
+                <tr>
+                    <td>填表时间</td>
+                    <td ng-bind="surveyModel.detail.create_time"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p  class="edit-title">
+            店铺基础经营
+        </p>
+        <table class="c-table-d">
+            <tbody>
+                <tr>
+                    <td>店铺层级</td>
+                    <td ng-bind="surveyModel.detail.survey_result.shop_level"></td>
+                </tr>
+                <tr>
+                    <td>30天访客</td>
+                    <td ng-bind="surveyModel.detail.survey_result.visit_30"></td>
+                </tr>
+                <tr>
+                    <td>30天支付额</td>
+                    <td ng-bind="surveyModel.detail.survey_result.pay_30"></td>
+                </tr>
+                <tr>
+                    <td>30天推广费</td>
+                    <td ng-bind="surveyModel.detail.survey_result.spread_30"></td>
+                </tr>
+                <tr>
+                    <td>货品来源</td>
+                    <td>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('1') != -1">线下批发市场</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('2') != -1">实体店拿货</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('3') != -1">阿里巴巴批发</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('4') != -1">分销/代销</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('5') != -1">自己生产/代工生产</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="6" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('6') != -1">自由公司渠道</div>
+                        <div class="td-item-25">
+                            <input type="checkbox" disabled value="7" ng-checked="surveyModel.detail.survey_result.item_soure.indexOf('7') != -1">代沟渠道</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p  class="edit-title">
+            团队结构
+        </p>
+        <table class="c-table-d">
+            <tbody>
+                <tr>
+                    <td>店铺团队人数</td>
+                    <td ng-bind="surveyModel.detail.survey_result.team_num"></td>
+                </tr>
+                <tr>
+                    <td>专职运营人数</td>
+                    <td ng-bind="surveyModel.detail.survey_result.full_operating_num"></td>
+                </tr>
+                <tr>
+                    <td>专职推广人数</td>
+                    <td ng-bind="surveyModel.detail.survey_result.full_promotion_num"></td>
+                </tr>
+                <tr>
+                    <td>专职美工人数</td>
+                    <td ng-bind="surveyModel.detail.survey_result.full_designer_num"></td>
+                </tr>
+                <tr>
+                    <td>专职客服人数</td>
+                    <td ng-bind="surveyModel.detail.survey_result.full_customer_service_num"></td>
+                </tr>
+                <tr>
+                    <td>专职品牌策划人数</td>
+                    <td ng-bind="surveyModel.detail.survey_result.full_planning_num"></td>
+                </tr>
+                <tr>
+                    <td>专职法务人数</td>
+                    <td ng-bind="surveyModel.detail.survey_result.full_lawyer_num"></td>
+                </tr>
+                <tr>
+                    <td>专职财务人数</td>
+                    <td ng-bind="surveyModel.detail.survey_result.full_finance_num"></td>
+                </tr>
+                <tr>
+                    <td>团队划分</td>
+                    <td ng-bind="surveyModel.detail.survey_result.team_division"></td>
+                </tr>
+                <tr>
+                    <td>现有团队中是否有店长、运营主管、推广主管等中层梯队</td>
+                    <td ng-bind="surveyModel.detail.survey_result.has_middle_managers"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p  class="edit-title">
+            运营现状能力
+        </p>
+        <table class="c-table-d table-last">
+            <tbody>
+                <tr>
+                    <td>数据分析能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.data_analyze.indexOf('1') != -1">了解店铺内各项数据，能进行统计分析。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.data_analyze.indexOf('2') != -1">日常运营数据的分析、反馈、跟踪，并能做到优化。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.data_analyze.indexOf('3') != -1">熟悉同行运营及市场动态，发掘新商机和商品。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.data_analyze.indexOf('4') != -1">没有做数据分析。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.data_analyze.indexOf('5') != -1">能有效分析行业包括竞品的行为和数据。</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>店铺运营能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('1') != -1">能独立完成店铺基础运营（后台设置、发布宝贝等）</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('2') != -1">能完成橱窗推荐、类目优化等日常店铺运营</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('3') != -1">能完成选品、定价、商品组合、上新、卖点提炼等商品运营</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('4') != -1">能完成店铺年度品类规划和运营节奏规划</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('5') != -1">能分析店铺在同行里的优劣势</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="6" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('6') != -1">能梳理或建立运营团队工作流程，并系统性优化和提升</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="7" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('7') != -1">能优化供应链，缩短现金周转周期</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="8" ng-checked="surveyModel.detail.survey_result.store_operation.indexOf('8') != -1">以上都没有做到。</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>内容运营能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.content_operation.indexOf('1') != -1">能与视觉有效沟通，并策划营销主题活动</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.content_operation.indexOf('2') != -1">能日常运作微淘、微博、微信公众号等自媒体区块，并保持粉丝活跃度。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.content_operation.indexOf('3') != -1">能完成店铺及商品文案规划，有效传达品牌故事。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.content_operation.indexOf('4') != -1">能针对店铺，以品牌为核心，有别于竞争对手做年度综合性策划</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.content_operation.indexOf('5') != -1">以上都没有做到。</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>视觉能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.ability_sight.indexOf('1') != -1">初具设计需求理解、分析能力，能按部就班完成设计任务。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.ability_sight.indexOf('2') != -1">能配合团队完成设计方案，并提出简单的设想。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.ability_sight.indexOf('3') != -1">能从商业角度独立策划店铺视觉和定位，准确传达店铺调性。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.ability_sight.indexOf('4') != -1">以上都没有做到。</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>推广能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('1') != -1">了解免费引流的方法和工具，包括搜索的基础规则、排名规则、展现量、点击率、转化率等。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('2') != -1">掌握直通车、淘宝客等营销工具的基本操作手法。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('3') != -1">掌握店铺红包等各类促销工具的玩法。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('4') != -1">掌握聚划算、淘抢购等平台活动的玩法。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('5') != -1">掌握直通车、淘宝客的优化技巧。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="6" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('6') != -1">熟悉站外推广方法。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="7" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('7') != -1">能够进行活动定位、策划、预热、活动执行与复盘等全面活动管理。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="8" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('8') != -1">掌握淘金币、清仓、天天特价等平台活动的玩法。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="9" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('9') != -1">能独立策划整店营销方案，有效把控营销节奏。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="10" ng-checked="surveyModel.detail.survey_result.ability_operation.indexOf('10') != -1">以上都没有做到。</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>客服能力</td>
+                    <td>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="1" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('1') != -1">能耐心回应客户需求，解决常规性问题。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="2" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('2') != -1">能快速判断客户个性化诉求，尽可能快的解决问题。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="3" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('3') != -1">能关注客户需求变化，并定位分层，有效维护与激活。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="4" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('4') != -1">能主动提炼产品卖点，并对客户做有针对性的解答。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="5" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('5') != -1">能灵活利用卖点做组合销售，增加客单价。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="6" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('6') != -1">能分析、归类并熟练解答客户疑问，并用于产品优化。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="7" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('7') != -1">能主动应对客户的负面反馈，探寻客户动机，及时处理负面事件。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="8" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('8') != -1">能处理重大纠纷，归类分层店铺评价应对策略和处理体系。</div>
+                        <div class="td-item-100">
+                            <input type="checkbox" disabled value="9" ng-checked="surveyModel.detail.survey_result.ability_feedback.indexOf('9') != -1">以上都没有做到。</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>

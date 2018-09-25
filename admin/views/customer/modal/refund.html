@@ -1,0 +1,108 @@
+<!--退款申请-->
+<div style="display: block;" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm responseHeight">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="btn-close" data-dismiss="modal">
+                    <i class="icon-close" ng-click="hideModal('refunds')"></i>
+                </div>
+                <h4 class="modal-title">退款申请</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-wrap add-edit-form form-wrap-w-sm">
+                    <p class="add-edit-title" style="margin-top:10px">
+                        <span class="icon-title"></span>基本信息
+                    </p>
+                    <p>
+                        <span class="table-name">退款类型</span>
+                        <span class="table-text">
+                            <select class="select-w120" ng-model="orderModel.refunds.approval_type" ng-options="option.id as option.name for option in orderModel.refundTypes"
+                                ng-change="orderModel.methods.resetPrice(orderModel.refunds.approval_type)">
+                                <option></option>
+                            </select>
+                            <label ng-show="!orderModel.refunds.approval_type" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.refunds.approval_type = ''"></i>
+                    </p>
+                    <p ng-show="orderModel.second_product_id != 10008">
+                        <span class="table-name">退款渠道</span>
+                        <span class="table-text">
+                            <select class="select-w120" ng-model="orderModel.refunds.channel" ng-options="option.id as option.name for option in orderModel.refundChannels">
+                                <option></option>
+                            </select>
+                            <label ng-show="!orderModel.refunds.channel" class="select-tip">点击选择</label>
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.refunds.channel = ''"></i>
+                    </p>
+                    <p ng-show="orderModel.second_product_id == 10008">
+                        <span class="table-name">退款渠道</span>
+                        <span class="table-text">
+                            其他
+                        </span>
+                    </p>
+                    <p>
+                        <span class="table-name">退款金额</span>
+                        <span class="table-text">
+                            <input type="text" ng-model="orderModel.refunds.price" placeholder="点击输入">
+                        </span>
+                        <i class="table-clear" ng-click="orderModel.refunds.price = ''"></i>
+                    </p>
+                    <p class="add-edit-title" style="margin-top:10px">
+                        <span class="icon-title"></span>客户帐号选择
+                    </p>
+                    <div ng-repeat="item in orderModel.refunds.received_list" ng-if="orderModel.second_product_id != 10008">
+                        <div class="edit-item" ng-if="item.pay_way != 2">
+                            <p class="edit-item-radio">
+                                <input type="radio" value="{{item.received_id}}" ng-model="orderModel.refunds.received_id">
+                                <span>帐号【{{$index + 1}}】</span>
+                            </p>
+                            <p>
+                                <span class="table-name">支付宝</span>
+                                <span class="table-text" ng-bind="item.customer_account">
+                                </span>
+                            </p>
+                        </div>
+                        <div class="edit-item" ng-if="item.pay_way == 2">
+                            <p class="edit-item-radio">
+                                <input type="radio" value="{{item.received_id}}" ng-model="orderModel.refunds.received_id">
+                                <span> 选择退款信息【{{$index + 1}}】</span>
+                            </p>
+                            <p>
+                                <span class="table-name">网银用户</span>
+                                <span class="table-text" ng-bind="item.customer_account">
+                                </span>
+                            </p>
+                            <p>
+                                <span class="table-name">开户行名</span>
+                                <span class="table-text" ng-bind="item.customer_bank">
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="add-edit-title" style="margin-top:8px">
+                        <span class="icon-title"></span>退款理由</p>
+                    <textarea type="text" ng-model="orderModel.refunds.reason" maxlength="500" placeholder="点击输入" class="textarea-content whole-area"
+                        style="resize:none;"></textarea>
+                    <p class="add-edit-title" style="margin-top:8px">
+                        <span class="icon-title"></span>附件</p>
+                    <p ng-repeat="item in orderModel.fileNames track by $index">
+                        <span class="table-text" ng-bind="item" style="display:inline-block; width:612px;"></span>
+                        <i class="table-clear" ng-click="orderModel.methods.deleteimg($index)"></i>
+                    </p>
+                    <p ng-show="orderModel.fileNames.length < 10" style="cursor:pointer" ng-click="orderModel.methods.uploadImg()">
+                        <span class="table-text" style="display:inline-block; width:612px;color:#ccc;">
+                            点击上传
+                        </span>
+                    </p>
+                    <input type="file" accept="image/jpg,image/png,image/jpeg" style="display: none" id="refund-img" onchange="angular.element(this).scope().orderModel.methods.fileAdd()"
+                        multiple/>
+
+                </div>
+            </div>
+            <div class="modal-footer full-btn-box">
+                <button type="button" class="btn btn-blue" style="width:100%" ng-click="orderModel.methods.applyRefund()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
